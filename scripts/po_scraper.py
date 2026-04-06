@@ -358,6 +358,17 @@ def update_prices(rec: dict) -> dict:
         rec["shares_outstanding"] = shares_outstanding
         print(f"  {rec['name']}: 発行済み株式数 = {shares_outstanding:,}")
 
+    # フォールバック: Yahoo Financeが株式数を返さない場合、時価総額÷株価で推計
+    if not rec.get("shares_outstanding") and rec.get("market_cap") and prices:
+        latest_close = next(
+            (prices[d]["close"] for d in sorted(prices, reverse=True) if prices[d].get("close")),
+            None
+        )
+        if latest_close:
+            estimated = int(rec["market_cap"] * 1e8 / latest_close)
+            rec["shares_outstanding"] = estimated
+            print(f"  {rec['name']}: 発行済み株式数（推計）= {estimated:,}")
+
     # 希薄化率 = 増資数（new_shares） ÷ 発行済み株式数 × 100
     # 増資数が入っていてかつ発行済み株式数が確定したタイミングで計算
     if (not rec.get("dilution")
