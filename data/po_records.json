@@ -9820,7 +9820,7 @@
       "treasury_shares": null,
       "sold_shares": 173003,
       "oa_shares": 173000,
-      "shares_outstanding": null,
+      "shares_outstanding": 38195050,
       "lead_managers": [
         "三菱ＵＦＪモルガン・スタンレー証券"
       ],
@@ -9863,7 +9863,7 @@
       "treasury_shares": null,
       "sold_shares": 5820,
       "oa_shares": 5820,
-      "shares_outstanding": null,
+      "shares_outstanding": 1043859,
       "lead_managers": [
         "三菱ＵＦＪモルガン・スタンレー証券",
         "モルガン・スタンレーＭＵＦＧ証券",
@@ -9878,7 +9878,7 @@
       ],
       "article_url": "https://pokabu.net/po/go-reit-2026",
       "po_pct": 12.0,
-      "dilution": null,
+      "dilution": 11.1,
       "next_open": 124600.0,
       "max_price": null,
       "open_to_max": null,
@@ -9914,14 +9914,14 @@
       "treasury_shares": 1800000,
       "sold_shares": 270000,
       "oa_shares": 270000,
-      "shares_outstanding": null,
+      "shares_outstanding": 19780219,
       "lead_managers": [
         "野村證券"
       ],
       "co_managers": [],
       "article_url": "https://pokabu.net/po/uniontool-2026",
       "po_pct": 10.5,
-      "dilution": null,
+      "dilution": 10.6,
       "next_open": null,
       "max_price": null,
       "open_to_max": null,
@@ -9936,6 +9936,6 @@
       "status": "pending"
     }
   ],
-  "last_updated": "2026-04-06T12:30:13.787331",
+  "last_updated": "2026-04-06T12:58:11.935039",
   "count": 242
 }
