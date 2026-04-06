@@ -476,6 +476,19 @@ def main():
                     rec["delivery_date"] = di["delivery_date"]
                 if not rec.get("issue_price") and di.get("issue_price"):
                     rec["issue_price"] = di["issue_price"]
+            # 記事データが未取得の場合は再スクレイピング
+            if rec.get("article_url") and not rec.get("po_scale") and not rec.get("new_shares"):
+                print(f"  記事再取得: {rec.get('name')} ({code})")
+                article = scrape_article(rec["article_url"])
+                time.sleep(0.8)
+                if article:
+                    for field in ["type", "po_scale", "market_cap", "new_shares", "treasury_shares",
+                                  "sold_shares", "oa_shares", "discount_range", "discount_rate",
+                                  "delivery_estimated", "lead_managers", "co_managers"]:
+                        if article.get(field) and not rec.get(field):
+                            rec[field] = article[field]
+                    if rec.get("po_scale") and rec.get("market_cap"):
+                        rec["po_pct"] = round(rec["po_scale"] / rec["market_cap"] * 100, 1)
             continue
 
         # 新規 → 記事から詳細取得
