@@ -314,7 +314,7 @@ function render(){
       const isH=r=>r.id&&r.id.startsWith("csv_");
       const ah=isH(a),bh=isH(b);
       if(ah!==bh) return ah?1:-1;
-      if(!ah) return (b.id||"").localeCompare(a.id||"");
+      if(!ah){const da=(a.id||"").split("_")[1]||"",db=(b.id||"").split("_")[1]||"";return db.localeCompare(da);}
       return +b.id.replace("csv_","")-+a.id.replace("csv_","");
     });
   }
