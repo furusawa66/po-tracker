@@ -135,7 +135,7 @@ tr:hover td{background:#0e1525}
 const HIST=[];
 
 /* ─────── 状態 ────────────────────────────────────────────────────────────── */
-let newRecs=[], combined=[], filt=[], sCol=0, sAsc=false;
+let newRecs=[], combined=[], filt=[], sCol=-1, sAsc=false;
 let cY, cD;
 
 /* ─────── データ読み込み ──────────────────────────────────────────────────── */
@@ -309,6 +309,7 @@ function renderNewPanel(){
 function render(){
   buildCombined();
   filt=getFiltered();
+  if(sCol===-1) filt.sort((a,b)=>(b.announce_date||"").localeCompare(a.announce_date||""));
   const opens=filt.map(r=>r.retOpen).filter(v=>v!=null);
   const closes=filt.map(r=>r.retClose).filter(v=>v!=null);
   const avgO=avg(opens),avgC=avg(closes);
