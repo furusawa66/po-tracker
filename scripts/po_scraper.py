@@ -235,6 +235,11 @@ def scrape_article(url: str) -> dict:
             elif "仮条件" in key:
                 info["discount_range"] = val
 
+            elif "希薄化" in key:
+                dm = re.search(r'([\d.]+)%', val)
+                if dm:
+                    info["dilution"] = float(dm.group(1))
+
             # ── 株数系（個別に収集）────────────────────────────────────
             elif any(k in key for k in ["新株発行", "新投資口発行"]):
                 # 自己株式処分が同じ行に書かれるケースを除外
@@ -488,14 +493,15 @@ def main():
                 if not rec.get("issue_price") and di.get("issue_price"):
                     rec["issue_price"] = di["issue_price"]
             # 記事データが未取得の場合は再スクレイピング
-            if rec.get("article_url") and not rec.get("po_scale") and not rec.get("new_shares"):
+            if rec.get("article_url") and (not rec.get("po_scale") and not rec.get("new_shares")
+                                            or not rec.get("dilution")):
                 print(f"  記事再取得: {rec.get('name')} ({code})")
                 article = scrape_article(rec["article_url"])
                 time.sleep(0.8)
                 if article:
                     for field in ["type", "po_scale", "market_cap", "new_shares", "treasury_shares",
                                   "sold_shares", "oa_shares", "discount_range", "discount_rate",
-                                  "delivery_estimated", "lead_managers", "co_managers"]:
+                                  "delivery_estimated", "lead_managers", "co_managers", "dilution"]:
                         if article.get(field) and not rec.get(field):
                             rec[field] = article[field]
                     if rec.get("po_scale") and rec.get("market_cap"):
@@ -536,7 +542,7 @@ def main():
             "co_managers":        article.get("co_managers",   []),    # 引受人リスト
             "article_url":        si.get("article_url"),
             "po_pct":             None,   # PO規模割合（自動計算）
-            "dilution":           None,   # 希薄化率（自動計算）
+            "dilution":           article.get("dilution"),   # 希薄化率（記事から取得）
             "next_open":          None,
             "max_price":          None,
             "open_to_max":        None,
