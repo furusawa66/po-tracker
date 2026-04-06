@@ -309,7 +309,15 @@ function renderNewPanel(){
 function render(){
   buildCombined();
   filt=getFiltered();
-  if(sCol===-1) filt.sort((a,b)=>(b.announce_date||"").localeCompare(a.announce_date||""));
+  if(sCol===-1){
+    filt.sort((a,b)=>{
+      const isH=r=>r.id&&r.id.startsWith("csv_");
+      const ah=isH(a),bh=isH(b);
+      if(ah!==bh) return ah?1:-1;
+      if(!ah) return (b.id||"").localeCompare(a.id||"");
+      return +b.id.replace("csv_","")-+a.id.replace("csv_","");
+    });
+  }
   const opens=filt.map(r=>r.retOpen).filter(v=>v!=null);
   const closes=filt.map(r=>r.retClose).filter(v=>v!=null);
   const avgO=avg(opens),avgC=avg(closes);
