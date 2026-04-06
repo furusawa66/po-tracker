@@ -130,7 +130,8 @@ def scrape_schedule() -> dict:
             code  = code_m.group(1)
             link  = row.find("a", href=re.compile(r'/po/'))
             name  = link.get_text(strip=True) if link else ""
-            a_url = (BASE_URL + link["href"]) if link else None
+            _href = link["href"] if link else None
+            a_url = (_href if _href and _href.startswith("http") else (BASE_URL + _href if _href else None))
 
             if is_dec:
                 date_text = cells[0].get_text(" ", strip=True) if cells else ""
