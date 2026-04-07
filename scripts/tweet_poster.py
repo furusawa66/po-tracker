@@ -68,11 +68,28 @@ FREE_CONTENT_HOOKS = [
 HASHTAGS = "#SEO #アフィリエイト #中古ドメイン #note #アフィ"
 
 
-def generate_tweet() -> str:
+def should_include_url() -> bool:
+    """3日に1回（月・木）だけnote URLを含める"""
+    return datetime.now().weekday() in (0, 3)  # 0=月曜, 3=木曜
+
+
+def generate_tweet(include_url: bool) -> str:
     client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
 
     hook = random.choice(FREE_CONTENT_HOOKS)
     today = datetime.now().strftime("%Y-%m-%d %H:%M")
+
+    if include_url:
+        cta = f"""
+- 最後に自然な形でnoteへの誘導を1文入れる
+- 文末に必ずこのURLとハッシュタグをつける:
+  {PAID_NOTE["url"]}
+  {HASHTAGS}"""
+    else:
+        cta = f"""
+- note URLは含めない
+- 純粋に価値ある情報として投稿する
+- 文末にハッシュタグのみつける: {HASHTAGS}"""
 
     prompt = f"""
 あなたはSEOアフィリエイト専業7年のプロです。
@@ -82,20 +99,12 @@ def generate_tweet() -> str:
 テーマ: {hook["theme"]}
 素材: {hook["hook"]}
 
-【売りたいnote】
-タイトル: {PAID_NOTE["title"]}
-URL: {PAID_NOTE["url"]}
-価格: {PAID_NOTE["price"]}
-
 【ツイート作成ルール】
-- URLとハッシュタグを除いた本文は150字以内
+- 本文（URLとハッシュタグを除く）は150字以内
 - ターゲットはSEOアフィリエイターの中〜上級者
-- フックの内容で興味を引き、自然にnoteへ誘導する
-- 押し売り感を出さない。価値を感じさせる
+- 押し売り感を出さず、具体的な価値を伝える
 - 毎回違うパターンで書く（日時: {today}）
-- 文末にこのURLとハッシュタグを必ずつける:
-  {PAID_NOTE["url"]}
-  {HASHTAGS}
+{cta}
 - ツイート本文のみ出力（前置きや説明は不要）
 """
 
@@ -121,7 +130,8 @@ def post_tweet(text: str) -> None:
 
 
 if __name__ == "__main__":
-    print("ツイート生成中...")
-    tweet = generate_tweet()
+    include_url = should_include_url()
+    print(f"ツイート生成中... (URL含む: {include_url})")
+    tweet = generate_tweet(include_url)
     print(f"\n生成されたツイート:\n{tweet}\n")
     post_tweet(tweet)
