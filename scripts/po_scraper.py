@@ -169,7 +169,13 @@ def scrape_article(url: str) -> dict:
         res = requests.get(url, headers=HEADERS, timeout=20)
         res.encoding = "utf-8"
         soup = BeautifulSoup(res.text, "html.parser")
-        full_text = soup.get_text(" ", strip=True)
+        # 記事本文エリアを絞り込む（サイドバー・関連記事の混入防止）
+        main_elem = (soup.find("article") or
+                     soup.find("main") or
+                     soup.find("div", id=re.compile(r'content|article|main', re.I)) or
+                     soup.find("div", class_=re.compile(r'content|article|post|entry', re.I)) or
+                     soup)
+        full_text = main_elem.get_text(" ", strip=True)
     except Exception as e:
         print(f"  記事取得エラー ({url}): {e}")
         return info
