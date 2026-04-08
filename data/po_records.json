@@ -9831,15 +9831,15 @@
       "next_open": 3495.0,
       "max_price": 3565.0,
       "open_to_max": 2.0,
-      "dec_open": null,
-      "dec_close": null,
-      "ret_open": null,
-      "ret_close": null,
+      "dec_open": 3460.0,
+      "dec_close": 3500.0,
+      "ret_open": -1.0,
+      "ret_close": 0.14,
       "delivery_open": null,
       "delivery_close": null,
       "delivery_ret": null,
       "memo": "",
-      "status": "nextday",
+      "status": "complete",
       "decision_date_confirmed": true
     },
     {
@@ -9886,9 +9886,9 @@
       "dec_close": 124000.0,
       "ret_open": null,
       "ret_close": null,
-      "delivery_open": null,
-      "delivery_close": null,
-      "delivery_ret": null,
+      "delivery_open": 127000.0,
+      "delivery_close": 128100.0,
+      "delivery_ret": 0.87,
       "memo": "",
       "status": "complete",
       "decision_date_confirmed": true
@@ -9923,8 +9923,8 @@
       "po_pct": 10.5,
       "dilution": 10.6,
       "next_open": 13380.0,
-      "max_price": 13890.0,
-      "open_to_max": 3.81,
+      "max_price": 15320.0,
+      "open_to_max": 14.5,
       "dec_open": null,
       "dec_close": null,
       "ret_open": null,
@@ -9936,6 +9936,6 @@
       "status": "nextday"
     }
   ],
-  "last_updated": "2026-04-07T10:44:32.129239",
+  "last_updated": "2026-04-08T06:10:53.815863",
   "count": 242
 }
