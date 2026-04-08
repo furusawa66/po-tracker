@@ -186,7 +186,7 @@ def scrape_article(url: str) -> dict:
     # PO規模（億円）— 記事本文: "最大157億円規模" / "463億円規模"
     scale_m = re.search(r'(?:最大|合計)?(\d+(?:\.\d+)?)億円規模', full_text)
     if scale_m:
-        info["po_scale"] = float(scale_m.group(1))
+        info["po_scale"] = float(scale_m.group(1).replace(",", ""))
 
     # 株数パーツを個別に集積してから合算する
     _new_shares      = 0   # 新株発行（公募）
