@@ -9830,7 +9830,7 @@
       "dilution": null,
       "next_open": 3495,
       "max_price": 3565,
-      "open_to_max": 2,
+      "open_to_max": 2.0,
       "dec_open": 3460,
       "dec_close": 3500,
       "ret_open": -1,
@@ -9923,8 +9923,8 @@
       "po_pct": 10.5,
       "dilution": 10.6,
       "next_open": 13380,
-      "max_price": 15320,
-      "open_to_max": 14.5,
+      "max_price": 16300.0,
+      "open_to_max": 21.82,
       "dec_open": null,
       "dec_close": null,
       "ret_open": null,
@@ -9969,9 +9969,9 @@
       "article_url": "https://pokabu.net/po/sumitomo-pharma-2026",
       "po_pct": 1.5,
       "dilution": 12.9,
-      "next_open": null,
-      "max_price": null,
-      "open_to_max": null,
+      "next_open": 2003.0,
+      "max_price": 2136.0,
+      "open_to_max": 6.64,
       "dec_open": null,
       "dec_close": null,
       "ret_open": null,
@@ -9980,9 +9980,9 @@
       "delivery_close": null,
       "delivery_ret": null,
       "memo": "",
-      "status": "pending"
+      "status": "nextday"
     }
   ],
-  "last_updated": "2026-04-08T10:46:44.574244",
+  "last_updated": "2026-04-09T06:10:30.789052",
   "count": 243
 }
