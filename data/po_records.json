@@ -9830,7 +9830,7 @@
       "dilution": null,
       "next_open": 3495,
       "max_price": 3565,
-      "open_to_max": 2,
+      "open_to_max": 2.0,
       "dec_open": 3460,
       "dec_close": 3500,
       "ret_open": -1,
@@ -10025,6 +10025,6 @@
       "status": "nextday"
     }
   ],
-  "last_updated": "2026-04-10T01:50:04.761894",
+  "last_updated": "2026-04-10T06:24:43.382789",
   "count": 244
 }
