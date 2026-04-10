@@ -158,7 +158,7 @@ def scrape_schedule() -> dict:
     return {"pending": pending, "delivered": delivered}
 
 
-def scrape_article(url: str) -> dict:
+def scrape_article(url: str, name: str = "", code: str = "") -> dict:
     """
     個別記事ページから詳細情報を取得。
     増資数  = 新株発行 + 自己株式処分（自己株式処分を含む）
@@ -181,7 +181,7 @@ def scrape_article(url: str) -> dict:
         return info
 
     # 種類判定
-    info["type"] = "リート" if any(k in full_text for k in ["リート", "REIT", "投資法人"]) else "普通"
+    info["type"] = "リート" if (re.match(r'\d{4}F$', code or "") or any(k in (name or "") for k in ["リート", "投資法人"])) else "普通"
 
     # PO規模（億円）— 記事本文: "最大157億円規模" / "463億円規模"
     scale_m = re.search(r'(?:最大|合計)?(\d+(?:\.\d+)?)億円規模', full_text)
@@ -502,7 +502,7 @@ def main():
             if rec.get("article_url") and (not rec.get("po_scale") and not rec.get("new_shares")
                                             or not rec.get("dilution")):
                 print(f"  記事再取得: {rec.get('name')} ({code})")
-                article = scrape_article(rec["article_url"])
+                article = scrape_article(rec["article_url"], name=rec.get("name",""), code=rec.get("code","") or "")
                 time.sleep(0.8)
                 if article:
                     for field in ["type", "po_scale", "market_cap", "new_shares", "treasury_shares",
@@ -518,7 +518,7 @@ def main():
         article = {}
         if si.get("article_url"):
             print(f"  記事取得: {si.get('name')} ({code})")
-            article = scrape_article(si["article_url"])
+            article = scrape_article(si["article_url"], name=si.get("name",""), code=code or "")
             time.sleep(0.8)
 
         lending = si.get("lending_type", "")
