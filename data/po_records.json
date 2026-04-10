@@ -9923,8 +9923,8 @@
       "po_pct": 10.5,
       "dilution": 10.6,
       "next_open": 13380,
-      "max_price": 16430.0,
-      "open_to_max": 22.8,
+      "max_price": 17150.0,
+      "open_to_max": 28.18,
       "dec_open": null,
       "dec_close": null,
       "ret_open": null,
@@ -10011,9 +10011,9 @@
       "article_url": "https://pokabu.net/po/hotland-2026",
       "po_pct": 21.9,
       "dilution": 18.0,
-      "next_open": null,
-      "max_price": null,
-      "open_to_max": null,
+      "next_open": 1819.0,
+      "max_price": 1826.0,
+      "open_to_max": 0.38,
       "dec_open": null,
       "dec_close": null,
       "ret_open": null,
@@ -10022,9 +10022,9 @@
       "delivery_close": null,
       "delivery_ret": null,
       "memo": "",
-      "status": "pending"
+      "status": "nextday"
     }
   ],
-  "last_updated": "2026-04-09T11:18:46.518718",
+  "last_updated": "2026-04-10T01:50:04.761894",
   "count": 244
 }
