@@ -138,6 +138,8 @@ const HIST=[];
 let newRecs=[], combined=[], filt=[], sCol=-1, sAsc=false;
 let cY, cD;
 
+function esc(s){ return String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;"); }
+
 /* ─────── データ読み込み ──────────────────────────────────────────────────── */
 async function loadNewRecs(){
   try{
@@ -165,7 +167,7 @@ function recToRow(r, src){
     retOpen:r.ret_open, retClose:r.ret_close,
     delOpen:r.delivery_open, delClose:r.delivery_close, delRet:r.delivery_ret,
     leadManagers:r.lead_managers||[], coManagers:r.co_managers||[],
-    memo:r.memo||"", status:r.status,
+    memo:r.memo||"", status:r.status, announceDate:r.announce_date||"",
     marketCap:r.market_cap, shares:r.shares_outstanding,
     newShares:r.new_shares, soldShares:r.sold_shares,
     decisionDate:r.decision_date, deliveryDate:r.delivery_date,
@@ -245,10 +247,10 @@ function renderTable(data){
   document.getElementById("tc").textContent=data.length+"件";
   document.getElementById("tb").innerHTML=data.map(r=>`<tr>
     <td style="color:#64748b;font-family:monospace">${r.year}</td>
-    <td style="max-width:140px;overflow:hidden;text-overflow:ellipsis" title="${r.name}">
-      ${r.name}${r.src==="new"?' <span class="b b-new">NEW</span>':''}</td>
-    <td><span class="b ${r.type==="リート"?"b-r":"b-n"}">${r.type}</span></td>
-    <td>${r.alert?`<span class="b ${r.alert==="注意"?"b-c":"b-ban"}">${r.alert}</span>`:""}</td>
+    <td style="max-width:140px;overflow:hidden;text-overflow:ellipsis" title="${esc(r.name)}">
+      ${esc(r.name)}${r.src==="new"?' <span class="b b-new">NEW</span>':''}</td>
+    <td><span class="b ${r.type==="リート"?"b-r":"b-n"}">${esc(r.type)}</span></td>
+    <td>${r.alert?`<span class="b ${r.alert==="注意"?"b-c":"b-ban"}">${esc(r.alert)}</span>`:""}</td>
     <td class="num">${r.scale?r.scale.toLocaleString():"–"}</td>
     <td class="num">${r.pct?r.pct.toFixed(1)+"%":"–"}</td>
     <td class="num">${r.dilution!=null?r.dilution.toFixed(1)+"%":"–"}</td>
@@ -274,7 +276,7 @@ function sort(col){
 /* ─────── 新着POパネル ───────────────────────────────────────────────────── */
 function renderNewPanel(){
   const el=document.getElementById("nr-list");
-  const allNew = newRecs.map(r=>({...recToRow(r, r.id&&r.id.startsWith("csv_")?"hist":"new"), ...r}));
+  const allNew = newRecs.map(r=>recToRow(r, r.id&&r.id.startsWith("csv_")?"hist":"new"));
   if(!allNew.length){el.innerHTML='<div class="empty">新着PO銘柄はまだ取得されていません</div>';return;}
 
   const stLabel={pending:"発表済（価格待ち）",nextday:"翌日入力済",complete:"完了"};
@@ -283,24 +285,24 @@ function renderNewPanel(){
   el.innerHTML=allNew.slice().reverse().map(r=>`
     <div class="nr-card">
       <div class="nr-head">
-        <span class="b ${stClass[r.status]||"b-pend"}">${stLabel[r.status]||r.status}</span>
-        <span class="nr-name">${r.name}</span>
-        <span class="b ${r.type==="リート"?"b-r":"b-n"}">${r.type}</span>
-        ${r.alert?`<span class="b ${r.alert==="注意"?"b-c":"b-ban"}">${r.alert}</span>`:""}
-        <span style="font-size:11px;color:#64748b">${r.announce_date||""} 発表</span>
+        <span class="b ${stClass[r.status]||"b-pend"}">${stLabel[r.status]||esc(r.status)}</span>
+        <span class="nr-name">${esc(r.name)}</span>
+        <span class="b ${r.type==="リート"?"b-r":"b-n"}">${esc(r.type)}</span>
+        ${r.alert?`<span class="b ${r.alert==="注意"?"b-c":"b-ban"}">${esc(r.alert)}</span>`:""}
+        <span style="font-size:11px;color:#64748b">${esc(r.announceDate)} 発表</span>
       </div>
       <div class="nr-grid">
-        <div><div style="color:#64748b;font-size:10px">時価総額(億)</div><div class="nr-val">${r.market_cap||"–"}</div></div>
-        <div><div style="color:#64748b;font-size:10px">PO規模(億)</div><div class="nr-val">${r.po_scale||"–"}</div></div>
+        <div><div style="color:#64748b;font-size:10px">時価総額(億)</div><div class="nr-val">${r.marketCap||"–"}</div></div>
+        <div><div style="color:#64748b;font-size:10px">PO規模(億)</div><div class="nr-val">${r.scale||"–"}</div></div>
         <div><div style="color:#64748b;font-size:10px">希薄化率</div><div class="nr-val">${r.dilution!=null?r.dilution.toFixed(1)+"%":"–"}</div></div>
-        <div><div style="color:#64748b;font-size:10px">翌日始値</div><div class="nr-val">${r.next_open?r.next_open.toLocaleString():"–"}</div></div>
-        <div><div style="color:#64748b;font-size:10px">騰落率(始)</div><div class="nr-val ${r.ret_open!=null?col(r.ret_open):""}">${r.ret_open!=null?fmt(r.ret_open):"–"}</div></div>
-        <div><div style="color:#64748b;font-size:10px">騰落率(終)</div><div class="nr-val ${r.ret_close!=null?col(r.ret_close):""}">${r.ret_close!=null?fmt(r.ret_close):"–"}</div></div>
-        <div><div style="color:#64748b;font-size:10px">受渡始値(A)</div><div class="nr-val">${r.delivery_open?r.delivery_open.toLocaleString():"–"}</div></div>
-        <div><div style="color:#64748b;font-size:10px">受渡終値(B)</div><div class="nr-val">${r.delivery_close?r.delivery_close.toLocaleString():"–"}</div></div>
-        <div><div style="color:#64748b;font-size:10px">受渡騰落(C)</div><div class="nr-val ${r.delivery_ret!=null?col(r.delivery_ret):""}">${r.delivery_ret!=null?fmt(r.delivery_ret):"–"}</div></div>
-        <div style="grid-column:1/-1;margin-top:4px"><div style="color:#64748b;font-size:10px">主幹事</div><div class="nr-val" style="font-size:11px;white-space:normal">${r.leadManagers&&r.leadManagers.length?r.leadManagers.join(" / "):"–"}</div></div>
-        <div style="grid-column:1/-1"><div style="color:#64748b;font-size:10px">引受人</div><div class="nr-val" style="font-size:11px;white-space:normal">${r.coManagers&&r.coManagers.length?r.coManagers.join(" / "):"–"}</div></div>
+        <div><div style="color:#64748b;font-size:10px">翌日始値</div><div class="nr-val">${r.nextOpen?r.nextOpen.toLocaleString():"–"}</div></div>
+        <div><div style="color:#64748b;font-size:10px">騰落率(始)</div><div class="nr-val ${r.retOpen!=null?col(r.retOpen):""}">${r.retOpen!=null?fmt(r.retOpen):"–"}</div></div>
+        <div><div style="color:#64748b;font-size:10px">騰落率(終)</div><div class="nr-val ${r.retClose!=null?col(r.retClose):""}">${r.retClose!=null?fmt(r.retClose):"–"}</div></div>
+        <div><div style="color:#64748b;font-size:10px">受渡始値(A)</div><div class="nr-val">${r.delOpen?r.delOpen.toLocaleString():"–"}</div></div>
+        <div><div style="color:#64748b;font-size:10px">受渡終値(B)</div><div class="nr-val">${r.delClose?r.delClose.toLocaleString():"–"}</div></div>
+        <div><div style="color:#64748b;font-size:10px">受渡騰落(C)</div><div class="nr-val ${r.delRet!=null?col(r.delRet):""}">${r.delRet!=null?fmt(r.delRet):"–"}</div></div>
+        <div style="grid-column:1/-1;margin-top:4px"><div style="color:#64748b;font-size:10px">主幹事</div><div class="nr-val" style="font-size:11px;white-space:normal">${r.leadManagers&&r.leadManagers.length?r.leadManagers.map(esc).join(" / "):"–"}</div></div>
+        <div style="grid-column:1/-1"><div style="color:#64748b;font-size:10px">引受人</div><div class="nr-val" style="font-size:11px;white-space:normal">${r.coManagers&&r.coManagers.length?r.coManagers.map(esc).join(" / "):"–"}</div></div>
       </div>
     </div>`).join("");
 }
