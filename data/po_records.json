@@ -9902,10 +9902,10 @@
       "lending_type": "貸借",
       "announce_date": "2026-04-06",
       "year": 2026,
-      "decision_date": "2026-04-14",
+      "decision_date": "2026-04-17",
       "delivery_estimated": "2026-04-22",
-      "delivery_date": null,
-      "issue_price": null,
+      "delivery_date": "2026-04-22",
+      "issue_price": 16349,
       "discount_range": "% ～ %　ディスカウント",
       "discount_rate": null,
       "market_cap": 2880,
@@ -9923,17 +9923,18 @@
       "po_pct": 10.5,
       "dilution": 10.6,
       "next_open": 13380,
-      "max_price": 17400.0,
-      "open_to_max": 30.04,
-      "dec_open": 16360.0,
-      "dec_close": 17250.0,
-      "ret_open": 22.27,
-      "ret_close": 28.92,
+      "max_price": 17580.0,
+      "open_to_max": 31.39,
+      "dec_open": null,
+      "dec_close": null,
+      "ret_open": null,
+      "ret_close": null,
       "delivery_open": null,
       "delivery_close": null,
       "delivery_ret": null,
       "memo": "",
-      "status": "complete"
+      "status": "nextday",
+      "decision_date_confirmed": true
     },
     {
       "id": "4506_20260408",
@@ -10069,6 +10070,6 @@
       "status": "nextday"
     }
   ],
-  "last_updated": "2026-04-14T06:23:49.164081",
+  "last_updated": "2026-04-14T11:41:12.730242",
   "count": 245
 }
