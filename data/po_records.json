@@ -9923,17 +9923,17 @@
       "po_pct": 10.5,
       "dilution": 10.6,
       "next_open": 13380,
-      "max_price": 17150,
-      "open_to_max": 28.18,
-      "dec_open": null,
-      "dec_close": null,
-      "ret_open": null,
-      "ret_close": null,
+      "max_price": 17400.0,
+      "open_to_max": 30.04,
+      "dec_open": 16360.0,
+      "dec_close": 17250.0,
+      "ret_open": 22.27,
+      "ret_close": 28.92,
       "delivery_open": null,
       "delivery_close": null,
       "delivery_ret": null,
       "memo": "",
-      "status": "nextday"
+      "status": "complete"
     },
     {
       "id": "4506_20260408",
@@ -10055,9 +10055,9 @@
       "article_url": "https://pokabu.net/po/gmo-2026",
       "po_pct": 38.3,
       "dilution": 9.8,
-      "next_open": null,
-      "max_price": null,
-      "open_to_max": null,
+      "next_open": 731.0,
+      "max_price": 739.0,
+      "open_to_max": 1.09,
       "dec_open": null,
       "dec_close": null,
       "ret_open": null,
@@ -10066,9 +10066,9 @@
       "delivery_close": null,
       "delivery_ret": null,
       "memo": "",
-      "status": "pending"
+      "status": "nextday"
     }
   ],
-  "last_updated": "2026-04-13T11:57:01.344947",
+  "last_updated": "2026-04-14T06:23:49.164081",
   "count": 245
 }
