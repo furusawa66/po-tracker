@@ -10057,8 +10057,8 @@
       "po_pct": 38.3,
       "dilution": 9.8,
       "next_open": 731.0,
-      "max_price": 740.0,
-      "open_to_max": 1.23,
+      "max_price": 745.0,
+      "open_to_max": 1.92,
       "dec_open": null,
       "dec_close": null,
       "ret_open": null,
@@ -10070,6 +10070,6 @@
       "status": "nextday"
     }
   ],
-  "last_updated": "2026-04-15T11:19:10.467030",
+  "last_updated": "2026-04-16T06:27:07.876538",
   "count": 245
 }
