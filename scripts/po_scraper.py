@@ -6,7 +6,6 @@ PO自動トラッカー — pokabu.net 完全対応版
   pokabu.net/schedule  → 価格決定日・受渡日・貸借区分（売り禁フラグ）
   pokabu.net/po/[slug] → PO規模（億）・時価総額・受渡予定日・種類（普通/リート）
   Yahoo Finance JP      → 翌日始値・最高値・決定日始値/終値 → 騰落率自動計算
-  LINE Notify           → 新規PO検知・騰落率確定を通知
 """
 
 import requests
@@ -14,25 +13,12 @@ from bs4 import BeautifulSoup
 import json, os, re, time
 from datetime import datetime, date, timedelta
 
-DATA_FILE  = "data/po_records.json"
-BASE_URL   = "https://pokabu.net"
-HEADERS    = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"}
-LINE_TOKEN = os.environ.get("LINE_NOTIFY_TOKEN", "")
-THIS_YEAR  = date.today().year
+DATA_FILE = "data/po_records.json"
+BASE_URL  = "https://pokabu.net"
+HEADERS   = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"}
+THIS_YEAR = date.today().year
 
 # ── ユーティリティ ────────────────────────────────────────────────────────────
-
-def notify(msg: str):
-    if not LINE_TOKEN:
-        return
-    try:
-        requests.post(
-            "https://notify-api.line.me/api/notify",
-            headers={"Authorization": f"Bearer {LINE_TOKEN}"},
-            data={"message": msg}, timeout=5
-        )
-    except Exception as e:
-        print(f"  LINE通知エラー: {e}")
 
 def next_biz_day(d: date) -> date:
     nd = d + timedelta(days=1)
@@ -573,12 +559,6 @@ def main():
               f"時価総額:{new_rec.get('market_cap','?')}億 決定日:{new_rec.get('decision_date','?')} "
               f"受渡:{new_rec.get('delivery_estimated','?')} 注意:{new_rec.get('alert','') or 'なし'}")
 
-    if added:
-        lines = [f"・{r['name']} ({r['code']}) 規模:{r.get('po_scale','?')}億 "
-                 f"決定日:{r.get('decision_date','?')} 注意:{r.get('alert','') or 'なし'}"
-                 for r in added]
-        notify(f"\n【PO新規検知 {today}】\n" + "\n".join(lines))
-
     # ② 株価更新
     print(f"\n[2] 株価更新中 ({len(records)} 件)...")
     newly_done = []
@@ -600,14 +580,12 @@ def main():
             newly_done.append(rec)
         time.sleep(0.3)
 
-    # ③ 完了通知
+    # ③ 完了ログ
     for r in newly_done:
         so = "+" if (r.get("ret_open")  or 0) >= 0 else ""
         sc = "+" if (r.get("ret_close") or 0) >= 0 else ""
-        notify(f"\n【騰落率確定】{r['name']} ({r.get('code','')})\n"
-               f"騰落率(始値): {so}{r.get('ret_open','?')}%\n"
-               f"騰落率(終値): {sc}{r.get('ret_close','?')}%\n"
-               f"規模: {r.get('po_scale','?')}億 注意: {r.get('alert','') or 'なし'}")
+        print(f"  ✓ 完了: {r['name']} ({r.get('code','')}) "
+              f"始:{so}{r.get('ret_open','?')}% 終:{sc}{r.get('ret_close','?')}%")
 
     save_records(updated)
     pending_cnt = sum(1 for r in updated if r.get("status") != "complete")
