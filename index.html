@@ -69,7 +69,7 @@ tr:hover td{background:#0e1525}
     <div class="fg"><label>種類</label>
       <select id="ft" onchange="render()"><option value="">全種類</option><option value="普通">普通</option><option value="リート">REIT</option></select></div>
     <div class="fg"><label>信用区分</label>
-      <select id="fa" onchange="render()"><option value="">全て</option><option value="貸借">貸借</option><option value="信用">信用</option><option value="売禁">売禁</option></select></div>
+      <select id="fa" onchange="render()"><option value="">全て</option><option value="貸借">貸借</option><option value="信用">信用</option><option value="売禁">貸借(売禁)</option></select></div>
     <div class="fg"><label>ステータス</label>
       <select id="fst" onchange="render()"><option value="">全て</option><option value="active">進行中</option><option value="complete">完了</option></select></div>
     <div class="fg"><label>銘柄</label>
@@ -177,13 +177,18 @@ function getFiltered(){
 }
 
 function avg(a){return a.length?a.reduce((x,y)=>x+y,0)/a.length:null}
-function fmt(v,d=2){return v!=null?(v>=0?"+":"")+v.toFixed(d)+"%":"–"}
+function pctStr(v,d=1){return v===0?"0%":v.toFixed(d)+"%"}
+function fmt(v,d=2){
+  if(v==null) return "–";
+  if(v===0)   return "0%";
+  return (v>0?"+":"")+v.toFixed(d)+"%";
+}
 function fmtCell(v){
   if(v==null) return '<span style="color:#334155">–</span>';
+  if(v===0)   return '<span style="color:#64748b">0%</span>';
   const s=Math.abs(v).toFixed(2)+"%";
   if(v>0) return `<span class="pos">+${s}</span>`;
-  if(v<0) return `<span class="neg">-${s}</span>`;
-  return `<span style="color:#64748b">${s}</span>`;
+  return `<span class="neg">-${s}</span>`;
 }
 
 /* ─────── 年フィルタ ───────────────────────────────────────────────────────── */
@@ -228,11 +233,11 @@ function renderTable(data){
       ${esc(r.name)}${r.src==="new"?' <span class="b b-new">NEW</span>':''}</td>
     <td>${(()=>{const b=statusBadge(r.status);return `<span class="b ${b.cls}">${b.label}</span>`;})()}</td>
     <td><span class="b ${r.type==="リート"?"b-r":"b-n"}">${esc(r.type)}</span></td>
-    <td><span class="b ${r.lending==="貸借"?"b-tai":r.lending==="信用"?"b-c":"b-ban"}">${esc(r.lending)}</span></td>
+    <td><span class="b ${r.lending==="貸借"?"b-tai":r.lending==="信用"?"b-c":"b-ban"}">${r.lending==="売禁"?"貸借(売禁)":esc(r.lending)}</span></td>
     <td style="font-family:'Meiryo','メイリオ',sans-serif;font-size:12px" title="${esc((r.leadManagers||[]).join(' / '))}">${esc(abbrManagers(r.leadManagers))||"–"}</td>
     <td class="num">${r.scale?r.scale.toLocaleString():"–"}</td>
-    <td class="num">${r.pct?r.pct.toFixed(1)+"%":"–"}</td>
-    <td class="num">${r.dilution!=null?r.dilution.toFixed(1)+"%":"–"}</td>
+    <td class="num">${r.pct!=null?pctStr(r.pct):"–"}</td>
+    <td class="num">${r.dilution!=null?pctStr(r.dilution):"–"}</td>
     <td class="num">${fmtCell(r.retOpen)}</td>
     <td class="num">${fmtCell(r.retClose)}</td>
     <td class="num">${r.delOpen?r.delOpen.toLocaleString():"–"}</td>
@@ -278,7 +283,7 @@ function render(){
   const s2=document.getElementById("s2");
   s2.textContent=avgC!=null?fmt(avgC):"–";
   s2.className="sv "+(avgC!=null?(avgC>=0?"pos":"neg"):"");
-  document.getElementById("s3").textContent=opens.length?((wins/opens.length*100).toFixed(1)+"%"):"–";
+  document.getElementById("s3").textContent=opens.length?pctStr(wins/opens.length*100):"–";
 
   renderTable(filt);
 }
