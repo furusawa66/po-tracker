@@ -43,7 +43,6 @@ tr:hover td{background:#0e1525}
 .b-c{background:#1e293b;color:#94a3b8}
 .b-ban{background:#1e293b;color:#94a3b8}
 .b-tai{background:#1e293b;color:#94a3b8}
-.b-new{background:#1e1a40;color:#c4b5fd}
 .b-pend{background:#3b2700;color:#fbbf24}
 .b-next{background:#1a2a40;color:#60a5fa}
 .b-done{background:#1e293b;color:#94a3b8}
@@ -229,8 +228,7 @@ function renderTable(data){
   document.getElementById("tc").textContent=data.length+"件";
   document.getElementById("tb").innerHTML=data.map(r=>`<tr>
     <td style="color:#64748b;font-family:monospace">${r.year}</td>
-    <td style="max-width:140px;overflow:hidden;text-overflow:ellipsis" title="${esc(r.name)}">
-      ${esc(r.name)}${r.src==="new"?' <span class="b b-new">NEW</span>':''}</td>
+    <td style="max-width:140px;overflow:hidden;text-overflow:ellipsis" title="${esc(r.name)}">${esc(r.name)}</td>
     <td>${(()=>{const b=statusBadge(r.status);return `<span class="b ${b.cls}">${b.label}</span>`;})()}</td>
     <td><span class="b ${r.type==="リート"?"b-r":"b-n"}">${esc(r.type)}</span></td>
     <td><span class="b ${r.lending==="貸借"?"b-tai":r.lending==="信用"?"b-c":"b-ban"}">${r.lending==="売禁"?"貸借(売禁)":esc(r.lending)}</span></td>
