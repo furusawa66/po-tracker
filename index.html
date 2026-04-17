@@ -29,7 +29,7 @@ select:focus,input:focus{border-color:#3b82f6}
 .th2{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:1px solid #1e2d4d}
 .th2 span{font-size:11px;color:#64748b}
 .sc2{overflow-x:auto;max-height:520px;overflow-y:auto}
-table{width:100%;border-collapse:collapse;font-size:12px;min-width:780px}
+table{width:100%;border-collapse:collapse;font-size:12px;min-width:840px}
 thead{position:sticky;top:0;z-index:2}
 th{background:#0d1220;padding:8px 10px;text-align:left;color:#64748b;font-weight:500;border-bottom:1px solid #1e2d4d;white-space:nowrap;cursor:pointer}
 th:hover{color:#93c5fd}
@@ -90,14 +90,15 @@ tr:hover td{background:#0e1525}
         <th onclick="sort(0)">年</th><th onclick="sort(1)">銘柄</th>
         <th>ステータス</th>
         <th>種類</th><th>信用区分</th>
-        <th class="num" onclick="sort(5)">PO規模(億)</th>
-        <th class="num" onclick="sort(6)">規模割合</th>
-        <th class="num" onclick="sort(12)">希薄化率</th>
-        <th class="num" onclick="sort(7)">騰落率(始)</th>
-        <th class="num" onclick="sort(8)">騰落率(終)</th>
-        <th class="num" onclick="sort(9)">受渡始値(A)</th>
-        <th class="num" onclick="sort(10)">受渡終値(B)</th>
-        <th class="num" onclick="sort(11)">受渡騰落(C)</th>
+        <th>主幹事</th>
+        <th class="num" onclick="sort(6)">PO規模(億)</th>
+        <th class="num" onclick="sort(7)">規模割合</th>
+        <th class="num" onclick="sort(13)">希薄化率</th>
+        <th class="num" onclick="sort(8)">騰落率(始)</th>
+        <th class="num" onclick="sort(9)">騰落率(終)</th>
+        <th class="num" onclick="sort(10)">受渡始値(A)</th>
+        <th class="num" onclick="sort(11)">受渡終値(B)</th>
+        <th class="num" onclick="sort(12)">受渡騰落(C)</th>
       </tr></thead>
       <tbody id="tb"></tbody>
     </table></div>
@@ -201,6 +202,24 @@ function statusBadge(s){
   return {label:"進行中",cls:"b-pend"};
 }
 
+/* 主幹事証券の略称 */
+function abbrManager(name){
+  if(!name) return "";
+  if(name.includes("野村")) return "野";
+  if(name.includes("大和")) return "大";
+  if(name.includes("日興")) return "日";
+  if(name.includes("モルガン")) return "三";
+  if(name.includes("みずほ")) return "み";
+  if(name.includes("SBI")||name.includes("ＳＢＩ")) return "S";
+  if(name.includes("岡三")) return "岡";
+  if(name.includes("楽天")) return "楽";
+  return name.charAt(0);
+}
+function abbrManagers(list){
+  if(!list||!list.length) return "";
+  return [...new Set(list.map(abbrManager))].join("");
+}
+
 function renderTable(data){
   document.getElementById("tc").textContent=data.length+"件";
   document.getElementById("tb").innerHTML=data.map(r=>`<tr>
@@ -210,6 +229,7 @@ function renderTable(data){
     <td>${(()=>{const b=statusBadge(r.status);return `<span class="b ${b.cls}">${b.label}</span>`;})()}</td>
     <td><span class="b ${r.type==="リート"?"b-r":"b-n"}">${esc(r.type)}</span></td>
     <td><span class="b ${r.lending==="貸借"?"b-tai":r.lending==="信用"?"b-c":"b-ban"}">${esc(r.lending)}</span></td>
+    <td style="font-family:'Meiryo','メイリオ',sans-serif;font-size:12px" title="${esc((r.leadManagers||[]).join(' / '))}">${esc(abbrManagers(r.leadManagers))||"–"}</td>
     <td class="num">${r.scale?r.scale.toLocaleString():"–"}</td>
     <td class="num">${r.pct?r.pct.toFixed(1)+"%":"–"}</td>
     <td class="num">${r.dilution!=null?r.dilution.toFixed(1)+"%":"–"}</td>
@@ -223,7 +243,7 @@ function renderTable(data){
 
 function sort(col){
   if(sCol===col) sAsc=!sAsc; else{sCol=col;sAsc=true;}
-  const keys=["year","name","status","type","lending","scale","pct","retOpen","retClose","delOpen","delClose","delRet","dilution"];
+  const keys=["year","name","status","type","lending","leadMgr","scale","pct","retOpen","retClose","delOpen","delClose","delRet","dilution"];
   filt.sort((a,b)=>{
     const va=a[keys[col]],vb=b[keys[col]];
     if(va==null) return 1; if(vb==null) return -1;
