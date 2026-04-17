@@ -71,7 +71,7 @@ tr:hover td{background:#0e1525}
     <div class="fg"><label>信用区分</label>
       <select id="fa" onchange="render()"><option value="">全て</option><option value="貸借">貸借</option><option value="信用">信用</option><option value="売禁">売禁</option></select></div>
     <div class="fg"><label>ステータス</label>
-      <select id="fst" onchange="render()"><option value="">全て</option><option value="pending">価格待ち</option><option value="nextday">翌日入力済</option><option value="complete">完了</option></select></div>
+      <select id="fst" onchange="render()"><option value="">全て</option><option value="active">進行中</option><option value="complete">完了</option></select></div>
     <div class="fg"><label>銘柄</label>
       <input id="fn" type="text" placeholder="検索..." style="width:110px" oninput="render()"></div>
   </div>
@@ -165,7 +165,11 @@ function getFiltered(){
     if(yr&&r.year!=+yr) return false;
     if(tp&&r.type!==tp) return false;
     if(al&&r.lending!==al) return false;
-    if(st&&r.status!==st) return false;
+    if(st){
+      const isActive=r.status!=="complete";
+      if(st==="active"&&!isActive) return false;
+      if(st==="complete"&&isActive) return false;
+    }
     if(nm&&!r.name.toLowerCase().includes(nm)) return false;
     return true;
   });
@@ -192,8 +196,10 @@ function populateYearFilter(){
 }
 
 /* ─────── テーブル ───────────────────────────────────────────────────────── */
-const stLabel={pending:"価格待ち",nextday:"翌日入力済",complete:"完了"};
-const stClass={pending:"b-pend",nextday:"b-next",complete:"b-done"};
+function statusBadge(s){
+  if(s==="complete") return {label:"完了",cls:"b-done"};
+  return {label:"進行中",cls:"b-pend"};
+}
 
 function renderTable(data){
   document.getElementById("tc").textContent=data.length+"件";
@@ -201,7 +207,7 @@ function renderTable(data){
     <td style="color:#64748b;font-family:monospace">${r.year}</td>
     <td style="max-width:140px;overflow:hidden;text-overflow:ellipsis" title="${esc(r.name)}">
       ${esc(r.name)}${r.src==="new"?' <span class="b b-new">NEW</span>':''}</td>
-    <td><span class="b ${stClass[r.status]||"b-pend"}">${stLabel[r.status]||esc(r.status)}</span></td>
+    <td>${(()=>{const b=statusBadge(r.status);return `<span class="b ${b.cls}">${b.label}</span>`;})()}</td>
     <td><span class="b ${r.type==="リート"?"b-r":"b-n"}">${esc(r.type)}</span></td>
     <td><span class="b ${r.lending==="貸借"?"b-tai":r.lending==="信用"?"b-c":"b-ban"}">${esc(r.lending)}</span></td>
     <td class="num">${r.scale?r.scale.toLocaleString():"–"}</td>
