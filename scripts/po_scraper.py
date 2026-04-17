@@ -444,7 +444,8 @@ def update_prices(rec: dict) -> dict:
             rec["delivery_ret"]   = round((p["close"] - p["open"]) / p["open"] * 100, 2)
             print(f"  {rec['name']}: 受渡日 始値={p['open']:,} 終値={p['close']:,} 騰落率={rec['delivery_ret']}%")
 
-    rec["status"] = ("complete" if rec.get("dec_open") and rec.get("dec_close")
+    # 完了判定は受渡日の価格が取得できた時点
+    rec["status"] = ("complete" if rec.get("delivery_open") and rec.get("delivery_close")
                      else "nextday" if rec.get("next_open")
                      else "pending")
     return rec

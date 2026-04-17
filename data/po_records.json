@@ -9933,7 +9933,7 @@
       "delivery_close": null,
       "delivery_ret": null,
       "memo": "",
-      "status": "complete",
+      "status": "nextday",
       "decision_date_confirmed": true
     },
     {
@@ -10070,6 +10070,6 @@
       "status": "nextday"
     }
   ],
-  "last_updated": "2026-04-17T07:07:24.859146",
+  "last_updated": "2026-04-17T07:30:13.012096",
   "count": 245
 }
