@@ -8,14 +8,15 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'Noto Sans JP',sans-serif;background:#0b0f1a;color:#e2e8f0;min-height:100vh;font-size:14px}
-nav{display:flex;align-items:center;gap:2px;padding:12px 24px 0;background:#0b0f1a;border-bottom:1px solid #1e2d4d}
-.tab{background:transparent;border:none;color:#94a3b8;padding:10px 18px;cursor:pointer;font-family:inherit;font-size:13px;border-bottom:2px solid transparent;margin-bottom:-1px;transition:all .15s}
-.tab:hover{color:#e2e8f0}
-.tab.on{color:#3b82f6;border-bottom-color:#3b82f6}
+nav{display:flex;align-items:center;gap:12px;padding:14px 24px;background:#0b0f1a;border-bottom:1px solid #1e2d4d}
+.title{font-size:15px;font-weight:700;color:#e2e8f0}
 .sp{flex:1}
-.upd{font-size:11px;color:#334155;padding-right:4px}
-.page{display:none;padding:22px}
-.page.on{display:block}
+.upd{font-size:11px;color:#475569}
+.page{padding:22px}
+.section{margin-bottom:28px}
+.sh{display:flex;align-items:baseline;gap:10px;margin-bottom:10px}
+.st{font-size:14px;font-weight:600;color:#e2e8f0}
+.sc-cnt{font-size:11px;color:#64748b}
 /* stats */
 .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:18px}
 .sc{background:#131a2e;border:1px solid #1e2d4d;border-radius:10px;padding:14px}
@@ -72,62 +73,72 @@ tr:hover td{background:#0e1525}
 <body>
 
 <nav>
-  <button class="tab on" id="t-d" onclick="page('d')">ダッシュボード</button>
-  <button class="tab"    id="t-n" onclick="page('n')">新着PO<span id="pend-cnt" style="display:none;margin-left:6px;background:#fbbf24;color:#412402;font-size:10px;padding:1px 6px;border-radius:9px;font-weight:700"></span></button>
+  <span class="title">PO管理ダッシュボード</span>
   <span class="sp"></span>
   <span class="upd" id="upd-label"></span>
 </nav>
 
-<!-- ダッシュボード -->
-<div id="p-d" class="page on">
-  <div class="fs">
-    <div class="fg"><label>年</label>
-      <select id="fy" onchange="render()"><option value="">全年</option></select></div>
-    <div class="fg"><label>種類</label>
-      <select id="ft" onchange="render()"><option value="">全種類</option><option value="普通">普通</option><option value="リート">REIT</option></select></div>
-    <div class="fg"><label>信用区分</label>
-      <select id="fa" onchange="render()"><option value="">全て</option><option value="貸借">貸借</option><option value="信用">信用</option><option value="売禁">売禁</option></select></div>
-    <div class="fg"><label>銘柄</label>
-      <input id="fn" type="text" placeholder="検索..." style="width:110px" oninput="render()"></div>
-  </div>
+<div class="page">
+  <!-- 進行中（pending + nextday） -->
+  <section class="section">
+    <div class="sh">
+      <span class="st">進行中</span>
+      <span class="sc-cnt" id="active-cnt">–</span>
+    </div>
+    <div id="nr-list" class="nr-list"></div>
+  </section>
 
-  <div class="stats">
-    <div class="sc"><div class="sl">対象件数</div><div class="sv acc" id="s0">–</div></div>
-    <div class="sc"><div class="sl">平均騰落率（始値）</div><div class="sv" id="s1">–</div></div>
-    <div class="sc"><div class="sl">平均騰落率（終値）</div><div class="sv" id="s2">–</div></div>
-    <div class="sc"><div class="sl">勝率（始値＋）</div><div class="sv acc" id="s3">–</div></div>
-  </div>
+  <!-- 完了済み（complete） -->
+  <section class="section">
+    <div class="sh">
+      <span class="st">完了済み</span>
+      <span class="sc-cnt">（分析対象）</span>
+    </div>
 
-  <div class="cg">
-    <div class="cc"><div class="ct">年別 平均騰落率（始値）</div>
-      <div style="position:relative;height:200px"><canvas id="cy"></canvas></div></div>
-    <div class="cc"><div class="ct">騰落率（始値）分布</div>
-      <div style="position:relative;height:200px"><canvas id="cd"></canvas></div></div>
-  </div>
+    <div class="fs">
+      <div class="fg"><label>年</label>
+        <select id="fy" onchange="render()"><option value="">全年</option></select></div>
+      <div class="fg"><label>種類</label>
+        <select id="ft" onchange="render()"><option value="">全種類</option><option value="普通">普通</option><option value="リート">REIT</option></select></div>
+      <div class="fg"><label>信用区分</label>
+        <select id="fa" onchange="render()"><option value="">全て</option><option value="貸借">貸借</option><option value="信用">信用</option><option value="売禁">売禁</option></select></div>
+      <div class="fg"><label>銘柄</label>
+        <input id="fn" type="text" placeholder="検索..." style="width:110px" oninput="render()"></div>
+    </div>
 
-  <div class="tw">
-    <div class="th2"><span id="tl" style="font-size:12px;color:#94a3b8">全銘柄</span><span id="tc"></span></div>
-    <div class="sc2"><table>
-      <thead><tr>
-        <th onclick="sort(0)">年</th><th onclick="sort(1)">銘柄</th>
-        <th>種類</th><th>信用区分</th>
-        <th class="num" onclick="sort(4)">PO規模(億)</th>
-        <th class="num" onclick="sort(5)">規模割合</th>
-        <th class="num" onclick="sort(11)">希薄化率</th>
-        <th class="num" onclick="sort(6)">騰落率(始)</th>
-        <th class="num" onclick="sort(7)">騰落率(終)</th>
-        <th class="num" onclick="sort(8)">受渡始値(A)</th>
-        <th class="num" onclick="sort(9)">受渡終値(B)</th>
-        <th class="num" onclick="sort(10)">受渡騰落(C)</th>
-      </tr></thead>
-      <tbody id="tb"></tbody>
-    </table></div>
-  </div>
-</div>
+    <div class="stats">
+      <div class="sc"><div class="sl">対象件数</div><div class="sv acc" id="s0">–</div></div>
+      <div class="sc"><div class="sl">平均騰落率（始値）</div><div class="sv" id="s1">–</div></div>
+      <div class="sc"><div class="sl">平均騰落率（終値）</div><div class="sv" id="s2">–</div></div>
+      <div class="sc"><div class="sl">勝率（始値＋）</div><div class="sv acc" id="s3">–</div></div>
+    </div>
 
-<!-- 新着PO -->
-<div id="p-n" class="page">
-  <div id="nr-list" class="nr-list"></div>
+    <div class="cg">
+      <div class="cc"><div class="ct">年別 平均騰落率（始値）</div>
+        <div style="position:relative;height:200px"><canvas id="cy"></canvas></div></div>
+      <div class="cc"><div class="ct">騰落率（始値）分布</div>
+        <div style="position:relative;height:200px"><canvas id="cd"></canvas></div></div>
+    </div>
+
+    <div class="tw">
+      <div class="th2"><span id="tl" style="font-size:12px;color:#94a3b8">完了銘柄一覧</span><span id="tc"></span></div>
+      <div class="sc2"><table>
+        <thead><tr>
+          <th onclick="sort(0)">年</th><th onclick="sort(1)">銘柄</th>
+          <th>種類</th><th>信用区分</th>
+          <th class="num" onclick="sort(4)">PO規模(億)</th>
+          <th class="num" onclick="sort(5)">規模割合</th>
+          <th class="num" onclick="sort(11)">希薄化率</th>
+          <th class="num" onclick="sort(6)">騰落率(始)</th>
+          <th class="num" onclick="sort(7)">騰落率(終)</th>
+          <th class="num" onclick="sort(8)">受渡始値(A)</th>
+          <th class="num" onclick="sort(9)">受渡終値(B)</th>
+          <th class="num" onclick="sort(10)">受渡騰落(C)</th>
+        </tr></thead>
+        <tbody id="tb"></tbody>
+      </table></div>
+    </div>
+  </section>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
@@ -151,7 +162,6 @@ async function loadNewRecs(){
     const upd = json.last_updated;
     if(upd) document.getElementById("upd-label").textContent =
       "最終更新: "+upd.slice(0,16).replace("T"," ");
-    updatePendingBadge(json.records||json||[]);
   }catch(e){
     console.warn("JSON読み込みスキップ（ローカル確認時は正常）:",e.message);
   }
@@ -186,13 +196,6 @@ function buildCombined(){
   combined   = [...hist,...nw];
 }
 
-function updatePendingBadge(recs){
-  const n = recs.filter(r=>r.status!=="complete").length;
-  const el= document.getElementById("pend-cnt");
-  el.style.display = n>0?"inline":"none";
-  el.textContent   = n;
-}
-
 /* ─────── フィルタ ────────────────────────────────────────────────────────── */
 function getFiltered(){
   const yr=document.getElementById("fy").value;
@@ -200,6 +203,8 @@ function getFiltered(){
   const al=document.getElementById("fa").value;
   const nm=document.getElementById("fn").value.toLowerCase();
   return combined.filter(r=>{
+    // 完了済みのみを分析対象とする（進行中はカード側で別表示）
+    if(r.status&&r.status!=="complete") return false;
     if(yr&&r.year!=+yr) return false;
     if(tp&&r.type!==tp) return false;
     if(al&&r.lending!==al) return false;
@@ -221,7 +226,8 @@ function fmtCell(v){
 
 /* ─────── チャート ───────────────────────────────────────────────────────── */
 function getYears(){
-  const s=new Set(combined.map(r=>r.year));
+  // 完了済みのみから年を抽出（フィルタ・チャートは完了済みを対象）
+  const s=new Set(combined.filter(r=>r.status==="complete").map(r=>r.year));
   return [...s].sort();
 }
 function populateYearFilter(){
@@ -292,16 +298,20 @@ function sort(col){
   renderTable(filt);
 }
 
-/* ─────── 新着POパネル ───────────────────────────────────────────────────── */
-function renderNewPanel(){
+/* ─────── 進行中カード ───────────────────────────────────────────────────── */
+function renderActivePanel(){
   const el=document.getElementById("nr-list");
-  const allNew = newRecs.map(r=>recToRow(r, r.id&&r.id.startsWith("csv_")?"hist":"new"));
-  if(!allNew.length){el.innerHTML='<div class="empty">新着PO銘柄はまだ取得されていません</div>';return;}
+  // 進行中 = status が complete 以外（pending / nextday）
+  const active = combined
+    .filter(r=>r.status&&r.status!=="complete")
+    .sort((a,b)=>(b.announceDate||"").localeCompare(a.announceDate||""));
+  document.getElementById("active-cnt").textContent = "（"+active.length+"件）";
+  if(!active.length){el.innerHTML='<div class="empty">進行中のPO銘柄はありません</div>';return;}
 
-  const stLabel={pending:"発表済（価格待ち）",nextday:"翌日入力済",complete:"完了"};
-  const stClass={pending:"b-pend",nextday:"b-next",complete:"b-done"};
+  const stLabel={pending:"発表済（価格待ち）",nextday:"翌日入力済"};
+  const stClass={pending:"b-pend",nextday:"b-next"};
 
-  el.innerHTML=allNew.slice().reverse().map(r=>`
+  el.innerHTML=active.map(r=>`
     <div class="nr-card">
       <div class="nr-head">
         <span class="b ${stClass[r.status]||"b-pend"}">${stLabel[r.status]||esc(r.status)}</span>
@@ -356,15 +366,7 @@ function render(){
 
   renderCharts(filt);
   renderTable(filt);
-  renderNewPanel();
-}
-
-/* ─────── ページ切替 ─────────────────────────────────────────────────────── */
-function page(id){
-  document.querySelectorAll(".page").forEach(p=>p.classList.remove("on"));
-  document.querySelectorAll(".tab").forEach(t=>t.classList.remove("on"));
-  document.getElementById("p-"+id).classList.add("on");
-  document.getElementById("t-"+id).classList.add("on");
+  renderActivePanel();
 }
 
 /* ─────── 初期化 ─────────────────────────────────────────────────────────── */
