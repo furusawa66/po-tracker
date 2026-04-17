@@ -82,7 +82,7 @@ tr:hover td{background:#0e1525}
 <div id="p-d" class="page on">
   <div class="fs">
     <div class="fg"><label>年</label>
-      <select id="fy" onchange="render()"><option value="">全年</option><option>2021</option><option>2022</option><option>2023</option><option>2024</option><option>2025</option></select></div>
+      <select id="fy" onchange="render()"><option value="">全年</option></select></div>
     <div class="fg"><label>種類</label>
       <select id="ft" onchange="render()"><option value="">全種類</option><option value="普通">普通</option><option value="リート">REIT</option></select></div>
     <div class="fg"><label>信用区分</label>
@@ -220,8 +220,20 @@ function fmtCell(v){
 }
 
 /* ─────── チャート ───────────────────────────────────────────────────────── */
+function getYears(){
+  const s=new Set(combined.map(r=>r.year));
+  return [...s].sort();
+}
+function populateYearFilter(){
+  const sel=document.getElementById("fy");
+  const cur=sel.value;
+  const yrs=getYears();
+  while(sel.options.length>1) sel.remove(1);
+  yrs.forEach(y=>{const o=document.createElement("option");o.value=y;o.textContent=y;sel.add(o);});
+  sel.value=cur;
+}
 function renderCharts(data){
-  const yrs=[2021,2022,2023,2024,2025];
+  const yrs=getYears();
   const yVals=yrs.map(y=>{
     const rows=data.filter(r=>r.year===y&&r.retOpen!=null);
     return rows.length?+avg(rows.map(r=>r.retOpen)).toFixed(2):null;
@@ -317,6 +329,7 @@ function renderNewPanel(){
 /* ─────── メイン描画 ─────────────────────────────────────────────────────── */
 function render(){
   buildCombined();
+  populateYearFilter();
   filt=getFiltered();
   if(sCol===-1){
     filt.sort((a,b)=>{

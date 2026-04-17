@@ -49,7 +49,7 @@ def parse_jp_date(text: str, year: int = None) -> str | None:
         if date.today().month >= 11 and mo <= 3:
             year += 1
         return date(year, mo, dy).isoformat()
-    except:
+    except Exception:
         return None
 
 def parse_jp_date_range_end(text: str) -> str | None:
@@ -63,7 +63,7 @@ def parse_jp_date_range_end(text: str) -> str | None:
         yr += 1
     try:
         return date(yr, mo, dy).isoformat()
-    except:
+    except Exception:
         return None
 
 def load_records() -> list:
@@ -339,7 +339,7 @@ def update_prices(rec: dict) -> dict:
         return rec
     try:
         ann_date = datetime.fromisoformat(ann_str).date()
-    except:
+    except Exception:
         return rec
 
     prices, mc, shares_outstanding = fetch_prices(code)
@@ -568,7 +568,7 @@ def main():
         was_complete = rec.get("status") == "complete"
         try:
             elapsed = (date.today() - datetime.fromisoformat(rec.get("announce_date", today)).date()).days
-        except:
+        except Exception:
             elapsed = 0
         if was_complete and elapsed > 45:
             updated.append(rec)
