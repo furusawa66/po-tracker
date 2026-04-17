@@ -13,20 +13,12 @@ nav{display:flex;align-items:center;gap:12px;padding:14px 24px;background:#0b0f1
 .sp{flex:1}
 .upd{font-size:11px;color:#475569}
 .page{padding:22px}
-.section{margin-bottom:28px}
-.sh{display:flex;align-items:baseline;gap:10px;margin-bottom:10px}
-.st{font-size:14px;font-weight:600;color:#e2e8f0}
-.sc-cnt{font-size:11px;color:#64748b}
 /* stats */
 .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:18px}
 .sc{background:#131a2e;border:1px solid #1e2d4d;border-radius:10px;padding:14px}
 .sl{font-size:10px;color:#64748b;text-transform:uppercase;letter-spacing:.06em;margin-bottom:5px}
 .sv{font-size:22px;font-weight:700;font-family:'Meiryo','メイリオ',sans-serif}
 .pos{color:#34d399}.neg{color:#f87171}.acc{color:#60a5fa}.warn{color:#fbbf24}
-/* charts */
-.cg{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:18px}
-.cc{background:#131a2e;border:1px solid #1e2d4d;border-radius:10px;padding:16px}
-.ct{font-size:11px;color:#94a3b8;margin-bottom:10px}
 /* filters */
 .fs{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:14px}
 .fg label{font-size:11px;color:#94a3b8;margin-right:4px}
@@ -36,8 +28,8 @@ select:focus,input:focus{border-color:#3b82f6}
 .tw{background:#131a2e;border:1px solid #1e2d4d;border-radius:10px;overflow:hidden}
 .th2{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:1px solid #1e2d4d}
 .th2 span{font-size:11px;color:#64748b}
-.sc2{overflow-x:auto;max-height:420px;overflow-y:auto}
-table{width:100%;border-collapse:collapse;font-size:12px;min-width:680px}
+.sc2{overflow-x:auto;max-height:520px;overflow-y:auto}
+table{width:100%;border-collapse:collapse;font-size:12px;min-width:780px}
 thead{position:sticky;top:0;z-index:2}
 th{background:#0d1220;padding:8px 10px;text-align:left;color:#64748b;font-weight:500;border-bottom:1px solid #1e2d4d;white-space:nowrap;cursor:pointer}
 th:hover{color:#93c5fd}
@@ -55,19 +47,11 @@ tr:hover td{background:#0e1525}
 .b-pend{background:#3b2700;color:#fbbf24}
 .b-next{background:#1a2a40;color:#60a5fa}
 .b-done{background:#0a2a1a;color:#34d399}
-/* new records panel */
-.nr-list{display:flex;flex-direction:column;gap:8px;margin-bottom:20px}
-.nr-card{background:#131a2e;border:1px solid #1e2d4d;border-radius:10px;padding:12px 16px}
-.nr-head{display:flex;align-items:center;gap:8px;margin-bottom:6px;flex-wrap:wrap}
-.nr-name{font-weight:500}
-.nr-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px 12px;font-size:11px;color:#64748b}
-.nr-val{color:#e2e8f0;font-family:'Meiryo','メイリオ',sans-serif;font-size:12px}
-.empty{color:#334155;text-align:center;padding:32px;font-size:13px}
 /* scrollbar */
 ::-webkit-scrollbar{width:5px;height:5px}
 ::-webkit-scrollbar-track{background:#0b0f1a}
 ::-webkit-scrollbar-thumb{background:#1e3a5f;border-radius:3px}
-@media(max-width:700px){.stats{grid-template-columns:1fr 1fr}.cg{grid-template-columns:1fr}}
+@media(max-width:700px){.stats{grid-template-columns:1fr 1fr}}
 </style>
 </head>
 <body>
@@ -79,76 +63,50 @@ tr:hover td{background:#0e1525}
 </nav>
 
 <div class="page">
-  <!-- 進行中（pending + nextday） -->
-  <section class="section">
-    <div class="sh">
-      <span class="st">進行中</span>
-      <span class="sc-cnt" id="active-cnt">–</span>
-    </div>
-    <div id="nr-list" class="nr-list"></div>
-  </section>
+  <div class="fs">
+    <div class="fg"><label>年</label>
+      <select id="fy" onchange="render()"><option value="">全年</option></select></div>
+    <div class="fg"><label>種類</label>
+      <select id="ft" onchange="render()"><option value="">全種類</option><option value="普通">普通</option><option value="リート">REIT</option></select></div>
+    <div class="fg"><label>信用区分</label>
+      <select id="fa" onchange="render()"><option value="">全て</option><option value="貸借">貸借</option><option value="信用">信用</option><option value="売禁">売禁</option></select></div>
+    <div class="fg"><label>ステータス</label>
+      <select id="fst" onchange="render()"><option value="">全て</option><option value="pending">価格待ち</option><option value="nextday">翌日入力済</option><option value="complete">完了</option></select></div>
+    <div class="fg"><label>銘柄</label>
+      <input id="fn" type="text" placeholder="検索..." style="width:110px" oninput="render()"></div>
+  </div>
 
-  <!-- 完了済み（complete） -->
-  <section class="section">
-    <div class="sh">
-      <span class="st">完了済み</span>
-      <span class="sc-cnt">（分析対象）</span>
-    </div>
+  <div class="stats">
+    <div class="sc"><div class="sl">対象件数</div><div class="sv acc" id="s0">–</div></div>
+    <div class="sc"><div class="sl">平均騰落率（始値）</div><div class="sv" id="s1">–</div></div>
+    <div class="sc"><div class="sl">平均騰落率（終値）</div><div class="sv" id="s2">–</div></div>
+    <div class="sc"><div class="sl">勝率（始値＋）</div><div class="sv acc" id="s3">–</div></div>
+  </div>
 
-    <div class="fs">
-      <div class="fg"><label>年</label>
-        <select id="fy" onchange="render()"><option value="">全年</option></select></div>
-      <div class="fg"><label>種類</label>
-        <select id="ft" onchange="render()"><option value="">全種類</option><option value="普通">普通</option><option value="リート">REIT</option></select></div>
-      <div class="fg"><label>信用区分</label>
-        <select id="fa" onchange="render()"><option value="">全て</option><option value="貸借">貸借</option><option value="信用">信用</option><option value="売禁">売禁</option></select></div>
-      <div class="fg"><label>銘柄</label>
-        <input id="fn" type="text" placeholder="検索..." style="width:110px" oninput="render()"></div>
-    </div>
-
-    <div class="stats">
-      <div class="sc"><div class="sl">対象件数</div><div class="sv acc" id="s0">–</div></div>
-      <div class="sc"><div class="sl">平均騰落率（始値）</div><div class="sv" id="s1">–</div></div>
-      <div class="sc"><div class="sl">平均騰落率（終値）</div><div class="sv" id="s2">–</div></div>
-      <div class="sc"><div class="sl">勝率（始値＋）</div><div class="sv acc" id="s3">–</div></div>
-    </div>
-
-    <div class="cg">
-      <div class="cc"><div class="ct">年別 平均騰落率（始値）</div>
-        <div style="position:relative;height:200px"><canvas id="cy"></canvas></div></div>
-      <div class="cc"><div class="ct">騰落率（始値）分布</div>
-        <div style="position:relative;height:200px"><canvas id="cd"></canvas></div></div>
-    </div>
-
-    <div class="tw">
-      <div class="th2"><span id="tl" style="font-size:12px;color:#94a3b8">完了銘柄一覧</span><span id="tc"></span></div>
-      <div class="sc2"><table>
-        <thead><tr>
-          <th onclick="sort(0)">年</th><th onclick="sort(1)">銘柄</th>
-          <th>種類</th><th>信用区分</th>
-          <th class="num" onclick="sort(4)">PO規模(億)</th>
-          <th class="num" onclick="sort(5)">規模割合</th>
-          <th class="num" onclick="sort(11)">希薄化率</th>
-          <th class="num" onclick="sort(6)">騰落率(始)</th>
-          <th class="num" onclick="sort(7)">騰落率(終)</th>
-          <th class="num" onclick="sort(8)">受渡始値(A)</th>
-          <th class="num" onclick="sort(9)">受渡終値(B)</th>
-          <th class="num" onclick="sort(10)">受渡騰落(C)</th>
-        </tr></thead>
-        <tbody id="tb"></tbody>
-      </table></div>
-    </div>
-  </section>
+  <div class="tw">
+    <div class="th2"><span id="tl" style="font-size:12px;color:#94a3b8">全銘柄</span><span id="tc"></span></div>
+    <div class="sc2"><table>
+      <thead><tr>
+        <th onclick="sort(0)">年</th><th onclick="sort(1)">銘柄</th>
+        <th>ステータス</th>
+        <th>種類</th><th>信用区分</th>
+        <th class="num" onclick="sort(5)">PO規模(億)</th>
+        <th class="num" onclick="sort(6)">規模割合</th>
+        <th class="num" onclick="sort(12)">希薄化率</th>
+        <th class="num" onclick="sort(7)">騰落率(始)</th>
+        <th class="num" onclick="sort(8)">騰落率(終)</th>
+        <th class="num" onclick="sort(9)">受渡始値(A)</th>
+        <th class="num" onclick="sort(10)">受渡終値(B)</th>
+        <th class="num" onclick="sort(11)">受渡騰落(C)</th>
+      </tr></thead>
+      <tbody id="tb"></tbody>
+    </table></div>
+  </div>
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <script>
-/* ─────── 過去データ（圧縮版） ─────────────────────────────────────────── */
-const HIST=[];
-
 /* ─────── 状態 ────────────────────────────────────────────────────────────── */
 let newRecs=[], combined=[], filt=[], sCol=-1, sAsc=false;
-let cY, cD;
 
 function esc(s){ return String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;"); }
 
@@ -158,7 +116,7 @@ async function loadNewRecs(){
     const res = await fetch("./data/po_records.json?t="+Date.now());
     if(!res.ok) return;
     const json = await res.json();
-    newRecs = (json.records || json || []);  // 全件（過去分含む）
+    newRecs = (json.records || json || []);
     const upd = json.last_updated;
     if(upd) document.getElementById("upd-label").textContent =
       "最終更新: "+upd.slice(0,16).replace("T"," ");
@@ -184,7 +142,7 @@ function recToRow(r, src){
     retOpen:r.ret_open, retClose:r.ret_close,
     delOpen:r.delivery_open, delClose:r.delivery_close, delRet:r.delivery_ret,
     leadManagers:r.lead_managers||[], coManagers:r.co_managers||[],
-    memo:r.memo||"", status:r.status, announceDate:r.announce_date||"",
+    memo:r.memo||"", status:r.status||"pending", announceDate:r.announce_date||"",
     marketCap:r.market_cap, shares:r.shares_outstanding,
     newShares:r.new_shares, soldShares:r.sold_shares,
     decisionDate:r.decision_date, deliveryDate:r.delivery_date,
@@ -201,13 +159,13 @@ function getFiltered(){
   const yr=document.getElementById("fy").value;
   const tp=document.getElementById("ft").value;
   const al=document.getElementById("fa").value;
+  const st=document.getElementById("fst").value;
   const nm=document.getElementById("fn").value.toLowerCase();
   return combined.filter(r=>{
-    // 完了済みのみを分析対象とする（進行中はカード側で別表示）
-    if(r.status&&r.status!=="complete") return false;
     if(yr&&r.year!=+yr) return false;
     if(tp&&r.type!==tp) return false;
     if(al&&r.lending!==al) return false;
+    if(st&&r.status!==st) return false;
     if(nm&&!r.name.toLowerCase().includes(nm)) return false;
     return true;
   });
@@ -215,7 +173,6 @@ function getFiltered(){
 
 function avg(a){return a.length?a.reduce((x,y)=>x+y,0)/a.length:null}
 function fmt(v,d=2){return v!=null?(v>=0?"+":"")+v.toFixed(d)+"%":"–"}
-function col(v){return v==null?"":v>0?"pos":v<0?"neg":""}
 function fmtCell(v){
   if(v==null) return '<span style="color:#334155">–</span>';
   const s=Math.abs(v).toFixed(2)+"%";
@@ -224,56 +181,27 @@ function fmtCell(v){
   return `<span style="color:#64748b">${s}</span>`;
 }
 
-/* ─────── チャート ───────────────────────────────────────────────────────── */
-function getYears(){
-  // 完了済みのみから年を抽出（フィルタ・チャートは完了済みを対象）
-  const s=new Set(combined.filter(r=>r.status==="complete").map(r=>r.year));
-  return [...s].sort();
-}
+/* ─────── 年フィルタ ───────────────────────────────────────────────────────── */
 function populateYearFilter(){
   const sel=document.getElementById("fy");
   const cur=sel.value;
-  const yrs=getYears();
+  const yrs=[...new Set(combined.map(r=>r.year))].sort();
   while(sel.options.length>1) sel.remove(1);
   yrs.forEach(y=>{const o=document.createElement("option");o.value=y;o.textContent=y;sel.add(o);});
   sel.value=cur;
 }
-function renderCharts(data){
-  const yrs=getYears();
-  const yVals=yrs.map(y=>{
-    const rows=data.filter(r=>r.year===y&&r.retOpen!=null);
-    return rows.length?+avg(rows.map(r=>r.retOpen)).toFixed(2):null;
-  });
-  if(cY) cY.destroy();
-  cY=new Chart(document.getElementById("cy"),{type:"bar",
-    data:{labels:yrs.map(String),datasets:[{data:yVals,
-      backgroundColor:yVals.map(v=>v==null?"#1e2d4d":v>=0?"#059669":"#dc2626"),
-      borderRadius:4,barPercentage:0.5}]},
-    options:{responsive:true,maintainAspectRatio:false,
-      plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.parsed.y!=null?c.parsed.y.toFixed(2)+"%":"–"}}},
-      scales:{x:{ticks:{color:"#64748b",font:{size:11}},grid:{color:"#1e2d4d"}},
-              y:{ticks:{color:"#64748b",font:{size:11},callback:v=>v+"%"},grid:{color:"#1e2d4d"}}}}});
-
-  const bkts=[[-25,-20],[-20,-15],[-15,-10],[-10,-5],[-5,0],[0,5],[5,10],[10,15],[15,20],[20,30]];
-  const cnts=bkts.map(([lo,hi])=>data.filter(r=>r.retOpen!=null&&r.retOpen>=lo&&r.retOpen<hi).length);
-  if(cD) cD.destroy();
-  cD=new Chart(document.getElementById("cd"),{type:"bar",
-    data:{labels:bkts.map(b=>b[0]+"〜"),datasets:[{data:cnts,
-      backgroundColor:bkts.map(b=>b[0]>=0?"#059669":"#dc2626"),
-      borderRadius:3,barPercentage:0.85}]},
-    options:{responsive:true,maintainAspectRatio:false,
-      plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.parsed.y+"件"}}},
-      scales:{x:{ticks:{color:"#64748b",font:{size:10},maxRotation:40},grid:{color:"#1e2d4d"}},
-              y:{ticks:{color:"#64748b",font:{size:11}},grid:{color:"#1e2d4d"}}}}});
-}
 
 /* ─────── テーブル ───────────────────────────────────────────────────────── */
+const stLabel={pending:"価格待ち",nextday:"翌日入力済",complete:"完了"};
+const stClass={pending:"b-pend",nextday:"b-next",complete:"b-done"};
+
 function renderTable(data){
   document.getElementById("tc").textContent=data.length+"件";
   document.getElementById("tb").innerHTML=data.map(r=>`<tr>
     <td style="color:#64748b;font-family:monospace">${r.year}</td>
     <td style="max-width:140px;overflow:hidden;text-overflow:ellipsis" title="${esc(r.name)}">
       ${esc(r.name)}${r.src==="new"?' <span class="b b-new">NEW</span>':''}</td>
+    <td><span class="b ${stClass[r.status]||"b-pend"}">${stLabel[r.status]||esc(r.status)}</span></td>
     <td><span class="b ${r.type==="リート"?"b-r":"b-n"}">${esc(r.type)}</span></td>
     <td><span class="b ${r.lending==="貸借"?"b-tai":r.lending==="信用"?"b-c":"b-ban"}">${esc(r.lending)}</span></td>
     <td class="num">${r.scale?r.scale.toLocaleString():"–"}</td>
@@ -289,51 +217,13 @@ function renderTable(data){
 
 function sort(col){
   if(sCol===col) sAsc=!sAsc; else{sCol=col;sAsc=true;}
-  const keys=["year","name","type","lending","scale","pct","retOpen","retClose","delOpen","delClose","delRet","dilution"];
+  const keys=["year","name","status","type","lending","scale","pct","retOpen","retClose","delOpen","delClose","delRet","dilution"];
   filt.sort((a,b)=>{
     const va=a[keys[col]],vb=b[keys[col]];
     if(va==null) return 1; if(vb==null) return -1;
     return sAsc?(va>vb?1:-1):(va<vb?1:-1);
   });
   renderTable(filt);
-}
-
-/* ─────── 進行中カード ───────────────────────────────────────────────────── */
-function renderActivePanel(){
-  const el=document.getElementById("nr-list");
-  // 進行中 = status が complete 以外（pending / nextday）
-  const active = combined
-    .filter(r=>r.status&&r.status!=="complete")
-    .sort((a,b)=>(b.announceDate||"").localeCompare(a.announceDate||""));
-  document.getElementById("active-cnt").textContent = "（"+active.length+"件）";
-  if(!active.length){el.innerHTML='<div class="empty">進行中のPO銘柄はありません</div>';return;}
-
-  const stLabel={pending:"発表済（価格待ち）",nextday:"翌日入力済"};
-  const stClass={pending:"b-pend",nextday:"b-next"};
-
-  el.innerHTML=active.map(r=>`
-    <div class="nr-card">
-      <div class="nr-head">
-        <span class="b ${stClass[r.status]||"b-pend"}">${stLabel[r.status]||esc(r.status)}</span>
-        <span class="nr-name">${esc(r.name)}</span>
-        <span class="b ${r.type==="リート"?"b-r":"b-n"}">${esc(r.type)}</span>
-        <span class="b ${r.lending==="貸借"?"b-tai":r.lending==="信用"?"b-c":"b-ban"}">${esc(r.lending)}</span>
-        <span style="font-size:11px;color:#64748b">${esc(r.announceDate)} 発表</span>
-      </div>
-      <div class="nr-grid">
-        <div><div style="color:#64748b;font-size:10px">時価総額(億)</div><div class="nr-val">${r.marketCap||"–"}</div></div>
-        <div><div style="color:#64748b;font-size:10px">PO規模(億)</div><div class="nr-val">${r.scale||"–"}</div></div>
-        <div><div style="color:#64748b;font-size:10px">希薄化率</div><div class="nr-val">${r.dilution!=null?r.dilution.toFixed(1)+"%":"–"}</div></div>
-        <div><div style="color:#64748b;font-size:10px">翌日始値</div><div class="nr-val">${r.nextOpen?r.nextOpen.toLocaleString():"–"}</div></div>
-        <div><div style="color:#64748b;font-size:10px">騰落率(始)</div><div class="nr-val ${r.retOpen!=null?col(r.retOpen):""}">${r.retOpen!=null?fmt(r.retOpen):"–"}</div></div>
-        <div><div style="color:#64748b;font-size:10px">騰落率(終)</div><div class="nr-val ${r.retClose!=null?col(r.retClose):""}">${r.retClose!=null?fmt(r.retClose):"–"}</div></div>
-        <div><div style="color:#64748b;font-size:10px">受渡始値(A)</div><div class="nr-val">${r.delOpen?r.delOpen.toLocaleString():"–"}</div></div>
-        <div><div style="color:#64748b;font-size:10px">受渡終値(B)</div><div class="nr-val">${r.delClose?r.delClose.toLocaleString():"–"}</div></div>
-        <div><div style="color:#64748b;font-size:10px">受渡騰落(C)</div><div class="nr-val ${r.delRet!=null?col(r.delRet):""}">${r.delRet!=null?fmt(r.delRet):"–"}</div></div>
-        <div style="grid-column:1/-1;margin-top:4px"><div style="color:#64748b;font-size:10px">主幹事</div><div class="nr-val" style="font-size:11px;white-space:normal">${r.leadManagers&&r.leadManagers.length?r.leadManagers.map(esc).join(" / "):"–"}</div></div>
-        <div style="grid-column:1/-1"><div style="color:#64748b;font-size:10px">引受人</div><div class="nr-val" style="font-size:11px;white-space:normal">${r.coManagers&&r.coManagers.length?r.coManagers.map(esc).join(" / "):"–"}</div></div>
-      </div>
-    </div>`).join("");
 }
 
 /* ─────── メイン描画 ─────────────────────────────────────────────────────── */
@@ -364,9 +254,7 @@ function render(){
   s2.className="sv "+(avgC!=null?(avgC>=0?"pos":"neg"):"");
   document.getElementById("s3").textContent=opens.length?((wins/opens.length*100).toFixed(1)+"%"):"–";
 
-  renderCharts(filt);
   renderTable(filt);
-  renderActivePanel();
 }
 
 /* ─────── 初期化 ─────────────────────────────────────────────────────────── */
