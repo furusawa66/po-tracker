@@ -49,6 +49,7 @@ tr:hover td{background:#0e1525}
 .b-n{background:#14291a;color:#4ade80}
 .b-c{background:#3b2700;color:#fbbf24}
 .b-ban{background:#3b0000;color:#f87171}
+.b-tai{background:#0a2a3b;color:#67e8f9}
 .b-new{background:#1e1a40;color:#c4b5fd}
 .b-pend{background:#3b2700;color:#fbbf24}
 .b-next{background:#1a2a40;color:#60a5fa}
@@ -84,8 +85,8 @@ tr:hover td{background:#0e1525}
       <select id="fy" onchange="render()"><option value="">全年</option><option>2021</option><option>2022</option><option>2023</option><option>2024</option><option>2025</option></select></div>
     <div class="fg"><label>種類</label>
       <select id="ft" onchange="render()"><option value="">全種類</option><option value="普通">普通</option><option value="リート">REIT</option></select></div>
-    <div class="fg"><label>注意</label>
-      <select id="fa" onchange="render()"><option value="">全て</option><option value="注意">注意</option><option value="売り禁">売り禁</option></select></div>
+    <div class="fg"><label>信用区分</label>
+      <select id="fa" onchange="render()"><option value="">全て</option><option value="貸借">貸借</option><option value="信用">信用</option><option value="売禁">売禁</option></select></div>
     <div class="fg"><label>銘柄</label>
       <input id="fn" type="text" placeholder="検索..." style="width:110px" oninput="render()"></div>
   </div>
@@ -109,7 +110,7 @@ tr:hover td{background:#0e1525}
     <div class="sc2"><table>
       <thead><tr>
         <th onclick="sort(0)">年</th><th onclick="sort(1)">銘柄</th>
-        <th>種類</th><th>注意</th>
+        <th>種類</th><th>信用区分</th>
         <th class="num" onclick="sort(4)">PO規模(億)</th>
         <th class="num" onclick="sort(5)">規模割合</th>
         <th class="num" onclick="sort(11)">希薄化率</th>
@@ -156,10 +157,16 @@ async function loadNewRecs(){
   }
 }
 
+function lendingOf(r){
+  if(r.lending_type==="貸借"||r.lending_type==="信用") return r.lending_type;
+  if(r.alert==="売り禁") return "売禁";
+  if(r.alert==="注意")   return "信用";
+  return "貸借";
+}
 function recToRow(r, src){
   return {
     src, id:r.id, year:r.year||new Date().getFullYear(),
-    name:r.name, type:r.type, alert:r.alert||"",
+    name:r.name, type:r.type, alert:r.alert||"", lending:lendingOf(r),
     scale:r.po_scale||r.scale, pct:r.po_pct||r.pct,
     dilution:r.dilution,
     nextOpen:r.next_open, maxPrice:r.max_price, openToMax:r.open_to_max,
@@ -195,7 +202,7 @@ function getFiltered(){
   return combined.filter(r=>{
     if(yr&&r.year!=+yr) return false;
     if(tp&&r.type!==tp) return false;
-    if(al&&r.alert!==al) return false;
+    if(al&&r.lending!==al) return false;
     if(nm&&!r.name.toLowerCase().includes(nm)) return false;
     return true;
   });
@@ -250,7 +257,7 @@ function renderTable(data){
     <td style="max-width:140px;overflow:hidden;text-overflow:ellipsis" title="${esc(r.name)}">
       ${esc(r.name)}${r.src==="new"?' <span class="b b-new">NEW</span>':''}</td>
     <td><span class="b ${r.type==="リート"?"b-r":"b-n"}">${esc(r.type)}</span></td>
-    <td>${r.alert?`<span class="b ${r.alert==="注意"?"b-c":"b-ban"}">${esc(r.alert)}</span>`:""}</td>
+    <td><span class="b ${r.lending==="貸借"?"b-tai":r.lending==="信用"?"b-c":"b-ban"}">${esc(r.lending)}</span></td>
     <td class="num">${r.scale?r.scale.toLocaleString():"–"}</td>
     <td class="num">${r.pct?r.pct.toFixed(1)+"%":"–"}</td>
     <td class="num">${r.dilution!=null?r.dilution.toFixed(1)+"%":"–"}</td>
@@ -264,7 +271,7 @@ function renderTable(data){
 
 function sort(col){
   if(sCol===col) sAsc=!sAsc; else{sCol=col;sAsc=true;}
-  const keys=["year","name","type","alert","scale","pct","retOpen","retClose","delOpen","delClose","delRet","dilution"];
+  const keys=["year","name","type","lending","scale","pct","retOpen","retClose","delOpen","delClose","delRet","dilution"];
   filt.sort((a,b)=>{
     const va=a[keys[col]],vb=b[keys[col]];
     if(va==null) return 1; if(vb==null) return -1;
@@ -288,7 +295,7 @@ function renderNewPanel(){
         <span class="b ${stClass[r.status]||"b-pend"}">${stLabel[r.status]||esc(r.status)}</span>
         <span class="nr-name">${esc(r.name)}</span>
         <span class="b ${r.type==="リート"?"b-r":"b-n"}">${esc(r.type)}</span>
-        ${r.alert?`<span class="b ${r.alert==="注意"?"b-c":"b-ban"}">${esc(r.alert)}</span>`:""}
+        <span class="b ${r.lending==="貸借"?"b-tai":r.lending==="信用"?"b-c":"b-ban"}">${esc(r.lending)}</span>
         <span style="font-size:11px;color:#64748b">${esc(r.announceDate)} 発表</span>
       </div>
       <div class="nr-grid">
