@@ -8977,7 +8977,7 @@
       "oa_shares": null,
       "article_url": null,
       "lending_type": "",
-      "status": "pending"
+      "status": "complete"
     },
     {
       "id": "csv_220",
@@ -9018,7 +9018,7 @@
       "oa_shares": null,
       "article_url": null,
       "lending_type": "",
-      "status": "pending"
+      "status": "complete"
     },
     {
       "id": "csv_221",
@@ -9059,7 +9059,7 @@
       "oa_shares": null,
       "article_url": null,
       "lending_type": "",
-      "status": "pending"
+      "status": "complete"
     },
     {
       "id": "csv_222",
@@ -9100,7 +9100,7 @@
       "oa_shares": null,
       "article_url": null,
       "lending_type": "",
-      "status": "pending"
+      "status": "complete"
     },
     {
       "id": "csv_223",
@@ -9141,7 +9141,7 @@
       "oa_shares": null,
       "article_url": null,
       "lending_type": "",
-      "status": "pending"
+      "status": "complete"
     },
     {
       "id": "csv_224",
@@ -9182,7 +9182,7 @@
       "oa_shares": null,
       "article_url": null,
       "lending_type": "",
-      "status": "pending"
+      "status": "complete"
     },
     {
       "id": "csv_225",
@@ -9223,7 +9223,7 @@
       "oa_shares": null,
       "article_url": null,
       "lending_type": "",
-      "status": "pending"
+      "status": "complete"
     },
     {
       "id": "csv_226",
@@ -9264,7 +9264,7 @@
       "oa_shares": null,
       "article_url": null,
       "lending_type": "",
-      "status": "pending"
+      "status": "complete"
     },
     {
       "id": "csv_227",
@@ -9305,7 +9305,7 @@
       "oa_shares": null,
       "article_url": null,
       "lending_type": "",
-      "status": "pending"
+      "status": "complete"
     },
     {
       "id": "csv_228",
@@ -9346,7 +9346,7 @@
       "oa_shares": null,
       "article_url": null,
       "lending_type": "",
-      "status": "pending"
+      "status": "complete"
     },
     {
       "id": "csv_229",
@@ -9387,7 +9387,7 @@
       "oa_shares": null,
       "article_url": null,
       "lending_type": "",
-      "status": "pending"
+      "status": "complete"
     },
     {
       "id": "csv_230",
@@ -9428,7 +9428,7 @@
       "oa_shares": null,
       "article_url": null,
       "lending_type": "",
-      "status": "pending"
+      "status": "complete"
     },
     {
       "id": "csv_231",
@@ -9469,7 +9469,7 @@
       "oa_shares": null,
       "article_url": null,
       "lending_type": "",
-      "status": "pending"
+      "status": "complete"
     },
     {
       "id": "csv_232",
@@ -9510,7 +9510,7 @@
       "oa_shares": null,
       "article_url": null,
       "lending_type": "",
-      "status": "pending"
+      "status": "complete"
     },
     {
       "id": "csv_233",
@@ -9551,7 +9551,7 @@
       "oa_shares": null,
       "article_url": null,
       "lending_type": "",
-      "status": "pending"
+      "status": "complete"
     },
     {
       "id": "csv_234",
@@ -9592,7 +9592,7 @@
       "oa_shares": null,
       "article_url": null,
       "lending_type": "",
-      "status": "pending"
+      "status": "complete"
     },
     {
       "id": "csv_235",
@@ -9633,7 +9633,7 @@
       "oa_shares": null,
       "article_url": null,
       "lending_type": "",
-      "status": "pending"
+      "status": "complete"
     },
     {
       "id": "csv_236",
@@ -9674,7 +9674,7 @@
       "oa_shares": null,
       "article_url": null,
       "lending_type": "",
-      "status": "pending"
+      "status": "complete"
     },
     {
       "id": "csv_237",
@@ -9715,7 +9715,7 @@
       "oa_shares": null,
       "article_url": null,
       "lending_type": "",
-      "status": "pending"
+      "status": "complete"
     },
     {
       "id": "csv_238",
@@ -9756,7 +9756,7 @@
       "oa_shares": null,
       "article_url": null,
       "lending_type": "",
-      "status": "pending"
+      "status": "complete"
     },
     {
       "id": "csv_239",
@@ -9797,7 +9797,7 @@
       "oa_shares": null,
       "article_url": null,
       "lending_type": "",
-      "status": "pending"
+      "status": "complete"
     },
     {
       "id": "4534_20260403",
@@ -10070,6 +10070,6 @@
       "status": "nextday"
     }
   ],
-  "last_updated": "2026-04-17T06:27:28.810754",
+  "last_updated": "2026-04-17T07:07:24.859146",
   "count": 245
 }
