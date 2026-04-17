@@ -232,12 +232,12 @@ function render(){
   populateYearFilter();
   filt=getFiltered();
   if(sCol===-1){
+    // デフォルト: 進行中（pending/nextday）を上に、それぞれ発表日降順
+    const statusRank=s=>s==="complete"?1:0;
     filt.sort((a,b)=>{
-      const isH=r=>r.id&&r.id.startsWith("csv_");
-      const ah=isH(a),bh=isH(b);
-      if(ah!==bh) return ah?1:-1;
-      if(!ah){const da=(a.id||"").split("_")[1]||"",db=(b.id||"").split("_")[1]||"";return db.localeCompare(da);}
-      return +b.id.replace("csv_","")-+a.id.replace("csv_","");
+      const sa=statusRank(a.status),sb=statusRank(b.status);
+      if(sa!==sb) return sa-sb;
+      return (b.announceDate||"").localeCompare(a.announceDate||"");
     });
   }
   const opens=filt.map(r=>r.retOpen).filter(v=>v!=null);
