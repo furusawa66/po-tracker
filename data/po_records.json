@@ -9945,10 +9945,10 @@
       "lending_type": "貸借",
       "announce_date": "2026-04-08",
       "year": 2026,
-      "decision_date": "2026-04-20",
+      "decision_date": "2026-04-22",
       "delivery_estimated": "2026-04-27",
-      "delivery_date": null,
-      "issue_price": null,
+      "delivery_date": "2026-04-27",
+      "issue_price": 1990,
       "discount_range": "4% ～ 7%　ディスカウント",
       "discount_rate": null,
       "market_cap": 8475,
@@ -9981,7 +9981,8 @@
       "delivery_close": null,
       "delivery_ret": null,
       "memo": "",
-      "status": "nextday"
+      "status": "nextday",
+      "decision_date_confirmed": true
     },
     {
       "id": "3196_20260409",
@@ -9992,9 +9993,9 @@
       "lending_type": "",
       "announce_date": "2026-04-09",
       "year": 2026,
-      "decision_date": "2026-04-20",
+      "decision_date": "2026-04-22",
       "delivery_estimated": "2026-04-27",
-      "delivery_date": null,
+      "delivery_date": "2026-04-27",
       "issue_price": null,
       "discount_range": "3% ～ 5%　ディスカウント",
       "discount_rate": null,
@@ -10023,7 +10024,8 @@
       "delivery_close": null,
       "delivery_ret": null,
       "memo": "",
-      "status": "nextday"
+      "status": "nextday",
+      "decision_date_confirmed": true
     },
     {
       "id": "4784_20260413",
@@ -10034,10 +10036,10 @@
       "lending_type": "信用",
       "announce_date": "2026-04-13",
       "year": 2026,
-      "decision_date": "2026-04-20",
+      "decision_date": "2026-04-23",
       "delivery_estimated": "2026-04-28",
-      "delivery_date": null,
-      "issue_price": null,
+      "delivery_date": "2026-04-28",
+      "issue_price": 710,
       "discount_range": "% ～ %　ディスカウント",
       "discount_rate": null,
       "market_cap": 2000,
@@ -10057,8 +10059,8 @@
       "po_pct": 38.3,
       "dilution": 9.8,
       "next_open": 731.0,
-      "max_price": 760.0,
-      "open_to_max": 3.97,
+      "max_price": 764.0,
+      "open_to_max": 4.51,
       "dec_open": null,
       "dec_close": null,
       "ret_open": null,
@@ -10067,9 +10069,10 @@
       "delivery_close": null,
       "delivery_ret": null,
       "memo": "",
-      "status": "nextday"
+      "status": "nextday",
+      "decision_date_confirmed": true
     }
   ],
-  "last_updated": "2026-04-20T07:31:37.678423",
+  "last_updated": "2026-04-20T11:58:31.238561",
   "count": 245
 }
