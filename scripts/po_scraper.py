@@ -473,6 +473,35 @@ def update_prices(rec: dict) -> dict:
     return rec
 
 
+# ── RSS フィード ─────────────────────────────────────────────────────────────
+
+def scrape_rss() -> list:
+    """pokabu.net/feed から最新PO記事を取得し、銘柄コードとURLを返す"""
+    entries = []
+    try:
+        res = requests.get(f"{BASE_URL}/feed", headers=HEADERS, timeout=15)
+        if res.status_code != 200:
+            print(f"  RSS取得失敗: HTTP {res.status_code}")
+            return entries
+        res.encoding = "utf-8"
+        soup = BeautifulSoup(res.text, "xml" if "xml" in res.headers.get("content-type","") else "html.parser")
+        for item in soup.find_all("item"):
+            title = item.find("title")
+            link = item.find("link")
+            if not title or not link:
+                continue
+            title_text = title.get_text(strip=True)
+            link_text = link.get_text(strip=True) if link.string else (link.next_sibling or "").strip()
+            if not link_text and link.get("href"):
+                link_text = link["href"]
+            code_m = re.search(r'[（(](\d{4})[）)]', title_text)
+            if code_m and "/po/" in (link_text or ""):
+                entries.append({"code": code_m.group(1), "title": title_text, "url": link_text})
+    except Exception as e:
+        print(f"  RSSエラー: {e}")
+    return entries
+
+
 # ── メイン ────────────────────────────────────────────────────────────────────
 
 def lending_to_alert(lending: str) -> str:
@@ -486,6 +515,65 @@ def main():
 
     records  = load_records()
     existing = {r["code"]: r for r in records if r.get("code")}
+
+    # ⓪ RSS フィードから新規PO検知
+    print("[0] pokabu.net/feed チェック...")
+    rss_entries = scrape_rss()
+    rss_new = 0
+    for entry in rss_entries:
+        code = entry["code"]
+        if code in existing:
+            continue
+        print(f"  RSS新規検知: {entry['title']}")
+        article = scrape_article(entry["url"], name="", code=code)
+        time.sleep(1)
+        if not article:
+            continue
+        name_m = re.search(r'[】](.*?)[（(]', entry["title"])
+        name = name_m.group(1).strip() if name_m else ""
+        lending = article.get("lending_type", "")
+        announce = article.get("announce_date") or article.get("article_published") or today
+        new_rec = {
+            "id":                 f"{code}_{announce.replace('-','')}",
+            "code":               code,
+            "name":               name,
+            "type":               article.get("type", "普通"),
+            "alert":              lending_to_alert(lending),
+            "lending_type":       lending,
+            "announce_date":      announce,
+            "announce_date_confirmed": bool(article.get("announce_date")),
+            "year":               THIS_YEAR,
+            "decision_date":      article.get("decision_date"),
+            "decision_date_confirmed": bool(article.get("decision_date")),
+            "delivery_estimated": article.get("delivery_estimated"),
+            "delivery_date":      article.get("delivery_date"),
+            "issue_price":        article.get("issue_price"),
+            "discount_range":     article.get("discount_range"),
+            "discount_rate":      article.get("discount_rate"),
+            "market_cap":         article.get("market_cap"),
+            "po_scale":           article.get("po_scale"),
+            "new_shares":         article.get("new_shares"),
+            "treasury_shares":    article.get("treasury_shares"),
+            "sold_shares":        article.get("sold_shares"),
+            "oa_shares":          article.get("oa_shares"),
+            "shares_outstanding": None,
+            "lead_managers":      article.get("lead_managers", []),
+            "co_managers":        article.get("co_managers", []),
+            "article_url":        entry["url"],
+            "po_pct":             None,
+            "dilution":           article.get("dilution"),
+            "next_open": None, "max_price": None, "open_to_max": None,
+            "dec_open": None, "dec_close": None,
+            "ret_open": None, "ret_close": None,
+            "delivery_open": None, "delivery_close": None, "delivery_ret": None,
+            "memo": "", "status": "pending",
+        }
+        if new_rec["po_scale"] and new_rec["market_cap"]:
+            new_rec["po_pct"] = round(new_rec["po_scale"] / new_rec["market_cap"] * 100, 1)
+        records.append(new_rec)
+        existing[code] = new_rec
+        rss_new += 1
+    print(f"  RSS新規: {rss_new} 件\n")
 
     # ① スケジュール取得
     print("[1] pokabu.net/schedule 取得中...")
