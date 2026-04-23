@@ -286,7 +286,7 @@ function renderTable(data){
     <td style="max-width:140px;overflow:hidden;text-overflow:ellipsis" title="${esc(r.name)}">${r.code?`<a href="https://kabutan.jp/stock/chart?code=${esc(r.code)}" target="_blank" rel="noopener" style="color:#e2e8f0;text-decoration:none">${esc(r.name)}</a>`:esc(r.name)}</td>
     <td><span class="b ${r.type==="リート"?"b-r":"b-n"}">${esc(r.type)}</span></td>
     <td><span class="b ${r.lending==="貸借"?"b-tai":r.lending==="信用"?"b-c":"b-ban"}">${r.lending==="売禁"?"貸借(売禁)":esc(r.lending)}</span></td>
-    <td style="font-family:'Meiryo','メイリオ',sans-serif;font-size:12px" title="${esc((r.leadManagers||[]).slice().sort((a,b)=>(MGR_ORDER[abbrManager(a)]??99)-(MGR_ORDER[abbrManager(b)]??99)).join(' / '))}">${esc(abbrManagers(r.leadManagers))||"–"}</td>
+    <td style="font-family:'Meiryo','メイリオ',sans-serif" title="${esc((r.leadManagers||[]).slice().sort((a,b)=>(MGR_ORDER[abbrManager(a)]??99)-(MGR_ORDER[abbrManager(b)]??99)).join(' / '))}">${esc(abbrManagers(r.leadManagers))||"–"}</td>
     <td class="num">${r.discountRate!=null?pctStr(r.discountRate):"–"}</td>
     <td class="num">${r.scale?r.scale.toLocaleString():"–"}</td>
     <td class="num">${r.pct!=null?pctStr(r.pct):"–"}</td>
