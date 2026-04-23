@@ -355,16 +355,23 @@ def main():
 
     print(f"\nマッチ: {matched} 件\n")
 
-    # ③ 株価取得
-    backfilled = [r for r in records if r.get("announce_date") and r.get("announce_date_confirmed")
-                  and not r.get("next_open")]
-    print(f"[3] 株価取得: {len(backfilled)} 件...")
-    for rec in backfilled:
+    # ③ 株価取得（next_open または delivery_open が未取得のレコード）
+    need_prices = [r for r in records if r.get("announce_date") and r.get("announce_date_confirmed")
+                   and (not r.get("next_open") or not r.get("delivery_open"))]
+    print(f"[3] 株価取得: {len(need_prices)} 件...")
+    for rec in need_prices:
         code = rec.get("code")
         if not code:
             continue
-        print(f"  {rec.get('name')} ({code})")
-        prices = fetch_prices(code, days=120)
+        # 発表日から今日までの日数 + 余裕
+        try:
+            ann = datetime.fromisoformat(rec["announce_date"]).date()
+            days = (date.today() - ann).days + 30
+            days = max(days, 120)
+        except Exception:
+            days = 120
+        print(f"  {rec.get('name')} ({code}) range={days}d")
+        prices = fetch_prices(code, days=days)
         if prices:
             fill_prices(rec, prices)
         time.sleep(0.5)
