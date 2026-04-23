@@ -495,7 +495,7 @@ def scrape_rss() -> list:
             if not link_text and link.get("href"):
                 link_text = link["href"]
             code_m = re.search(r'[（(](\d{4})[）)]', title_text)
-            if code_m and "/po/" in (link_text or ""):
+            if code_m and "/po/" in (link_text or "") and not any(p in link_text for p in ("-kansoku", "-yotei", "-kabuka")):
                 entries.append({"code": code_m.group(1), "title": title_text, "url": link_text})
     except Exception as e:
         print(f"  RSSエラー: {e}")
