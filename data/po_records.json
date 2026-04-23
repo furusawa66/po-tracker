@@ -9884,8 +9884,8 @@
       "open_to_max": null,
       "dec_open": 121700,
       "dec_close": 124000,
-      "ret_open": null,
-      "ret_close": null,
+      "ret_open": -2.33,
+      "ret_close": -0.48,
       "delivery_open": 127000,
       "delivery_close": 128100,
       "delivery_ret": 0.87,
@@ -10073,6 +10073,6 @@
       "decision_date_confirmed": true
     }
   ],
-  "last_updated": "2026-04-23T10:20:37.209085",
+  "last_updated": "2026-04-23T10:32:04.127392",
   "count": 245
 }

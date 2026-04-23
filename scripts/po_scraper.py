@@ -429,10 +429,12 @@ def update_prices(rec: dict) -> dict:
         if p["open"] and p["close"]:
             rec["dec_open"]  = p["open"]
             rec["dec_close"] = p["close"]
-            if rec.get("next_open"):
-                rec["ret_open"]  = round((rec["dec_open"]  - rec["next_open"]) / rec["next_open"] * 100, 2)
-                rec["ret_close"] = round((rec["dec_close"] - rec["next_open"]) / rec["next_open"] * 100, 2)
-            print(f"  {rec['name']}: 騰落率(始){rec.get('ret_open')}% 騰落率(終){rec.get('ret_close')}%")
+
+    # 騰落率が未計算なら算出（dec_open/closeが先に入っていたケースも救済）
+    if rec.get("dec_open") and rec.get("next_open") and not rec.get("ret_open"):
+        rec["ret_open"]  = round((rec["dec_open"]  - rec["next_open"]) / rec["next_open"] * 100, 2)
+        rec["ret_close"] = round((rec["dec_close"] - rec["next_open"]) / rec["next_open"] * 100, 2)
+        print(f"  {rec['name']}: 騰落率(始){rec['ret_open']}% 騰落率(終){rec['ret_close']}%")
 
     # 受渡日 → 寄り・大引け・騰落率（A=受渡始値, B=受渡終値, C=B÷A）
     del_date = rec.get("delivery_date") or rec.get("delivery_estimated")
