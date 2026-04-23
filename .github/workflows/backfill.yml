@@ -1,0 +1,41 @@
+name: PO Backfill
+
+on:
+  workflow_dispatch:
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+permissions:
+  contents: write
+
+jobs:
+  backfill:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run backfill
+        run: python scripts/backfill.py
+
+      - name: Commit updated data
+        run: |
+          git config user.name  "po-tracker-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add data/
+          git diff --staged --quiet && echo "変更なし" || (
+            git commit -m "Backfill: 過去PO記事データ一括補完 $(date -u +'%Y-%m-%d %H:%M UTC')"
+            git pull --rebase
+            git push
+          )
