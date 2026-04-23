@@ -69,12 +69,6 @@ tr:hover td{background:#0e1525}
   <div class="fs">
     <div class="fg"><label>年</label>
       <select id="fy" onchange="render()"><option value="">全年</option></select></div>
-    <div class="fg"><label>ステータス</label>
-      <select id="fst" onchange="render()"><option value="">全て</option><option value="active">進行中</option><option value="complete">終了</option></select></div>
-    <div class="fg"><label>コード</label>
-      <input id="fc" type="text" placeholder="検索..." style="width:70px" oninput="render()"></div>
-    <div class="fg"><label>銘柄</label>
-      <input id="fn" type="text" placeholder="検索..." style="width:110px" oninput="render()"></div>
     <div class="fg"><label>種別</label>
       <select id="ft" onchange="render()"><option value="">全種別</option><option value="普通">普通</option><option value="リート">REIT</option></select></div>
     <div class="fg"><label>信用区分</label>
@@ -169,21 +163,11 @@ function buildCombined(){
 /* ─────── フィルタ ────────────────────────────────────────────────────────── */
 function getFiltered(){
   const yr=document.getElementById("fy").value;
-  const st=document.getElementById("fst").value;
-  const cd=document.getElementById("fc").value;
-  const nm=document.getElementById("fn").value.toLowerCase();
   const tp=document.getElementById("ft").value;
   const al=document.getElementById("fa").value;
   const mg=document.getElementById("fm").value;
   return combined.filter(r=>{
     if(yr&&r.year!=+yr) return false;
-    if(st){
-      const isActive=r.status!=="complete";
-      if(st==="active"&&!isActive) return false;
-      if(st==="complete"&&isActive) return false;
-    }
-    if(cd&&!(r.code||"").includes(cd)) return false;
-    if(nm&&!r.name.toLowerCase().includes(nm)) return false;
     if(tp&&r.type!==tp) return false;
     if(al&&r.lending!==al) return false;
     if(mg){
