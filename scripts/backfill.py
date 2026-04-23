@@ -322,8 +322,9 @@ def main():
     records = data.get("records", data)
 
     csv_recs = {r["code"]: r for r in records
-                if r.get("id", "").startswith("csv_") and r.get("code") and not r.get("announce_date")}
-    print(f"バックフィル対象: {len(csv_recs)} 件（announce_date なし）\n")
+                if r.get("code") and r.get("article_url")
+                and (not r.get("announce_date") or r.get("discount_rate") is None)}
+    print(f"バックフィル対象: {len(csv_recs)} 件（announce_date なし or discount_rate なし）\n")
 
     if not csv_recs:
         print("対象なし。終了。")
@@ -360,10 +361,15 @@ def main():
         # レコードに補完
         rec["article_url"] = art["url"]
         for field in ["announce_date", "decision_date", "delivery_date", "delivery_estimated",
-                      "market_cap", "po_scale", "issue_price", "discount_rate", "discount_range",
+                      "market_cap", "po_scale", "discount_range",
                       "dilution", "lending_type", "lead_managers", "co_managers"]:
             if info.get(field) and not rec.get(field):
                 rec[field] = info[field]
+        # 確定値は常に上書き
+        if info.get("issue_price"):
+            rec["issue_price"] = info["issue_price"]
+        if info.get("discount_rate"):
+            rec["discount_rate"] = info["discount_rate"]
 
         # announce_date のフォールバック
         if not rec.get("announce_date") and info.get("article_published"):
