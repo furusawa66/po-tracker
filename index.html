@@ -186,7 +186,11 @@ function getFiltered(){
     if(nm&&!r.name.toLowerCase().includes(nm)) return false;
     if(tp&&r.type!==tp) return false;
     if(al&&r.lending!==al) return false;
-    if(mg&&!abbrManagers(r.leadManagers).includes(mg)) return false;
+    if(mg){
+      const abbr=abbrManagers(r.leadManagers);
+      if(mg.startsWith("-")){if(abbr.includes(mg.slice(1))) return false;}
+      else{if(!abbr.includes(mg)) return false;}
+    }
     return true;
   });
 }
@@ -220,7 +224,10 @@ function populateFilters(){
   const curM=selM.value;
   const mgrs=[...new Set(combined.flatMap(r=>(r.leadManagers||[]).map(abbrManager)).filter(Boolean))].sort();
   while(selM.options.length>1) selM.remove(1);
-  mgrs.forEach(m=>{const o=document.createElement("option");o.value=m;o.textContent=m;selM.add(o);});
+  mgrs.forEach(m=>{
+    const o1=document.createElement("option");o1.value=m;o1.textContent=m;selM.add(o1);
+    const o2=document.createElement("option");o2.value="-"+m;o2.textContent=m+"除外";selM.add(o2);
+  });
   selM.value=curM;
 }
 
