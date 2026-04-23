@@ -75,6 +75,14 @@ tr:hover td{background:#0e1525}
       <select id="fa" onchange="render()"><option value="">全て</option><option value="貸借">貸借</option><option value="信用">信用</option><option value="売禁">貸借(売禁)</option></select></div>
     <div class="fg"><label>主幹事</label>
       <select id="fm" onchange="render()"><option value="">全て</option></select></div>
+    <div class="fg"><label>dis率</label>
+      <select id="fd" onchange="render()"><option value="">全て</option><option value="0-3">~3%</option><option value="3-5">3~5%</option><option value="5-7">5~7%</option><option value="7-">7%~</option></select></div>
+    <div class="fg"><label>PO規模</label>
+      <select id="fs" onchange="render()"><option value="">全て</option><option value="0-50">~50億</option><option value="50-100">50~100億</option><option value="100-500">100~500億</option><option value="500-">500億~</option></select></div>
+    <div class="fg"><label>規模割合</label>
+      <select id="fp" onchange="render()"><option value="">全て</option><option value="0-5">~5%</option><option value="5-10">5~10%</option><option value="10-20">10~20%</option><option value="20-">20%~</option></select></div>
+    <div class="fg"><label>希薄化率</label>
+      <select id="fdi" onchange="render()"><option value="">全て</option><option value="0-5">~5%</option><option value="5-10">5~10%</option><option value="10-15">10~15%</option><option value="15-">15%~</option></select></div>
   </div>
 
   <div class="stats">
@@ -161,11 +169,21 @@ function buildCombined(){
 }
 
 /* ─────── フィルタ ────────────────────────────────────────────────────────── */
+function rangeMatch(val,range){
+  if(!range||val==null) return !range;
+  const [lo,hi]=range.split("-").map(Number);
+  if(isNaN(hi)) return val>=lo;
+  return val>=lo&&val<hi;
+}
 function getFiltered(){
   const yr=document.getElementById("fy").value;
   const tp=document.getElementById("ft").value;
   const al=document.getElementById("fa").value;
   const mg=document.getElementById("fm").value;
+  const fd=document.getElementById("fd").value;
+  const fs=document.getElementById("fs").value;
+  const fp=document.getElementById("fp").value;
+  const fdi=document.getElementById("fdi").value;
   return combined.filter(r=>{
     if(yr&&r.year!=+yr) return false;
     if(tp&&r.type!==tp) return false;
@@ -175,6 +193,10 @@ function getFiltered(){
       if(mg.startsWith("-")){if(abbr.includes(mg.slice(1))) return false;}
       else{if(!abbr.includes(mg)) return false;}
     }
+    if(fd&&!rangeMatch(r.discountRate,fd)) return false;
+    if(fs&&!rangeMatch(r.scale,fs)) return false;
+    if(fp&&!rangeMatch(r.pct,fp)) return false;
+    if(fdi&&!rangeMatch(r.dilution,fdi)) return false;
     return true;
   });
 }
