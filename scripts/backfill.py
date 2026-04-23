@@ -32,6 +32,13 @@ def parse_jp_date(text: str, year: int = None) -> str | None:
         return None
 
 
+NON_PO_SLUG_PATTERNS = ["-kansoku", "-yotei", "-kabuka"]
+
+
+def is_non_po_url(url: str) -> bool:
+    return any(p in url for p in NON_PO_SLUG_PATTERNS)
+
+
 def collect_article_urls() -> list[dict]:
     """pokabu.net/category/po/ を全ページ巡回して記事URLとコードを収集"""
     articles = []
@@ -57,7 +64,7 @@ def collect_article_urls() -> list[dict]:
                 href = BASE_URL + href
             title = a.get_text(strip=True)
             code_m = re.search(r'[（(](\d{4})[）)]', title)
-            if code_m:
+            if code_m and not is_non_po_url(href):
                 articles.append({"url": href, "title": title, "code": code_m.group(1)})
                 found += 1
 
