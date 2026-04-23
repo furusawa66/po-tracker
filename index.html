@@ -93,6 +93,7 @@ tr:hover td{background:#0e1525}
         <th class="num" onclick="sort(7)">PO規模<br>(億円)</th>
         <th class="num" onclick="sort(8)">規模割合<br>(対時価総額)</th>
         <th class="num" onclick="sort(14)">希薄化率</th>
+        <th class="num" onclick="sort(15)">割引率</th>
         <th class="num" onclick="sort(9)" title="翌日寄付で入り、決定日の寄付で出た場合の損益率&#10;(決定日始値 − 翌日始値) ÷ 翌日始値 × 100">騰落率(始)<br>(対発表翌日始値)</th>
         <th class="num" onclick="sort(10)" title="翌日寄付で入り、決定日の引けで出た場合の損益率&#10;(決定日終値 − 翌日始値) ÷ 翌日始値 × 100">騰落率(終)<br>(対発表翌日始値)</th>
         <th class="num" onclick="sort(11)">受渡日<br>始値</th>
@@ -144,6 +145,7 @@ function recToRow(r, src){
     leadManagers:r.lead_managers||[], coManagers:r.co_managers||[],
     memo:r.memo||"", status:r.status||"pending", announceDate:r.announce_date||"",
     marketCap:r.market_cap, shares:r.shares_outstanding,
+    discountRate:r.discount_rate, discountRange:r.discount_range||"",
     newShares:r.new_shares, soldShares:r.sold_shares,
     decisionDate:r.decision_date, deliveryDate:r.delivery_date,
   };
@@ -236,6 +238,7 @@ function renderTable(data){
     <td class="num">${r.scale?r.scale.toLocaleString():"–"}</td>
     <td class="num">${r.pct!=null?pctStr(r.pct):"–"}</td>
     <td class="num">${r.dilution!=null?pctStr(r.dilution):"–"}</td>
+    <td class="num">${r.discountRate!=null?pctStr(r.discountRate):r.discountRange.replace(/[^\d.～~%]/g,"").replace(/^[～~%]+|[～~%]+$/g,"")||"–"}</td>
     <td class="num">${fmtCell(r.retOpen)}</td>
     <td class="num">${fmtCell(r.retClose)}</td>
     <td class="num">${r.delOpen?r.delOpen.toLocaleString():"–"}</td>
@@ -246,7 +249,7 @@ function renderTable(data){
 
 function sort(col){
   if(sCol===col) sAsc=!sAsc; else{sCol=col;sAsc=true;}
-  const keys=["year","name","code","status","type","lending","leadMgr","scale","pct","retOpen","retClose","delOpen","delClose","delRet","dilution"];
+  const keys=["year","name","code","status","type","lending","leadMgr","scale","pct","retOpen","retClose","delOpen","delClose","delRet","dilution","discountRate"];
   filt.sort((a,b)=>{
     const va=a[keys[col]],vb=b[keys[col]];
     if(va==null) return 1; if(vb==null) return -1;
