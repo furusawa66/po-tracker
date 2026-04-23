@@ -142,7 +142,7 @@ def scrape_article_data(url: str, code: str = "") -> dict:
                 if d:
                     info["delivery_estimated"] = d
 
-            elif "発行・売出価格" in key and "決定日" not in key:
+            elif ("発行" in key or "処分" in key) and "価格" in key and "決定日" not in key:
                 m = re.search(r'([\d,]+)円', val)
                 if m:
                     info["issue_price"] = int(m.group(1).replace(",", ""))
@@ -169,6 +169,16 @@ def scrape_article_data(url: str, code: str = "") -> dict:
     scale_m = re.search(r'(?:最大|合計)?(\d+(?:,\d+)*(?:\.\d+)?)億円規模', full_text)
     if scale_m:
         info["po_scale"] = float(scale_m.group(1).replace(",", ""))
+
+    # 記事本文から確定価格・割引率をフォールバック取得
+    if not info.get("issue_price"):
+        pm = re.search(r'(?:発行|処分)価格は([\d,]+)円に決定', full_text)
+        if pm:
+            info["issue_price"] = int(pm.group(1).replace(",", ""))
+    if not info.get("discount_rate"):
+        dm = re.search(r'割引率は([\d.]+)[％%]', full_text)
+        if dm:
+            info["discount_rate"] = float(dm.group(1))
 
     # 主幹事
     lead_managers = []

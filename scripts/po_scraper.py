@@ -226,7 +226,7 @@ def scrape_article(url: str, name: str = "", code: str = "") -> dict:
                 if d:
                     info["delivery_date"] = d
 
-            elif "発行・売出価格" in key and "決定日" not in key:
+            elif ("発行" in key or "処分") and "価格" in key and "決定日" not in key:
                 m = re.search(r'([\d,]+)円', val)
                 if m:
                     info["issue_price"] = int(m.group(1).replace(",", ""))
@@ -269,6 +269,16 @@ def scrape_article(url: str, name: str = "", code: str = "") -> dict:
     # 内訳も保持（デバッグ・参照用）
     if _treasury_shares > 0: info["treasury_shares"] = _treasury_shares
     if _oa_shares       > 0: info["oa_shares"]       = _oa_shares
+
+    # 記事本文から確定価格・割引率をフォールバック取得
+    if not info.get("issue_price"):
+        pm = re.search(r'(?:発行|処分)価格は([\d,]+)円に決定', full_text)
+        if pm:
+            info["issue_price"] = int(pm.group(1).replace(",", ""))
+    if not info.get("discount_rate"):
+        dm = re.search(r'割引率は([\d.]+)[％%]', full_text)
+        if dm:
+            info["discount_rate"] = float(dm.group(1))
 
     # ── 幹事テーブルを取得 ────────────────────────────────────────────────
     # pokabu.net 個別記事の「幹事」セクション:
