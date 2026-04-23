@@ -25,6 +25,8 @@ nav{display:flex;align-items:center;gap:12px;padding:14px 24px;background:#0b0f1
 /* filters */
 .fs{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:14px}
 .fg label{font-size:11px;color:#94a3b8;margin-right:4px}
+.mcb{font-size:11px;color:#94a3b8;cursor:pointer;user-select:none}
+.mcb input{margin-right:2px;accent-color:#3b82f6}
 select,input[type=text]{background:#0d1220;border:1px solid #1e3a5f;color:#e2e8f0;padding:5px 8px;border-radius:6px;font-size:12px;font-family:inherit;outline:none}
 select:focus,input:focus{border-color:#3b82f6}
 /* table */
@@ -74,7 +76,7 @@ tr:hover td{background:#0e1525}
     <div class="fg"><label>信用区分</label>
       <select id="fa" onchange="render()"><option value="">全て</option><option value="貸借">貸借</option><option value="信用">信用</option><option value="売禁">貸借(売禁)</option></select></div>
     <div class="fg"><label>主幹事</label>
-      <select id="fm" onchange="render()"><option value="">全て</option></select></div>
+      <span id="fm-checks" style="display:inline-flex;gap:6px;flex-wrap:wrap"></span></div>
     <div class="fg"><label>dis率</label>
       <select id="fd" onchange="render()"><option value="">全て</option><option value="0-3">~3%</option><option value="3-5">3~5%</option><option value="5-7">5~7%</option><option value="7-">7%~</option></select></div>
     <div class="fg"><label>PO規模</label>
@@ -179,7 +181,9 @@ function getFiltered(){
   const yr=document.getElementById("fy").value;
   const tp=document.getElementById("ft").value;
   const al=document.getElementById("fa").value;
-  const mg=document.getElementById("fm").value;
+  const checkedMgrs=getCheckedManagers();
+  const allCbs=document.querySelectorAll("#fm-checks input[type=checkbox]");
+  const mgrFilterActive=allCbs.length>0&&checkedMgrs.length<allCbs.length;
   const fd=document.getElementById("fd").value;
   const fs=document.getElementById("fs").value;
   const fp=document.getElementById("fp").value;
@@ -188,10 +192,9 @@ function getFiltered(){
     if(yr&&r.year!=+yr) return false;
     if(tp&&r.type!==tp) return false;
     if(al&&r.lending!==al) return false;
-    if(mg){
-      const abbr=abbrManagers(r.leadManagers);
-      if(mg.startsWith("-")){if(abbr.includes(mg.slice(1))) return false;}
-      else{if(!abbr.includes(mg)) return false;}
+    if(mgrFilterActive){
+      const abbrs=(r.leadManagers||[]).map(abbrManager);
+      if(!abbrs.some(a=>checkedMgrs.includes(a))) return false;
     }
     if(fd&&!rangeMatch(r.discountRate,fd)) return false;
     if(fs&&!rangeMatch(r.scale,fs)) return false;
@@ -225,16 +228,25 @@ function populateFilters(){
   while(selY.options.length>1) selY.remove(1);
   yrs.forEach(y=>{const o=document.createElement("option");o.value=y;o.textContent=y;selY.add(o);});
   selY.value=curY;
-  // 主幹事
-  const selM=document.getElementById("fm");
-  const curM=selM.value;
-  const mgrs=[...new Set(combined.flatMap(r=>(r.leadManagers||[]).map(abbrManager)).filter(Boolean))].sort();
-  while(selM.options.length>1) selM.remove(1);
-  mgrs.forEach(m=>{
-    const o1=document.createElement("option");o1.value=m;o1.textContent=m;selM.add(o1);
-    const o2=document.createElement("option");o2.value="-"+m;o2.textContent=m+"除外";selM.add(o2);
-  });
-  selM.value=curM;
+  // 主幹事チェックボックス
+  const wrap=document.getElementById("fm-checks");
+  const mgrs=[...new Set(combined.flatMap(r=>(r.leadManagers||[]).map(abbrManager)).filter(Boolean))];
+  mgrs.sort((a,b)=>(MGR_ORDER[a]??99)-(MGR_ORDER[b]??99));
+  if(!wrap.children.length){
+    mgrs.forEach(m=>{
+      const lbl=document.createElement("label");lbl.className="mcb";
+      const cb=document.createElement("input");cb.type="checkbox";cb.checked=true;cb.value=m;
+      cb.onchange=()=>render();
+      lbl.appendChild(cb);lbl.appendChild(document.createTextNode(m));
+      wrap.appendChild(lbl);
+    });
+  }
+}
+function getCheckedManagers(){
+  const cbs=document.querySelectorAll("#fm-checks input[type=checkbox]");
+  const checked=[];
+  cbs.forEach(cb=>{if(cb.checked) checked.push(cb.value);});
+  return checked;
 }
 
 /* ─────── テーブル ───────────────────────────────────────────────────────── */
