@@ -249,14 +249,17 @@ function abbrManager(name){
   if(name.includes("野村")) return "野";
   if(name.includes("大和")) return "大";
   if(name.includes("日興")) return "日";
-  if(name.includes("モルガン")) return "三";
+  if(name.includes("モルガン")||name.includes("JP")||name.includes("ＪＰ")) return "三";
   if(name.includes("みずほ")) return "み";
   if(name.includes("SBI")||name.includes("ＳＢＩ")) return "S";
   if(name.includes("岡三")) return "岡";
   if(name.includes("楽天")) return "楽";
+  if(name.includes("ゴールドマン")) return "GS";
+  if(name.includes("シティ")) return "Ci";
+  if(name.includes("BofA")||name.includes("バンカメ")) return "BA";
   return name.charAt(0);
 }
-const MGR_ORDER={"野":0,"大":1,"み":2,"日":3,"三":4};
+const MGR_ORDER={"野":0,"大":1,"み":2,"日":3,"三":4,"S":5,"岡":6,"楽":7,"GS":8,"Ci":9,"BA":10};
 function abbrManagers(list){
   if(!list||!list.length) return "";
   const abbrs=[...new Set(list.map(abbrManager))];
