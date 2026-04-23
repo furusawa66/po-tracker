@@ -230,8 +230,7 @@ function populateFilters(){
   selY.value=curY;
   // 主幹事チェックボックス
   const wrap=document.getElementById("fm-checks");
-  const mgrs=[...new Set(combined.flatMap(r=>(r.leadManagers||[]).map(abbrManager)).filter(Boolean))];
-  mgrs.sort((a,b)=>(MGR_ORDER[a]??99)-(MGR_ORDER[b]??99));
+  const mgrs=["野","大","み","日","三"];
   if(!wrap.children.length){
     mgrs.forEach(m=>{
       const lbl=document.createElement("label");lbl.className="mcb";
