@@ -111,6 +111,7 @@ tr:hover td{background:#0e1525}
         <th class="num" onclick="sort(14)" title="翌日寄付で入り、決定日の寄付で出た場合の損益率&#10;(決定日始値 − 翌日始値) ÷ 翌日始値 × 100">決定日<br>騰落率(始)</th>
         <th class="num" onclick="sort(15)" title="翌日寄付で入り、決定日の引けで出た場合の損益率&#10;(決定日終値 − 翌日始値) ÷ 翌日始値 × 100">決定日<br>騰落率(終)</th>
         <th class="num" onclick="sort(16)">受渡日<br>始値</th>
+        <th onclick="sort(19)" title="受渡日始値が前日終値より 0.5% 以上上 → 🟢GU / 0.5% 以上下 → 🔴GD / ±0.5% 以内 → –">受渡日<br>GU</th>
         <th class="num" onclick="sort(17)">受渡日<br>終値</th>
         <th class="num" onclick="sort(18)">受渡日<br>騰落率</th>
       </tr></thead>
@@ -156,6 +157,7 @@ function recToRow(r, src){
     decOpen:r.dec_open, decClose:r.dec_close,
     retOpen:r.ret_open, retClose:r.ret_close,
     delOpen:r.delivery_open, delClose:r.delivery_close, delRet:r.delivery_ret,
+    prevClose:r.prev_close_before_delivery, gapPct:r.delivery_gap_pct,
     leadManagers:r.lead_managers||[], coManagers:r.co_managers||[],
     memo:r.memo||"", status:((r.delivery_open&&r.delivery_close)||(r.delivery_date&&new Date(r.delivery_date)<new Date())||(r.announce_date&&new Date(r.announce_date)<new Date(Date.now()-30*864e5)))?"complete":(r.status||"pending"), announceDate:r.announce_date||"",
     marketCap:r.market_cap, shares:r.shares_outstanding,
@@ -297,6 +299,7 @@ function renderTable(data){
     <td class="num">${fmtCell(r.retOpen)}</td>
     <td class="num">${fmtCell(r.retClose)}</td>
     <td class="num">${r.delOpen?r.delOpen.toLocaleString():"–"}</td>
+    <td title="${r.prevClose?`前日終値 ${r.prevClose.toLocaleString()} → 始値 ${r.delOpen?r.delOpen.toLocaleString():""} (${r.gapPct!=null?(r.gapPct>0?'+':'')+r.gapPct+'%':'–'})`:''}">${r.gapPct==null?'–':(r.gapPct>=0.5?'<span style="color:#34d399">GU</span>':r.gapPct<=-0.5?'<span style="color:#f87171">GD</span>':'–')}</td>
     <td class="num">${r.delClose?r.delClose.toLocaleString():"–"}</td>
     <td class="num">${fmtCell(r.delRet)}</td>
   </tr>`).join("");
@@ -304,7 +307,7 @@ function renderTable(data){
 
 function sort(col){
   if(sCol===col) sAsc=!sAsc; else{sCol=col;sAsc=true;}
-  const keys=["year","name","code","status","type","lending","leadMgr","discountRate","scale","pct","dilution","nextOpen","decOpen","decClose","retOpen","retClose","delOpen","delClose","delRet"];
+  const keys=["year","name","code","status","type","lending","leadMgr","discountRate","scale","pct","dilution","nextOpen","decOpen","decClose","retOpen","retClose","delOpen","delClose","delRet","gapPct"];
   filt.sort((a,b)=>{
     const va=a[keys[col]],vb=b[keys[col]];
     if(va==null) return 1; if(vb==null) return -1;

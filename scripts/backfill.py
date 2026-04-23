@@ -276,6 +276,13 @@ def next_biz_day(d: date) -> date:
     return nd
 
 
+def prev_biz_day(d: date) -> date:
+    pd = d - timedelta(days=1)
+    while pd.weekday() >= 5:
+        pd -= timedelta(days=1)
+    return pd
+
+
 def fill_prices(rec: dict, prices: dict):
     """株価データから騰落率等を計算してレコードに書き込む"""
     ann_str = rec.get("announce_date")
@@ -316,6 +323,23 @@ def fill_prices(rec: dict, prices: dict):
             rec["delivery_open"] = p["open"]
             rec["delivery_close"] = p["close"]
             rec["delivery_ret"] = round((p["close"] - p["open"]) / p["open"] * 100, 2)
+
+    # 受渡日前日終値 & GU率（ギャップ率）
+    if del_str and not rec.get("prev_close_before_delivery"):
+        try:
+            del_date = datetime.fromisoformat(del_str).date()
+            # 前営業日から遡って、prices にある日を探す（祝日対応）
+            for _ in range(7):
+                del_date = prev_biz_day(del_date)
+                if del_date.isoformat() in prices:
+                    p = prices[del_date.isoformat()]
+                    if p["close"]:
+                        rec["prev_close_before_delivery"] = p["close"]
+                        if rec.get("delivery_open"):
+                            rec["delivery_gap_pct"] = round((rec["delivery_open"] - p["close"]) / p["close"] * 100, 2)
+                    break
+        except Exception:
+            pass
 
 
 def main():
@@ -444,9 +468,9 @@ def main():
 
     print(f"\n補完: {matched} 件 / 新規追加: {added} 件\n")
 
-    # ③ 株価取得（next_open または delivery_open が未取得のレコード）
+    # ③ 株価取得（next_open / delivery_open / prev_close_before_delivery が未取得のレコード）
     need_prices = [r for r in records if r.get("announce_date") and r.get("announce_date_confirmed")
-                   and (not r.get("next_open") or not r.get("delivery_open"))]
+                   and (not r.get("next_open") or not r.get("delivery_open") or not r.get("prev_close_before_delivery"))]
     print(f"[3] 株価取得: {len(need_prices)} 件...")
     for rec in need_prices:
         code = rec.get("code")
