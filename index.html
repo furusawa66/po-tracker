@@ -246,9 +246,12 @@ function abbrManager(name){
   if(name.includes("楽天")) return "楽";
   return name.charAt(0);
 }
+const MGR_ORDER={"野":0,"大":1,"み":2,"日":3,"三":4};
 function abbrManagers(list){
   if(!list||!list.length) return "";
-  return [...new Set(list.map(abbrManager))].join("");
+  const abbrs=[...new Set(list.map(abbrManager))];
+  abbrs.sort((a,b)=>(MGR_ORDER[a]??99)-(MGR_ORDER[b]??99));
+  return abbrs.join("");
 }
 
 function renderTable(data){
