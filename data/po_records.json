@@ -9843,15 +9843,15 @@
       "decision_date_confirmed": true
     },
     {
-      "id": "8958_20260403",
+      "id": "8958_20260325",
       "code": "8958",
       "name": "グローバル・ワン不動産投資法人",
       "type": "普通",
       "alert": "売り禁",
       "lending_type": "",
-      "announce_date": "2026-04-03",
+      "announce_date": "2026-03-25",
       "year": 2026,
-      "decision_date": "2026-04-03",
+      "decision_date": "2026-04-01",
       "delivery_estimated": "2026-04-08",
       "delivery_date": "2026-04-08",
       "issue_price": 117682,
@@ -10073,6 +10073,6 @@
       "decision_date_confirmed": true
     }
   ],
-  "last_updated": "2026-04-23T10:32:04.127392",
+  "last_updated": "2026-04-23T10:37:28.689196",
   "count": 245
 }
