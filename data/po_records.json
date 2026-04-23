@@ -10061,10 +10061,10 @@
       "next_open": 731.0,
       "max_price": 785.0,
       "open_to_max": 7.39,
-      "dec_open": null,
-      "dec_close": null,
-      "ret_open": null,
-      "ret_close": null,
+      "dec_open": 712.0,
+      "dec_close": 702.0,
+      "ret_open": -2.6,
+      "ret_close": -3.97,
       "delivery_open": null,
       "delivery_close": null,
       "delivery_ret": null,
@@ -10073,6 +10073,6 @@
       "decision_date_confirmed": true
     }
   ],
-  "last_updated": "2026-04-22T11:42:12.435587",
+  "last_updated": "2026-04-23T07:14:19.101995",
   "count": 245
 }
