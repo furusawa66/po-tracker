@@ -303,7 +303,7 @@ function render(){
   const closes=filt.map(r=>r.retClose).filter(v=>v!=null);
   const avgO=avg(opens),avgC=avg(closes);
   const dels=filt.map(r=>r.delRet).filter(v=>v!=null);
-  const delWins=dels.filter(v=>v>0).length;
+  const avgD=avg(dels);
 
   document.getElementById("s0").textContent=filt.length;
   const s1=document.getElementById("s1");
@@ -312,7 +312,9 @@ function render(){
   const s2=document.getElementById("s2");
   s2.textContent=avgC!=null?fmt(avgC):"–";
   s2.className="sv "+(avgC!=null?(avgC>=0?"pos":"neg"):"");
-  document.getElementById("s3").textContent=dels.length?pctStr(delWins/dels.length*100):"–";
+  const s3=document.getElementById("s3");
+  s3.textContent=avgD!=null?fmt(avgD):"–";
+  s3.className="sv "+(avgD!=null?(avgD>=0?"pos":"neg"):"");
 
   renderTable(filt);
 }
