@@ -321,79 +321,121 @@ def main():
         data = json.load(f)
     records = data.get("records", data)
 
-    csv_recs = {r["code"]: r for r in records
-                if r.get("code") and r.get("article_url")
-                and (not r.get("announce_date") or r.get("discount_rate") is None)}
-    print(f"バックフィル対象: {len(csv_recs)} 件（announce_date なし or discount_rate なし）\n")
+    # 既存レコードで補完が必要なもの
+    need_update = {r["code"]: r for r in records
+                   if r.get("code") and r.get("article_url")
+                   and (not r.get("announce_date") or r.get("discount_rate") is None)}
+    print(f"補完対象: {len(need_update)} 件\n")
 
-    if not csv_recs:
-        print("対象なし。終了。")
-        return
+    # 既存の (code, year) ペアを収集
+    existing_keys = set()
+    for r in records:
+        if r.get("code") and r.get("year"):
+            existing_keys.add((r["code"], r["year"]))
 
     # ① 記事URL収集
     print("[1] pokabu.net カテゴリページから記事URL収集...")
     articles = collect_article_urls()
 
-    # ② 記事とレコードのマッチング＆データ取得
+    # ② 記事スクレイピング（既存補完 + 新規追加）
     print("[2] 記事スクレイピング...")
     matched = 0
+    added = 0
     for art in articles:
         code = art["code"]
-        if code not in csv_recs:
-            continue
-        rec = csv_recs[code]
-
-        # 同一コードで複数PO（年が異なる）の場合、年で絞り込み
         year_m = re.search(r'20(\d{2})', art["url"])
-        if year_m:
-            art_year = 2000 + int(year_m.group(1))
+        art_year = (2000 + int(year_m.group(1))) if year_m else date.today().year
+
+        # 既存レコードの補完
+        if code in need_update:
+            rec = need_update[code]
             if rec.get("year") and rec["year"] != art_year:
+                pass  # 年が違う → 新規追加チェックへ
+            else:
+                print(f"  補完: {rec.get('name')} ({code}): {art['url']}")
+                info = scrape_article_data(art["url"], code)
+                time.sleep(5)
+                if info:
+                    rec["article_url"] = art["url"]
+                    for field in ["announce_date", "decision_date", "delivery_date", "delivery_estimated",
+                                  "market_cap", "po_scale", "discount_range",
+                                  "dilution", "lending_type", "lead_managers", "co_managers"]:
+                        if info.get(field) and not rec.get(field):
+                            rec[field] = info[field]
+                    if info.get("issue_price"):
+                        rec["issue_price"] = info["issue_price"]
+                    if info.get("discount_rate"):
+                        rec["discount_rate"] = info["discount_rate"]
+                    if not rec.get("announce_date") and info.get("article_published"):
+                        rec["announce_date"] = info["article_published"]
+                    if rec.get("announce_date"):
+                        rec["announce_date_confirmed"] = True
+                        rec["id"] = f"{code}_{rec['announce_date'].replace('-', '')}"
+                    if rec.get("decision_date"):
+                        rec["decision_date_confirmed"] = True
+                    if rec.get("po_scale") and rec.get("market_cap"):
+                        rec["po_pct"] = round(rec["po_scale"] / rec["market_cap"] * 100, 1)
+                    lt = rec.get("lending_type", "")
+                    rec["alert"] = "" if lt == "貸借" else ("注意" if lt == "信用" else rec.get("alert", ""))
+                    matched += 1
+                    del need_update[code]
                 continue
 
-        print(f"  {rec.get('name')} ({code}): {art['url']}")
-        info = scrape_article_data(art["url"], code)
-        time.sleep(5)
-
-        if not info:
-            print(f"    → データ取得失敗")
+        # 新規追加: データに存在しない記事 → 新レコード作成
+        if (code, art_year) in existing_keys:
             continue
 
-        # レコードに補完
-        rec["article_url"] = art["url"]
-        for field in ["announce_date", "decision_date", "delivery_date", "delivery_estimated",
-                      "market_cap", "po_scale", "discount_range",
-                      "dilution", "lending_type", "lead_managers", "co_managers"]:
-            if info.get(field) and not rec.get(field):
-                rec[field] = info[field]
-        # 確定値は常に上書き
-        if info.get("issue_price"):
-            rec["issue_price"] = info["issue_price"]
-        if info.get("discount_rate"):
-            rec["discount_rate"] = info["discount_rate"]
+        print(f"  新規: {art['title']} ({code}): {art['url']}")
+        info = scrape_article_data(art["url"], code)
+        time.sleep(5)
+        if not info:
+            continue
 
-        # announce_date のフォールバック
-        if not rec.get("announce_date") and info.get("article_published"):
-            rec["announce_date"] = info["article_published"]
+        announce = info.get("announce_date") or info.get("article_published") or ""
+        name_m = re.search(r'[】](.*?)[（(]', art["title"])
+        name = name_m.group(1).strip() if name_m else art["title"]
+        lt = info.get("lending_type", "")
+        is_reit = any(k in name for k in ["リート", "投資法人"]) or any(k in (art["title"] or "") for k in ["リート", "投資法人"])
 
-        if rec.get("announce_date"):
-            rec["announce_date_confirmed"] = True
-            rec["id"] = f"{code}_{rec['announce_date'].replace('-', '')}"
+        new_rec = {
+            "id": f"{code}_{announce.replace('-','')}" if announce else f"{code}_{art_year}",
+            "code": code, "name": name,
+            "type": "リート" if is_reit else "普通",
+            "alert": "" if lt == "貸借" else ("注意" if lt == "信用" else ""),
+            "lending_type": lt,
+            "announce_date": announce, "announce_date_confirmed": bool(announce),
+            "year": art_year,
+            "decision_date": info.get("decision_date"),
+            "decision_date_confirmed": bool(info.get("decision_date")),
+            "delivery_date": info.get("delivery_date"),
+            "delivery_estimated": info.get("delivery_estimated"),
+            "market_cap": info.get("market_cap"),
+            "po_scale": info.get("po_scale"),
+            "po_pct": None,
+            "new_shares": None, "sold_shares": None, "oa_shares": None,
+            "shares_outstanding": None,
+            "dilution": info.get("dilution"),
+            "issue_price": info.get("issue_price"),
+            "discount_rate": info.get("discount_rate"),
+            "discount_range": info.get("discount_range"),
+            "lead_managers": info.get("lead_managers", []),
+            "co_managers": info.get("co_managers", []),
+            "article_url": art["url"],
+            "next_open": None, "max_price": None, "open_to_max": None,
+            "dec_open": None, "dec_close": None,
+            "ret_open": None, "ret_close": None,
+            "delivery_open": None, "delivery_close": None, "delivery_ret": None,
+            "treasury_shares": None,
+            "memo": "", "status": "pending",
+        }
+        if new_rec["po_scale"] and new_rec["market_cap"]:
+            new_rec["po_pct"] = round(new_rec["po_scale"] / new_rec["market_cap"] * 100, 1)
 
-        if rec.get("decision_date"):
-            rec["decision_date_confirmed"] = True
+        records.append(new_rec)
+        existing_keys.add((code, art_year))
+        added += 1
 
-        # po_pct 計算
-        if rec.get("po_scale") and rec.get("market_cap"):
-            rec["po_pct"] = round(rec["po_scale"] / rec["market_cap"] * 100, 1)
-
-        # alert 更新
-        lt = rec.get("lending_type", "")
-        rec["alert"] = "" if lt == "貸借" else ("注意" if lt == "信用" else rec.get("alert", ""))
-
-        matched += 1
-        del csv_recs[code]
-
-    print(f"\nマッチ: {matched} 件\n")
+    print(f"\n補完: {matched} 件 / 新規追加: {added} 件\n")
 
     # ③ 株価取得（next_open または delivery_open が未取得のレコード）
     need_prices = [r for r in records if r.get("announce_date") and r.get("announce_date_confirmed")
