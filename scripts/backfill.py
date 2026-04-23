@@ -67,7 +67,7 @@ def collect_article_urls() -> list[dict]:
 
         print(f"    {found} 件取得")
         page += 1
-        time.sleep(1.5)
+        time.sleep(5)
 
     # 重複除去
     seen = set()
@@ -317,7 +317,7 @@ def main():
 
         print(f"  {rec.get('name')} ({code}): {art['url']}")
         info = scrape_article_data(art["url"], code)
-        time.sleep(1.5)
+        time.sleep(5)
 
         if not info:
             print(f"    → データ取得失敗")
