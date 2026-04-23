@@ -71,7 +71,7 @@ tr:hover td{background:#0e1525}
     <div class="fg"><label>信用区分</label>
       <select id="fa" onchange="render()"><option value="">全て</option><option value="貸借">貸借</option><option value="信用">信用</option><option value="売禁">貸借(売禁)</option></select></div>
     <div class="fg"><label>ステータス</label>
-      <select id="fst" onchange="render()"><option value="">全て</option><option value="active">進行中</option><option value="complete">完了</option></select></div>
+      <select id="fst" onchange="render()"><option value="">全て</option><option value="active">進行中</option><option value="complete">終了</option></select></div>
     <div class="fg"><label>銘柄</label>
       <input id="fn" type="text" placeholder="検索..." style="width:110px" oninput="render()"></div>
   </div>
@@ -203,7 +203,7 @@ function populateYearFilter(){
 
 /* ─────── テーブル ───────────────────────────────────────────────────────── */
 function statusBadge(s){
-  if(s==="complete") return {label:"完了",cls:"b-done"};
+  if(s==="complete") return {label:"終了",cls:"b-done"};
   return {label:"進行中",cls:"b-pend"};
 }
 
