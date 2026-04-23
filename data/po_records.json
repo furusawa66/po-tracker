@@ -11197,7 +11197,7 @@
       "id": "8958_20260325",
       "code": "8958",
       "name": "グローバル・ワン不動産投資法人",
-      "type": "普通",
+      "type": "リート",
       "alert": "",
       "lending_type": "貸借",
       "announce_date": "2026-03-25",
@@ -11436,6 +11436,6 @@
       "announce_date_confirmed": true
     }
   ],
-  "last_updated": "2026-04-23T14:19:55.030785",
+  "last_updated": "2026-04-23T14:22:07.974617",
   "count": 245
 }
