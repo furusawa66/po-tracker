@@ -198,34 +198,58 @@ def scrape_article_data(url: str, code: str = "") -> dict:
 
 
 def fetch_prices(code: str, days: int = 90) -> dict:
-    """Yahoo Finance から株価を取得"""
+    """Yahoo Finance から株価を取得（v8 API → v7 CSV フォールバック）"""
     ticker = f"{code}.T"
+    prices = {}
+
+    # まず v8 API を試す
     url = f"https://query1.finance.yahoo.com/v8/finance/chart/{ticker}?interval=1d&range={days}d"
     try:
         res = requests.get(url, headers=HEADERS, timeout=12)
-        if res.status_code != 200:
-            return {}
-        data = res.json()
-        result = data.get("chart", {}).get("result")
-        if not result:
-            return {}
-        r = result[0]
-        q = r["indicators"]["quote"][0]
-        tss = r.get("timestamp", [])
-        prices = {}
-        for i, ts in enumerate(tss):
-            if not ts:
-                continue
-            d = datetime.fromtimestamp(ts).strftime("%Y-%m-%d")
-            prices[d] = {
-                "open":  round(q["open"][i],  2) if q["open"][i]  else None,
-                "close": round(q["close"][i], 2) if q["close"][i] else None,
-                "high":  round(q["high"][i],  2) if q["high"][i]  else None,
-            }
-        return prices
+        if res.status_code == 200:
+            data = res.json()
+            result = data.get("chart", {}).get("result")
+            if result:
+                r = result[0]
+                q = r["indicators"]["quote"][0]
+                tss = r.get("timestamp", [])
+                for i, ts in enumerate(tss):
+                    if not ts:
+                        continue
+                    d = datetime.fromtimestamp(ts).strftime("%Y-%m-%d")
+                    prices[d] = {
+                        "open":  round(q["open"][i],  2) if q["open"][i]  else None,
+                        "close": round(q["close"][i], 2) if q["close"][i] else None,
+                        "high":  round(q["high"][i],  2) if q["high"][i]  else None,
+                    }
+                if prices:
+                    return prices
+    except Exception:
+        pass
+
+    # v7 CSV ダウンロード（過去データ対応）
+    from_ts = int((datetime.now() - timedelta(days=days)).timestamp())
+    to_ts = int(datetime.now().timestamp())
+    csv_url = f"https://query1.finance.yahoo.com/v7/finance/download/{ticker}?period1={from_ts}&period2={to_ts}&interval=1d&events=history"
+    try:
+        res = requests.get(csv_url, headers=HEADERS, timeout=15)
+        if res.status_code == 200 and "Date" in res.text[:50]:
+            for line in res.text.strip().split("\n")[1:]:
+                parts = line.split(",")
+                if len(parts) >= 5:
+                    d = parts[0]
+                    try:
+                        prices[d] = {
+                            "open":  round(float(parts[1]), 2) if parts[1] != "null" else None,
+                            "close": round(float(parts[4]), 2) if parts[4] != "null" else None,
+                            "high":  round(float(parts[2]), 2) if parts[2] != "null" else None,
+                        }
+                    except ValueError:
+                        continue
     except Exception as e:
-        print(f"    Yahoo Finance エラー ({code}): {e}")
-        return {}
+        print(f"    Yahoo CSV エラー ({code}): {e}")
+
+    return prices
 
 
 def next_biz_day(d: date) -> date:
