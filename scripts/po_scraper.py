@@ -166,6 +166,11 @@ def scrape_article(url: str, name: str = "", code: str = "") -> dict:
         print(f"  記事取得エラー ({url}): {e}")
         return info
 
+    # 記事公開日（meta タグ）をフォールバック用に取得
+    pub_meta = soup.find("meta", {"property": "article:published_time"}) or soup.find("meta", {"name": "pubdate"})
+    if pub_meta and pub_meta.get("content"):
+        info["article_published"] = pub_meta["content"][:10]
+
     # 種類判定
     info["type"] = "リート" if (re.match(r'\d{4}F$', code or "") or any(k in (name or "") for k in ["リート", "投資法人"])) else "普通"
 
@@ -196,7 +201,12 @@ def scrape_article(url: str, name: str = "", code: str = "") -> dict:
             key = cells[0].get_text(strip=True)
             val = cells[1].get_text(strip=True)
 
-            if "時価総額" in key:
+            if "発表日" in key or "公表日" in key:
+                d = parse_jp_date(val)
+                if d:
+                    info["announce_date"] = d
+
+            elif "時価総額" in key:
                 m = re.search(r'([\d,]+)億', val)
                 if m:
                     info["market_cap"] = int(m.group(1).replace(",", ""))
@@ -487,8 +497,36 @@ def main():
                     rec["delivery_date"] = di["delivery_date"]
                 if not rec.get("issue_price") and di.get("issue_price"):
                     rec["issue_price"] = di["issue_price"]
+            # announce_date が未確認なら記事から正しい発表日を取得
+            if rec.get("article_url") and not rec.get("announce_date_confirmed"):
+                print(f"  発表日確認: {rec.get('name')} ({code})")
+                a_info = scrape_article(rec["article_url"], name=rec.get("name",""), code=code or "")
+                time.sleep(0.8)
+                real_date = a_info.get("announce_date") or a_info.get("article_published")
+                if real_date and real_date != rec.get("announce_date"):
+                    old = rec.get("announce_date")
+                    rec["announce_date"] = real_date
+                    rec["id"] = f"{code}_{real_date.replace('-','')}"
+                    # 日付が変わったので株価データをリセット（次回再取得）
+                    rec["next_open"] = None
+                    rec["dec_open"] = None
+                    rec["dec_close"] = None
+                    rec["ret_open"] = None
+                    rec["ret_close"] = None
+                    rec["decision_date_confirmed"] = False
+                    print(f"    発表日修正: {old} → {real_date}（株価リセット）")
+                rec["announce_date_confirmed"] = True
+                # 補完データも更新
+                for field in ["type", "po_scale", "market_cap", "new_shares", "treasury_shares",
+                              "sold_shares", "oa_shares", "discount_range", "discount_rate",
+                              "delivery_estimated", "lead_managers", "co_managers", "dilution"]:
+                    if a_info.get(field) and not rec.get(field):
+                        rec[field] = a_info[field]
+                if rec.get("po_scale") and rec.get("market_cap"):
+                    rec["po_pct"] = round(rec["po_scale"] / rec["market_cap"] * 100, 1)
+
             # 記事データが未取得の場合は再スクレイピング
-            if rec.get("article_url") and (not rec.get("po_scale") and not rec.get("new_shares")
+            elif rec.get("article_url") and (not rec.get("po_scale") and not rec.get("new_shares")
                                             or not rec.get("dilution")):
                 print(f"  記事再取得: {rec.get('name')} ({code})")
                 article = scrape_article(rec["article_url"], name=rec.get("name",""), code=rec.get("code","") or "")
@@ -511,14 +549,16 @@ def main():
             time.sleep(0.8)
 
         lending = si.get("lending_type", "")
+        actual_announce = article.get("announce_date") or article.get("article_published") or today
         new_rec = {
-            "id":                 f"{code}_{today.replace('-','')}",
+            "id":                 f"{code}_{actual_announce.replace('-','')}",
             "code":               code,
             "name":               si.get("name", ""),
             "type":               article.get("type", "普通"),
             "alert":              lending_to_alert(lending),
             "lending_type":       lending,
-            "announce_date":      today,
+            "announce_date":      actual_announce,
+            "announce_date_confirmed": bool(article.get("announce_date")),
             "year":               THIS_YEAR,
             "decision_date":      article.get("decision_date") or si.get("decision_date"),
             "delivery_estimated": article.get("delivery_estimated"),
