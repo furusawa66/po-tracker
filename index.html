@@ -86,8 +86,7 @@ tr:hover td{background:#0e1525}
   <div class="tw">
     <div class="sc2"><table>
       <thead><tr>
-        <th onclick="sort(0)">年</th><th onclick="sort(1)">銘柄</th><th onclick="sort(2)">コード</th>
-        <th>ステータス</th>
+        <th onclick="sort(0)">年</th><th>ステータス</th><th onclick="sort(2)">コード</th><th onclick="sort(1)">銘柄</th>
         <th>種別</th><th>信用区分</th>
         <th>主幹事 <a href="https://x.com/ipopo16" target="_blank" rel="noopener" style="color:#64748b;font-weight:400;text-decoration:none">(参考X)</a></th>
         <th class="num" onclick="sort(15)">dis率</th>
@@ -229,9 +228,9 @@ function abbrManagers(list){
 function renderTable(data){
   document.getElementById("tb").innerHTML=data.map(r=>`<tr>
     <td style="color:#64748b;font-family:monospace">${r.year}</td>
-    <td style="max-width:140px;overflow:hidden;text-overflow:ellipsis" title="${esc(r.name)}">${r.code?`<a href="https://kabutan.jp/stock/?code=${esc(r.code)}" target="_blank" rel="noopener" style="color:#e2e8f0;text-decoration:none">${esc(r.name)}</a>`:esc(r.name)}</td>
-    <td style="color:#64748b;font-family:monospace;font-size:11px">${r.code||"–"}</td>
     <td>${(()=>{const b=statusBadge(r.status);return `<span class="b ${b.cls}">${b.label}</span>`;})()}</td>
+    <td style="color:#64748b;font-family:monospace;font-size:11px">${r.code||"–"}</td>
+    <td style="max-width:140px;overflow:hidden;text-overflow:ellipsis" title="${esc(r.name)}">${r.code?`<a href="https://kabutan.jp/stock/?code=${esc(r.code)}" target="_blank" rel="noopener" style="color:#e2e8f0;text-decoration:none">${esc(r.name)}</a>`:esc(r.name)}</td>
     <td><span class="b ${r.type==="リート"?"b-r":"b-n"}">${esc(r.type)}</span></td>
     <td><span class="b ${r.lending==="貸借"?"b-tai":r.lending==="信用"?"b-c":"b-ban"}">${r.lending==="売禁"?"貸借(売禁)":esc(r.lending)}</span></td>
     <td style="font-family:'Meiryo','メイリオ',sans-serif;font-size:12px" title="${esc((r.leadManagers||[]).join(' / '))}">${esc(abbrManagers(r.leadManagers))||"–"}</td>
