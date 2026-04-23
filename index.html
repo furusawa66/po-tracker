@@ -89,7 +89,12 @@ tr:hover td{background:#0e1525}
 
   <div class="tw">
     <div class="sc2"><table>
-      <thead><tr>
+      <thead>
+      <tr>
+        <th colspan="11" style="text-align:center;color:#94a3b8;font-size:10px;letter-spacing:.1em;border-bottom:1px solid #1e3a5f">PO情報</th>
+        <th colspan="8" style="text-align:center;color:#94a3b8;font-size:10px;letter-spacing:.1em;border-left:2px solid #334155;border-bottom:1px solid #1e3a5f">株価情報</th>
+      </tr>
+      <tr>
         <th onclick="sort(0)">年</th><th>ステータス</th><th onclick="sort(2)">コード</th><th onclick="sort(1)">銘柄</th>
         <th>種別</th><th>信用区分</th>
         <th>主幹事 <a href="https://x.com/ipopo16" target="_blank" rel="noopener" style="color:#64748b;font-weight:400;text-decoration:none">(参考X)</a></th>
@@ -97,7 +102,7 @@ tr:hover td{background:#0e1525}
         <th class="num" onclick="sort(8)">PO規模<br>(億円)</th>
         <th class="num" onclick="sort(9)">規模割合<br>(対時価総額)</th>
         <th class="num" onclick="sort(10)">希薄化率</th>
-        <th class="num" onclick="sort(11)">PO発表翌日<br>の始値</th>
+        <th class="num" onclick="sort(11)" style="border-left:2px solid #334155">PO発表翌日<br>の始値</th>
         <th class="num" onclick="sort(12)">価格決定日<br>の始値</th>
         <th class="num" onclick="sort(13)">価格決定日<br>の終値</th>
         <th class="num" onclick="sort(14)" title="翌日寄付で入り、決定日の寄付で出た場合の損益率&#10;(決定日始値 − 翌日始値) ÷ 翌日始値 × 100">騰落率(始)<br>(対発表翌日始値)</th>
@@ -257,7 +262,7 @@ function renderTable(data){
     <td class="num">${r.scale?r.scale.toLocaleString():"–"}</td>
     <td class="num">${r.pct!=null?pctStr(r.pct):"–"}</td>
     <td class="num">${r.dilution!=null?pctStr(r.dilution):"–"}</td>
-    <td class="num">${r.nextOpen?r.nextOpen.toLocaleString():"–"}</td>
+    <td class="num" style="border-left:2px solid #334155">${r.nextOpen?r.nextOpen.toLocaleString():"–"}</td>
     <td class="num">${r.decOpen?r.decOpen.toLocaleString():"–"}</td>
     <td class="num">${r.decClose?r.decClose.toLocaleString():"–"}</td>
     <td class="num">${fmtCell(r.retOpen)}</td>
