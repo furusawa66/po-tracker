@@ -259,7 +259,7 @@ function renderTable(data){
     <td><span class="b ${r.type==="リート"?"b-r":"b-n"}">${esc(r.type)}</span></td>
     <td><span class="b ${r.lending==="貸借"?"b-tai":r.lending==="信用"?"b-c":"b-ban"}">${r.lending==="売禁"?"貸借(売禁)":esc(r.lending)}</span></td>
     <td style="font-family:'Meiryo','メイリオ',sans-serif;font-size:12px" title="${esc((r.leadManagers||[]).slice().sort((a,b)=>(MGR_ORDER[abbrManager(a)]??99)-(MGR_ORDER[abbrManager(b)]??99)).join(' / '))}">${esc(abbrManagers(r.leadManagers))||"–"}</td>
-    <td class="num">${r.discountRate!=null?pctStr(r.discountRate):(()=>{const m=r.discountRange.match(/(\d+(?:\.\d+)?).*[～~].*?(\d+(?:\.\d+)?)/);return m?m[1]+"～"+m[2]+"%":"–";})()}</td>
+    <td class="num">${r.discountRate!=null?pctStr(r.discountRate):"–"}</td>
     <td class="num">${r.scale?r.scale.toLocaleString():"–"}</td>
     <td class="num">${r.pct!=null?pctStr(r.pct):"–"}</td>
     <td class="num">${r.dilution!=null?pctStr(r.dilution):"–"}</td>
