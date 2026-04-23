@@ -66,14 +66,18 @@ tr:hover td{background:#0e1525}
   <div class="fs">
     <div class="fg"><label>年</label>
       <select id="fy" onchange="render()"><option value="">全年</option></select></div>
+    <div class="fg"><label>ステータス</label>
+      <select id="fst" onchange="render()"><option value="">全て</option><option value="active">進行中</option><option value="complete">終了</option></select></div>
+    <div class="fg"><label>コード</label>
+      <input id="fc" type="text" placeholder="検索..." style="width:70px" oninput="render()"></div>
+    <div class="fg"><label>銘柄</label>
+      <input id="fn" type="text" placeholder="検索..." style="width:110px" oninput="render()"></div>
     <div class="fg"><label>種別</label>
       <select id="ft" onchange="render()"><option value="">全種別</option><option value="普通">普通</option><option value="リート">REIT</option></select></div>
     <div class="fg"><label>信用区分</label>
       <select id="fa" onchange="render()"><option value="">全て</option><option value="貸借">貸借</option><option value="信用">信用</option><option value="売禁">貸借(売禁)</option></select></div>
-    <div class="fg"><label>ステータス</label>
-      <select id="fst" onchange="render()"><option value="">全て</option><option value="active">進行中</option><option value="complete">終了</option></select></div>
-    <div class="fg"><label>銘柄</label>
-      <input id="fn" type="text" placeholder="検索..." style="width:110px" oninput="render()"></div>
+    <div class="fg"><label>主幹事</label>
+      <select id="fm" onchange="render()"><option value="">全て</option></select></div>
   </div>
 
   <div class="stats">
@@ -158,20 +162,24 @@ function buildCombined(){
 /* ─────── フィルタ ────────────────────────────────────────────────────────── */
 function getFiltered(){
   const yr=document.getElementById("fy").value;
+  const st=document.getElementById("fst").value;
+  const cd=document.getElementById("fc").value;
+  const nm=document.getElementById("fn").value.toLowerCase();
   const tp=document.getElementById("ft").value;
   const al=document.getElementById("fa").value;
-  const st=document.getElementById("fst").value;
-  const nm=document.getElementById("fn").value.toLowerCase();
+  const mg=document.getElementById("fm").value;
   return combined.filter(r=>{
     if(yr&&r.year!=+yr) return false;
-    if(tp&&r.type!==tp) return false;
-    if(al&&r.lending!==al) return false;
     if(st){
       const isActive=r.status!=="complete";
       if(st==="active"&&!isActive) return false;
       if(st==="complete"&&isActive) return false;
     }
+    if(cd&&!(r.code||"").includes(cd)) return false;
     if(nm&&!r.name.toLowerCase().includes(nm)) return false;
+    if(tp&&r.type!==tp) return false;
+    if(al&&r.lending!==al) return false;
+    if(mg&&!abbrManagers(r.leadManagers).includes(mg)) return false;
     return true;
   });
 }
@@ -191,14 +199,22 @@ function fmtCell(v){
   return `<span class="neg">-${s}</span>`;
 }
 
-/* ─────── 年フィルタ ───────────────────────────────────────────────────────── */
-function populateYearFilter(){
-  const sel=document.getElementById("fy");
-  const cur=sel.value;
+/* ─────── フィルタ動的生成 ─────────────────────────────────────────────────── */
+function populateFilters(){
+  // 年
+  const selY=document.getElementById("fy");
+  const curY=selY.value;
   const yrs=[...new Set(combined.map(r=>r.year))].sort();
-  while(sel.options.length>1) sel.remove(1);
-  yrs.forEach(y=>{const o=document.createElement("option");o.value=y;o.textContent=y;sel.add(o);});
-  sel.value=cur;
+  while(selY.options.length>1) selY.remove(1);
+  yrs.forEach(y=>{const o=document.createElement("option");o.value=y;o.textContent=y;selY.add(o);});
+  selY.value=curY;
+  // 主幹事
+  const selM=document.getElementById("fm");
+  const curM=selM.value;
+  const mgrs=[...new Set(combined.flatMap(r=>(r.leadManagers||[]).map(abbrManager)).filter(Boolean))].sort();
+  while(selM.options.length>1) selM.remove(1);
+  mgrs.forEach(m=>{const o=document.createElement("option");o.value=m;o.textContent=m;selM.add(o);});
+  selM.value=curM;
 }
 
 /* ─────── テーブル ───────────────────────────────────────────────────────── */
@@ -260,7 +276,7 @@ function sort(col){
 /* ─────── メイン描画 ─────────────────────────────────────────────────────── */
 function render(){
   buildCombined();
-  populateYearFilter();
+  populateFilters();
   filt=getFiltered();
   if(sCol===-1){
     // デフォルト: 進行中を上に、それぞれ発表日降順（announce_date 欠損時は year を使用）
