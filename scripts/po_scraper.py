@@ -226,7 +226,7 @@ def scrape_article(url: str, name: str = "", code: str = "") -> dict:
                 if d:
                     info["delivery_date"] = d
 
-            elif ("発行" in key or "処分") and "価格" in key and "決定日" not in key:
+            elif ("発行" in key or "処分" in key or "売出" in key) and "価格" in key and "決定日" not in key:
                 m = re.search(r'([\d,]+)円', val)
                 if m:
                     info["issue_price"] = int(m.group(1).replace(",", ""))
