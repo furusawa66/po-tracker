@@ -29,6 +29,9 @@ jobs:
       - name: Run backfill
         run: python scripts/backfill.py
 
+      - name: Pull latest before commit
+        run: git pull origin main --no-rebase
+
       - name: Commit updated data
         run: |
           git config user.name  "po-tracker-bot"
@@ -36,6 +39,5 @@ jobs:
           git add data/
           git diff --staged --quiet && echo "変更なし" || (
             git commit -m "Backfill: 過去PO記事データ一括補完 $(date -u +'%Y-%m-%d %H:%M UTC')"
-            git pull --rebase
             git push
           )
