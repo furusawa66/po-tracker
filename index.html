@@ -86,18 +86,18 @@ tr:hover td{background:#0e1525}
   <div class="tw">
     <div class="sc2"><table>
       <thead><tr>
-        <th onclick="sort(0)">年</th><th onclick="sort(1)">銘柄</th>
+        <th onclick="sort(0)">年</th><th onclick="sort(1)">銘柄</th><th onclick="sort(2)">コード</th>
         <th>ステータス</th>
         <th>種類</th><th>信用区分</th>
         <th>主幹事 <a href="https://x.com/ipopo16" target="_blank" rel="noopener" style="color:#64748b;font-weight:400;text-decoration:none">(参考X)</a></th>
-        <th class="num" onclick="sort(6)">PO規模<br>(億円)</th>
-        <th class="num" onclick="sort(7)">規模割合<br>(対時価総額)</th>
-        <th class="num" onclick="sort(13)">希薄化率</th>
-        <th class="num" onclick="sort(8)" title="翌日寄付で入り、決定日の寄付で出た場合の損益率&#10;(決定日始値 − 翌日始値) ÷ 翌日始値 × 100">騰落率(始)<br>(対発表翌日始値)</th>
-        <th class="num" onclick="sort(9)" title="翌日寄付で入り、決定日の引けで出た場合の損益率&#10;(決定日終値 − 翌日始値) ÷ 翌日始値 × 100">騰落率(終)<br>(対発表翌日始値)</th>
-        <th class="num" onclick="sort(10)">受渡日<br>始値</th>
-        <th class="num" onclick="sort(11)">受渡日<br>終値</th>
-        <th class="num" onclick="sort(12)">受渡日<br>騰落率</th>
+        <th class="num" onclick="sort(7)">PO規模<br>(億円)</th>
+        <th class="num" onclick="sort(8)">規模割合<br>(対時価総額)</th>
+        <th class="num" onclick="sort(14)">希薄化率</th>
+        <th class="num" onclick="sort(9)" title="翌日寄付で入り、決定日の寄付で出た場合の損益率&#10;(決定日始値 − 翌日始値) ÷ 翌日始値 × 100">騰落率(始)<br>(対発表翌日始値)</th>
+        <th class="num" onclick="sort(10)" title="翌日寄付で入り、決定日の引けで出た場合の損益率&#10;(決定日終値 − 翌日始値) ÷ 翌日始値 × 100">騰落率(終)<br>(対発表翌日始値)</th>
+        <th class="num" onclick="sort(11)">受渡日<br>始値</th>
+        <th class="num" onclick="sort(12)">受渡日<br>終値</th>
+        <th class="num" onclick="sort(13)">受渡日<br>騰落率</th>
       </tr></thead>
       <tbody id="tb"></tbody>
     </table></div>
@@ -133,7 +133,7 @@ function lendingOf(r){
 }
 function recToRow(r, src){
   return {
-    src, id:r.id, year:r.year||new Date().getFullYear(),
+    src, id:r.id, code:r.code||"", year:r.year||new Date().getFullYear(),
     name:r.name, type:r.type, alert:r.alert||"", lending:lendingOf(r),
     scale:r.po_scale||r.scale, pct:r.po_pct||r.pct,
     dilution:r.dilution,
@@ -227,7 +227,8 @@ function abbrManagers(list){
 function renderTable(data){
   document.getElementById("tb").innerHTML=data.map(r=>`<tr>
     <td style="color:#64748b;font-family:monospace">${r.year}</td>
-    <td style="max-width:140px;overflow:hidden;text-overflow:ellipsis" title="${esc(r.name)}">${esc(r.name)}</td>
+    <td style="max-width:140px;overflow:hidden;text-overflow:ellipsis" title="${esc(r.name)}">${r.code?`<a href="https://kabutan.jp/stock/?code=${esc(r.code)}" target="_blank" rel="noopener" style="color:#e2e8f0;text-decoration:none">${esc(r.name)}</a>`:esc(r.name)}</td>
+    <td style="color:#64748b;font-family:monospace;font-size:11px">${r.code||"–"}</td>
     <td>${(()=>{const b=statusBadge(r.status);return `<span class="b ${b.cls}">${b.label}</span>`;})()}</td>
     <td><span class="b ${r.type==="リート"?"b-r":"b-n"}">${esc(r.type)}</span></td>
     <td><span class="b ${r.lending==="貸借"?"b-tai":r.lending==="信用"?"b-c":"b-ban"}">${r.lending==="売禁"?"貸借(売禁)":esc(r.lending)}</span></td>
@@ -245,7 +246,7 @@ function renderTable(data){
 
 function sort(col){
   if(sCol===col) sAsc=!sAsc; else{sCol=col;sAsc=true;}
-  const keys=["year","name","status","type","lending","leadMgr","scale","pct","retOpen","retClose","delOpen","delClose","delRet","dilution"];
+  const keys=["year","name","code","status","type","lending","leadMgr","scale","pct","retOpen","retClose","delOpen","delClose","delRet","dilution"];
   filt.sort((a,b)=>{
     const va=a[keys[col]],vb=b[keys[col]];
     if(va==null) return 1; if(vb==null) return -1;
