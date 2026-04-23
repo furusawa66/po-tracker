@@ -319,14 +319,9 @@ function render(){
   populateFilters();
   filt=getFiltered();
   if(sCol===-1){
-    // デフォルト: 進行中を上に、それぞれ発表日降順（announce_date 欠損時は year を使用）
-    const statusRank=s=>s==="complete"?1:0;
-    const sortKey=r=>r.announceDate||`${r.year}-99-99`;
-    filt.sort((a,b)=>{
-      const sa=statusRank(a.status),sb=statusRank(b.status);
-      if(sa!==sb) return sa-sb;
-      return sortKey(b).localeCompare(sortKey(a));
-    });
+    // デフォルト: 発表日降順（新しいものが上）。announce_date 欠損時は year-01-01 を使用
+    const sortKey=r=>r.announceDate||`${r.year}-01-01`;
+    filt.sort((a,b)=>sortKey(b).localeCompare(sortKey(a)));
   }
   const opens=filt.map(r=>r.retOpen).filter(v=>v!=null);
   const closes=filt.map(r=>r.retClose).filter(v=>v!=null);
