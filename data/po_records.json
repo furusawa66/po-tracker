@@ -120,7 +120,7 @@
       ],
       "co_managers": [],
       "memo": "",
-      "discount_range": "% ～ %　ディスカウント",
+      "discount_range": null,
       "discount_rate": 2.0,
       "issue_price": 210994,
       "treasury_shares": null,
@@ -695,7 +695,7 @@
       ],
       "co_managers": [],
       "memo": "",
-      "discount_range": "% ～ %　ディスカウント",
+      "discount_range": null,
       "discount_rate": 1.8,
       "issue_price": 897,
       "treasury_shares": null,
@@ -3237,7 +3237,7 @@
       ],
       "memo": "PO発表と同時に、ヤフーとの提携見直し、悪材料？",
       "discount_range": "4.0% ～ 6.0%　ディスカウント",
-      "discount_rate": 11.0,
+      "discount_rate": null,
       "issue_price": 2780,
       "treasury_shares": null,
       "oa_shares": null,
@@ -3423,7 +3423,7 @@
       ],
       "co_managers": [],
       "memo": "",
-      "discount_range": "% ～ %　ディスカウント",
+      "discount_range": null,
       "discount_rate": 2.5,
       "issue_price": 256132,
       "treasury_shares": null,
@@ -3469,7 +3469,7 @@
       ],
       "co_managers": [],
       "memo": "",
-      "discount_range": "% ～ %　ディスカウント",
+      "discount_range": null,
       "discount_rate": 2.5,
       "issue_price": 256132,
       "treasury_shares": null,
@@ -3697,7 +3697,7 @@
       "co_managers": [],
       "memo": "",
       "discount_range": "3.0% ～ 5.0%　ディスカウント",
-      "discount_rate": 12.5,
+      "discount_rate": null,
       "issue_price": 1512,
       "treasury_shares": null,
       "oa_shares": null,
@@ -3792,7 +3792,7 @@
       ],
       "co_managers": [],
       "memo": "",
-      "discount_range": "% ～ %　ディスカウント",
+      "discount_range": null,
       "discount_rate": 2.8,
       "issue_price": 978,
       "treasury_shares": null,
@@ -3884,7 +3884,7 @@
       ],
       "co_managers": [],
       "memo": "PO発表と同時に上方修正、売上だけアップ利益は変わらず、他に好材料ぽいのはなし",
-      "discount_range": "% ～ %　ディスカウント",
+      "discount_range": null,
       "discount_rate": 3.3,
       "issue_price": 905,
       "treasury_shares": null,
@@ -4489,7 +4489,7 @@
       ],
       "co_managers": [],
       "memo": "",
-      "discount_range": "% ～ %　ディスカウント",
+      "discount_range": null,
       "discount_rate": 2.0,
       "issue_price": 297430,
       "treasury_shares": null,
@@ -5238,7 +5238,7 @@
       ],
       "co_managers": [],
       "memo": "",
-      "discount_range": "% ～ %　ディスカウント",
+      "discount_range": null,
       "discount_rate": 2.0,
       "issue_price": null,
       "treasury_shares": null,
@@ -5425,7 +5425,7 @@
       ],
       "co_managers": [],
       "memo": "PO発表と同時に上方修正、売上利益ともにアップ、G→P市場変更",
-      "discount_range": "% ～ %　ディスカウント",
+      "discount_range": null,
       "discount_rate": 6.0,
       "issue_price": 2666,
       "treasury_shares": null,
@@ -5779,7 +5779,7 @@
         "ＳＢＩ証券"
       ],
       "memo": "",
-      "discount_range": "% ～ %　ディスカウント",
+      "discount_range": null,
       "discount_rate": 0.3,
       "issue_price": 596,
       "treasury_shares": null,
@@ -6183,7 +6183,7 @@
         "ＳＢＩ証券"
       ],
       "memo": "",
-      "discount_range": "% ～ %　ディスカウント",
+      "discount_range": null,
       "discount_rate": 2.5,
       "issue_price": null,
       "treasury_shares": null,
@@ -6424,7 +6424,7 @@
         "大和証券"
       ],
       "memo": "",
-      "discount_range": "% ～ %　ディスカウント",
+      "discount_range": null,
       "discount_rate": 0.4,
       "issue_price": 1483,
       "treasury_shares": null,
@@ -6724,7 +6724,7 @@
         "みずほ証券"
       ],
       "memo": "",
-      "discount_range": "% ～ %　ディスカウント",
+      "discount_range": null,
       "discount_rate": 5.9,
       "issue_price": 1200,
       "treasury_shares": null,
@@ -7051,7 +7051,7 @@
       ],
       "co_managers": [],
       "memo": "",
-      "discount_range": "% ～ %　ディスカウント",
+      "discount_range": null,
       "discount_rate": 0.7,
       "issue_price": 919,
       "treasury_shares": null,
@@ -7101,7 +7101,7 @@
         "岡三証券"
       ],
       "memo": "",
-      "discount_range": "% ～ %　ディスカウント",
+      "discount_range": null,
       "discount_rate": 3.0,
       "issue_price": 600,
       "treasury_shares": null,
@@ -7198,7 +7198,7 @@
       ],
       "co_managers": [],
       "memo": "自社株買いも発表",
-      "discount_range": "% ～ %　ディスカウント",
+      "discount_range": null,
       "discount_rate": 2.5,
       "issue_price": 1069,
       "treasury_shares": null,
@@ -7393,7 +7393,7 @@
       ],
       "co_managers": [],
       "memo": "",
-      "discount_range": "% ～ %　ディスカウント",
+      "discount_range": null,
       "discount_rate": 3.0,
       "issue_price": 7622,
       "treasury_shares": null,
@@ -7640,7 +7640,7 @@
         "野村證券"
       ],
       "memo": "",
-      "discount_range": "% ～ %　ディスカウント",
+      "discount_range": null,
       "discount_rate": 2.5,
       "issue_price": 651,
       "treasury_shares": null,
@@ -7833,7 +7833,7 @@
       ],
       "co_managers": [],
       "memo": "",
-      "discount_range": "% ～ %　ディスカウント",
+      "discount_range": null,
       "discount_rate": 12.2,
       "issue_price": null,
       "treasury_shares": null,
@@ -7928,7 +7928,7 @@
       ],
       "co_managers": [],
       "memo": "9.9％規模の自社株買いも同時発表",
-      "discount_range": "% ～ %　ディスカウント",
+      "discount_range": null,
       "discount_rate": 6.1,
       "issue_price": 2985,
       "treasury_shares": null,
@@ -8572,7 +8572,7 @@
       ],
       "co_managers": [],
       "memo": "",
-      "discount_range": "% ～ %　ディスカウント",
+      "discount_range": null,
       "discount_rate": 6.0,
       "issue_price": 1177,
       "treasury_shares": null,
@@ -8974,7 +8974,7 @@
         "東海東京証券"
       ],
       "memo": "",
-      "discount_range": "% ～ %　ディスカウント",
+      "discount_range": null,
       "discount_rate": 3.8,
       "issue_price": 3280,
       "treasury_shares": null,
@@ -9510,7 +9510,7 @@
       ],
       "co_managers": [],
       "memo": "",
-      "discount_range": "% ～ %　ディスカウント",
+      "discount_range": null,
       "discount_rate": 3.8,
       "issue_price": 2217,
       "treasury_shares": null,
@@ -9650,7 +9650,7 @@
       ],
       "co_managers": [],
       "memo": "1.6％の自社株買い",
-      "discount_range": "% ～ %　ディスカウント",
+      "discount_range": null,
       "discount_rate": 2.6,
       "issue_price": 3710,
       "treasury_shares": null,
@@ -9746,7 +9746,7 @@
         "野村證券"
       ],
       "memo": "100株で2000円分などの優待あり",
-      "discount_range": "% ～ %　ディスカウント",
+      "discount_range": null,
       "discount_rate": 4.7,
       "issue_price": 1079,
       "treasury_shares": null,
@@ -10088,7 +10088,7 @@
       ],
       "co_managers": [],
       "memo": "",
-      "discount_range": "% ～ %　ディスカウント",
+      "discount_range": null,
       "discount_rate": 4.07,
       "issue_price": null,
       "treasury_shares": null,
@@ -10134,7 +10134,7 @@
       ],
       "co_managers": [],
       "memo": "",
-      "discount_range": "% ～ %　ディスカウント",
+      "discount_range": null,
       "discount_rate": 3.51,
       "issue_price": null,
       "treasury_shares": null,
@@ -10227,7 +10227,7 @@
       ],
       "co_managers": [],
       "memo": "",
-      "discount_range": "% ～ %　ディスカウント",
+      "discount_range": null,
       "discount_rate": 3.03,
       "issue_price": null,
       "treasury_shares": null,
@@ -10621,7 +10621,7 @@
       ],
       "co_managers": [],
       "memo": "自社株買い２％",
-      "discount_range": "% ～ %　ディスカウント",
+      "discount_range": null,
       "discount_rate": 3.03,
       "issue_price": null,
       "treasury_shares": null,
@@ -10773,7 +10773,7 @@
       ],
       "co_managers": [],
       "memo": "",
-      "discount_range": "% ～ %　ディスカウント",
+      "discount_range": null,
       "discount_rate": 3.02,
       "issue_price": null,
       "treasury_shares": null,
@@ -10872,7 +10872,7 @@
         "東海東京証券"
       ],
       "memo": "",
-      "discount_range": "% ～ %　ディスカウント",
+      "discount_range": null,
       "discount_rate": 2.0,
       "issue_price": null,
       "treasury_shares": null,
@@ -11302,7 +11302,7 @@
         "西村証券"
       ],
       "memo": "",
-      "discount_range": "% ～ %　ディスカウント",
+      "discount_range": null,
       "discount_rate": 6.5,
       "issue_price": 5720,
       "treasury_shares": null,
@@ -11348,7 +11348,7 @@
       ],
       "co_managers": [],
       "memo": "",
-      "discount_range": "% ～ %　ディスカウント",
+      "discount_range": null,
       "discount_rate": 3.01,
       "issue_price": null,
       "treasury_shares": null,
@@ -11394,7 +11394,7 @@
       ],
       "co_managers": [],
       "memo": "",
-      "discount_range": "% ～ %　ディスカウント",
+      "discount_range": null,
       "discount_rate": 3.09,
       "issue_price": null,
       "treasury_shares": null,
@@ -11440,7 +11440,7 @@
       ],
       "co_managers": [],
       "memo": "",
-      "discount_range": "% ～ %　ディスカウント",
+      "discount_range": null,
       "discount_rate": 3.51,
       "issue_price": null,
       "treasury_shares": null,
@@ -12044,7 +12044,7 @@
       "dilution": 0.0,
       "issue_price": 1175,
       "discount_rate": 0.2,
-      "discount_range": "% ～ %　ディスカウント",
+      "discount_range": null,
       "lead_managers": [
         "野村證券"
       ],
@@ -12095,7 +12095,7 @@
       "dilution": 0.0,
       "issue_price": 2966,
       "discount_rate": 1.6,
-      "discount_range": "% ～ %　ディスカウント",
+      "discount_range": null,
       "lead_managers": [
         "みずほ証券"
       ],
@@ -12358,7 +12358,7 @@
       "dilution": 13.6,
       "issue_price": 7120,
       "discount_rate": 9.9,
-      "discount_range": "% ～ %　ディスカウント",
+      "discount_range": null,
       "lead_managers": [
         "野村證券"
       ],
@@ -12712,7 +12712,7 @@
       "dilution": 0.0,
       "issue_price": 2975,
       "discount_rate": 3.8,
-      "discount_range": "% ～ %　ディスカウント",
+      "discount_range": null,
       "lead_managers": [
         "大和証券"
       ],
@@ -12910,7 +12910,7 @@
       "dilution": 0.0,
       "issue_price": 2524,
       "discount_rate": 1.7,
-      "discount_range": "% ～ %　ディスカウント",
+      "discount_range": null,
       "lead_managers": [
         "みずほ証券"
       ],
@@ -13158,7 +13158,7 @@
       "dilution": 0.0,
       "issue_price": 5400,
       "discount_rate": 6.7,
-      "discount_range": "% ～ %　ディスカウント",
+      "discount_range": null,
       "lead_managers": [
         "大和証券",
         "三菱ＵＦＪモルガン・スタンレー証券"
@@ -13256,7 +13256,7 @@
       "dilution": null,
       "issue_price": 112000,
       "discount_rate": 1.1,
-      "discount_range": "% ～ %　ディスカウント",
+      "discount_range": null,
       "lead_managers": [
         "みずほ証券",
         "大和証券"
@@ -13355,7 +13355,7 @@
       "dilution": 0.0,
       "issue_price": 1740,
       "discount_rate": 4.0,
-      "discount_range": "% ～ %　ディスカウント",
+      "discount_range": null,
       "lead_managers": [
         "大和証券"
       ],
@@ -13452,7 +13452,7 @@
       "dilution": 0.0,
       "issue_price": 845,
       "discount_rate": 2.5,
-      "discount_range": "% ～ %　ディスカウント",
+      "discount_range": null,
       "lead_managers": [
         "野村證券"
       ],
@@ -13604,7 +13604,7 @@
       "dilution": 13.2,
       "issue_price": 1624,
       "discount_rate": 4.0,
-      "discount_range": "% ～ %　ディスカウント",
+      "discount_range": null,
       "lead_managers": [
         "野村證券"
       ],
@@ -13649,7 +13649,7 @@
       "shares_outstanding": null,
       "dilution": 0.0,
       "issue_price": 1302,
-      "discount_rate": 13.2,
+      "discount_rate": null,
       "discount_range": "3% ～ 5%　ディスカウント",
       "lead_managers": [
         "大和証券"
@@ -13798,7 +13798,7 @@
       "dilution": 0.0,
       "issue_price": 2860,
       "discount_rate": 2.4,
-      "discount_range": "% ～ %　ディスカウント",
+      "discount_range": null,
       "lead_managers": [
         "野村證券"
       ],
@@ -14338,7 +14338,7 @@
       "dilution": 0.0,
       "issue_price": 2070,
       "discount_rate": 0.2,
-      "discount_range": "% ～ %　ディスカウント",
+      "discount_range": null,
       "lead_managers": [
         "大和証券"
       ],
@@ -14487,7 +14487,7 @@
       "dilution": 31.3,
       "issue_price": 470,
       "discount_rate": 0.4,
-      "discount_range": "% ～ %　ディスカウント",
+      "discount_range": null,
       "lead_managers": [
         "ＳＢＩ証券"
       ],
@@ -14539,7 +14539,7 @@
       "dilution": 9.7,
       "issue_price": 491,
       "discount_rate": 8.2,
-      "discount_range": "% ～ %　ディスカウント",
+      "discount_range": null,
       "lead_managers": [
         "野村證券"
       ],
@@ -14631,7 +14631,7 @@
       "dilution": 5.4,
       "issue_price": 5,
       "discount_rate": 6.8,
-      "discount_range": "% ～ %　ディスカウント",
+      "discount_range": null,
       "lead_managers": [
         "大和証券"
       ],
@@ -14676,7 +14676,7 @@
       "shares_outstanding": null,
       "dilution": 12.0,
       "issue_price": 665,
-      "discount_rate": 15.8,
+      "discount_rate": null,
       "discount_range": "4.0% ～ 6.0%　ディスカウント",
       "lead_managers": [
         "ＳＢＩ証券"
@@ -14723,7 +14723,7 @@
       "dilution": 0.0,
       "issue_price": 762,
       "discount_rate": 4.03,
-      "discount_range": "% ～ %　ディスカウント",
+      "discount_range": null,
       "lead_managers": [
         "みずほ証券"
       ],
@@ -14823,7 +14823,7 @@
       "dilution": 2.8,
       "issue_price": 8310,
       "discount_rate": 1.9,
-      "discount_range": "% ～ %　ディスカウント",
+      "discount_range": null,
       "lead_managers": [
         "みずほ証券"
       ],
@@ -14871,7 +14871,7 @@
       "dilution": 12.5,
       "issue_price": 1480,
       "discount_rate": 2.8,
-      "discount_range": "% ～ %　ディスカウント",
+      "discount_range": null,
       "lead_managers": [
         "大和証券"
       ],
@@ -14917,7 +14917,7 @@
       "dilution": 0.0,
       "issue_price": 5,
       "discount_rate": 1.2,
-      "discount_range": "% ～ %　ディスカウント",
+      "discount_range": null,
       "lead_managers": [
         "みずほ証券",
         "野村證券"
@@ -14966,7 +14966,7 @@
       "dilution": 16.8,
       "issue_price": 6390,
       "discount_rate": 0.4,
-      "discount_range": "% ～ %　ディスカウント",
+      "discount_range": null,
       "lead_managers": [
         "野村證券"
       ],
@@ -15012,7 +15012,7 @@
       "dilution": 0.0,
       "issue_price": null,
       "discount_rate": null,
-      "discount_range": "% ～ %　ディスカウント",
+      "discount_range": null,
       "lead_managers": [
         "みずほ証券"
       ],
@@ -15032,7 +15032,7 @@
       "delivery_ret": 5.89,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 949.0,
       "delivery_gap_pct": -1.58,
       "announce_day_close": 859.0
@@ -15061,7 +15061,7 @@
       "dilution": 0.0,
       "issue_price": 5150,
       "discount_rate": 0.2,
-      "discount_range": "% ～ %　ディスカウント",
+      "discount_range": null,
       "lead_managers": [
         "大和証券"
       ],
@@ -15107,7 +15107,7 @@
       "dilution": 7.3,
       "issue_price": 3365,
       "discount_rate": 4.5,
-      "discount_range": "% ～ %　ディスカウント",
+      "discount_range": null,
       "lead_managers": [
         "野村證券"
       ],
@@ -15208,7 +15208,7 @@
       "dilution": 6.9,
       "issue_price": 329,
       "discount_rate": 2.1,
-      "discount_range": "% ～ %　ディスカウント",
+      "discount_range": null,
       "lead_managers": [
         "野村證券"
       ],
@@ -15299,7 +15299,7 @@
       "shares_outstanding": null,
       "dilution": 0.0,
       "issue_price": 4485,
-      "discount_rate": 11.3,
+      "discount_rate": null,
       "discount_range": "4.0% ～ 6.0%　ディスカウント",
       "lead_managers": [
         "ＳＭＢＣ日興証券"
@@ -15405,7 +15405,7 @@
       "dilution": 0.0,
       "issue_price": 3445,
       "discount_rate": 4.0,
-      "discount_range": "% ～ %　ディスカウント",
+      "discount_range": null,
       "lead_managers": [
         "野村証券"
       ],
@@ -15596,7 +15596,7 @@
       "dilution": 9.7,
       "issue_price": 1161,
       "discount_rate": 0.3,
-      "discount_range": "% ～ %　ディスカウント",
+      "discount_range": null,
       "lead_managers": [
         "みずほ証券"
       ],
@@ -15791,7 +15791,7 @@
       "dilution": 0.0,
       "issue_price": 4000,
       "discount_rate": 14.5,
-      "discount_range": "% ～ %　ディスカウント",
+      "discount_range": null,
       "lead_managers": [
         "野村證券",
         "ＳＭＢＣ日興証券",
@@ -15892,7 +15892,7 @@
       "dilution": 9.1,
       "issue_price": 981,
       "discount_rate": 0.6,
-      "discount_range": "% ～ %　ディスカウント",
+      "discount_range": null,
       "lead_managers": [
         "大和証券"
       ],
@@ -15938,7 +15938,7 @@
       "dilution": 14.1,
       "issue_price": 1700,
       "discount_rate": 1.6,
-      "discount_range": "% ～ %　ディスカウント",
+      "discount_range": null,
       "lead_managers": [
         "ＳＢＩ証券"
       ],
@@ -15989,7 +15989,7 @@
       "dilution": 16.7,
       "issue_price": 917,
       "discount_rate": 0.7,
-      "discount_range": "% ～ %　ディスカウント",
+      "discount_range": null,
       "lead_managers": [
         "大和証券"
       ],
@@ -16037,7 +16037,7 @@
       "dilution": 0.0,
       "issue_price": 1058,
       "discount_rate": 4.08,
-      "discount_range": "% ～ %　ディスカウント",
+      "discount_range": null,
       "lead_managers": [
         "ＳＢＩ証券"
       ],
@@ -16085,7 +16085,7 @@
       "dilution": 18.4,
       "issue_price": 485,
       "discount_rate": 0.2,
-      "discount_range": "% ～ %　ディスカウント",
+      "discount_range": null,
       "lead_managers": [
         "岡三証券"
       ],
@@ -16131,7 +16131,7 @@
       "dilution": 0.0,
       "issue_price": 3580,
       "discount_rate": 1.6,
-      "discount_range": "% ～ %　ディスカウント",
+      "discount_range": null,
       "lead_managers": [
         "みずほ証券"
       ],
@@ -16179,7 +16179,7 @@
       "dilution": 0.0,
       "issue_price": 1300,
       "discount_rate": 2.5,
-      "discount_range": "% ～ %　ディスカウント",
+      "discount_range": null,
       "lead_managers": [
         "野村證券"
       ],
@@ -16225,7 +16225,7 @@
       "dilution": 0.0,
       "issue_price": 5820,
       "discount_rate": 3.0,
-      "discount_range": "% ～ %　ディスカウント",
+      "discount_range": null,
       "lead_managers": [
         "野村證券"
       ],
@@ -16319,7 +16319,7 @@
       "dilution": 6.7,
       "issue_price": 790,
       "discount_rate": 4.7,
-      "discount_range": "% ～ %　ディスカウント",
+      "discount_range": null,
       "lead_managers": [
         "岡三証券"
       ],
@@ -16519,7 +16519,7 @@
       "dilution": 11.7,
       "issue_price": 1803,
       "discount_rate": 1.0,
-      "discount_range": "% ～ %　ディスカウント",
+      "discount_range": null,
       "lead_managers": [
         "野村證券"
       ],
@@ -16567,7 +16567,7 @@
       "dilution": 16.2,
       "issue_price": 8360,
       "discount_rate": 13.1,
-      "discount_range": "% ～ %　ディスカウント",
+      "discount_range": null,
       "lead_managers": [
         "みずほ証券"
       ],
@@ -16713,7 +16713,7 @@
       "dilution": 0.0,
       "issue_price": 3420,
       "discount_rate": 3.6,
-      "discount_range": "% ～ %　ディスカウント",
+      "discount_range": null,
       "lead_managers": [
         "みずほ証券"
       ],
@@ -16808,7 +16808,7 @@
       "dilution": null,
       "issue_price": 86700,
       "discount_rate": 1.8,
-      "discount_range": "% ～ %　ディスカウント",
+      "discount_range": null,
       "lead_managers": [
         "みずほ証券"
       ],
@@ -17100,7 +17100,7 @@
       "dilution": null,
       "issue_price": 76400,
       "discount_rate": 5.7,
-      "discount_range": "% ～ %　ディスカウント",
+      "discount_range": null,
       "lead_managers": [
         "ＳＭＢＣ日興証券",
         "みずほ証券",
@@ -17148,7 +17148,7 @@
       "dilution": 7.5,
       "issue_price": 7650,
       "discount_rate": 2.0,
-      "discount_range": "% ～ %　ディスカウント",
+      "discount_range": null,
       "lead_managers": [
         "野村證券"
       ],
@@ -17196,7 +17196,7 @@
       "dilution": 0.0,
       "issue_price": 1825,
       "discount_rate": 2.4,
-      "discount_range": "% ～ %　ディスカウント",
+      "discount_range": null,
       "lead_managers": [
         "大和証券"
       ],
@@ -17242,7 +17242,7 @@
       "dilution": 0.0,
       "issue_price": 3005,
       "discount_rate": 2.4,
-      "discount_range": "% ～ %　ディスカウント",
+      "discount_range": null,
       "lead_managers": [
         "ＳＭＢＣ日興証券"
       ],
@@ -17338,7 +17338,7 @@
       "dilution": 0.0,
       "issue_price": 1983,
       "discount_rate": 0.1,
-      "discount_range": "% ～ %　ディスカウント",
+      "discount_range": null,
       "lead_managers": [
         "野村證券"
       ],
@@ -17406,7 +17406,7 @@
       "delivery_ret": 2.58,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 2695.0,
       "delivery_gap_pct": 0.56
     },
@@ -17586,7 +17586,7 @@
       "dilution": 8.7,
       "issue_price": 15500,
       "discount_rate": 1.8,
-      "discount_range": "% ～ %　ディスカウント",
+      "discount_range": null,
       "lead_managers": [
         "ＳＢＩ証券"
       ],
@@ -17653,7 +17653,7 @@
       "delivery_ret": 3.57,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 103600.0,
       "delivery_gap_pct": 0.0
     },
@@ -17681,7 +17681,7 @@
       "dilution": null,
       "issue_price": 146300,
       "discount_rate": 5.5,
-      "discount_range": "% ～ %　ディスカウント",
+      "discount_range": null,
       "lead_managers": [
         "ＳＭＢＣ日興証券",
         "野村證券",
@@ -17731,7 +17731,7 @@
       "dilution": 16.3,
       "issue_price": 1097,
       "discount_rate": 0.0,
-      "discount_range": "% ～ %　ディスカウント",
+      "discount_range": null,
       "lead_managers": [
         "野村證券"
       ],
@@ -17774,7 +17774,7 @@
       "shares_outstanding": null,
       "dilution": 15.6,
       "issue_price": 1892,
-      "discount_rate": 14.4,
+      "discount_rate": null,
       "discount_range": "4.0% ～ 6.0%　ディスカウント",
       "lead_managers": [
         "大和証券"
@@ -17878,7 +17878,7 @@
       "dilution": 18.2,
       "issue_price": 2112,
       "discount_rate": 5.01,
-      "discount_range": "% ～ %　ディスカウント",
+      "discount_range": null,
       "lead_managers": [
         "ＳＢＩ証券"
       ],
@@ -18225,7 +18225,7 @@
       "shares_outstanding": null,
       "dilution": null,
       "issue_price": 236300,
-      "discount_rate": 10.7,
+      "discount_rate": null,
       "discount_range": "2.5% ～ 5.0%　ディスカウント",
       "lead_managers": [
         "みずほ証券"
@@ -18250,7 +18250,7 @@
       "delivery_ret": null,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "announce_day_close": 240200.0,
       "next_day_gu_pct": -3.04
     },
@@ -18278,7 +18278,7 @@
       "dilution": null,
       "issue_price": 136900,
       "discount_rate": 2.0,
-      "discount_range": "% ～ %　ディスカウント",
+      "discount_range": null,
       "lead_managers": [
         "大和証券",
         "三菱ＵＦＪモルガン・スタンレー証券"
@@ -18327,7 +18327,7 @@
       "dilution": 4.1,
       "issue_price": 843,
       "discount_rate": 3.8,
-      "discount_range": "% ～ %　ディスカウント",
+      "discount_range": null,
       "lead_managers": [
         "エイチ・エス証券"
       ],
@@ -18425,7 +18425,7 @@
       "dilution": 0.0,
       "issue_price": 2205,
       "discount_rate": 1.9,
-      "discount_range": "% ～ %　ディスカウント",
+      "discount_range": null,
       "lead_managers": [
         "野村證券"
       ],
@@ -19055,7 +19055,7 @@
       "dilution": 0.0,
       "issue_price": 1243,
       "discount_rate": 1.6,
-      "discount_range": "% ～ %　ディスカウント",
+      "discount_range": null,
       "lead_managers": [
         "東海東京証券"
       ],
@@ -19383,7 +19383,7 @@
       "shares_outstanding": null,
       "dilution": 7.2,
       "issue_price": 565,
-      "discount_rate": 10.7,
+      "discount_rate": null,
       "discount_range": "3.0% ～ 5.0%　ディスカウント",
       "lead_managers": [
         "野村證券"
@@ -19478,7 +19478,7 @@
       "shares_outstanding": null,
       "dilution": 5.2,
       "issue_price": 4770,
-      "discount_rate": 14.6,
+      "discount_rate": null,
       "discount_range": "5.0% ～ 8.0%　ディスカウント",
       "lead_managers": [
         "ＳＢＩ証券"
@@ -20386,7 +20386,7 @@
       "dilution": 9.4,
       "issue_price": 7370,
       "discount_rate": 11.9,
-      "discount_range": "% ～ %　ディスカウント",
+      "discount_range": null,
       "lead_managers": [],
       "co_managers": [],
       "article_url": "https://pokabu.net/po/moneyforward-2021",
@@ -21508,7 +21508,7 @@
       "delivery_ret": -0.72,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 110600.0,
       "delivery_gap_pct": -0.18
     },
@@ -21846,7 +21846,7 @@
       "delivery_ret": 0.0,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 157900.0,
       "delivery_gap_pct": 0.0
     },
@@ -21919,7 +21919,7 @@
       "shares_outstanding": null,
       "dilution": 0.0,
       "issue_price": 1365,
-      "discount_rate": 12.3,
+      "discount_rate": null,
       "discount_range": "4.0% ～ 7.0%　ディスカウント",
       "lead_managers": [
         "三菱ＵＦＪモルガン・スタンレー証券"
@@ -23081,7 +23081,7 @@
       "shares_outstanding": null,
       "dilution": 10.6,
       "issue_price": 3853,
-      "discount_rate": 14.8,
+      "discount_rate": null,
       "discount_range": "3.0% ～ 5.0%　ディスカウント",
       "lead_managers": [
         "野村證券",
@@ -23133,7 +23133,7 @@
       "dilution": 14.5,
       "issue_price": 4600,
       "discount_rate": 1.1,
-      "discount_range": "% ～ %　ディスカウント",
+      "discount_range": null,
       "lead_managers": [
         "いちよし証券"
       ],
@@ -23724,7 +23724,7 @@
       "delivery_ret": null,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "announce_day_close": 1734.0,
       "next_day_gu_pct": -7.9
     },
@@ -23944,7 +23944,7 @@
       "dilution": 0.0,
       "issue_price": null,
       "discount_rate": null,
-      "discount_range": "% ～ %　ディスカウント",
+      "discount_range": null,
       "lead_managers": [
         "野村證券"
       ],
@@ -23990,7 +23990,7 @@
       "dilution": 2.8,
       "issue_price": null,
       "discount_rate": 11.1,
-      "discount_range": "% ～ %　ディスカウント",
+      "discount_range": null,
       "lead_managers": [
         "ＳＢＩ証券"
       ],
@@ -24136,7 +24136,7 @@
       "shares_outstanding": null,
       "dilution": 0.0,
       "issue_price": 1189,
-      "discount_rate": 16.5,
+      "discount_rate": null,
       "discount_range": "3.5% ～ 5.5%　ディスカウント",
       "lead_managers": [
         "大和証券"
@@ -24203,7 +24203,7 @@
       "delivery_ret": 3.19,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 576.0,
       "delivery_gap_pct": -15.62
     },
@@ -24230,7 +24230,7 @@
       "shares_outstanding": null,
       "dilution": 8.7,
       "issue_price": 881,
-      "discount_rate": 17.0,
+      "discount_rate": null,
       "discount_range": "4.5% ～ 6.5%　ディスカウント",
       "lead_managers": [
         "大和証券"
@@ -24325,7 +24325,7 @@
       "dilution": 0.0,
       "issue_price": 271,
       "discount_rate": 17.1,
-      "discount_range": "% ～ %　ディスカウント",
+      "discount_range": null,
       "lead_managers": [
         "東海東京証券"
       ],
@@ -24370,7 +24370,7 @@
       "shares_outstanding": null,
       "dilution": 0.0,
       "issue_price": 665,
-      "discount_rate": 13.0,
+      "discount_rate": null,
       "discount_range": "4.0% ～ 6.0%　ディスカウント",
       "lead_managers": [
         "ＳＭＢＣ日興証券"
@@ -24514,7 +24514,7 @@
       "shares_outstanding": null,
       "dilution": 0.0,
       "issue_price": 2400,
-      "discount_rate": 11.7,
+      "discount_rate": null,
       "discount_range": "3.0% ～ 5.0%　ディスカウント",
       "lead_managers": [
         "ＳＭＢＣ日興証券"
@@ -24559,7 +24559,7 @@
       "dilution": 0.0,
       "issue_price": 3265,
       "discount_rate": 11.1,
-      "discount_range": "% ～ %　ディスカウント",
+      "discount_range": null,
       "lead_managers": [
         "野村證券"
       ],
@@ -24755,7 +24755,7 @@
       "dilution": 5.0,
       "issue_price": 5110,
       "discount_rate": 11.6,
-      "discount_range": "% ～ %　ディスカウント",
+      "discount_range": null,
       "lead_managers": [],
       "co_managers": [],
       "article_url": "https://pokabu.net/po/moneyforward-2020",
@@ -25261,7 +25261,7 @@
       "dilution": 18.5,
       "issue_price": 2392,
       "discount_rate": 0.1,
-      "discount_range": "% ～ %　ディスカウント",
+      "discount_range": null,
       "lead_managers": [
         "野村證券"
       ],
@@ -25359,7 +25359,7 @@
       "dilution": 0.0,
       "issue_price": 1859,
       "discount_rate": 5.0,
-      "discount_range": "% ～ %　ディスカウント",
+      "discount_range": null,
       "lead_managers": [
         "野村證券"
       ],
@@ -25579,7 +25579,7 @@
       "delivery_ret": null,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": null,
       "announce_day_close": 1092.5,
       "next_day_gu_pct": -8.97,
@@ -25609,7 +25609,7 @@
       "dilution": 0.0,
       "issue_price": 3330,
       "discount_rate": 0.3,
-      "discount_range": "% ～ %　ディスカウント",
+      "discount_range": null,
       "lead_managers": [
         "Morgan Stanley & Co. International plc"
       ],
@@ -26810,7 +26810,7 @@
       "dilution": 4.0,
       "issue_price": 1500,
       "discount_rate": 2.6,
-      "discount_range": "% ～ %　ディスカウント",
+      "discount_range": null,
       "lead_managers": [],
       "co_managers": [],
       "article_url": "https://pokabu.net/po/healios-2019",
@@ -27352,7 +27352,7 @@
       "dilution": 4.0,
       "issue_price": 3805,
       "discount_rate": 2.5,
-      "discount_range": "% ～ %　ディスカウント",
+      "discount_range": null,
       "lead_managers": [],
       "co_managers": [],
       "article_url": "https://pokabu.net/po/sanbio-2019",
@@ -28253,7 +28253,7 @@
       "dilution": 12.9,
       "issue_price": 2826,
       "discount_rate": 4.1,
-      "discount_range": "% ～ %　ディスカウント",
+      "discount_range": null,
       "lead_managers": [],
       "co_managers": [],
       "article_url": "https://pokabu.net/po/moneyforward-2018",
@@ -28490,7 +28490,7 @@
       "dilution": 5.7,
       "issue_price": 908,
       "discount_rate": 1.6,
-      "discount_range": "% ～ %　ディスカウント",
+      "discount_range": null,
       "lead_managers": [
         "野村證券"
       ],
@@ -29074,7 +29074,7 @@
       "shares_outstanding": null,
       "dilution": 0.0,
       "issue_price": 678,
-      "discount_rate": 13.7,
+      "discount_rate": null,
       "discount_range": "3.0% ～ 5.0%　ディスカウント",
       "lead_managers": [
         "大和証券"
@@ -29225,7 +29225,7 @@
       "shares_outstanding": null,
       "dilution": 0.5,
       "issue_price": 5000,
-      "discount_rate": 17.0,
+      "discount_rate": null,
       "discount_range": "3.0% ～ 5.0%　ディスカウント",
       "lead_managers": [
         "野村證券"
@@ -29375,7 +29375,7 @@
       "shares_outstanding": null,
       "dilution": 19.2,
       "issue_price": 212,
-      "discount_rate": 10.5,
+      "discount_rate": null,
       "discount_range": "3.0% ～ 6.0%　ディスカウント",
       "lead_managers": [
         "ＳＭＢＣ日興証券",
@@ -29974,7 +29974,7 @@
       "dilution": 19.6,
       "issue_price": 486,
       "discount_rate": 3.8,
-      "discount_range": "% ～ %　ディスカウント",
+      "discount_range": null,
       "lead_managers": [
         "野村證券"
       ],
@@ -30220,7 +30220,7 @@
       "shares_outstanding": null,
       "dilution": 5.4,
       "issue_price": 6030,
-      "discount_rate": 14.3,
+      "discount_rate": null,
       "discount_range": "3.0% ～ 5.0%　ディスカウント",
       "lead_managers": [
         "ＳＭＢＣ日興証券"
@@ -30441,7 +30441,7 @@
       "delivery_ret": -4.39,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 2764.0,
       "delivery_gap_pct": 0.58
     },
@@ -30765,7 +30765,7 @@
       "dilution": 10.9,
       "issue_price": 1101,
       "discount_rate": 4.8,
-      "discount_range": "% ～ %　ディスカウント",
+      "discount_range": null,
       "lead_managers": [
         "岡三証券"
       ],
@@ -30956,7 +30956,7 @@
       "dilution": 8.1,
       "issue_price": 365,
       "discount_rate": 1.1,
-      "discount_range": "% ～ %　ディスカウント",
+      "discount_range": null,
       "lead_managers": [
         "野村證券"
       ],
@@ -31201,7 +31201,7 @@
       "shares_outstanding": null,
       "dilution": 5.3,
       "issue_price": 1253,
-      "discount_rate": 12.5,
+      "discount_rate": null,
       "discount_range": "6.0% ～ 9.8%　ディスカウント",
       "lead_managers": [
         "ＳＭＢＣ日興証券"
@@ -31599,7 +31599,7 @@
       "dilution": 9.0,
       "issue_price": 1944,
       "discount_rate": 0.4,
-      "discount_range": "% ～%　ディスカウント",
+      "discount_range": null,
       "lead_managers": [],
       "co_managers": [],
       "article_url": "https://pokabu.net/po/tateru-2018",
@@ -31991,7 +31991,7 @@
       "dilution": 5.8,
       "issue_price": 6439,
       "discount_rate": 1.6,
-      "discount_range": "% ～%　ディスカウント",
+      "discount_range": null,
       "lead_managers": [],
       "co_managers": [],
       "article_url": "https://pokabu.net/po/technoproholdings-2018",
@@ -32033,7 +32033,7 @@
       "dilution": 0.0,
       "issue_price": 981,
       "discount_rate": 0.2,
-      "discount_range": "% ～%　ディスカウント",
+      "discount_range": null,
       "lead_managers": [],
       "co_managers": [],
       "article_url": "https://pokabu.net/po/zigexn-2018",
@@ -32127,7 +32127,7 @@
       "dilution": 4.2,
       "issue_price": 4395,
       "discount_rate": 3.3,
-      "discount_range": "% ～%　ディスカウント",
+      "discount_range": null,
       "lead_managers": [],
       "co_managers": [],
       "article_url": "https://pokabu.net/po/sdk-2018",
@@ -32721,7 +32721,7 @@
       "dilution": 0.0,
       "issue_price": 977,
       "discount_rate": 0.5,
-      "discount_range": "% ～%　ディスカウント",
+      "discount_range": null,
       "lead_managers": [
         "野村證券"
       ],
@@ -34402,7 +34402,7 @@
       "dilution": null,
       "issue_price": 2260,
       "discount_rate": 0.9,
-      "discount_range": "% ～%　ディスカウント",
+      "discount_range": null,
       "lead_managers": [
         "大和証券"
       ],
@@ -35301,7 +35301,7 @@
       "delivery_ret": null,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending"
+      "status": "complete"
     },
     {
       "id": "3246_20170929",
@@ -35839,7 +35839,7 @@
       "shares_outstanding": null,
       "dilution": 20.7,
       "issue_price": 3365,
-      "discount_rate": 10.1,
+      "discount_rate": null,
       "discount_range": "4.0% ～ 6.0%　ディスカウント",
       "lead_managers": [
         "みずほ証券"
@@ -36319,7 +36319,7 @@
       "shares_outstanding": null,
       "dilution": 23.2,
       "issue_price": 1081,
-      "discount_rate": 13.3,
+      "discount_rate": null,
       "discount_range": "4.0% ～ 6.0%　ディスカウント",
       "lead_managers": [
         "ＳＢＩ証券"
@@ -36597,7 +36597,7 @@
       "year": 2026,
       "decision_date": "2026-07-10",
       "decision_date_confirmed": true,
-      "delivery_date": "2026-07-21",
+      "delivery_date": null,
       "delivery_estimated": null,
       "market_cap": null,
       "po_scale": 10.0,
@@ -36634,7 +36634,7 @@
       "delivery_ret": null,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "announce_day_close": 454.5,
       "next_day_gu_pct": 1.21
     },
@@ -37938,7 +37938,7 @@
       "shares_outstanding": null,
       "dilution": 0.0,
       "issue_price": 492,
-      "discount_rate": 10.8,
+      "discount_rate": null,
       "discount_range": "3.0% ～ 5.0%　ディスカウント",
       "lead_managers": [
         "三菱ＵＦＪモルガン･スタンレー証券"
@@ -38433,7 +38433,7 @@
       "shares_outstanding": null,
       "dilution": 3.4,
       "issue_price": 2506,
-      "discount_rate": 12.3,
+      "discount_rate": null,
       "discount_range": "4.0% ～ 6.0%　ディスカウント",
       "lead_managers": [
         "大和証券"
@@ -38663,52 +38663,8 @@
       "status": "complete",
       "prev_close_before_delivery": 127000.0,
       "delivery_gap_pct": 0.0
-    },
-    {
-      "id": "6723_20170607",
-      "code": "6723",
-      "name": "poルネサス（6723）の急騰を受けて、過去のPO失敗銘柄の下落率を調べてみた。6月7日（水）翌週に売出価格の決定を控えたルネサスエレクトロニクス （6723）が前日比10%を超える上昇を演じ終値は1,039円でした。ルネサスエレクトロニクスの仮条件は、１株につき750円～900円に設定されているため上限の900円で決...2017.06.07po過去の結果分析",
-      "type": "普通",
-      "alert": "",
-      "lending_type": "",
-      "announce_date": "2017-06-07",
-      "announce_date_confirmed": true,
-      "year": 2026,
-      "decision_date": null,
-      "decision_date_confirmed": false,
-      "delivery_date": null,
-      "delivery_estimated": null,
-      "market_cap": null,
-      "po_scale": 200.0,
-      "po_pct": null,
-      "new_shares": null,
-      "sold_shares": null,
-      "oa_shares": null,
-      "shares_outstanding": null,
-      "dilution": null,
-      "issue_price": null,
-      "discount_rate": null,
-      "discount_range": null,
-      "lead_managers": [],
-      "co_managers": [],
-      "article_url": "https://pokabu.net/po/worst-record",
-      "next_open": 1044.0,
-      "max_price": null,
-      "open_to_max": null,
-      "dec_open": null,
-      "dec_close": null,
-      "ret_open": null,
-      "ret_close": null,
-      "delivery_open": null,
-      "delivery_close": null,
-      "delivery_ret": null,
-      "treasury_shares": null,
-      "memo": "",
-      "status": "pending",
-      "announce_day_close": 1039.0,
-      "next_day_gu_pct": 0.48
     }
   ],
-  "last_updated": "2026-04-24T05:23:25.386733",
-  "count": 791
+  "last_updated": "2026-04-24T09:43:45.597647",
+  "count": 790
 }

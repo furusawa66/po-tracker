@@ -24,7 +24,9 @@ JST       = timezone(timedelta(hours=9))
 FORCE_REFRESH = "--force-refresh" in sys.argv
 
 
-NON_PO_SLUG_PATTERNS = ["-kansoku", "-yotei", "-kabuka"]
+NON_PO_SLUG_PATTERNS = ["-kansoku", "-yotei", "-kabuka",
+                        "worst-record", "best-record", "summary", "matome", "analysis",
+                        "ranking", "matomete", "ichiran"]
 
 
 def is_non_po_url(url: str) -> bool:
@@ -145,7 +147,8 @@ def scrape_article_data(url: str, code: str = "") -> dict:
                         info["discount_rate"] = rate
 
             elif "仮条件" in key:
-                info["discount_range"] = val
+                if val and not re.match(r'^\s*%\s*[~～〜]\s*%', val):
+                    info["discount_range"] = val
 
             elif "希薄化" in key:
                 dm = re.search(r'([\d.]+)%', val)
