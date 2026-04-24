@@ -265,6 +265,8 @@ function populateFilters(){
     if(oa!==ob) return oa-ob;
     return counts[b]-counts[a];
   });
+  // データロード失敗時はチェックボックスを再描画しない（既存状態を保持）
+  if(mgrs.length===0) return;
   // 既存の選択状態を保持
   const prev={};
   wrap.querySelectorAll("input[type=checkbox]").forEach(cb=>{prev[cb.value]=cb.checked;});
@@ -326,7 +328,7 @@ function renderTable(data){
     <td><span class="b ${r.type==="リート"?"b-r":"b-n"}">${esc(r.type)}</span></td>
     <td><span class="b ${r.lending==="貸借"?"b-tai":r.lending==="信用"?"b-c":"b-ban"}">${r.lending==="売禁"?"貸借(売禁)":esc(r.lending)}</span></td>
     <td style="font-family:'Meiryo','メイリオ',sans-serif;max-width:70px;overflow:hidden;text-overflow:ellipsis" title="${esc((r.leadManagers||[]).slice().sort((a,b)=>(MGR_ORDER[abbrManager(a)]??99)-(MGR_ORDER[abbrManager(b)]??99)).join(' / '))}">${esc(abbrManagers(r.leadManagers))||"–"}</td>
-    <td class="num"${r.discountRate>15?' style="color:#fbbf24" title="dis率15%超: 異常値の可能性"':''}>${r.discountRate!=null?pctStr(r.discountRate):"–"}</td>
+    <td class="num"${(r.discountRate!=null&&r.discountRate>15)?' style="color:#fbbf24" title="dis率15%超: 異常値の可能性"':''}>${r.discountRate!=null?pctStr(r.discountRate):"–"}</td>
     <td class="num">${r.scale?r.scale.toLocaleString():"–"}</td>
     <td class="num">${r.pct!=null?pctStr(r.pct):"–"}</td>
     <td class="num">${r.dilution!=null?pctStr(r.dilution):"–"}</td>

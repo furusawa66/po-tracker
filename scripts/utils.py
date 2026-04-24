@@ -40,6 +40,18 @@ def prev_biz_days(d: date, n: int) -> date:
     return result
 
 
+def _adjust_year_for_wrap(mo: int, year: int) -> int:
+    """年またぎを推定して年を補正:
+    11-12月時点で1-3月の日付 → 翌年扱い
+    1-3月時点で11-12月の日付  → 前年扱い"""
+    cur_mo = date.today().month
+    if cur_mo >= 11 and mo <= 3:
+        return year + 1
+    if cur_mo <= 3 and mo >= 11:
+        return year - 1
+    return year
+
+
 def parse_jp_date(text: str, year: int = None) -> str | None:
     """'4月6日' '4月6日(月)' → 'YYYY-MM-DD'"""
     if not year:
@@ -49,10 +61,7 @@ def parse_jp_date(text: str, year: int = None) -> str | None:
         return None
     try:
         mo, dy = int(m.group(1)), int(m.group(2))
-        # 年またぎ考慮（11-12月に翌年1-3月の受渡し）
-        if date.today().month >= 11 and mo <= 3:
-            year += 1
-        return date(year, mo, dy).isoformat()
+        return date(_adjust_year_for_wrap(mo, year), mo, dy).isoformat()
     except Exception:
         return None
 
@@ -63,11 +72,8 @@ def parse_jp_date_range_end(text: str) -> str | None:
     if not all_dates:
         return None
     mo, dy = int(all_dates[0][0]), int(all_dates[0][1])
-    yr = date.today().year
-    if date.today().month >= 11 and mo <= 3:
-        yr += 1
     try:
-        return date(yr, mo, dy).isoformat()
+        return date(_adjust_year_for_wrap(mo, date.today().year), mo, dy).isoformat()
     except Exception:
         return None
 
@@ -92,29 +98,26 @@ def atomic_write_json(path: str, data) -> None:
 def http_get_with_retry(url: str, headers: dict = None, timeout: int = 15,
                         max_retries: int = 4, backoff_base: float = 2.0):
     """HTTP GET をリトライ付きで実行。429/5xx/接続エラーで指数バックオフ。
-    成功時 Response を返し、最終失敗時 None を返す（例外は出さない）"""
+    成功時 Response を返し、最終失敗時 None を返す。
+    KeyboardInterrupt や SystemExit は伝播させる（ユーザー中断を妨げない）。"""
     import requests
-    last_err = None
     for attempt in range(max_retries):
         try:
             res = requests.get(url, headers=headers, timeout=timeout)
-            # 429 (rate limit) と 5xx はリトライ
-            if res.status_code == 429 or 500 <= res.status_code < 600:
-                wait = backoff_base ** attempt
-                # Retry-After ヘッダがあれば優先
-                ra = res.headers.get("Retry-After")
-                if ra:
-                    try: wait = max(wait, float(ra))
-                    except ValueError: pass
-                last_err = f"HTTP {res.status_code}"
-                if attempt < max_retries - 1:
-                    time.sleep(wait)
-                continue
-            return res
-        except (requests.Timeout, requests.ConnectionError) as e:
-            last_err = type(e).__name__
+        except (requests.Timeout, requests.ConnectionError):
             if attempt < max_retries - 1:
                 time.sleep(backoff_base ** attempt)
-        except Exception as e:
-            return None
+            continue
+        except requests.RequestException:
+            return None  # その他の requests エラーはリトライしない
+        if res.status_code == 429 or 500 <= res.status_code < 600:
+            wait = backoff_base ** attempt
+            ra = res.headers.get("Retry-After")
+            if ra:
+                try: wait = max(wait, float(ra))
+                except ValueError: pass
+            if attempt < max_retries - 1:
+                time.sleep(wait)
+            continue
+        return res
     return None
