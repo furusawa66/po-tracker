@@ -555,9 +555,9 @@ def main():
 
     print(f"\n補完: {matched} 件 / 新規追加: {added} 件\n")
 
-    # ③ 株価取得（next_open / delivery_open / prev_close_before_delivery が未取得のレコード）
+    # ③ 株価取得（next_open / delivery_open / prev_close_before_delivery / announce_day_close が未取得のレコード）
     need_prices = [r for r in records if r.get("announce_date") and r.get("announce_date_confirmed")
-                   and (not r.get("next_open") or not r.get("delivery_open") or not r.get("prev_close_before_delivery"))]
+                   and (not r.get("next_open") or not r.get("delivery_open") or not r.get("prev_close_before_delivery") or not r.get("announce_day_close"))]
     print(f"[3] 株価取得: {len(need_prices)} 件...")
     for rec in need_prices:
         code = rec.get("code")
