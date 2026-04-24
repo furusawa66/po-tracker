@@ -17,7 +17,7 @@ nav{display:flex;align-items:center;gap:12px;padding:14px 24px;background:#0b0f1
 .upd{font-size:11px;color:#475569}
 .page{padding:22px;flex:1;display:flex;flex-direction:column;min-height:0}
 /* stats */
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:12px}
+.stats{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;margin-bottom:12px}
 .sc{background:#131a2e;border:1px solid #1e2d4d;border-radius:8px;padding:6px 12px;display:flex;align-items:center;gap:10px}
 .sl{font-size:11px;color:#64748b;text-transform:uppercase;letter-spacing:.06em;white-space:nowrap}
 .sv{font-size:16px;font-weight:500;font-family:'Meiryo','メイリオ',sans-serif;margin-left:auto}
@@ -69,7 +69,8 @@ th.num{padding-left:10px;padding-right:8px}
 ::-webkit-scrollbar{width:5px;height:5px}
 ::-webkit-scrollbar-track{background:#0b0f1a}
 ::-webkit-scrollbar-thumb{background:#1e3a5f;border-radius:3px}
-@media(max-width:700px){.stats{grid-template-columns:1fr 1fr}}
+@media(max-width:1200px){.stats{grid-template-columns:repeat(4,1fr)}}
+@media(max-width:700px){.stats{grid-template-columns:repeat(2,1fr)}}
 </style>
 </head>
 <body>
@@ -104,6 +105,9 @@ th.num{padding-left:10px;padding-right:8px}
     <div class="sc"><div class="sl">平均騰落率（始値）</div><div class="sv" id="s1">–</div></div>
     <div class="sc"><div class="sl">平均騰落率（終値）</div><div class="sv" id="s2">–</div></div>
     <div class="sc"><div class="sl">受渡日騰落率</div><div class="sv" id="s3">–</div></div>
+    <div class="sc"><div class="sl">平均 9:15騰</div><div class="sv" id="s4">–</div></div>
+    <div class="sc"><div class="sl">平均 9:30騰</div><div class="sv" id="s5">–</div></div>
+    <div class="sc"><div class="sl">平均 前場引騰</div><div class="sv" id="s6">–</div></div>
   </div>
 
   <div class="tw">
@@ -436,22 +440,25 @@ function render(){
     const sortKey=r=>r.announceDate||`${r.year}-01-01`;
     filt.sort((a,b)=>sortKey(b).localeCompare(sortKey(a)));
   }
-  const opens=filt.map(r=>r.retOpen).filter(v=>v!=null);
-  const closes=filt.map(r=>r.retClose).filter(v=>v!=null);
-  const avgO=avg(opens),avgC=avg(closes);
-  const dels=filt.map(r=>r.delRet).filter(v=>v!=null);
-  const avgD=avg(dels);
+  const avgO=avg(filt.map(r=>r.retOpen).filter(v=>v!=null));
+  const avgC=avg(filt.map(r=>r.retClose).filter(v=>v!=null));
+  const avgD=avg(filt.map(r=>r.delRet).filter(v=>v!=null));
+  const avg915 =avg(filt.map(r=>r.ret915).filter(v=>v!=null));
+  const avg930 =avg(filt.map(r=>r.ret930).filter(v=>v!=null));
+  const avgMor =avg(filt.map(r=>r.retMorning).filter(v=>v!=null));
 
+  function setStat(id, v){
+    const el=document.getElementById(id);
+    el.textContent=v!=null?fmt(v):"–";
+    el.className="sv "+(v!=null?(v>=0?"pos":"neg"):"");
+  }
   document.getElementById("s0").textContent=filt.length;
-  const s1=document.getElementById("s1");
-  s1.textContent=avgO!=null?fmt(avgO):"–";
-  s1.className="sv "+(avgO!=null?(avgO>=0?"pos":"neg"):"");
-  const s2=document.getElementById("s2");
-  s2.textContent=avgC!=null?fmt(avgC):"–";
-  s2.className="sv "+(avgC!=null?(avgC>=0?"pos":"neg"):"");
-  const s3=document.getElementById("s3");
-  s3.textContent=avgD!=null?fmt(avgD):"–";
-  s3.className="sv "+(avgD!=null?(avgD>=0?"pos":"neg"):"");
+  setStat("s1", avgO);
+  setStat("s2", avgC);
+  setStat("s3", avgD);
+  setStat("s4", avg915);
+  setStat("s5", avg930);
+  setStat("s6", avgMor);
 
   renderTable(filt);
 }
