@@ -1611,7 +1611,7 @@
       "delivery_gap_pct": 0.0
     },
     {
-      "id": "3295_20211014",
+      "id": "3295_20211014_2",
       "code": "3295",
       "name": "ヒューリックＲＥ",
       "type": "リート",
@@ -3418,7 +3418,7 @@
       "announce_date_confirmed": true
     },
     {
-      "id": "3453_20221006",
+      "id": "3453_20221006_2",
       "code": "3453",
       "name": "ケネ商業リート",
       "type": "リート",
@@ -3983,7 +3983,7 @@
       "delivery_gap_pct": -0.12
     },
     {
-      "id": "3481_20221014",
+      "id": "3481_20221014_2",
       "code": "3481",
       "name": "三菱地所物流",
       "type": "リート",
@@ -8716,7 +8716,7 @@
       "delivery_gap_pct": -0.28
     },
     {
-      "id": "3492_20240829",
+      "id": "3492_20240829_2",
       "code": "3492",
       "name": "タカラリート",
       "type": "リート",
@@ -25516,7 +25516,7 @@
       "year": 2019,
       "decision_date": "2019-11-25",
       "decision_date_confirmed": true,
-      "delivery_date": "2019-03-09",
+      "delivery_date": null,
       "delivery_estimated": "2019-12-03",
       "market_cap": 307,
       "po_scale": 44.0,
@@ -25554,9 +25554,10 @@
       "treasury_shares": null,
       "memo": "",
       "status": "pending",
-      "prev_close_before_delivery": 770.0,
+      "prev_close_before_delivery": null,
       "announce_day_close": 1092.5,
-      "next_day_gu_pct": -8.97
+      "next_day_gu_pct": -8.97,
+      "delivery_gap_pct": null
     },
     {
       "id": "4384_20191113",
@@ -38682,6 +38683,6 @@
       "next_day_gu_pct": 0.48
     }
   ],
-  "last_updated": "2026-04-24T01:19:22.226770",
+  "last_updated": "2026-04-24T11:08:36.912017+09:00",
   "count": 791
 }

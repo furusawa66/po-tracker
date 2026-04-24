@@ -11,12 +11,27 @@ GitHub Actions の workflow_dispatch で1回実行する想定。
 
 import requests
 from bs4 import BeautifulSoup
-import json, re, time
-from datetime import datetime, date, timedelta
+import json, os, re, sys, tempfile, time
+from datetime import datetime, date, timedelta, timezone
+
+try:
+    import jpholiday  # 祝日判定
+except ImportError:
+    jpholiday = None
 
 DATA_FILE = "data/po_records.json"
 BASE_URL  = "https://pokabu.net"
 HEADERS   = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"}
+JST       = timezone(timedelta(hours=9))
+FORCE_REFRESH = "--force-refresh" in sys.argv  # 既存値を強制上書き
+
+def is_jp_holiday(d: date) -> bool:
+    """東証休場日判定: 国民の祝日 + 年末年始休場（12/31, 1/2, 1/3）"""
+    if (d.month == 12 and d.day == 31) or (d.month == 1 and d.day in (2, 3)):
+        return True
+    if jpholiday:
+        return jpholiday.is_holiday(d)
+    return d.month == 1 and d.day == 1  # フォールバックは元旦のみ
 
 
 def parse_jp_date(text: str, year: int = None) -> str | None:
@@ -230,16 +245,23 @@ def fetch_intraday_15m(code: str, days: int = 60) -> dict:
         r = result[0]
         tss = r.get("timestamp", [])
         q = r.get("indicators", {}).get("quote", [{}])[0]
-        gmt_offset = r.get("meta", {}).get("gmtoffset", 32400)  # JST デフォルト
+        opens = q.get("open") or []
+        closes = q.get("close") or []
+        gmt_offset = r.get("meta", {}).get("gmtoffset", 32400)
+        bar_tz = timezone(timedelta(seconds=gmt_offset))
         for i, ts in enumerate(tss):
-            if not ts or q["close"][i] is None:
+            if not ts:
                 continue
-            local_dt = datetime.utcfromtimestamp(ts + gmt_offset)
+            c = closes[i] if i < len(closes) else None
+            o = opens[i]  if i < len(opens)  else None
+            if c is None and o is None:
+                continue
+            local_dt = datetime.fromtimestamp(ts, tz=bar_tz)
             dk = local_dt.date().isoformat()
             tk = local_dt.strftime("%H:%M")
             bars_by_date.setdefault(dk, {})[tk] = {
-                "open": round(q["open"][i], 2) if q["open"][i] else None,
-                "close": round(q["close"][i], 2) if q["close"][i] else None,
+                "open":  round(o, 2) if o is not None else None,
+                "close": round(c, 2) if c is not None else None,
             }
     except Exception as e:
         print(f"  15m取得エラー ({code}): {e}")
@@ -303,14 +325,14 @@ def fetch_prices(code: str, days: int = 90) -> dict:
 
 def next_biz_day(d: date) -> date:
     nd = d + timedelta(days=1)
-    while nd.weekday() >= 5:
+    while nd.weekday() >= 5 or is_jp_holiday(nd):
         nd += timedelta(days=1)
     return nd
 
 
 def prev_biz_day(d: date) -> date:
     pd = d - timedelta(days=1)
-    while pd.weekday() >= 5:
+    while pd.weekday() >= 5 or is_jp_holiday(pd):
         pd -= timedelta(days=1)
     return pd
 
@@ -324,7 +346,7 @@ def fill_intraday(rec: dict, bars_by_date: dict):
         ann_date = datetime.fromisoformat(ann_str).date()
     except Exception:
         return
-    # 翌営業日（祝日含めて最大5日探索）
+    # 翌営業日（祝日対応で最大7日探索）
     nd = ann_date
     for _ in range(7):
         nd = next_biz_day(nd)
@@ -337,23 +359,15 @@ def fill_intraday(rec: dict, bars_by_date: dict):
     if not next_open:
         return
 
-    # 9:00 バーの close = 9:15 時点
-    if bars.get("09:00") and not rec.get("next_day_915_ret"):
-        c = bars["09:00"].get("close")
-        if c:
-            rec["next_day_915_ret"] = round((c - next_open) / next_open * 100, 2)
-
-    # 9:15 バーの close = 9:30 時点
-    if bars.get("09:15") and not rec.get("next_day_930_ret"):
-        c = bars["09:15"].get("close")
-        if c:
-            rec["next_day_930_ret"] = round((c - next_open) / next_open * 100, 2)
-
-    # 11:15 バーの close = 11:30 前場引け
-    if bars.get("11:15") and not rec.get("next_day_morning_ret"):
-        c = bars["11:15"].get("close")
-        if c:
-            rec["next_day_morning_ret"] = round((c - next_open) / next_open * 100, 2)
+    # (バー時刻, レコードフィールド) のマッピング
+    # 9:00バーのclose = 9:15時点 / 9:15バーのclose = 9:30時点 / 11:15バーのclose = 11:30前場引け
+    for bar_time, field in [("09:00", "next_day_915_ret"),
+                             ("09:15", "next_day_930_ret"),
+                             ("11:15", "next_day_morning_ret")]:
+        if FORCE_REFRESH or rec.get(field) is None:
+            bar = bars.get(bar_time)
+            if bar and bar.get("close"):
+                rec[field] = round((bar["close"] - next_open) / next_open * 100, 2)
 
 
 def fill_prices(rec: dict, prices: dict):
@@ -371,48 +385,47 @@ def fill_prices(rec: dict, prices: dict):
 
     next_day = next_biz_day(ann_date).isoformat()
 
+    def needs(field):
+        return FORCE_REFRESH or rec.get(field) is None
+
     # 翌日始値
-    if not rec.get("next_open") and next_day in prices:
+    if needs("next_open") and next_day in prices:
         p = prices[next_day]
         if p["open"]:
             rec["next_open"] = p["open"]
 
     # 発表日終値（翌日GU判定用）
-    if not rec.get("announce_day_close") and ann_str in prices:
+    if needs("announce_day_close") and ann_str in prices:
         p = prices[ann_str]
         if p.get("close"):
             rec["announce_day_close"] = p["close"]
 
     # 翌日 GU/GD ギャップ率（翌日始値 vs 発表日終値）
-    if rec.get("next_open") and rec.get("announce_day_close") and not rec.get("next_day_gu_pct"):
+    if rec.get("next_open") and rec.get("announce_day_close") and needs("next_day_gu_pct"):
         rec["next_day_gu_pct"] = round((rec["next_open"] - rec["announce_day_close"]) / rec["announce_day_close"] * 100, 2)
 
     # 決定日始値・終値
-    if dec_str and dec_str in prices and not rec.get("dec_open"):
+    if dec_str and dec_str in prices and needs("dec_open"):
         p = prices[dec_str]
         if p["open"] and p["close"]:
             rec["dec_open"] = p["open"]
             rec["dec_close"] = p["close"]
 
     # 騰落率
-    if rec.get("dec_open") and rec.get("next_open") and not rec.get("ret_open"):
+    if rec.get("dec_open") and rec.get("next_open") and needs("ret_open"):
         rec["ret_open"] = round((rec["dec_open"] - rec["next_open"]) / rec["next_open"] * 100, 2)
         rec["ret_close"] = round((rec["dec_close"] - rec["next_open"]) / rec["next_open"] * 100, 2)
 
     # 受渡日
-    if del_str and del_str in prices and not rec.get("delivery_open"):
+    if del_str and del_str in prices and needs("delivery_open"):
         p = prices[del_str]
         if p["open"] and p["close"]:
             rec["delivery_open"] = p["open"]
             rec["delivery_close"] = p["close"]
             rec["delivery_ret"] = round((p["close"] - p["open"]) / p["open"] * 100, 2)
 
-    # 発表日翌日の日中データ（15分足）
-    if next_day in prices:  # 翌日の日足データがある場合のみ
-        pass  # intraday は別途 fill_intraday で処理
-
     # 受渡日前日終値 & GU率（ギャップ率）
-    if del_str and not rec.get("prev_close_before_delivery"):
+    if del_str and needs("prev_close_before_delivery"):
         try:
             del_date = datetime.fromisoformat(del_str).date()
             # 前営業日から遡って、prices にある日を探す（祝日対応）
@@ -603,13 +616,29 @@ def main():
         if bars:
             fill_intraday(rec, bars)
 
-    # ④ 保存
+    # ④ 保存（原子的書き込み）
     out = {"records": records, "last_updated": datetime.now().isoformat(), "count": len(records)}
-    with open(DATA_FILE, "w", encoding="utf-8") as f:
-        json.dump(out, f, ensure_ascii=False, indent=2)
+    atomic_write_json(DATA_FILE, out)
 
     filled = sum(1 for r in records if r.get("announce_date") and r.get("next_open"))
     print(f"\n完了: announce_date+next_open 取得済み {filled} / {len(records)} 件")
+
+
+def atomic_write_json(path: str, data) -> None:
+    """同一ディレクトリに一時ファイル作成 → fsync → rename で原子的に書き込む"""
+    d = os.path.dirname(path) or "."
+    os.makedirs(d, exist_ok=True)
+    fd, tmp = tempfile.mkstemp(prefix=".tmp_", suffix=".json", dir=d)
+    try:
+        with os.fdopen(fd, "w", encoding="utf-8") as f:
+            json.dump(data, f, ensure_ascii=False, indent=2)
+            f.flush()
+            os.fsync(f.fileno())
+        os.replace(tmp, path)
+    except Exception:
+        if os.path.exists(tmp):
+            os.unlink(tmp)
+        raise
 
 
 if __name__ == "__main__":

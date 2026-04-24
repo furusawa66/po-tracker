@@ -10,29 +10,43 @@ PO自動トラッカー — pokabu.net 完全対応版
 
 import requests
 from bs4 import BeautifulSoup
-import json, os, re, time
+import json, os, re, sys, tempfile, time
 from datetime import datetime, date, timedelta
+
+try:
+    import jpholiday
+except ImportError:
+    jpholiday = None
 
 DATA_FILE = "data/po_records.json"
 BASE_URL  = "https://pokabu.net"
 HEADERS   = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"}
 THIS_YEAR = date.today().year
+FORCE_REFRESH = "--force-refresh" in sys.argv
 
 # ── ユーティリティ ────────────────────────────────────────────────────────────
 
+def is_jp_holiday(d: date) -> bool:
+    """東証休場日判定: 国民の祝日 + 年末年始休場（12/31, 1/2, 1/3）"""
+    if (d.month == 12 and d.day == 31) or (d.month == 1 and d.day in (2, 3)):
+        return True
+    if jpholiday:
+        return jpholiday.is_holiday(d)
+    return d.month == 1 and d.day == 1
+
 def next_biz_day(d: date) -> date:
     nd = d + timedelta(days=1)
-    while nd.weekday() >= 5:
+    while nd.weekday() >= 5 or is_jp_holiday(nd):
         nd += timedelta(days=1)
     return nd
 
 def prev_biz_days(d: date, n: int) -> date:
-    """n営業日前の日付を返す（祝日は考慮しない）"""
+    """n営業日前の日付を返す（祝日対応）"""
     result = d
     count  = 0
     while count < n:
         result -= timedelta(days=1)
-        if result.weekday() < 5:
+        if result.weekday() < 5 and not is_jp_holiday(result):
             count += 1
     return result
 
@@ -73,11 +87,25 @@ def load_records() -> list:
         raw = json.load(f)
     return raw.get("records", raw) if isinstance(raw, dict) else raw
 
+def atomic_write_json(path: str, data) -> None:
+    """同一ディレクトリに一時ファイル → fsync → rename で原子的に書き込む"""
+    d = os.path.dirname(path) or "."
+    os.makedirs(d, exist_ok=True)
+    fd, tmp = tempfile.mkstemp(prefix=".tmp_", suffix=".json", dir=d)
+    try:
+        with os.fdopen(fd, "w", encoding="utf-8") as f:
+            json.dump(data, f, ensure_ascii=False, indent=2)
+            f.flush()
+            os.fsync(f.fileno())
+        os.replace(tmp, path)
+    except Exception:
+        if os.path.exists(tmp):
+            os.unlink(tmp)
+        raise
+
 def save_records(records: list):
-    os.makedirs("data", exist_ok=True)
     out = {"records": records, "last_updated": datetime.now().isoformat(), "count": len(records)}
-    with open(DATA_FILE, "w", encoding="utf-8") as f:
-        json.dump(out, f, ensure_ascii=False, indent=2)
+    atomic_write_json(DATA_FILE, out)
     print(f"保存完了: {len(records)} 件")
 
 # ── pokabu.net スクレイピング ─────────────────────────────────────────────────
@@ -396,11 +424,14 @@ def update_prices(rec: dict) -> dict:
         )
         print(f"  {rec['name']}: 希薄化率 = {rec['dilution']}%")
 
+    def needs(field):
+        return FORCE_REFRESH or rec.get(field) is None
+
     next_day     = next_biz_day(ann_date)
     next_day_str = next_day.isoformat()
 
     # 翌日始値
-    if not rec.get("next_open") and next_day_str in prices:
+    if needs("next_open") and next_day_str in prices:
         p = prices[next_day_str]
         if p["open"]:
             rec["next_open"] = p["open"]
@@ -444,21 +475,21 @@ def update_prices(rec: dict) -> dict:
 
     # 決定日 → 騰落率計算
     dec_date = rec.get("decision_date")
-    if dec_date and dec_date in prices and not rec.get("dec_open"):
+    if dec_date and dec_date in prices and needs("dec_open"):
         p = prices[dec_date]
         if p["open"] and p["close"]:
             rec["dec_open"]  = p["open"]
             rec["dec_close"] = p["close"]
 
     # 騰落率が未計算なら算出（dec_open/closeが先に入っていたケースも救済）
-    if rec.get("dec_open") and rec.get("next_open") and not rec.get("ret_open"):
+    if rec.get("dec_open") and rec.get("next_open") and needs("ret_open"):
         rec["ret_open"]  = round((rec["dec_open"]  - rec["next_open"]) / rec["next_open"] * 100, 2)
         rec["ret_close"] = round((rec["dec_close"] - rec["next_open"]) / rec["next_open"] * 100, 2)
         print(f"  {rec['name']}: 騰落率(始){rec['ret_open']}% 騰落率(終){rec['ret_close']}%")
 
     # 受渡日 → 寄り・大引け・騰落率（A=受渡始値, B=受渡終値, C=B÷A）
     del_date = rec.get("delivery_date") or rec.get("delivery_estimated")
-    if del_date and del_date in prices and not rec.get("delivery_open"):
+    if del_date and del_date in prices and needs("delivery_open"):
         p = prices[del_date]
         if p["open"] and p["close"]:
             rec["delivery_open"]  = p["open"]

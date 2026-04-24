@@ -169,7 +169,7 @@ function recToRow(r, src){
     delOpen:r.delivery_open, delClose:r.delivery_close, delRet:r.delivery_ret,
     prevClose:r.prev_close_before_delivery, gapPct:r.delivery_gap_pct,
     leadManagers:r.lead_managers||[], coManagers:r.co_managers||[],
-    memo:r.memo||"", status:((r.delivery_open&&r.delivery_close)||(r.delivery_date&&new Date(r.delivery_date)<new Date())||(r.announce_date&&new Date(r.announce_date)<new Date(Date.now()-30*864e5)))?"complete":(r.status||"pending"), announceDate:r.announce_date||"",
+    memo:r.memo||"", status:((r.delivery_open&&r.delivery_close)||(r.delivery_date&&new Date(r.delivery_date)<new Date()))?"complete":(r.status||"pending"), announceDate:r.announce_date||"",
     marketCap:r.market_cap, shares:r.shares_outstanding,
     discountRate:r.discount_rate, discountRange:r.discount_range||"",
     newShares:r.new_shares, soldShares:r.sold_shares,
@@ -247,18 +247,34 @@ function populateFilters(){
   while(selY.options.length>1) selY.remove(1);
   yrs.forEach(y=>{const o=document.createElement("option");o.value=y;o.textContent=y;selY.add(o);});
   selY.value=curY;
-  // 主幹事チェックボックス
+  // 主幹事チェックボックス（実データから動的生成、出現頻度順）
   const wrap=document.getElementById("fm-checks");
-  const mgrs=["野","大","み","日","三"];
-  if(!wrap.children.length){
-    mgrs.forEach(m=>{
-      const lbl=document.createElement("label");lbl.className="mcb";
-      const cb=document.createElement("input");cb.type="checkbox";cb.checked=true;cb.value=m;
-      cb.onchange=()=>render();
-      lbl.appendChild(cb);lbl.appendChild(document.createTextNode(m));
-      wrap.appendChild(lbl);
+  const counts={};
+  combined.forEach(r=>{
+    (r.leadManagers||[]).forEach(name=>{
+      const a=abbrManager(name);
+      if(a) counts[a]=(counts[a]||0)+1;
     });
-  }
+  });
+  const mgrs=Object.keys(counts).sort((a,b)=>{
+    const oa=MGR_ORDER[a]??99, ob=MGR_ORDER[b]??99;
+    if(oa!==ob) return oa-ob;
+    return counts[b]-counts[a];
+  });
+  // 既存の選択状態を保持
+  const prev={};
+  wrap.querySelectorAll("input[type=checkbox]").forEach(cb=>{prev[cb.value]=cb.checked;});
+  wrap.innerHTML="";
+  mgrs.forEach(m=>{
+    const lbl=document.createElement("label");lbl.className="mcb";
+    const cb=document.createElement("input");cb.type="checkbox";
+    cb.checked=prev[m]!==undefined?prev[m]:true;
+    cb.value=m;
+    cb.onchange=()=>render();
+    lbl.appendChild(cb);
+    lbl.appendChild(document.createTextNode(m+" ("+counts[m]+")"));
+    wrap.appendChild(lbl);
+  });
 }
 function getCheckedManagers(){
   const cbs=document.querySelectorAll("#fm-checks input[type=checkbox]");
