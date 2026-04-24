@@ -11947,13 +11947,13 @@
         "三菱UFJ eスマート証券"
       ],
       "article_url": "https://pokabu.net/po/j-re-2026",
-      "next_open": null,
+      "next_open": 124900.0,
       "max_price": null,
       "open_to_max": null,
       "dec_open": 122200.0,
       "dec_close": 120800.0,
-      "ret_open": null,
-      "ret_close": null,
+      "ret_open": -2.16,
+      "ret_close": -3.28,
       "delivery_open": 120500.0,
       "delivery_close": 117100.0,
       "delivery_ret": -2.82,
@@ -38665,6 +38665,6 @@
       "delivery_gap_pct": 0.0
     }
   ],
-  "last_updated": "2026-04-24T09:43:45.597647",
-  "count": 790
+  "count": 790,
+  "last_updated": "2026-04-24T09:43:45.597647"
 }
