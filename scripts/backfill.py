@@ -214,6 +214,38 @@ def scrape_article_data(url: str, code: str = "") -> dict:
     return info
 
 
+def fetch_intraday_15m(code: str, days: int = 60) -> dict:
+    """Yahoo Finance から 15 分足を取得。戻り値: {'YYYY-MM-DD': {'HH:MM': {'open','close'}}}"""
+    ticker = f"{code}.T"
+    url = f"https://query1.finance.yahoo.com/v8/finance/chart/{ticker}?interval=15m&range={days}d"
+    bars_by_date = {}
+    try:
+        res = requests.get(url, headers=HEADERS, timeout=15)
+        if res.status_code != 200:
+            return bars_by_date
+        data = res.json()
+        result = data.get("chart", {}).get("result")
+        if not result:
+            return bars_by_date
+        r = result[0]
+        tss = r.get("timestamp", [])
+        q = r.get("indicators", {}).get("quote", [{}])[0]
+        gmt_offset = r.get("meta", {}).get("gmtoffset", 32400)  # JST デフォルト
+        for i, ts in enumerate(tss):
+            if not ts or q["close"][i] is None:
+                continue
+            local_dt = datetime.utcfromtimestamp(ts + gmt_offset)
+            dk = local_dt.date().isoformat()
+            tk = local_dt.strftime("%H:%M")
+            bars_by_date.setdefault(dk, {})[tk] = {
+                "open": round(q["open"][i], 2) if q["open"][i] else None,
+                "close": round(q["close"][i], 2) if q["close"][i] else None,
+            }
+    except Exception as e:
+        print(f"  15m取得エラー ({code}): {e}")
+    return bars_by_date
+
+
 def fetch_prices(code: str, days: int = 90) -> dict:
     """Yahoo Finance から株価を取得（v8 API → v7 CSV フォールバック）"""
     ticker = f"{code}.T"
@@ -283,6 +315,47 @@ def prev_biz_day(d: date) -> date:
     return pd
 
 
+def fill_intraday(rec: dict, bars_by_date: dict):
+    """発表日翌日の15分足データから騰落率を計算"""
+    ann_str = rec.get("announce_date")
+    if not ann_str or not rec.get("next_open"):
+        return
+    try:
+        ann_date = datetime.fromisoformat(ann_str).date()
+    except Exception:
+        return
+    # 翌営業日（祝日含めて最大5日探索）
+    nd = ann_date
+    for _ in range(7):
+        nd = next_biz_day(nd)
+        if nd.isoformat() in bars_by_date:
+            break
+    else:
+        return
+    bars = bars_by_date.get(nd.isoformat(), {})
+    next_open = rec["next_open"]
+    if not next_open:
+        return
+
+    # 9:00 バーの close = 9:15 時点
+    if bars.get("09:00") and not rec.get("next_day_915_ret"):
+        c = bars["09:00"].get("close")
+        if c:
+            rec["next_day_915_ret"] = round((c - next_open) / next_open * 100, 2)
+
+    # 9:15 バーの close = 9:30 時点
+    if bars.get("09:15") and not rec.get("next_day_930_ret"):
+        c = bars["09:15"].get("close")
+        if c:
+            rec["next_day_930_ret"] = round((c - next_open) / next_open * 100, 2)
+
+    # 11:15 バーの close = 11:30 前場引け
+    if bars.get("11:15") and not rec.get("next_day_morning_ret"):
+        c = bars["11:15"].get("close")
+        if c:
+            rec["next_day_morning_ret"] = round((c - next_open) / next_open * 100, 2)
+
+
 def fill_prices(rec: dict, prices: dict):
     """株価データから騰落率等を計算してレコードに書き込む"""
     ann_str = rec.get("announce_date")
@@ -304,6 +377,16 @@ def fill_prices(rec: dict, prices: dict):
         if p["open"]:
             rec["next_open"] = p["open"]
 
+    # 発表日終値（翌日GU判定用）
+    if not rec.get("announce_day_close") and ann_str in prices:
+        p = prices[ann_str]
+        if p.get("close"):
+            rec["announce_day_close"] = p["close"]
+
+    # 翌日 GU/GD ギャップ率（翌日始値 vs 発表日終値）
+    if rec.get("next_open") and rec.get("announce_day_close") and not rec.get("next_day_gu_pct"):
+        rec["next_day_gu_pct"] = round((rec["next_open"] - rec["announce_day_close"]) / rec["announce_day_close"] * 100, 2)
+
     # 決定日始値・終値
     if dec_str and dec_str in prices and not rec.get("dec_open"):
         p = prices[dec_str]
@@ -323,6 +406,10 @@ def fill_prices(rec: dict, prices: dict):
             rec["delivery_open"] = p["open"]
             rec["delivery_close"] = p["close"]
             rec["delivery_ret"] = round((p["close"] - p["open"]) / p["open"] * 100, 2)
+
+    # 発表日翌日の日中データ（15分足）
+    if next_day in prices:  # 翌日の日足データがある場合のみ
+        pass  # intraday は別途 fill_intraday で処理
 
     # 受渡日前日終値 & GU率（ギャップ率）
     if del_str and not rec.get("prev_close_before_delivery"):
@@ -488,6 +575,33 @@ def main():
         if prices:
             fill_prices(rec, prices)
         time.sleep(0.5)
+
+    # ③-2 Intraday 15m 取得（発表日が60日以内のレコードのみ）
+    cutoff = date.today() - timedelta(days=60)
+    need_intraday = [r for r in records if r.get("announce_date") and r.get("next_open")
+                     and not r.get("next_day_morning_ret")]
+    intraday_targets = []
+    for r in need_intraday:
+        try:
+            ad = datetime.fromisoformat(r["announce_date"]).date()
+            if ad >= cutoff:
+                intraday_targets.append(r)
+        except Exception:
+            continue
+    print(f"[4] Intraday 15m 取得: {len(intraday_targets)} 件...")
+    # コード単位でまとめて取得（同じコードが複数レコードあればキャッシュ効く）
+    intraday_cache = {}
+    for rec in intraday_targets:
+        code = rec.get("code")
+        if not code:
+            continue
+        if code not in intraday_cache:
+            print(f"  {rec.get('name')} ({code}) 15m")
+            intraday_cache[code] = fetch_intraday_15m(code, days=60)
+            time.sleep(0.5)
+        bars = intraday_cache[code]
+        if bars:
+            fill_intraday(rec, bars)
 
     # ④ 保存
     out = {"records": records, "last_updated": datetime.now().isoformat(), "count": len(records)}

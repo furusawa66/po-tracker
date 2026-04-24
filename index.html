@@ -109,6 +109,10 @@ th.num{padding-left:10px;padding-right:8px}
         <th class="num" onclick="sort(9)">規模割合<br>(対時価総額)</th>
         <th class="num" onclick="sort(10)">希薄化率</th>
         <th class="num" onclick="sort(11)">PO発表翌日<br>の始値</th>
+        <th onclick="sort(20)" title="翌日始値が発表日終値より 0.5%以上アゲ→🟢GU / 0.5%以上サゲ→🔴GD / ±0.5%以内→–">翌日<br>GUGD</th>
+        <th class="num" onclick="sort(21)" title="9:15時点の価格 vs 翌日始値">9:15<br>騰</th>
+        <th class="num" onclick="sort(22)" title="9:30時点の価格 vs 翌日始値">9:30<br>騰</th>
+        <th class="num" onclick="sort(23)" title="前場引け（11:30）vs 翌日始値">前場<br>引騰</th>
         <th class="num" onclick="sort(12)">価格決定日<br>の始値</th>
         <th class="num" onclick="sort(13)">価格決定日<br>の終値</th>
         <th class="num" onclick="sort(14)" title="翌日寄付で入り、決定日の寄付で出た場合の損益率&#10;(決定日始値 − 翌日始値) ÷ 翌日始値 × 100">決定日<br>騰落率(始)</th>
@@ -157,6 +161,7 @@ function recToRow(r, src){
     scale:r.po_scale||r.scale, pct:r.po_pct||r.pct,
     dilution:r.dilution,
     nextOpen:r.next_open, maxPrice:r.max_price, openToMax:r.open_to_max,
+    nextDayGuPct:r.next_day_gu_pct, ret915:r.next_day_915_ret, ret930:r.next_day_930_ret, retMorning:r.next_day_morning_ret,
     decOpen:r.dec_open, decClose:r.dec_close,
     retOpen:r.ret_open, retClose:r.ret_close,
     delOpen:r.delivery_open, delClose:r.delivery_close, delRet:r.delivery_ret,
@@ -263,7 +268,7 @@ function getCheckedManagers(){
 /* ─────── テーブル ───────────────────────────────────────────────────────── */
 function statusBadge(s){
   if(s==="complete") return {label:"終了",cls:"b-done"};
-  return {label:"進行中",cls:"b-pend"};
+  return {label:"進行",cls:"b-pend"};
 }
 
 /* 主幹事証券の略称 */
@@ -304,6 +309,10 @@ function renderTable(data){
     <td class="num">${r.pct!=null?pctStr(r.pct):"–"}</td>
     <td class="num">${r.dilution!=null?pctStr(r.dilution):"–"}</td>
     <td class="num">${r.nextOpen?r.nextOpen.toLocaleString():"–"}</td>
+    <td>${r.nextDayGuPct==null?'–':(r.nextDayGuPct>=0.5?'<span style="color:#34d399">GU</span>':r.nextDayGuPct<=-0.5?'<span style="color:#f87171">GD</span>':'–')}</td>
+    <td class="num">${fmtCell(r.ret915)}</td>
+    <td class="num">${fmtCell(r.ret930)}</td>
+    <td class="num">${fmtCell(r.retMorning)}</td>
     <td class="num">${r.decOpen?r.decOpen.toLocaleString():"–"}</td>
     <td class="num">${r.decClose?r.decClose.toLocaleString():"–"}</td>
     <td class="num">${fmtCell(r.retOpen)}</td>
@@ -317,7 +326,7 @@ function renderTable(data){
 
 function sort(col){
   if(sCol===col) sAsc=!sAsc; else{sCol=col;sAsc=true;}
-  const keys=["year","name","code","status","type","lending","leadMgr","discountRate","scale","pct","dilution","nextOpen","decOpen","decClose","retOpen","retClose","delOpen","delClose","delRet","gapPct"];
+  const keys=["year","name","code","status","type","lending","leadMgr","discountRate","scale","pct","dilution","nextOpen","decOpen","decClose","retOpen","retClose","delOpen","delClose","delRet","gapPct","nextDayGuPct","ret915","ret930","retMorning"];
   filt.sort((a,b)=>{
     const va=a[keys[col]],vb=b[keys[col]];
     if(va==null) return 1; if(vb==null) return -1;
