@@ -38,7 +38,8 @@ th{background:#0d1220;padding:6px 5px;text-align:left;color:#64748b;font-weight:
 th:hover{color:#93c5fd}
 td{padding:5px 5px;border-bottom:1px solid #111827;white-space:nowrap;font-size:11px}
 tr:hover td{background:#0e1525}
-.num{text-align:right;font-family:'Meiryo','メイリオ',sans-serif}
+.num{text-align:right;font-family:'Meiryo','メイリオ',sans-serif;padding-left:10px;padding-right:8px}
+th.num{padding-left:10px;padding-right:8px}
 /* badges */
 .b{display:inline-block;font-size:10px;padding:2px 6px;border-radius:4px;font-weight:500}
 .b-r{background:#1e293b;color:#94a3b8}
@@ -85,6 +86,8 @@ tr:hover td{background:#0e1525}
       <select id="fp" onchange="render()"><option value="">全て</option><option value="0-5">~5%</option><option value="5-10">5~10%</option><option value="10-20">10~20%</option><option value="20-">20%~</option></select></div>
     <div class="fg"><label>希薄化率</label>
       <select id="fdi" onchange="render()"><option value="">全て</option><option value="0-5">~5%</option><option value="5-10">5~10%</option><option value="10-15">10~15%</option><option value="15-">15%~</option></select></div>
+    <div class="fg"><label>GUGD</label>
+      <select id="fgu" onchange="render()"><option value="">全て</option><option value="GU">🟢 GU</option><option value="GD">🔴 GD</option><option value="flat">フラット</option></select></div>
   </div>
 
   <div class="stats">
@@ -190,6 +193,7 @@ function getFiltered(){
   const fs=document.getElementById("fs").value;
   const fp=document.getElementById("fp").value;
   const fdi=document.getElementById("fdi").value;
+  const fgu=document.getElementById("fgu").value;
   return combined.filter(r=>{
     if(yr&&r.year!=+yr) return false;
     if(tp&&r.type!==tp) return false;
@@ -202,6 +206,12 @@ function getFiltered(){
     if(fs&&!rangeMatch(r.scale,fs)) return false;
     if(fp&&!rangeMatch(r.pct,fp)) return false;
     if(fdi&&!rangeMatch(r.dilution,fdi)) return false;
+    if(fgu){
+      if(r.gapPct==null) return false;
+      if(fgu==="GU" && r.gapPct<0.5) return false;
+      if(fgu==="GD" && r.gapPct>-0.5) return false;
+      if(fgu==="flat" && (r.gapPct>=0.5||r.gapPct<=-0.5)) return false;
+    }
     return true;
   });
 }
@@ -277,7 +287,7 @@ function abbrManagers(list){
   if(!list||!list.length) return "";
   const abbrs=[...new Set(list.map(abbrManager))];
   abbrs.sort((a,b)=>(MGR_ORDER[a]??99)-(MGR_ORDER[b]??99));
-  return abbrs.join("");
+  return abbrs.length>5 ? abbrs.slice(0,5).join("")+"…" : abbrs.join("");
 }
 
 function renderTable(data){
@@ -288,7 +298,7 @@ function renderTable(data){
     <td style="max-width:140px;overflow:hidden;text-overflow:ellipsis" title="${esc(r.name)}">${r.code?`<a href="https://kabutan.jp/stock/chart?code=${esc(r.code)}" target="_blank" rel="noopener" style="color:#e2e8f0;text-decoration:none">${esc(r.name)}</a>`:esc(r.name)}</td>
     <td><span class="b ${r.type==="リート"?"b-r":"b-n"}">${esc(r.type)}</span></td>
     <td><span class="b ${r.lending==="貸借"?"b-tai":r.lending==="信用"?"b-c":"b-ban"}">${r.lending==="売禁"?"貸借(売禁)":esc(r.lending)}</span></td>
-    <td style="font-family:'Meiryo','メイリオ',sans-serif" title="${esc((r.leadManagers||[]).slice().sort((a,b)=>(MGR_ORDER[abbrManager(a)]??99)-(MGR_ORDER[abbrManager(b)]??99)).join(' / '))}">${esc(abbrManagers(r.leadManagers))||"–"}</td>
+    <td style="font-family:'Meiryo','メイリオ',sans-serif;max-width:70px;overflow:hidden;text-overflow:ellipsis" title="${esc((r.leadManagers||[]).slice().sort((a,b)=>(MGR_ORDER[abbrManager(a)]??99)-(MGR_ORDER[abbrManager(b)]??99)).join(' / '))}">${esc(abbrManagers(r.leadManagers))||"–"}</td>
     <td class="num">${r.discountRate!=null?pctStr(r.discountRate):"–"}</td>
     <td class="num">${r.scale?r.scale.toLocaleString():"–"}</td>
     <td class="num">${r.pct!=null?pctStr(r.pct):"–"}</td>
