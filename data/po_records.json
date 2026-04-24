@@ -11609,7 +11609,10 @@
       "decision_date_confirmed": true,
       "announce_date_confirmed": true,
       "prev_close_before_delivery": 3475.0,
-      "delivery_gap_pct": -1.29
+      "delivery_gap_pct": -1.29,
+      "next_day_915_ret": 0.43,
+      "next_day_930_ret": -0.57,
+      "next_day_morning_ret": -1.0
     },
     {
       "id": "8958_20260325",
@@ -11663,7 +11666,10 @@
       "decision_date_confirmed": true,
       "announce_date_confirmed": true,
       "prev_close_before_delivery": 126400.0,
-      "delivery_gap_pct": 0.47
+      "delivery_gap_pct": 0.47,
+      "next_day_915_ret": -2.81,
+      "next_day_930_ret": -2.96,
+      "next_day_morning_ret": -4.62
     },
     {
       "id": "6278_20260406",
@@ -11709,7 +11715,10 @@
       "decision_date_confirmed": true,
       "announce_date_confirmed": true,
       "prev_close_before_delivery": 16500.0,
-      "delivery_gap_pct": 1.09
+      "delivery_gap_pct": 1.09,
+      "next_day_915_ret": 0.3,
+      "next_day_930_ret": 0.67,
+      "next_day_morning_ret": 0.97
     },
     {
       "id": "4506_20260408",
@@ -11761,7 +11770,12 @@
       "status": "nextday",
       "decision_date_confirmed": true,
       "announce_date_confirmed": true,
-      "prev_close_before_delivery": 2004.5
+      "prev_close_before_delivery": 2004.5,
+      "announce_day_close": 2130.0,
+      "next_day_gu_pct": -5.96,
+      "next_day_915_ret": 0.67,
+      "next_day_930_ret": 0.1,
+      "next_day_morning_ret": 3.74
     },
     {
       "id": "3196_20260409",
@@ -11811,7 +11825,12 @@
       "status": "nextday",
       "decision_date_confirmed": true,
       "announce_date_confirmed": true,
-      "prev_close_before_delivery": 1662.0
+      "prev_close_before_delivery": 1662.0,
+      "announce_day_close": 2021.0,
+      "next_day_gu_pct": -10.0,
+      "next_day_915_ret": -0.66,
+      "next_day_930_ret": -0.88,
+      "next_day_morning_ret": -1.87
     },
     {
       "id": "4784_20260410",
@@ -11857,7 +11876,13 @@
       "memo": "",
       "status": "nextday",
       "decision_date_confirmed": true,
-      "announce_date_confirmed": true
+      "announce_date_confirmed": true,
+      "announce_day_close": 728.0,
+      "next_day_gu_pct": -3.16,
+      "prev_close_before_delivery": 681.0,
+      "next_day_915_ret": 4.26,
+      "next_day_930_ret": 2.98,
+      "next_day_morning_ret": -0.43
     },
     {
       "id": "8952_20260319",
@@ -11910,7 +11935,8 @@
       "memo": "",
       "status": "pending",
       "prev_close_before_delivery": 123500.0,
-      "delivery_gap_pct": -2.43
+      "delivery_gap_pct": -2.43,
+      "announce_day_close": 127400.0
     },
     {
       "id": "7245_20260310",
@@ -11963,7 +11989,10 @@
       "memo": "",
       "status": "pending",
       "prev_close_before_delivery": 897.0,
-      "delivery_gap_pct": 3.23
+      "delivery_gap_pct": 3.23,
+      "next_day_915_ret": 2.32,
+      "next_day_930_ret": 1.45,
+      "next_day_morning_ret": 0.39
     },
     {
       "id": "7613_20260309",
@@ -12011,7 +12040,10 @@
       "memo": "",
       "status": "pending",
       "prev_close_before_delivery": 1152.0,
-      "delivery_gap_pct": 2.0
+      "delivery_gap_pct": 2.0,
+      "next_day_915_ret": 0.74,
+      "next_day_930_ret": 1.07,
+      "next_day_morning_ret": 0.41
     },
     {
       "id": "1803_20260306",
@@ -12059,7 +12091,10 @@
       "memo": "",
       "status": "pending",
       "prev_close_before_delivery": 3092.0,
-      "delivery_gap_pct": -4.08
+      "delivery_gap_pct": -4.08,
+      "next_day_915_ret": 1.58,
+      "next_day_930_ret": 0.7,
+      "next_day_morning_ret": -1.16
     },
     {
       "id": "3290_20260305",
@@ -12108,7 +12143,10 @@
       "memo": "",
       "status": "pending",
       "prev_close_before_delivery": 84000.0,
-      "delivery_gap_pct": -1.19
+      "delivery_gap_pct": -1.19,
+      "next_day_915_ret": -1.61,
+      "next_day_930_ret": -1.73,
+      "next_day_morning_ret": -2.19
     },
     {
       "id": "2734_20260302",
@@ -12159,7 +12197,10 @@
       "memo": "",
       "status": "pending",
       "prev_close_before_delivery": 1055.0,
-      "delivery_gap_pct": 0.47
+      "delivery_gap_pct": 0.47,
+      "next_day_915_ret": 1.12,
+      "next_day_930_ret": 0.43,
+      "next_day_morning_ret": -0.52
     },
     {
       "id": "7974_20260227",
@@ -12211,7 +12252,10 @@
       "memo": "",
       "status": "pending",
       "prev_close_before_delivery": 10220.0,
-      "delivery_gap_pct": 2.05
+      "delivery_gap_pct": 2.05,
+      "next_day_915_ret": -0.44,
+      "next_day_930_ret": -1.15,
+      "next_day_morning_ret": 0.16
     },
     {
       "id": "5262_20260225",
@@ -12259,7 +12303,10 @@
       "memo": "",
       "status": "pending",
       "prev_close_before_delivery": 1285.0,
-      "delivery_gap_pct": -7.0
+      "delivery_gap_pct": -7.0,
+      "next_day_915_ret": -1.29,
+      "next_day_930_ret": 0.07,
+      "next_day_morning_ret": -1.83
     },
     {
       "id": "6855_20260225",
@@ -12305,7 +12352,8 @@
       "memo": "",
       "status": "pending",
       "prev_close_before_delivery": 7120.0,
-      "delivery_gap_pct": 0.0
+      "delivery_gap_pct": 0.0,
+      "next_day_930_ret": -1.46
     },
     {
       "id": "8985_20260225",
@@ -12353,7 +12401,10 @@
       "memo": "",
       "status": "pending",
       "prev_close_before_delivery": 79800.0,
-      "delivery_gap_pct": -0.38
+      "delivery_gap_pct": -0.38,
+      "next_day_915_ret": -1.73,
+      "next_day_930_ret": -1.15,
+      "next_day_morning_ret": -1.15
     },
     {
       "id": "5461_20260225",
@@ -12403,7 +12454,10 @@
       "memo": "",
       "status": "pending",
       "prev_close_before_delivery": 2087.0,
-      "delivery_gap_pct": 2.3
+      "delivery_gap_pct": 2.3,
+      "next_day_915_ret": -3.81,
+      "next_day_930_ret": -3.04,
+      "next_day_morning_ret": -3.29
     },
     {
       "id": "2288_20260224",
@@ -12453,7 +12507,10 @@
       "memo": "",
       "status": "pending",
       "prev_close_before_delivery": 2215.0,
-      "delivery_gap_pct": 1.04
+      "delivery_gap_pct": 1.04,
+      "next_day_915_ret": 0.25,
+      "next_day_930_ret": 0.87,
+      "next_day_morning_ret": -0.37
     },
     {
       "id": "4062_20260224",
@@ -12501,7 +12558,10 @@
       "memo": "",
       "status": "pending",
       "prev_close_before_delivery": 7833.0,
-      "delivery_gap_pct": 1.91
+      "delivery_gap_pct": 1.91,
+      "next_day_915_ret": 0.23,
+      "next_day_930_ret": -1.26,
+      "next_day_morning_ret": -0.35
     },
     {
       "id": "1938_20260220",
@@ -12551,7 +12611,8 @@
       "memo": "",
       "status": "pending",
       "prev_close_before_delivery": 2722.0,
-      "delivery_gap_pct": 1.47
+      "delivery_gap_pct": 1.47,
+      "announce_day_close": 3095.0
     },
     {
       "id": "8103_20260219",
@@ -12946,7 +13007,8 @@
       "memo": "",
       "status": "pending",
       "prev_close_before_delivery": 2530.0,
-      "delivery_gap_pct": 0.0
+      "delivery_gap_pct": 0.0,
+      "announce_day_close": 2560.0
     },
     {
       "id": "1942_20260129",
@@ -13875,7 +13937,8 @@
       "memo": "",
       "status": "pending",
       "prev_close_before_delivery": 912.0,
-      "delivery_gap_pct": 0.22
+      "delivery_gap_pct": 0.22,
+      "announce_day_close": 927.0
     },
     {
       "id": "7282_20251120",
@@ -14172,7 +14235,8 @@
       "memo": "",
       "status": "pending",
       "prev_close_before_delivery": 2809.0,
-      "delivery_gap_pct": 1.17
+      "delivery_gap_pct": 1.17,
+      "announce_day_close": 2999.0
     },
     {
       "id": "3498_20251024",
@@ -14944,7 +15008,8 @@
       "memo": "",
       "status": "pending",
       "prev_close_before_delivery": 949.0,
-      "delivery_gap_pct": -1.58
+      "delivery_gap_pct": -1.58,
+      "announce_day_close": 859.0
     },
     {
       "id": "2805_20250207",
@@ -16401,7 +16466,8 @@
       "memo": "",
       "status": "pending",
       "prev_close_before_delivery": 3110.0,
-      "delivery_gap_pct": -0.64
+      "delivery_gap_pct": -0.64,
+      "announce_day_close": 3255.0
     },
     {
       "id": "2818_20231213",
@@ -17810,7 +17876,8 @@
       "memo": "",
       "status": "pending",
       "prev_close_before_delivery": 1091.0,
-      "delivery_gap_pct": -3.21
+      "delivery_gap_pct": -3.21,
+      "announce_day_close": 1233.0
     },
     {
       "id": "9995_20230106",
@@ -18157,7 +18224,9 @@
       "delivery_ret": null,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending"
+      "status": "pending",
+      "announce_day_close": 240200.0,
+      "next_day_gu_pct": -3.04
     },
     {
       "id": "3493_20221004",
@@ -18593,7 +18662,8 @@
       "memo": "",
       "status": "pending",
       "prev_close_before_delivery": 123900.0,
-      "delivery_gap_pct": 0.24
+      "delivery_gap_pct": 0.24,
+      "announce_day_close": 129800.0
     },
     {
       "id": "1444_20220701",
@@ -19025,7 +19095,8 @@
       "memo": "",
       "status": "pending",
       "prev_close_before_delivery": 114700.0,
-      "delivery_gap_pct": 0.09
+      "delivery_gap_pct": 0.09,
+      "announce_day_close": 126400.0
     },
     {
       "id": "6564_20220107",
@@ -19074,7 +19145,8 @@
       "memo": "",
       "status": "pending",
       "prev_close_before_delivery": 2661.0,
-      "delivery_gap_pct": 0.0
+      "delivery_gap_pct": 0.0,
+      "announce_day_close": 3545.0
     },
     {
       "id": "3470_20220104",
@@ -19459,7 +19531,8 @@
       "memo": "",
       "status": "pending",
       "prev_close_before_delivery": 3640.0,
-      "delivery_gap_pct": 1.79
+      "delivery_gap_pct": 1.79,
+      "announce_day_close": 4430.0
     },
     {
       "id": "7342_20211118",
@@ -19835,7 +19908,8 @@
       "memo": "",
       "status": "pending",
       "prev_close_before_delivery": 1009.0,
-      "delivery_gap_pct": 0.0
+      "delivery_gap_pct": 0.0,
+      "announce_day_close": 1094.0
     },
     {
       "id": "4593_20210915",
@@ -21018,7 +21092,8 @@
       "memo": "",
       "status": "pending",
       "prev_close_before_delivery": 886.0,
-      "delivery_gap_pct": -0.11
+      "delivery_gap_pct": -0.11,
+      "announce_day_close": 918.5
     },
     {
       "id": "4479_20210209",
@@ -21933,7 +22008,8 @@
       "memo": "",
       "status": "pending",
       "prev_close_before_delivery": 90200.0,
-      "delivery_gap_pct": 0.89
+      "delivery_gap_pct": 0.89,
+      "announce_day_close": 90100.0
     },
     {
       "id": "6556_20201119",
@@ -22564,7 +22640,8 @@
       "memo": "",
       "status": "pending",
       "prev_close_before_delivery": 8760.0,
-      "delivery_gap_pct": -2.28
+      "delivery_gap_pct": -2.28,
+      "announce_day_close": 8720.0
     },
     {
       "id": "4765_20200929",
@@ -23621,7 +23698,9 @@
       "delivery_ret": null,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending"
+      "status": "pending",
+      "announce_day_close": 1734.0,
+      "next_day_gu_pct": -7.9
     },
     {
       "id": "3487_20200629",
@@ -23812,7 +23891,8 @@
       "memo": "",
       "status": "pending",
       "prev_close_before_delivery": 1539.0,
-      "delivery_gap_pct": -5.85
+      "delivery_gap_pct": -5.85,
+      "announce_day_close": 1332.0
     },
     {
       "id": "1446_20200303",
@@ -24772,7 +24852,8 @@
       "memo": "",
       "status": "pending",
       "prev_close_before_delivery": 129700.0,
-      "delivery_gap_pct": -2.08
+      "delivery_gap_pct": -2.08,
+      "announce_day_close": 131200.0
     },
     {
       "id": "3282_20200107",
@@ -25473,7 +25554,9 @@
       "treasury_shares": null,
       "memo": "",
       "status": "pending",
-      "prev_close_before_delivery": 770.0
+      "prev_close_before_delivery": 770.0,
+      "announce_day_close": 1092.5,
+      "next_day_gu_pct": -8.97
     },
     {
       "id": "4384_20191113",
@@ -26623,7 +26706,8 @@
       "memo": "",
       "status": "pending",
       "prev_close_before_delivery": 5920.0,
-      "delivery_gap_pct": -1.69
+      "delivery_gap_pct": -1.69,
+      "announce_day_close": 6040.0
     },
     {
       "id": "9283_20190711",
@@ -27759,7 +27843,8 @@
       "memo": "",
       "status": "pending",
       "prev_close_before_delivery": 123600.0,
-      "delivery_gap_pct": -0.53
+      "delivery_gap_pct": -0.53,
+      "announce_day_close": 128500.0
     },
     {
       "id": "5204_20190204",
@@ -27904,7 +27989,8 @@
       "memo": "",
       "status": "pending",
       "prev_close_before_delivery": 120100.0,
-      "delivery_gap_pct": -6.33
+      "delivery_gap_pct": -6.33,
+      "announce_day_close": 115700.0
     },
     {
       "id": "3471_20190109",
@@ -36521,7 +36607,9 @@
       "delivery_ret": null,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending"
+      "status": "pending",
+      "announce_day_close": 454.5,
+      "next_day_gu_pct": 1.21
     },
     {
       "id": "8985_20170619",
@@ -37546,7 +37634,8 @@
       "memo": "",
       "status": "pending",
       "prev_close_before_delivery": 48650.0,
-      "delivery_gap_pct": -0.1
+      "delivery_gap_pct": -0.1,
+      "announce_day_close": 50450.0
     },
     {
       "id": "2424_20170315",
@@ -38588,9 +38677,11 @@
       "delivery_ret": null,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending"
+      "status": "pending",
+      "announce_day_close": 1039.0,
+      "next_day_gu_pct": 0.48
     }
   ],
-  "last_updated": "2026-04-24T00:22:57.071618",
+  "last_updated": "2026-04-24T01:19:22.226770",
   "count": 791
 }
