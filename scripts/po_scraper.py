@@ -20,6 +20,9 @@ DATA_FILE = "data/po_records.json"
 BASE_URL  = "https://pokabu.net"
 HEADERS   = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"}
 FORCE_REFRESH = "--force-refresh" in sys.argv
+NON_PO_SLUG_PATTERNS = ("-kansoku", "-yotei", "-kabuka",
+                        "worst-record", "best-record", "summary", "matome", "analysis",
+                        "ranking", "matomete", "ichiran")
 
 def load_records() -> list:
     if not os.path.exists(DATA_FILE):
@@ -190,7 +193,9 @@ def scrape_article(url: str, name: str = "", code: str = "") -> dict:
                         info["discount_rate"] = rate
 
             elif "仮条件" in key:
-                info["discount_range"] = val
+                # "% ～ %　ディスカウント" 等の空値パターンは保存しない
+                if val and not re.match(r'^\s*%\s*[~～〜]\s*%', val):
+                    info["discount_range"] = val
 
             elif "希薄化" in key:
                 dm = re.search(r'([\d.]+)%', val)
@@ -453,7 +458,7 @@ def scrape_rss() -> list:
             if not link_text and link.get("href"):
                 link_text = link["href"]
             code_m = re.search(r'[（(](\d{4})[）)]', title_text)
-            if code_m and "/po/" in (link_text or "") and not any(p in link_text for p in ("-kansoku", "-yotei", "-kabuka")):
+            if code_m and "/po/" in (link_text or "") and not any(p in link_text for p in NON_PO_SLUG_PATTERNS):
                 entries.append({"code": code_m.group(1), "title": title_text, "url": link_text})
     except Exception as e:
         print(f"  RSSエラー: {e}")
