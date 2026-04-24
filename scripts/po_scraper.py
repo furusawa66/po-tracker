@@ -10,61 +10,16 @@ PO自動トラッカー — pokabu.net 完全対応版
 
 import requests
 from bs4 import BeautifulSoup
-import json, os, re, time
+import json, os, re, sys, time
 from datetime import datetime, date, timedelta
+
+from utils import (is_jp_holiday, next_biz_day, prev_biz_days, parse_jp_date,
+                   parse_jp_date_range_end, atomic_write_json, http_get_with_retry)
 
 DATA_FILE = "data/po_records.json"
 BASE_URL  = "https://pokabu.net"
 HEADERS   = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"}
-THIS_YEAR = date.today().year
-
-# ── ユーティリティ ────────────────────────────────────────────────────────────
-
-def next_biz_day(d: date) -> date:
-    nd = d + timedelta(days=1)
-    while nd.weekday() >= 5:
-        nd += timedelta(days=1)
-    return nd
-
-def prev_biz_days(d: date, n: int) -> date:
-    """n営業日前の日付を返す（祝日は考慮しない）"""
-    result = d
-    count  = 0
-    while count < n:
-        result -= timedelta(days=1)
-        if result.weekday() < 5:
-            count += 1
-    return result
-
-def parse_jp_date(text: str, year: int = None) -> str | None:
-    """'4月6日' '4月6日(月)' → 'YYYY-MM-DD'"""
-    if not year:
-        year = THIS_YEAR
-    m = re.search(r'(\d{1,2})月(\d{1,2})日', text)
-    if not m:
-        return None
-    try:
-        mo, dy = int(m.group(1)), int(m.group(2))
-        # 年またぎ考慮（12月に翌年1-3月の受渡し）
-        if date.today().month >= 11 and mo <= 3:
-            year += 1
-        return date(year, mo, dy).isoformat()
-    except Exception:
-        return None
-
-def parse_jp_date_range_end(text: str) -> str | None:
-    """'4月1日(水) ～ 4月6日(月)' → 先頭の日付 '2025-04-01'"""
-    all_dates = re.findall(r'(\d{1,2})月(\d{1,2})日', text)
-    if not all_dates:
-        return None
-    mo, dy = int(all_dates[0][0]), int(all_dates[0][1])
-    yr = THIS_YEAR
-    if date.today().month >= 11 and mo <= 3:
-        yr += 1
-    try:
-        return date(yr, mo, dy).isoformat()
-    except Exception:
-        return None
+FORCE_REFRESH = "--force-refresh" in sys.argv
 
 def load_records() -> list:
     if not os.path.exists(DATA_FILE):
@@ -74,10 +29,8 @@ def load_records() -> list:
     return raw.get("records", raw) if isinstance(raw, dict) else raw
 
 def save_records(records: list):
-    os.makedirs("data", exist_ok=True)
     out = {"records": records, "last_updated": datetime.now().isoformat(), "count": len(records)}
-    with open(DATA_FILE, "w", encoding="utf-8") as f:
-        json.dump(out, f, ensure_ascii=False, indent=2)
+    atomic_write_json(DATA_FILE, out)
     print(f"保存完了: {len(records)} 件")
 
 # ── pokabu.net スクレイピング ─────────────────────────────────────────────────
@@ -88,13 +41,12 @@ def scrape_schedule() -> dict:
     pending[code]   = {code, name, article_url, decision_date, lending_type}
     delivered[code] = {code, name, article_url, delivery_date, issue_price}
     """
-    try:
-        res = requests.get(f"{BASE_URL}/schedule", headers=HEADERS, timeout=20)
-        res.encoding = "utf-8"
-        soup = BeautifulSoup(res.text, "html.parser")
-    except Exception as e:
-        print(f"スケジュール取得エラー: {e}")
+    res = http_get_with_retry(f"{BASE_URL}/schedule", headers=HEADERS, timeout=20)
+    if res is None or res.status_code != 200:
+        print("スケジュール取得失敗")
         return {"pending": {}, "delivered": {}}
+    res.encoding = "utf-8"
+    soup = BeautifulSoup(res.text, "html.parser")
 
     pending   = {}
     delivered = {}
@@ -151,20 +103,19 @@ def scrape_article(url: str, name: str = "", code: str = "") -> dict:
     売出し数 = 売出株数 + OA売出（OA含む）
     """
     info = {}
-    try:
-        res = requests.get(url, headers=HEADERS, timeout=20)
-        res.encoding = "utf-8"
-        soup = BeautifulSoup(res.text, "html.parser")
-        # 記事本文エリアを絞り込む（サイドバー・関連記事の混入防止）
-        main_elem = (soup.find("article") or
-                     soup.find("main") or
-                     soup.find("div", id=re.compile(r'content|article|main', re.I)) or
-                     soup.find("div", class_=re.compile(r'content|article|post|entry', re.I)) or
-                     soup)
-        full_text = main_elem.get_text(" ", strip=True)
-    except Exception as e:
-        print(f"  記事取得エラー ({url}): {e}")
+    res = http_get_with_retry(url, headers=HEADERS, timeout=20)
+    if res is None or res.status_code != 200:
+        print(f"  記事取得失敗 ({url})")
         return info
+    res.encoding = "utf-8"
+    soup = BeautifulSoup(res.text, "html.parser")
+    # 記事本文エリアを絞り込む（サイドバー・関連記事の混入防止）
+    main_elem = (soup.find("article") or
+                 soup.find("main") or
+                 soup.find("div", id=re.compile(r'content|article|main', re.I)) or
+                 soup.find("div", class_=re.compile(r'content|article|post|entry', re.I)) or
+                 soup)
+    full_text = main_elem.get_text(" ", strip=True)
 
     # 記事公開日（meta タグ）をフォールバック用に取得
     pub_meta = soup.find("meta", {"property": "article:published_time"}) or soup.find("meta", {"name": "pubdate"})
@@ -322,10 +273,10 @@ def fetch_prices(code: str, days: int = 60) -> tuple:
     """
     ticker = f"{code}.T"
     url    = f"https://query1.finance.yahoo.com/v8/finance/chart/{ticker}?interval=1d&range={days}d"
+    res = http_get_with_retry(url, headers=HEADERS, timeout=12)
+    if res is None or res.status_code != 200:
+        return {}, None, None
     try:
-        res = requests.get(url, headers=HEADERS, timeout=12)
-        if res.status_code != 200:
-            return {}, None, None
         data   = res.json()
         result = data.get("chart", {}).get("result")
         if not result:
@@ -348,7 +299,7 @@ def fetch_prices(code: str, days: int = 60) -> tuple:
         shares = meta.get("sharesOutstanding")
         return prices, (round(mc / 1e8) if mc else None), (int(shares) if shares else None)
     except Exception as e:
-        print(f"  Yahoo Finance エラー ({code}): {e}")
+        print(f"  Yahoo Finance パースエラー ({code}): {e}")
         return {}, None, None
 
 
@@ -396,11 +347,14 @@ def update_prices(rec: dict) -> dict:
         )
         print(f"  {rec['name']}: 希薄化率 = {rec['dilution']}%")
 
+    def needs(field):
+        return FORCE_REFRESH or rec.get(field) is None
+
     next_day     = next_biz_day(ann_date)
     next_day_str = next_day.isoformat()
 
     # 翌日始値
-    if not rec.get("next_open") and next_day_str in prices:
+    if needs("next_open") and next_day_str in prices:
         p = prices[next_day_str]
         if p["open"]:
             rec["next_open"] = p["open"]
@@ -444,21 +398,21 @@ def update_prices(rec: dict) -> dict:
 
     # 決定日 → 騰落率計算
     dec_date = rec.get("decision_date")
-    if dec_date and dec_date in prices and not rec.get("dec_open"):
+    if dec_date and dec_date in prices and needs("dec_open"):
         p = prices[dec_date]
         if p["open"] and p["close"]:
             rec["dec_open"]  = p["open"]
             rec["dec_close"] = p["close"]
 
     # 騰落率が未計算なら算出（dec_open/closeが先に入っていたケースも救済）
-    if rec.get("dec_open") and rec.get("next_open") and not rec.get("ret_open"):
+    if rec.get("dec_open") and rec.get("next_open") and needs("ret_open"):
         rec["ret_open"]  = round((rec["dec_open"]  - rec["next_open"]) / rec["next_open"] * 100, 2)
         rec["ret_close"] = round((rec["dec_close"] - rec["next_open"]) / rec["next_open"] * 100, 2)
         print(f"  {rec['name']}: 騰落率(始){rec['ret_open']}% 騰落率(終){rec['ret_close']}%")
 
     # 受渡日 → 寄り・大引け・騰落率（A=受渡始値, B=受渡終値, C=B÷A）
     del_date = rec.get("delivery_date") or rec.get("delivery_estimated")
-    if del_date and del_date in prices and not rec.get("delivery_open"):
+    if del_date and del_date in prices and needs("delivery_open"):
         p = prices[del_date]
         if p["open"] and p["close"]:
             rec["delivery_open"]  = p["open"]
@@ -478,12 +432,12 @@ def update_prices(rec: dict) -> dict:
 def scrape_rss() -> list:
     """pokabu.net/feed から最新PO記事を取得し、銘柄コードとURLを返す"""
     entries = []
+    res = http_get_with_retry(f"{BASE_URL}/feed", headers=HEADERS, timeout=15)
+    if res is None or res.status_code != 200:
+        print("  RSS取得失敗")
+        return entries
+    res.encoding = "utf-8"
     try:
-        res = requests.get(f"{BASE_URL}/feed", headers=HEADERS, timeout=15)
-        if res.status_code != 200:
-            print(f"  RSS取得失敗: HTTP {res.status_code}")
-            return entries
-        res.encoding = "utf-8"
         soup = BeautifulSoup(res.text, "xml" if "xml" in res.headers.get("content-type","") else "html.parser")
         for item in soup.find_all("item"):
             title = item.find("title")
@@ -542,7 +496,7 @@ def main():
             "lending_type":       lending,
             "announce_date":      announce,
             "announce_date_confirmed": bool(article.get("announce_date")),
-            "year":               THIS_YEAR,
+            "year":               date.today().year,
             "decision_date":      article.get("decision_date"),
             "decision_date_confirmed": bool(article.get("decision_date")),
             "delivery_estimated": article.get("delivery_estimated"),
@@ -657,7 +611,7 @@ def main():
             "lending_type":       lending,
             "announce_date":      actual_announce,
             "announce_date_confirmed": bool(article.get("announce_date")),
-            "year":               THIS_YEAR,
+            "year":               date.today().year,
             "decision_date":      article.get("decision_date") or si.get("decision_date"),
             "delivery_estimated": article.get("delivery_estimated"),
             "delivery_date":      delivered.get(code, {}).get("delivery_date") or article.get("delivery_date"),

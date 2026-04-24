@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230b0f1a'/><polyline points='4,24 10,18 16,20 22,10 28,6' fill='none' stroke='white' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'/><polygon points='24,5 29,5 29,10' fill='white' opacity='0.8'/></svg>">
+<title>料金プラン - PO Tracker</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{font-family:'Noto Sans JP',sans-serif;background:#0b0f1a;color:#e2e8f0;font-size:14px;display:flex;flex-direction:column;min-height:100vh}
+nav{display:flex;align-items:center;gap:12px;padding:14px 24px;background:#0b0f1a;border-bottom:1px solid #1e2d4d;flex-shrink:0}
+.title{font-size:15px;font-weight:700;color:#e2e8f0;text-decoration:none}
+.sp{flex:1}
+nav a{color:#e2e8f0;font-size:12px;text-decoration:none;margin-right:16px}
+nav a:hover{color:#93c5fd}
+.page{padding:32px 22px;flex:1}
+.page-head{text-align:center;margin-bottom:32px}
+.page-head h1{font-size:24px;font-weight:700;margin-bottom:8px}
+.page-head .lead{font-size:13px;color:#94a3b8}
+.plans{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;max-width:1280px;margin:0 auto}
+.plan{background:#131a2e;border:1px solid #1e2d4d;border-radius:10px;padding:22px;display:flex;flex-direction:column}
+.plan.featured{border-color:#3b82f6;box-shadow:0 0 0 1px #3b82f6 inset}
+.plan-name{font-size:16px;font-weight:700;color:#e2e8f0;margin-bottom:6px}
+.plan-tag{font-size:11px;color:#64748b;letter-spacing:.06em;text-transform:uppercase;margin-bottom:18px;min-height:14px}
+.price{display:flex;align-items:baseline;gap:6px;margin-bottom:6px}
+.price-amt{font-size:28px;font-weight:700;font-family:'Meiryo','メイリオ',sans-serif;color:#e2e8f0}
+.price-unit{font-size:11px;color:#94a3b8}
+.price-note{font-size:10px;color:#64748b;margin-bottom:18px}
+.btn{display:block;text-align:center;padding:9px 12px;border-radius:6px;font-size:12px;font-weight:500;text-decoration:none;border:1px solid #1e3a5f;color:#e2e8f0;background:#0d1220;margin-bottom:18px;cursor:pointer;transition:background .15s}
+.btn:hover{background:#1e2d4d}
+.btn.primary{background:#1d4ed8;border-color:#1d4ed8}
+.btn.primary:hover{background:#2563eb}
+.feat-label{font-size:10px;color:#64748b;text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px}
+.feat-list{list-style:none;display:flex;flex-direction:column;gap:8px;font-size:12px;color:#cbd5e1;flex:1}
+.feat-list li{display:flex;gap:8px;align-items:flex-start;line-height:1.5}
+.feat-list li::before{content:"";flex-shrink:0;width:14px;height:14px;margin-top:2px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%2334d399' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='3,8 7,12 13,4'/%3E%3C/svg%3E");background-size:contain;background-repeat:no-repeat}
+.feat-list li.period{color:#e2e8f0;font-weight:500;font-size:12px;padding-bottom:8px;border-bottom:1px solid #1e2d4d;margin-bottom:4px}
+.feat-list li.period::before{display:none}
+.addon{margin-top:14px;padding-top:14px;border-top:1px solid #1e2d4d;font-size:11px;color:#60a5fa}
+.note{max-width:1280px;margin:24px auto 0;font-size:11px;color:#64748b;text-align:center;line-height:1.6}
+@media(max-width:1100px){.plans{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.plans{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="./index.html" class="title">PO Tracker</a>
+  <span class="sp"></span>
+  <a href="./index.html">ダッシュボード</a>
+  <a href="./pricing.html" style="color:#93c5fd">料金プラン</a>
+  <a href="https://jpx-jquants.com/ja" target="_blank" rel="noopener">DSN：J-Quants</a>
+</nav>
+
+<div class="page">
+  <div class="page-head">
+    <h1>料金プラン</h1>
+    <p class="lead">用途に合わせて最適なプランをお選びください。</p>
+  </div>
+
+  <div class="plans">
+
+    <div class="plan">
+      <div class="plan-name">Freeplan</div>
+      <div class="plan-tag">データ分析を体験しましょう。</div>
+      <div class="price">
+        <span class="price-amt">¥0</span>
+        <span class="price-unit">月額（税込）</span>
+      </div>
+      <div class="price-note">&nbsp;</div>
+      <a class="btn" href="https://jpx-jquants.com/auth/signup/?plan=free" target="_blank" rel="noopener">無料で始める</a>
+      <div class="feat-label">含まれるデータ期間と種別</div>
+      <ul class="feat-list">
+        <li class="period">直近12週間を除く2年分</li>
+        <li>上場銘柄一覧</li>
+        <li>株価（四本値）</li>
+        <li>財務情報（サマリーのみ）</li>
+      </ul>
+    </div>
+
+    <div class="plan">
+      <div class="plan-name">Lightplan</div>
+      <div class="plan-tag">基本的な機能で始めましょう。</div>
+      <div class="price">
+        <span class="price-amt">¥1,650</span>
+        <span class="price-unit">月額（税込）</span>
+      </div>
+      <div class="price-note">&nbsp;</div>
+      <a class="btn" href="https://jpx-jquants.com/auth/signup/?plan=light" target="_blank" rel="noopener">利用開始する</a>
+      <div class="feat-label">含まれるデータ期間と種別</div>
+      <ul class="feat-list">
+        <li class="period">過去5年分</li>
+        <li>上場銘柄一覧</li>
+        <li>株価（四本値）</li>
+        <li>財務情報（サマリーのみ）</li>
+        <li>TOPIX四本値</li>
+      </ul>
+      <div class="addon">＋ アドオン追加可能</div>
+    </div>
+
+    <div class="plan featured">
+      <div class="plan-name">Standardplan</div>
+      <div class="plan-tag">信用取引を含むデータ分析に。</div>
+      <div class="price">
+        <span class="price-amt">¥3,300</span>
+        <span class="price-unit">月額（税込）</span>
+      </div>
+      <div class="price-note">&nbsp;</div>
+      <a class="btn primary" href="https://jpx-jquants.com/auth/signup/?plan=standard" target="_blank" rel="noopener">利用開始する</a>
+      <div class="feat-label">含まれるデータ期間と種別</div>
+      <ul class="feat-list">
+        <li class="period">過去10年分</li>
+        <li>上場銘柄一覧</li>
+        <li>株価（四本値）</li>
+        <li>財務情報（サマリーのみ）</li>
+        <li>指数データ（TOPIX含む）</li>
+        <li>信用取引データ</li>
+        <li>日経225OP四本値データ</li>
+      </ul>
+      <div class="addon">＋ アドオン追加可能</div>
+    </div>
+
+    <div class="plan">
+      <div class="plan-name">Premiumplan</div>
+      <div class="plan-tag">プロと同等の高度な分析を。</div>
+      <div class="price">
+        <span class="price-amt">¥16,500</span>
+        <span class="price-unit">月額（税込）</span>
+      </div>
+      <div class="price-note">&nbsp;</div>
+      <a class="btn" href="https://jpx-jquants.com/auth/signup/?plan=premium" target="_blank" rel="noopener">利用開始する</a>
+      <div class="feat-label">含まれるデータ期間と種別</div>
+      <ul class="feat-list">
+        <li class="period">過去20年分（最長）</li>
+        <li>上場銘柄一覧</li>
+        <li>株価（前場速報・日通し）</li>
+        <li>財務情報（財務諸表含む）</li>
+        <li>指数データ（TOPIX含む）</li>
+        <li>信用取引データ</li>
+        <li>先物OP四本値データ</li>
+        <li>配当金データ</li>
+        <li>売買内訳データ</li>
+      </ul>
+      <div class="addon">＋ アドオン追加可能</div>
+    </div>
+
+  </div>
+
+  <p class="note">価格はすべて税込です。プラン内容・データ仕様はJ-Quantsの提供範囲に準じます。</p>
+</div>
+
+</body>
+</html>

@@ -17,10 +17,10 @@ nav{display:flex;align-items:center;gap:12px;padding:14px 24px;background:#0b0f1
 .upd{font-size:11px;color:#475569}
 .page{padding:22px;flex:1;display:flex;flex-direction:column;min-height:0}
 /* stats */
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:18px}
-.sc{background:#131a2e;border:1px solid #1e2d4d;border-radius:10px;padding:14px}
-.sl{font-size:11px;color:#64748b;text-transform:uppercase;letter-spacing:.06em;margin-bottom:5px}
-.sv{font-size:22px;font-weight:400;font-family:'Meiryo','メイリオ',sans-serif}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:12px}
+.sc{background:#131a2e;border:1px solid #1e2d4d;border-radius:8px;padding:6px 12px;display:flex;align-items:center;gap:10px}
+.sl{font-size:11px;color:#64748b;text-transform:uppercase;letter-spacing:.06em;white-space:nowrap}
+.sv{font-size:16px;font-weight:500;font-family:'Meiryo','メイリオ',sans-serif;margin-left:auto}
 .pos{color:#34d399}.neg{color:#f87171}.acc{color:#60a5fa}.warn{color:#fbbf24}
 /* filters */
 .fs{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:14px}
@@ -29,6 +29,21 @@ nav{display:flex;align-items:center;gap:12px;padding:14px 24px;background:#0b0f1
 .mcb input{margin-right:2px;accent-color:#475569}
 select,input[type=text]{background:#0d1220;border:1px solid #1e3a5f;color:#e2e8f0;padding:5px 8px;border-radius:6px;font-size:12px;font-family:inherit;outline:none}
 select:focus,input:focus{border-color:#3b82f6}
+/* multi-select dropdown */
+.ms{position:relative;display:inline-block}
+.ms-btn{background:#0d1220;border:1px solid #1e3a5f;color:#e2e8f0;padding:5px 8px;border-radius:6px;font-size:12px;font-family:inherit;cursor:pointer;min-width:78px;text-align:left;display:inline-flex;align-items:center;gap:6px;outline:none}
+.ms-btn:hover,.ms-btn.open{border-color:#3b82f6}
+.ms-btn::after{content:"▾";color:#64748b;font-size:9px;margin-left:auto}
+.ms-btn.partial{color:#93c5fd}
+.ms-panel{position:absolute;top:calc(100% + 4px);left:0;background:#0d1220;border:1px solid #1e3a5f;border-radius:6px;padding:6px;z-index:20;min-width:130px;max-height:280px;overflow-y:auto;box-shadow:0 6px 18px rgba(0,0,0,.5)}
+.ms-panel[hidden]{display:none}
+.ms-actions{display:flex;gap:4px;padding-bottom:6px;margin-bottom:4px;border-bottom:1px solid #1e2d4d}
+.ms-actions button{flex:1;background:#131a2e;border:1px solid #1e3a5f;color:#94a3b8;padding:3px 6px;border-radius:4px;font-size:10px;cursor:pointer;font-family:inherit}
+.ms-actions button:hover{color:#e2e8f0;border-color:#3b82f6}
+.ms-opt-wrap{display:flex;align-items:center;gap:6px;padding:4px 6px;font-size:12px;white-space:nowrap;cursor:pointer;border-radius:4px;color:#e2e8f0}
+.ms-opt-wrap:hover{background:#131a2e}
+.ms-opt-wrap input{accent-color:#3b82f6;cursor:pointer;margin:0}
+.ms-opt-count{margin-left:auto;color:#64748b;font-size:10px;padding-left:8px}
 /* table */
 .tw{background:#131a2e;border:1px solid #1e2d4d;border-radius:10px;overflow:hidden;flex:1;display:flex;flex-direction:column;min-height:0}
 .sc2{overflow:auto;flex:1;min-height:0}
@@ -66,29 +81,22 @@ th.num{padding-left:10px;padding-right:8px}
   <a href="https://www.rakuten-sec.co.jp/ITS/Companyfile/stabilization.html" target="_blank" rel="noopener" style="color:#e2e8f0;font-size:12px;text-decoration:none;margin-right:16px">安定操作</a>
   <a href="https://kabu.96ut.com/article/category/po/" target="_blank" rel="noopener" style="color:#e2e8f0;font-size:12px;text-decoration:none;margin-right:16px">96ut</a>
   <a href="https://jpx-jquants.com/ja" target="_blank" rel="noopener" style="color:#e2e8f0;font-size:12px;text-decoration:none;margin-right:16px">DSN：J-Quants</a>
+  <a href="./pricing.html" style="color:#e2e8f0;font-size:12px;text-decoration:none;margin-right:16px">料金プラン</a>
   <span class="upd" id="upd-label"></span>
 </nav>
 
 <div class="page">
   <div class="fs">
-    <div class="fg"><label>年</label>
-      <select id="fy" onchange="render()"><option value="">全年</option></select></div>
-    <div class="fg"><label>種別</label>
-      <select id="ft" onchange="render()"><option value="">全種別</option><option value="普通">普通</option><option value="リート">REIT</option></select></div>
-    <div class="fg"><label>信用区分</label>
-      <select id="fa" onchange="render()"><option value="">全て</option><option value="貸借">貸借</option><option value="信用">信用</option><option value="売禁">貸借(売禁)</option></select></div>
-    <div class="fg"><label>主幹事</label>
-      <span id="fm-checks" style="display:inline-flex;gap:6px;flex-wrap:wrap"></span></div>
-    <div class="fg"><label>dis率</label>
-      <select id="fd" onchange="render()"><option value="">全て</option><option value="0-3">~3%</option><option value="3-5">3~5%</option><option value="5-7">5~7%</option><option value="7-">7%~</option></select></div>
-    <div class="fg"><label>PO規模</label>
-      <select id="fs" onchange="render()"><option value="">全て</option><option value="0-50">~50億</option><option value="50-100">50~100億</option><option value="100-500">100~500億</option><option value="500-1000">500~1000億</option><option value="1000-">1000億~</option></select></div>
-    <div class="fg"><label>規模割合</label>
-      <select id="fp" onchange="render()"><option value="">全て</option><option value="0-5">~5%</option><option value="5-10">5~10%</option><option value="10-20">10~20%</option><option value="20-">20%~</option></select></div>
-    <div class="fg"><label>希薄化率</label>
-      <select id="fdi" onchange="render()"><option value="">全て</option><option value="0-5">~5%</option><option value="5-10">5~10%</option><option value="10-15">10~15%</option><option value="15-">15%~</option></select></div>
-    <div class="fg"><label>GUGD</label>
-      <select id="fgu" onchange="render()"><option value="">全て</option><option value="GU">🟢 GU</option><option value="GD">🔴 GD</option><option value="flat">フラット</option></select></div>
+    <div class="fg"><label>年</label><div class="ms" id="fy"></div></div>
+    <div class="fg"><label>種別</label><div class="ms" id="ft"></div></div>
+    <div class="fg"><label>区分</label><div class="ms" id="fa"></div></div>
+    <div class="fg"><label>主幹事</label><div class="ms" id="fm"></div></div>
+    <div class="fg"><label>dis率</label><div class="ms" id="fd"></div></div>
+    <div class="fg"><label>PO規模</label><div class="ms" id="fs2"></div></div>
+    <div class="fg"><label>規模割合</label><div class="ms" id="fp"></div></div>
+    <div class="fg"><label>希薄化率</label><div class="ms" id="fdi"></div></div>
+    <div class="fg"><label>GUGD</label><div class="ms" id="fgu"></div></div>
+    <div class="fg"><label class="mcb" title="日付不明の旧CSV取り込みデータを除外"><input type="checkbox" id="fleg" onchange="render()" checked>旧データ除外</label></div>
   </div>
 
   <div class="stats">
@@ -168,11 +176,12 @@ function recToRow(r, src){
     delOpen:r.delivery_open, delClose:r.delivery_close, delRet:r.delivery_ret,
     prevClose:r.prev_close_before_delivery, gapPct:r.delivery_gap_pct,
     leadManagers:r.lead_managers||[], coManagers:r.co_managers||[],
-    memo:r.memo||"", status:((r.delivery_open&&r.delivery_close)||(r.delivery_date&&new Date(r.delivery_date)<new Date())||(r.announce_date&&new Date(r.announce_date)<new Date(Date.now()-30*864e5)))?"complete":(r.status||"pending"), announceDate:r.announce_date||"",
+    memo:r.memo||"", status:((r.delivery_open&&r.delivery_close)||(r.delivery_date&&new Date(r.delivery_date)<new Date()))?"complete":(r.status||"pending"), announceDate:r.announce_date||"",
     marketCap:r.market_cap, shares:r.shares_outstanding,
     discountRate:r.discount_rate, discountRange:r.discount_range||"",
     newShares:r.new_shares, soldShares:r.sold_shares,
     decisionDate:r.decision_date, deliveryDate:r.delivery_date,
+    legacy:!!r.legacy,
   };
 }
 function buildCombined(){
@@ -183,40 +192,59 @@ function buildCombined(){
 
 /* ─────── フィルタ ────────────────────────────────────────────────────────── */
 function rangeMatch(val,range){
-  if(!range||val==null) return !range;
+  if(val==null) return false;
   const [lo,hi]=range.split("-").map(Number);
   if(isNaN(hi)) return val>=lo;
   return val>=lo&&val<hi;
 }
+function getMS(id){
+  const host=document.getElementById(id);
+  if(!host) return {values:[],all:true,none:false};
+  const all=[...host.querySelectorAll(".ms-opt")];
+  const checked=all.filter(c=>c.checked).map(c=>c.value);
+  return {values:checked, all:all.length>0&&checked.length===all.length, none:checked.length===0&&all.length>0};
+}
+function matchMSExact(id,val){
+  const m=getMS(id);
+  if(m.all) return true;
+  if(m.none) return false;
+  return m.values.includes(String(val));
+}
+function matchMSRange(id,val){
+  const m=getMS(id);
+  if(m.all) return true;
+  if(m.none) return false;
+  if(val==null) return false;
+  return m.values.some(r=>rangeMatch(val,r));
+}
 function getFiltered(){
-  const yr=document.getElementById("fy").value;
-  const tp=document.getElementById("ft").value;
-  const al=document.getElementById("fa").value;
-  const checkedMgrs=getCheckedManagers();
-  const allCbs=document.querySelectorAll("#fm-checks input[type=checkbox]");
-  const mgrFilterActive=allCbs.length>0&&checkedMgrs.length<allCbs.length;
-  const fd=document.getElementById("fd").value;
-  const fs=document.getElementById("fs").value;
-  const fp=document.getElementById("fp").value;
-  const fdi=document.getElementById("fdi").value;
-  const fgu=document.getElementById("fgu").value;
+  const fleg=document.getElementById("fleg")?.checked;
+  const mgu=getMS("fgu");
+  const mfm=getMS("fm");
   return combined.filter(r=>{
-    if(yr&&r.year!=+yr) return false;
-    if(tp&&r.type!==tp) return false;
-    if(al&&r.lending!==al) return false;
-    if(mgrFilterActive){
+    if(fleg&&r.legacy) return false;
+    if(!matchMSExact("fy",r.year)) return false;
+    if(!matchMSExact("ft",r.type)) return false;
+    if(!matchMSExact("fa",r.lending)) return false;
+    // 主幹事: 銘柄の略称いずれかが選択中なら通す
+    if(!mfm.all){
+      if(mfm.none) return false;
       const abbrs=(r.leadManagers||[]).map(abbrManager);
-      if(!abbrs.some(a=>checkedMgrs.includes(a))) return false;
+      if(!abbrs.some(a=>mfm.values.includes(a))) return false;
     }
-    if(fd&&!rangeMatch(r.discountRate,fd)) return false;
-    if(fs&&!rangeMatch(r.scale,fs)) return false;
-    if(fp&&!rangeMatch(r.pct,fp)) return false;
-    if(fdi&&!rangeMatch(r.dilution,fdi)) return false;
-    if(fgu){
+    if(!matchMSRange("fd",r.discountRate)) return false;
+    if(!matchMSRange("fs2",r.scale)) return false;
+    if(!matchMSRange("fp",r.pct)) return false;
+    if(!matchMSRange("fdi",r.dilution)) return false;
+    if(!mgu.all){
+      if(mgu.none) return false;
       if(r.gapPct==null) return false;
-      if(fgu==="GU" && r.gapPct<0.5) return false;
-      if(fgu==="GD" && r.gapPct>-0.5) return false;
-      if(fgu==="flat" && (r.gapPct>=0.5||r.gapPct<=-0.5)) return false;
+      const ok=mgu.values.some(v=>(
+        (v==="GU"   && r.gapPct>=0.5) ||
+        (v==="GD"   && r.gapPct<=-0.5) ||
+        (v==="flat" && r.gapPct>-0.5 && r.gapPct<0.5)
+      ));
+      if(!ok) return false;
     }
     return true;
   });
@@ -237,33 +265,95 @@ function fmtCell(v){
   return `<span class="neg">-${s}</span>`;
 }
 
+/* ─────── マルチセレクト ─────────────────────────────────────────────────── */
+function buildMS(id, opts){
+  const host=document.getElementById(id);
+  if(!host) return;
+  // 同じオプション構成なら再構築しない（ドロップダウン状態を保持）
+  const sig=opts.map(o=>o.v).join("|");
+  if(host.dataset.sig===sig) return;
+  host.dataset.sig=sig;
+  // 既存の選択状態を退避
+  const prev={};
+  host.querySelectorAll(".ms-opt").forEach(cb=>{prev[cb.value]=cb.checked;});
+  host.innerHTML=`<button type="button" class="ms-btn"></button>
+    <div class="ms-panel" hidden>
+      <div class="ms-actions"><button type="button" data-act="all">全選択</button><button type="button" data-act="none">全解除</button></div>
+      <div class="ms-opts"></div></div>`;
+  const optsWrap=host.querySelector(".ms-opts");
+  opts.forEach(o=>{
+    const lbl=document.createElement("label");lbl.className="ms-opt-wrap";
+    const checked=(prev[o.v]===undefined)?true:prev[o.v];
+    const cnt=o.c!=null?`<span class="ms-opt-count">${o.c}</span>`:"";
+    lbl.innerHTML=`<input type="checkbox" class="ms-opt" value="${esc(o.v)}" data-label="${esc(o.l)}"${checked?" checked":""}><span>${esc(o.l)}</span>${cnt}`;
+    optsWrap.appendChild(lbl);
+  });
+  const btn=host.querySelector(".ms-btn");
+  btn.addEventListener("click",e=>{
+    e.stopPropagation();
+    const panel=host.querySelector(".ms-panel");
+    const isOpen=!panel.hidden;
+    closeAllMS();
+    if(!isOpen){panel.hidden=false;btn.classList.add("open");}
+  });
+  host.querySelector(".ms-panel").addEventListener("click",e=>e.stopPropagation());
+  host.querySelectorAll(".ms-opt").forEach(cb=>{
+    cb.addEventListener("change",()=>{updateMSLabel(host);render();});
+  });
+  host.querySelectorAll(".ms-actions button").forEach(b=>{
+    b.addEventListener("click",()=>{
+      host.querySelectorAll(".ms-opt").forEach(cb=>{cb.checked=b.dataset.act==="all";});
+      updateMSLabel(host);render();
+    });
+  });
+  updateMSLabel(host);
+}
+function updateMSLabel(host){
+  const all=[...host.querySelectorAll(".ms-opt")];
+  const checked=all.filter(c=>c.checked);
+  const btn=host.querySelector(".ms-btn");
+  btn.classList.toggle("partial", checked.length>0 && checked.length<all.length);
+  if(all.length===0){btn.textContent="–";return;}
+  if(checked.length===all.length){btn.textContent="全て";return;}
+  if(checked.length===0){btn.textContent="選択なし";return;}
+  if(checked.length<=2){btn.textContent=checked.map(c=>c.dataset.label||c.value).join(", ");return;}
+  btn.textContent=`${checked.length}件選択`;
+}
+function closeAllMS(){
+  document.querySelectorAll(".ms-panel").forEach(p=>p.hidden=true);
+  document.querySelectorAll(".ms-btn").forEach(b=>b.classList.remove("open"));
+}
+document.addEventListener("click",closeAllMS);
+
 /* ─────── フィルタ動的生成 ─────────────────────────────────────────────────── */
 function populateFilters(){
-  // 年
-  const selY=document.getElementById("fy");
-  const curY=selY.value;
-  const yrs=[...new Set(combined.map(r=>r.year))].sort();
-  while(selY.options.length>1) selY.remove(1);
-  yrs.forEach(y=>{const o=document.createElement("option");o.value=y;o.textContent=y;selY.add(o);});
-  selY.value=curY;
-  // 主幹事チェックボックス
-  const wrap=document.getElementById("fm-checks");
-  const mgrs=["野","大","み","日","三"];
-  if(!wrap.children.length){
-    mgrs.forEach(m=>{
-      const lbl=document.createElement("label");lbl.className="mcb";
-      const cb=document.createElement("input");cb.type="checkbox";cb.checked=true;cb.value=m;
-      cb.onchange=()=>render();
-      lbl.appendChild(cb);lbl.appendChild(document.createTextNode(m));
-      wrap.appendChild(lbl);
+  // 年（降順）
+  const yrs=[...new Set(combined.map(r=>r.year))].sort((a,b)=>b-a);
+  buildMS("fy", yrs.map(y=>({v:String(y), l:String(y)})));
+  // 種別
+  buildMS("ft", [{v:"普通",l:"普通"},{v:"リート",l:"REIT"}]);
+  // 区分
+  buildMS("fa", [{v:"貸借",l:"貸借"},{v:"信用",l:"信用"},{v:"売禁",l:"貸借(売禁)"}]);
+  // 主幹事（実データから出現頻度順）
+  const counts={};
+  combined.forEach(r=>{
+    (r.leadManagers||[]).forEach(name=>{
+      const a=abbrManager(name);
+      if(a) counts[a]=(counts[a]||0)+1;
     });
-  }
-}
-function getCheckedManagers(){
-  const cbs=document.querySelectorAll("#fm-checks input[type=checkbox]");
-  const checked=[];
-  cbs.forEach(cb=>{if(cb.checked) checked.push(cb.value);});
-  return checked;
+  });
+  const mgrs=Object.keys(counts).sort((a,b)=>{
+    const oa=MGR_ORDER[a]??99, ob=MGR_ORDER[b]??99;
+    if(oa!==ob) return oa-ob;
+    return counts[b]-counts[a];
+  });
+  if(mgrs.length>0) buildMS("fm", mgrs.map(m=>({v:m, l:m, c:counts[m]})));
+  // dis率 / PO規模 / 規模割合 / 希薄化率
+  buildMS("fd",  [{v:"0-3",l:"~3%"},{v:"3-5",l:"3~5%"},{v:"5-7",l:"5~7%"},{v:"7-",l:"7%~"}]);
+  buildMS("fs2", [{v:"0-50",l:"~50億"},{v:"50-100",l:"50~100億"},{v:"100-500",l:"100~500億"},{v:"500-1000",l:"500~1000億"},{v:"1000-",l:"1000億~"}]);
+  buildMS("fp",  [{v:"0-5",l:"~5%"},{v:"5-10",l:"5~10%"},{v:"10-20",l:"10~20%"},{v:"20-",l:"20%~"}]);
+  buildMS("fdi", [{v:"0-5",l:"~5%"},{v:"5-10",l:"5~10%"},{v:"10-15",l:"10~15%"},{v:"15-",l:"15%~"}]);
+  buildMS("fgu", [{v:"GU",l:"🟢 GU"},{v:"GD",l:"🔴 GD"},{v:"flat",l:"フラット"}]);
 }
 
 /* ─────── テーブル ───────────────────────────────────────────────────────── */
@@ -297,15 +387,15 @@ function abbrManagers(list){
 }
 
 function renderTable(data){
-  document.getElementById("tb").innerHTML=data.map(r=>`<tr>
-    <td style="color:#64748b;font-family:monospace">${r.year}</td>
+  document.getElementById("tb").innerHTML=data.map(r=>`<tr${r.legacy?' style="opacity:.55"':''}>
+    <td style="color:#64748b;font-family:monospace">${r.year}${r.legacy?'<span title="日付不明の旧データ" style="color:#64748b;margin-left:3px">⚠</span>':''}</td>
     <td>${(()=>{const b=statusBadge(r.status);return `<span class="b ${b.cls}">${b.label}</span>`;})()}</td>
     <td style="color:#64748b;font-family:monospace;font-size:11px">${r.code||"–"}</td>
     <td style="max-width:140px;overflow:hidden;text-overflow:ellipsis" title="${esc(r.name)}">${r.code?`<a href="https://kabutan.jp/stock/chart?code=${esc(r.code)}" target="_blank" rel="noopener" style="color:#e2e8f0;text-decoration:none">${esc(r.name)}</a>`:esc(r.name)}</td>
-    <td><span class="b ${r.type==="リート"?"b-r":"b-n"}">${esc(r.type)}</span></td>
+    <td><span class="b ${r.type==="リート"?"b-r":"b-n"}">${r.type==="リート"?"REIT":esc(r.type)}</span></td>
     <td><span class="b ${r.lending==="貸借"?"b-tai":r.lending==="信用"?"b-c":"b-ban"}">${r.lending==="売禁"?"貸借(売禁)":esc(r.lending)}</span></td>
     <td style="font-family:'Meiryo','メイリオ',sans-serif;max-width:70px;overflow:hidden;text-overflow:ellipsis" title="${esc((r.leadManagers||[]).slice().sort((a,b)=>(MGR_ORDER[abbrManager(a)]??99)-(MGR_ORDER[abbrManager(b)]??99)).join(' / '))}">${esc(abbrManagers(r.leadManagers))||"–"}</td>
-    <td class="num">${r.discountRate!=null?pctStr(r.discountRate):"–"}</td>
+    <td class="num"${(r.discountRate!=null&&r.discountRate>15)?' style="color:#fbbf24" title="dis率15%超: 異常値の可能性"':''}>${r.discountRate!=null?pctStr(r.discountRate):"–"}</td>
     <td class="num">${r.scale?r.scale.toLocaleString():"–"}</td>
     <td class="num">${r.pct!=null?pctStr(r.pct):"–"}</td>
     <td class="num">${r.dilution!=null?pctStr(r.dilution):"–"}</td>

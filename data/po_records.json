@@ -39,7 +39,8 @@
       "oa_shares": null,
       "article_url": null,
       "lending_type": "",
-      "status": "complete"
+      "status": "complete",
+      "legacy": true
     },
     {
       "id": "csv_2",
@@ -80,7 +81,8 @@
       "oa_shares": null,
       "article_url": null,
       "lending_type": "",
-      "status": "complete"
+      "status": "complete",
+      "legacy": true
     },
     {
       "id": "3487_20210902",
@@ -169,7 +171,8 @@
       "oa_shares": null,
       "article_url": null,
       "lending_type": "",
-      "status": "complete"
+      "status": "complete",
+      "legacy": true
     },
     {
       "id": "9021_20210901",
@@ -309,7 +312,8 @@
       "oa_shares": null,
       "article_url": null,
       "lending_type": "",
-      "status": "complete"
+      "status": "complete",
+      "legacy": true
     },
     {
       "id": "8956_20211018",
@@ -1093,7 +1097,8 @@
       "oa_shares": null,
       "article_url": null,
       "lending_type": "",
-      "status": "complete"
+      "status": "complete",
+      "legacy": true
     },
     {
       "id": "csv_24",
@@ -1134,7 +1139,8 @@
       "oa_shares": null,
       "article_url": null,
       "lending_type": "",
-      "status": "complete"
+      "status": "complete",
+      "legacy": true
     },
     {
       "id": "7616_20210824",
@@ -1225,7 +1231,8 @@
       "oa_shares": null,
       "article_url": null,
       "lending_type": "",
-      "status": "complete"
+      "status": "complete",
+      "legacy": true
     },
     {
       "id": "4053_20211127",
@@ -1365,7 +1372,8 @@
       "oa_shares": null,
       "article_url": null,
       "lending_type": "",
-      "status": "complete"
+      "status": "complete",
+      "legacy": true
     },
     {
       "id": "4215_20210107",
@@ -1611,7 +1619,7 @@
       "delivery_gap_pct": 0.0
     },
     {
-      "id": "3295_20211014",
+      "id": "3295_20211014_2",
       "code": "3295",
       "name": "ヒューリックＲＥ",
       "type": "リート",
@@ -1900,7 +1908,8 @@
       "oa_shares": null,
       "article_url": null,
       "lending_type": "",
-      "status": "complete"
+      "status": "complete",
+      "legacy": true
     },
     {
       "id": "6723_20210528",
@@ -2186,7 +2195,8 @@
       "oa_shares": null,
       "article_url": null,
       "lending_type": "",
-      "status": "complete"
+      "status": "complete",
+      "legacy": true
     },
     {
       "id": "1911_20210623",
@@ -2327,7 +2337,8 @@
       "oa_shares": null,
       "article_url": null,
       "lending_type": "",
-      "status": "complete"
+      "status": "complete",
+      "legacy": true
     },
     {
       "id": "3309_20211018",
@@ -2516,7 +2527,8 @@
       "oa_shares": null,
       "article_url": null,
       "lending_type": "",
-      "status": "complete"
+      "status": "complete",
+      "legacy": true
     },
     {
       "id": "2053_20210520",
@@ -2747,7 +2759,8 @@
       "oa_shares": null,
       "article_url": null,
       "lending_type": "",
-      "status": "complete"
+      "status": "complete",
+      "legacy": true
     },
     {
       "id": "csv_59",
@@ -2788,7 +2801,8 @@
       "oa_shares": null,
       "article_url": null,
       "lending_type": "",
-      "status": "complete"
+      "status": "complete",
+      "legacy": true
     },
     {
       "id": "9706_20210217",
@@ -3033,7 +3047,8 @@
       "oa_shares": null,
       "article_url": null,
       "lending_type": "",
-      "status": "complete"
+      "status": "complete",
+      "legacy": true
     },
     {
       "id": "3281_20221012",
@@ -3369,7 +3384,8 @@
       "oa_shares": null,
       "article_url": null,
       "lending_type": "",
-      "status": "complete"
+      "status": "complete",
+      "legacy": true
     },
     {
       "id": "3453_20221006",
@@ -3418,7 +3434,7 @@
       "announce_date_confirmed": true
     },
     {
-      "id": "3453_20221006",
+      "id": "3453_20221006_2",
       "code": "3453",
       "name": "ケネ商業リート",
       "type": "リート",
@@ -3502,7 +3518,8 @@
       "oa_shares": null,
       "article_url": null,
       "lending_type": "",
-      "status": "complete"
+      "status": "complete",
+      "legacy": true
     },
     {
       "id": "csv_75",
@@ -3543,7 +3560,8 @@
       "oa_shares": null,
       "article_url": null,
       "lending_type": "",
-      "status": "complete"
+      "status": "complete",
+      "legacy": true
     },
     {
       "id": "6266_20220527",
@@ -3983,7 +4001,7 @@
       "delivery_gap_pct": -0.12
     },
     {
-      "id": "3481_20221014",
+      "id": "3481_20221014_2",
       "code": "3481",
       "name": "三菱地所物流",
       "type": "リート",
@@ -4522,7 +4540,8 @@
       "oa_shares": null,
       "article_url": null,
       "lending_type": "",
-      "status": "complete"
+      "status": "complete",
+      "legacy": true
     },
     {
       "id": "3388_20220218",
@@ -5369,7 +5388,8 @@
       "oa_shares": null,
       "article_url": null,
       "lending_type": "",
-      "status": "complete"
+      "status": "complete",
+      "legacy": true
     },
     {
       "id": "4071_20230707",
@@ -6755,7 +6775,8 @@
       "oa_shares": null,
       "article_url": null,
       "lending_type": "",
-      "status": "complete"
+      "status": "complete",
+      "legacy": true
     },
     {
       "id": "csv_141",
@@ -6796,7 +6817,8 @@
       "oa_shares": null,
       "article_url": null,
       "lending_type": "",
-      "status": "complete"
+      "status": "complete",
+      "legacy": true
     },
     {
       "id": "1301_20240215",
@@ -7523,7 +7545,8 @@
       "oa_shares": null,
       "article_url": null,
       "lending_type": "",
-      "status": "complete"
+      "status": "complete",
+      "legacy": true
     },
     {
       "id": "8966_20240522",
@@ -8716,7 +8739,7 @@
       "delivery_gap_pct": -0.28
     },
     {
-      "id": "3492_20240829",
+      "id": "3492_20240829_2",
       "code": "3492",
       "name": "タカラリート",
       "type": "リート",
@@ -9249,7 +9272,8 @@
       "oa_shares": null,
       "article_url": null,
       "lending_type": "",
-      "status": "complete"
+      "status": "complete",
+      "legacy": true
     },
     {
       "id": "2752_20241123",
@@ -11143,7 +11167,8 @@
       "oa_shares": null,
       "article_url": null,
       "lending_type": "",
-      "status": "complete"
+      "status": "complete",
+      "legacy": true
     },
     {
       "id": "3167_20250819",
@@ -11561,7 +11586,8 @@
       "oa_shares": null,
       "article_url": null,
       "lending_type": "",
-      "status": "complete"
+      "status": "complete",
+      "legacy": true
     },
     {
       "id": "4534_20260330",
@@ -11933,7 +11959,7 @@
       "delivery_ret": -2.82,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 123500.0,
       "delivery_gap_pct": -2.43,
       "announce_day_close": 127400.0
@@ -11987,7 +12013,7 @@
       "delivery_ret": -0.11,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 897.0,
       "delivery_gap_pct": 3.23,
       "next_day_915_ret": 2.32,
@@ -12038,7 +12064,7 @@
       "delivery_ret": 0.0,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1152.0,
       "delivery_gap_pct": 2.0,
       "next_day_915_ret": 0.74,
@@ -12089,7 +12115,7 @@
       "delivery_ret": -2.23,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 3092.0,
       "delivery_gap_pct": -4.08,
       "next_day_915_ret": 1.58,
@@ -12141,7 +12167,7 @@
       "delivery_ret": -0.84,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 84000.0,
       "delivery_gap_pct": -1.19,
       "next_day_915_ret": -1.61,
@@ -12195,7 +12221,7 @@
       "delivery_ret": 1.42,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1055.0,
       "delivery_gap_pct": 0.47,
       "next_day_915_ret": 1.12,
@@ -12250,7 +12276,7 @@
       "delivery_ret": -3.16,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 10220.0,
       "delivery_gap_pct": 2.05,
       "next_day_915_ret": -0.44,
@@ -12301,7 +12327,7 @@
       "delivery_ret": 1.42,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1285.0,
       "delivery_gap_pct": -7.0,
       "next_day_915_ret": -1.29,
@@ -12350,7 +12376,7 @@
       "delivery_ret": -8.01,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 7120.0,
       "delivery_gap_pct": 0.0,
       "next_day_930_ret": -1.46
@@ -12399,7 +12425,7 @@
       "delivery_ret": -0.13,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 79800.0,
       "delivery_gap_pct": -0.38,
       "next_day_915_ret": -1.73,
@@ -12452,7 +12478,7 @@
       "delivery_ret": 1.22,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 2087.0,
       "delivery_gap_pct": 2.3,
       "next_day_915_ret": -3.81,
@@ -12505,7 +12531,7 @@
       "delivery_ret": -1.61,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 2215.0,
       "delivery_gap_pct": 1.04,
       "next_day_915_ret": 0.25,
@@ -12556,7 +12582,7 @@
       "delivery_ret": -2.33,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 7833.0,
       "delivery_gap_pct": 1.91,
       "next_day_915_ret": 0.23,
@@ -12609,7 +12635,7 @@
       "delivery_ret": -0.76,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 2722.0,
       "delivery_gap_pct": 1.47,
       "announce_day_close": 3095.0
@@ -12658,7 +12684,7 @@
       "delivery_ret": 3.01,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 889.0,
       "delivery_gap_pct": -10.24
     },
@@ -12704,7 +12730,7 @@
       "delivery_ret": -1.11,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 3115.0,
       "delivery_gap_pct": -4.49
     },
@@ -12757,7 +12783,7 @@
       "delivery_ret": 0.0,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 93600.0,
       "delivery_gap_pct": -1.71
     },
@@ -12806,7 +12832,7 @@
       "delivery_ret": -3.26,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1869.0,
       "delivery_gap_pct": -3.26
     },
@@ -12856,7 +12882,7 @@
       "delivery_ret": 1.44,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 5680.0,
       "delivery_gap_pct": -2.46
     },
@@ -12904,7 +12930,7 @@
       "delivery_ret": -3.41,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 2505.0,
       "delivery_gap_pct": 0.76
     },
@@ -12954,7 +12980,7 @@
       "delivery_ret": -0.9,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 90000.0,
       "delivery_gap_pct": -0.89
     },
@@ -13005,7 +13031,7 @@
       "delivery_ret": -0.79,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 2530.0,
       "delivery_gap_pct": 0.0,
       "announce_day_close": 2560.0
@@ -13056,7 +13082,7 @@
       "delivery_ret": -1.25,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 6688.0,
       "delivery_gap_pct": 0.19
     },
@@ -13104,7 +13130,7 @@
       "delivery_ret": -1.16,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 603.0,
       "delivery_gap_pct": -0.17
     },
@@ -13153,7 +13179,7 @@
       "delivery_ret": 6.31,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 5449.0,
       "delivery_gap_pct": -0.9
     },
@@ -13202,7 +13228,7 @@
       "delivery_ret": -0.55,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 528.0,
       "delivery_gap_pct": 2.65
     },
@@ -13253,7 +13279,7 @@
       "delivery_ret": 0.18,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 113300.0,
       "delivery_gap_pct": -1.15
     },
@@ -13301,7 +13327,7 @@
       "delivery_ret": 1.29,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1330.0,
       "delivery_gap_pct": -2.76
     },
@@ -13347,7 +13373,7 @@
       "delivery_ret": 1.21,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1788.0,
       "delivery_gap_pct": -2.68
     },
@@ -13398,7 +13424,7 @@
       "delivery_ret": 1.49,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1881.0,
       "delivery_gap_pct": -0.05
     },
@@ -13446,7 +13472,7 @@
       "delivery_ret": -1.78,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 852.0,
       "delivery_gap_pct": -0.82
     },
@@ -13499,7 +13525,7 @@
       "delivery_ret": -1.37,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 148600.0,
       "delivery_gap_pct": -1.82
     },
@@ -13550,7 +13576,7 @@
       "delivery_ret": 0.0,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 3660.0,
       "delivery_gap_pct": -2.19
     },
@@ -13596,7 +13622,7 @@
       "delivery_ret": -2.96,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1624.0,
       "delivery_gap_pct": 0.0
     },
@@ -13644,7 +13670,7 @@
       "delivery_ret": -2.15,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1212.0,
       "delivery_gap_pct": 7.43
     },
@@ -13693,7 +13719,7 @@
       "delivery_ret": 1.35,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1900.0,
       "delivery_gap_pct": 1.11
     },
@@ -13744,7 +13770,7 @@
       "delivery_ret": 1.14,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 106100.0,
       "delivery_gap_pct": -0.38
     },
@@ -13792,7 +13818,7 @@
       "delivery_ret": -0.21,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 2868.0,
       "delivery_gap_pct": -0.28
     },
@@ -13838,7 +13864,7 @@
       "delivery_ret": 0.83,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1433.0,
       "delivery_gap_pct": 0.56
     },
@@ -13887,7 +13913,7 @@
       "delivery_ret": 2.23,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1083.0,
       "delivery_gap_pct": -0.55
     },
@@ -13935,7 +13961,7 @@
       "delivery_ret": 1.42,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 912.0,
       "delivery_gap_pct": 0.22,
       "announce_day_close": 927.0
@@ -13987,7 +14013,7 @@
       "delivery_ret": 1.62,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 3462.0,
       "delivery_gap_pct": 0.12
     },
@@ -14036,7 +14062,7 @@
       "delivery_ret": -2.71,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 8720.0,
       "delivery_gap_pct": 1.72
     },
@@ -14084,7 +14110,7 @@
       "delivery_ret": -0.22,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 2278.0,
       "delivery_gap_pct": -0.04
     },
@@ -14136,7 +14162,7 @@
       "delivery_ret": 0.94,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 184400.0,
       "delivery_gap_pct": -1.68
     },
@@ -14183,7 +14209,7 @@
       "delivery_ret": -2.44,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 81300.0,
       "delivery_gap_pct": -4.31
     },
@@ -14233,7 +14259,7 @@
       "delivery_ret": -0.84,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 2809.0,
       "delivery_gap_pct": 1.17,
       "announce_day_close": 2999.0
@@ -14284,7 +14310,7 @@
       "delivery_ret": 3.39,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 8210.0,
       "delivery_gap_pct": 0.49
     },
@@ -14330,7 +14356,7 @@
       "delivery_ret": 1.3,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 2096.0,
       "delivery_gap_pct": -1.24
     },
@@ -14383,7 +14409,7 @@
       "delivery_ret": 0.39,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 2111.0,
       "delivery_gap_pct": -2.89
     },
@@ -14433,7 +14459,7 @@
       "delivery_ret": -0.58,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 2261.0,
       "delivery_gap_pct": -0.71
     },
@@ -14485,7 +14511,7 @@
       "delivery_ret": 1.06,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 471.0,
       "delivery_gap_pct": -0.21
     },
@@ -14531,7 +14557,7 @@
       "delivery_ret": -2.65,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 483.0,
       "delivery_gap_pct": 1.66
     },
@@ -14577,7 +14603,7 @@
       "delivery_ret": -0.69,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1610.0,
       "delivery_gap_pct": -0.62
     },
@@ -14623,7 +14649,7 @@
       "delivery_ret": 2.36,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1960.5,
       "delivery_gap_pct": -0.41
     },
@@ -14669,7 +14695,7 @@
       "delivery_ret": 3.16,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 745.0,
       "delivery_gap_pct": -10.74
     },
@@ -14715,7 +14741,7 @@
       "delivery_ret": 1.71,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 764.0,
       "delivery_gap_pct": -0.26
     },
@@ -14769,7 +14795,7 @@
       "delivery_ret": 1.33,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1525.0,
       "delivery_gap_pct": -1.51
     },
@@ -14817,7 +14843,7 @@
       "delivery_ret": 1.32,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 4195.0,
       "delivery_gap_pct": -0.95
     },
@@ -14863,7 +14889,7 @@
       "delivery_ret": 0.07,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1479.0,
       "delivery_gap_pct": 0.07
     },
@@ -14912,7 +14938,7 @@
       "delivery_ret": 0.36,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1803.5,
       "delivery_gap_pct": -0.17
     },
@@ -14958,7 +14984,7 @@
       "delivery_ret": 0.31,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 6470.0,
       "delivery_gap_pct": -1.24
     },
@@ -15053,7 +15079,7 @@
       "delivery_ret": 2.72,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 2610.0,
       "delivery_gap_pct": -1.34
     },
@@ -15101,7 +15127,7 @@
       "delivery_ret": 0.45,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 3535.0,
       "delivery_gap_pct": -4.81
     },
@@ -15154,7 +15180,7 @@
       "delivery_ret": -0.19,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 104500.0,
       "delivery_gap_pct": -0.38
     },
@@ -15200,7 +15226,7 @@
       "delivery_ret": 1.82,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 353.0,
       "delivery_gap_pct": -6.8
     },
@@ -15246,7 +15272,7 @@
       "delivery_ret": -1.61,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1525.0,
       "delivery_gap_pct": 1.57
     },
@@ -15296,7 +15322,7 @@
       "delivery_ret": 3.79,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 2300.0,
       "delivery_gap_pct": -2.5
     },
@@ -15351,7 +15377,7 @@
       "delivery_ret": -2.34,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1400.0,
       "delivery_gap_pct": -38.93
     },
@@ -15397,7 +15423,7 @@
       "delivery_ret": -3.48,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 871.25,
       "delivery_gap_pct": -1.15
     },
@@ -15447,7 +15473,7 @@
       "delivery_ret": -0.98,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 2429.0,
       "delivery_gap_pct": 0.91
     },
@@ -15496,7 +15522,7 @@
       "delivery_ret": 1.14,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1413.0,
       "delivery_gap_pct": -0.85
     },
@@ -15542,7 +15568,7 @@
       "delivery_ret": 0.47,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 65800.0,
       "delivery_gap_pct": -2.74
     },
@@ -15588,7 +15614,7 @@
       "delivery_ret": 0.78,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1168.0,
       "delivery_gap_pct": -0.6
     },
@@ -15637,7 +15663,7 @@
       "delivery_ret": 3.87,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1313.0,
       "delivery_gap_pct": 0.46
     },
@@ -15685,7 +15711,7 @@
       "delivery_ret": -0.6,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1240.0,
       "delivery_gap_pct": -6.13
     },
@@ -15737,7 +15763,7 @@
       "delivery_ret": 0.33,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 124000.0,
       "delivery_gap_pct": -3.23
     },
@@ -15789,7 +15815,7 @@
       "delivery_ret": 0.12,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 3860.0,
       "delivery_gap_pct": 3.63
     },
@@ -15838,7 +15864,7 @@
       "delivery_ret": -1.85,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 500.0,
       "delivery_gap_pct": -2.8
     },
@@ -15884,7 +15910,7 @@
       "delivery_ret": 0.61,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 981.0,
       "delivery_gap_pct": 0.0
     },
@@ -15935,7 +15961,7 @@
       "delivery_ret": 0.76,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1681.0,
       "delivery_gap_pct": 1.13
     },
@@ -15983,7 +16009,7 @@
       "delivery_ret": -0.87,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 924.0,
       "delivery_gap_pct": -0.76
     },
@@ -16031,7 +16057,7 @@
       "delivery_ret": 0.0,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1055.0,
       "delivery_gap_pct": 0.28
     },
@@ -16077,7 +16103,7 @@
       "delivery_ret": -2.27,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 484.0,
       "delivery_gap_pct": 0.21
     },
@@ -16125,7 +16151,7 @@
       "delivery_ret": -0.7,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 3580.0,
       "delivery_gap_pct": 0.0
     },
@@ -16171,7 +16197,7 @@
       "delivery_ret": 2.31,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 680.0,
       "delivery_gap_pct": -4.41
     },
@@ -16217,7 +16243,7 @@
       "delivery_ret": -1.37,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 5850.0,
       "delivery_gap_pct": -0.51
     },
@@ -16265,7 +16291,7 @@
       "delivery_ret": 0.0,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 975.0,
       "delivery_gap_pct": -0.51
     },
@@ -16313,7 +16339,7 @@
       "delivery_ret": -2.03,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 820.0,
       "delivery_gap_pct": -3.66
     },
@@ -16365,7 +16391,7 @@
       "delivery_ret": 0.81,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 125000.0,
       "delivery_gap_pct": -0.96
     },
@@ -16416,7 +16442,7 @@
       "delivery_ret": 1.08,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 3305.0,
       "delivery_gap_pct": -2.12
     },
@@ -16464,7 +16490,7 @@
       "delivery_ret": 0.0,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 3110.0,
       "delivery_gap_pct": -0.64,
       "announce_day_close": 3255.0
@@ -16513,7 +16539,7 @@
       "delivery_ret": -0.28,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1816.0,
       "delivery_gap_pct": -0.72
     },
@@ -16559,7 +16585,7 @@
       "delivery_ret": 7.66,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 4630.0,
       "delivery_gap_pct": -9.72
     },
@@ -16610,7 +16636,7 @@
       "delivery_ret": -3.65,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending"
+      "status": "complete"
     },
     {
       "id": "7826_20231117",
@@ -16659,7 +16685,7 @@
       "delivery_ret": 2.65,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 3026.67,
       "delivery_gap_pct": -0.44
     },
@@ -16705,7 +16731,7 @@
       "delivery_ret": 0.73,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 3350.0,
       "delivery_gap_pct": 2.09
     },
@@ -16754,7 +16780,7 @@
       "delivery_ret": 0.35,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 43700.0,
       "delivery_gap_pct": -1.26
     },
@@ -16802,7 +16828,7 @@
       "delivery_ret": -0.58,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 86600.0,
       "delivery_gap_pct": 0.12
     },
@@ -16853,7 +16879,7 @@
       "delivery_ret": 2.32,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 126200.0,
       "delivery_gap_pct": -0.87
     },
@@ -16903,7 +16929,7 @@
       "delivery_ret": -0.9,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 3370.0,
       "delivery_gap_pct": -1.63
     },
@@ -16949,7 +16975,7 @@
       "delivery_ret": 1.53,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1080.0,
       "delivery_gap_pct": -3.15
     },
@@ -16996,7 +17022,7 @@
       "delivery_ret": 2.7,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 837.0,
       "delivery_gap_pct": -7.17
     },
@@ -17046,7 +17072,7 @@
       "delivery_ret": -3.59,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 2260.0,
       "delivery_gap_pct": -0.13
     },
@@ -17094,7 +17120,7 @@
       "delivery_ret": 2.36,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 77100.0,
       "delivery_gap_pct": -0.91
     },
@@ -17142,7 +17168,7 @@
       "delivery_ret": -1.96,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 3825.0,
       "delivery_gap_pct": 0.0
     },
@@ -17188,7 +17214,7 @@
       "delivery_ret": 0.88,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1824.0,
       "delivery_gap_pct": 0.05
     },
@@ -17234,7 +17260,7 @@
       "delivery_ret": -0.17,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 2876.0,
       "delivery_gap_pct": 4.49
     },
@@ -17284,7 +17310,7 @@
       "delivery_ret": 3.22,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 2774.0,
       "delivery_gap_pct": -2.52
     },
@@ -17330,7 +17356,7 @@
       "delivery_ret": -2.22,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1950.0,
       "delivery_gap_pct": 1.69
     },
@@ -17431,7 +17457,7 @@
       "delivery_ret": 0.08,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 117900.0,
       "delivery_gap_pct": 0.0
     },
@@ -17478,7 +17504,7 @@
       "delivery_ret": -0.43,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 926.25,
       "delivery_gap_pct": -6.61
     },
@@ -17532,7 +17558,7 @@
       "delivery_ret": 0.97,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 153900.0,
       "delivery_gap_pct": 0.0
     },
@@ -17580,7 +17606,7 @@
       "delivery_ret": 0.0,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 3910.0,
       "delivery_gap_pct": -0.9
     },
@@ -17677,7 +17703,7 @@
       "delivery_ret": -0.14,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 145000.0,
       "delivery_gap_pct": 0.9
     },
@@ -17723,7 +17749,7 @@
       "delivery_ret": null,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending"
+      "status": "complete"
     },
     {
       "id": "9221_20230221",
@@ -17771,7 +17797,7 @@
       "delivery_ret": 2.7,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1006.5,
       "delivery_gap_pct": -6.01
     },
@@ -17824,7 +17850,7 @@
       "delivery_ret": 0.17,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 122400.0,
       "delivery_gap_pct": -3.1
     },
@@ -17874,7 +17900,7 @@
       "delivery_ret": -1.56,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1091.0,
       "delivery_gap_pct": -3.21,
       "announce_day_close": 1233.0
@@ -17928,7 +17954,7 @@
       "delivery_ret": null,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending"
+      "status": "complete"
     },
     {
       "id": "3470_20230104",
@@ -17978,7 +18004,7 @@
       "delivery_ret": -0.71,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 131700.0,
       "delivery_gap_pct": -4.18
     },
@@ -18024,7 +18050,7 @@
       "delivery_ret": -0.14,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1772.5,
       "delivery_gap_pct": -1.83
     },
@@ -18075,7 +18101,7 @@
       "delivery_ret": null,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending"
+      "status": "complete"
     },
     {
       "id": "2979_20221114",
@@ -18124,7 +18150,7 @@
       "delivery_ret": 2.41,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 137000.0,
       "delivery_gap_pct": -0.22
     },
@@ -18172,7 +18198,7 @@
       "delivery_ret": -0.22,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 92000.0,
       "delivery_gap_pct": -1.09
     },
@@ -18275,7 +18301,7 @@
       "delivery_ret": null,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending"
+      "status": "complete"
     },
     {
       "id": "4447_20220921",
@@ -18324,7 +18350,7 @@
       "delivery_ret": -1.42,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending"
+      "status": "complete"
     },
     {
       "id": "9522_20220830",
@@ -18373,7 +18399,7 @@
       "delivery_ret": null,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending"
+      "status": "complete"
     },
     {
       "id": "7596_20220829",
@@ -18417,7 +18443,7 @@
       "delivery_ret": -1.09,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 2205.0,
       "delivery_gap_pct": 0.0
     },
@@ -18465,7 +18491,7 @@
       "delivery_ret": -1.1,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 250.5,
       "delivery_gap_pct": 0.2
     },
@@ -18516,7 +18542,7 @@
       "delivery_ret": -0.94,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 159250.0,
       "delivery_gap_pct": -0.16
     },
@@ -18564,7 +18590,7 @@
       "delivery_ret": 0.71,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 57300.0,
       "delivery_gap_pct": -1.4
     },
@@ -18610,7 +18636,7 @@
       "delivery_ret": -0.64,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1144.0,
       "delivery_gap_pct": -4.02
     },
@@ -18660,7 +18686,7 @@
       "delivery_ret": 0.32,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 123900.0,
       "delivery_gap_pct": 0.24,
       "announce_day_close": 129800.0
@@ -18712,7 +18738,7 @@
       "delivery_ret": null,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending"
+      "status": "complete"
     },
     {
       "id": "9285_20220630",
@@ -18760,7 +18786,7 @@
       "delivery_ret": 0.21,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 93600.0,
       "delivery_gap_pct": -0.32
     },
@@ -18808,7 +18834,7 @@
       "delivery_ret": 0.32,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1127.0,
       "delivery_gap_pct": -2.22
     },
@@ -18861,7 +18887,7 @@
       "delivery_ret": 0.34,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 145900.0,
       "delivery_gap_pct": -0.27
     },
@@ -18909,7 +18935,7 @@
       "delivery_ret": -0.12,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 844.0,
       "delivery_gap_pct": -2.37
     },
@@ -18955,7 +18981,7 @@
       "delivery_ret": -1.89,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1230.0,
       "delivery_gap_pct": -0.81
     },
@@ -19001,7 +19027,7 @@
       "delivery_ret": 1.63,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1020.0,
       "delivery_gap_pct": 0.0
     },
@@ -19047,7 +19073,7 @@
       "delivery_ret": -6.68,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending"
+      "status": "complete"
     },
     {
       "id": "3488_20220210",
@@ -19093,7 +19119,7 @@
       "delivery_ret": 1.05,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 114700.0,
       "delivery_gap_pct": 0.09,
       "announce_day_close": 126400.0
@@ -19143,7 +19169,7 @@
       "delivery_ret": 3.72,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 2661.0,
       "delivery_gap_pct": 0.0,
       "announce_day_close": 3545.0
@@ -19196,7 +19222,7 @@
       "delivery_ret": -0.86,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 131400.0,
       "delivery_gap_pct": -2.89
     },
@@ -19242,7 +19268,7 @@
       "delivery_ret": 0.04,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1414.5,
       "delivery_gap_pct": 0.0
     },
@@ -19286,7 +19312,7 @@
       "delivery_ret": -3.49,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 7180.0,
       "delivery_gap_pct": 7.66
     },
@@ -19330,7 +19356,7 @@
       "delivery_ret": -6.53,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1059.0,
       "delivery_gap_pct": 2.64
     },
@@ -19381,7 +19407,7 @@
       "delivery_ret": 3.19,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 585.0,
       "delivery_gap_pct": -3.42
     },
@@ -19425,7 +19451,7 @@
       "delivery_ret": 0.44,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 2299.0,
       "delivery_gap_pct": -2.17
     },
@@ -19475,7 +19501,7 @@
       "delivery_ret": -12.79,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 2430.0,
       "delivery_gap_pct": -1.85
     },
@@ -19529,7 +19555,7 @@
       "delivery_ret": 0.81,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 3640.0,
       "delivery_gap_pct": 1.79,
       "announce_day_close": 4430.0
@@ -19574,7 +19600,7 @@
       "delivery_ret": null,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending"
+      "status": "complete"
     },
     {
       "id": "2979_20211116",
@@ -19623,7 +19649,7 @@
       "delivery_ret": -0.49,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 162200.0,
       "delivery_gap_pct": -0.12
     },
@@ -19672,7 +19698,7 @@
       "delivery_ret": null,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending"
+      "status": "complete"
     },
     {
       "id": "9281_20211109",
@@ -19719,7 +19745,7 @@
       "delivery_ret": null,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending"
+      "status": "complete"
     },
     {
       "id": "7807_20211029",
@@ -19765,7 +19791,7 @@
       "delivery_ret": -0.49,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1020.0,
       "delivery_gap_pct": -0.78
     },
@@ -19815,7 +19841,7 @@
       "delivery_ret": null,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending"
+      "status": "complete"
     },
     {
       "id": "4180_20210927",
@@ -19857,7 +19883,7 @@
       "delivery_ret": -1.96,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1457.0,
       "delivery_gap_pct": 1.58
     },
@@ -19906,7 +19932,7 @@
       "delivery_ret": -2.97,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1009.0,
       "delivery_gap_pct": 0.0,
       "announce_day_close": 1094.0
@@ -19951,7 +19977,7 @@
       "delivery_ret": -2.96,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1954.0,
       "delivery_gap_pct": 1.84
     },
@@ -19997,7 +20023,7 @@
       "delivery_ret": -3.64,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1273.33,
       "delivery_gap_pct": 0.79
     },
@@ -20043,7 +20069,7 @@
       "delivery_ret": -5.69,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 889.0,
       "delivery_gap_pct": 0.79
     },
@@ -20087,7 +20113,7 @@
       "delivery_ret": -0.29,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1682.0,
       "delivery_gap_pct": 3.21
     },
@@ -20131,7 +20157,7 @@
       "delivery_ret": 1.3,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1150.0,
       "delivery_gap_pct": 0.0
     },
@@ -20183,7 +20209,7 @@
       "delivery_ret": 1.43,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 151833.33,
       "delivery_gap_pct": -0.44
     },
@@ -20233,7 +20259,7 @@
       "delivery_ret": 0.76,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 5440.0,
       "delivery_gap_pct": -3.49
     },
@@ -20283,7 +20309,7 @@
       "delivery_ret": 0.96,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 131300.0,
       "delivery_gap_pct": -4.57
     },
@@ -20332,7 +20358,7 @@
       "delivery_ret": 1.57,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 58300.0,
       "delivery_gap_pct": -1.72
     },
@@ -20376,7 +20402,7 @@
       "delivery_ret": -0.68,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 7260.0,
       "delivery_gap_pct": 1.52
     },
@@ -20420,7 +20446,7 @@
       "delivery_ret": -2.55,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 369.33,
       "delivery_gap_pct": -0.99
     },
@@ -20473,7 +20499,7 @@
       "delivery_ret": -1.24,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 124300.0,
       "delivery_gap_pct": -2.41
     },
@@ -20519,7 +20545,7 @@
       "delivery_ret": 2.14,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 576.0,
       "delivery_gap_pct": -2.78
     },
@@ -20568,7 +20594,7 @@
       "delivery_ret": 0.52,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 3860.0,
       "delivery_gap_pct": -0.26
     },
@@ -20619,7 +20645,7 @@
       "delivery_ret": -1.95,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1231.0,
       "delivery_gap_pct": 0.0
     },
@@ -20663,7 +20689,7 @@
       "delivery_ret": -0.42,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 947.0,
       "delivery_gap_pct": 0.21
     },
@@ -20707,7 +20733,7 @@
       "delivery_ret": -0.42,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 706.0,
       "delivery_gap_pct": 0.57
     },
@@ -20751,7 +20777,7 @@
       "delivery_ret": -3.48,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 9630.0,
       "delivery_gap_pct": 1.56
     },
@@ -20795,7 +20821,7 @@
       "delivery_ret": 3.89,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 3380.0,
       "delivery_gap_pct": -1.04
     },
@@ -20839,7 +20865,7 @@
       "delivery_ret": -1.13,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 2673.33,
       "delivery_gap_pct": -0.75
     },
@@ -20890,7 +20916,7 @@
       "delivery_ret": -1.28,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 634.0,
       "delivery_gap_pct": -1.1
     },
@@ -20941,7 +20967,7 @@
       "delivery_ret": -0.85,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1510.0,
       "delivery_gap_pct": -2.48
     },
@@ -20991,7 +21017,7 @@
       "delivery_ret": 0.48,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 124500.0,
       "delivery_gap_pct": 0.16
     },
@@ -21043,7 +21069,7 @@
       "delivery_ret": null,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending"
+      "status": "complete"
     },
     {
       "id": "1431_20210210",
@@ -21090,7 +21116,7 @@
       "delivery_ret": -1.3,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 886.0,
       "delivery_gap_pct": -0.11,
       "announce_day_close": 918.5
@@ -21135,7 +21161,7 @@
       "delivery_ret": -2.6,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 8280.0,
       "delivery_gap_pct": 2.17
     },
@@ -21185,7 +21211,7 @@
       "delivery_ret": -3.82,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 3990.0,
       "delivery_gap_pct": 1.75
     },
@@ -21229,7 +21255,7 @@
       "delivery_ret": 2.38,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 2000.0,
       "delivery_gap_pct": 0.0
     },
@@ -21282,7 +21308,7 @@
       "delivery_ret": -1.43,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 3090.0,
       "delivery_gap_pct": 1.94
     },
@@ -21333,7 +21359,7 @@
       "delivery_ret": null,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending"
+      "status": "complete"
     },
     {
       "id": "3491_20210104",
@@ -21384,7 +21410,7 @@
       "delivery_ret": 0.7,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 2636.0,
       "delivery_gap_pct": -2.16
     },
@@ -21433,7 +21459,7 @@
       "delivery_ret": null,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending"
+      "status": "complete"
     },
     {
       "id": "3226_20201201",
@@ -21526,7 +21552,7 @@
       "delivery_ret": 0.15,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 4031.0,
       "delivery_gap_pct": 0.99
     },
@@ -21577,7 +21603,7 @@
       "delivery_ret": 0.76,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1008.0,
       "delivery_gap_pct": -1.54
     },
@@ -21627,7 +21653,7 @@
       "delivery_ret": -1.28,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 2469.5,
       "delivery_gap_pct": -6.66
     },
@@ -21673,7 +21699,7 @@
       "delivery_ret": null,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending"
+      "status": "complete"
     },
     {
       "id": "3932_20201124",
@@ -21715,7 +21741,7 @@
       "delivery_ret": 0.45,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 4350.0,
       "delivery_gap_pct": 1.61
     },
@@ -21767,7 +21793,7 @@
       "delivery_ret": -3.38,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 2803.0,
       "delivery_gap_pct": -1.78
     },
@@ -21866,7 +21892,7 @@
       "delivery_ret": 0.97,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 6100.0,
       "delivery_gap_pct": 1.48
     },
@@ -21912,7 +21938,7 @@
       "delivery_ret": 0.37,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1325.0,
       "delivery_gap_pct": 3.02
     },
@@ -21958,7 +21984,7 @@
       "delivery_ret": null,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending"
+      "status": "complete"
     },
     {
       "id": "8986_20201120",
@@ -22006,7 +22032,7 @@
       "delivery_ret": 1.21,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 90200.0,
       "delivery_gap_pct": 0.89,
       "announce_day_close": 90100.0
@@ -22056,7 +22082,7 @@
       "delivery_ret": null,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending"
+      "status": "complete"
     },
     {
       "id": "9385_20201117",
@@ -22102,7 +22128,7 @@
       "delivery_ret": -1.84,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1029.0,
       "delivery_gap_pct": 0.1
     },
@@ -22148,7 +22174,7 @@
       "delivery_ret": -5.09,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 948.0,
       "delivery_gap_pct": 1.58
     },
@@ -22199,7 +22225,7 @@
       "delivery_ret": 0.08,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 124400.0,
       "delivery_gap_pct": -3.86
     },
@@ -22249,7 +22275,7 @@
       "delivery_ret": null,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending"
+      "status": "complete"
     },
     {
       "id": "4483_20201109",
@@ -22291,7 +22317,7 @@
       "delivery_ret": -3.05,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 5070.0,
       "delivery_gap_pct": 0.2
     },
@@ -22342,7 +22368,7 @@
       "delivery_ret": null,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending"
+      "status": "complete"
     },
     {
       "id": "9281_20201109",
@@ -22389,7 +22415,7 @@
       "delivery_ret": null,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending"
+      "status": "complete"
     },
     {
       "id": "9201_20201106",
@@ -22441,7 +22467,7 @@
       "delivery_ret": 0.3,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 2215.0,
       "delivery_gap_pct": -8.26
     },
@@ -22491,7 +22517,7 @@
       "delivery_ret": -0.09,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1095.5,
       "delivery_gap_pct": -0.05
     },
@@ -22535,7 +22561,7 @@
       "delivery_ret": 1.44,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 956.67,
       "delivery_gap_pct": 1.32
     },
@@ -22588,7 +22614,7 @@
       "delivery_ret": -0.55,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 110600.0,
       "delivery_gap_pct": -1.45
     },
@@ -22638,7 +22664,7 @@
       "delivery_ret": 0.7,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 8760.0,
       "delivery_gap_pct": -2.28,
       "announce_day_close": 8720.0
@@ -22686,7 +22712,7 @@
       "delivery_ret": 2.59,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 449.0,
       "delivery_gap_pct": -5.35
     },
@@ -22732,7 +22758,7 @@
       "delivery_ret": -1.29,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1945.0,
       "delivery_gap_pct": -0.26
     },
@@ -22776,7 +22802,7 @@
       "delivery_ret": -1.1,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 3024.0,
       "delivery_gap_pct": -3.44
     },
@@ -22828,7 +22854,7 @@
       "delivery_ret": -0.2,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 126000.0,
       "delivery_gap_pct": -0.99
     },
@@ -22876,7 +22902,7 @@
       "delivery_ret": -3.02,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 2266.0,
       "delivery_gap_pct": -2.07
     },
@@ -22933,7 +22959,7 @@
       "delivery_ret": 2.29,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 124.25,
       "delivery_gap_pct": -0.04
     },
@@ -22977,7 +23003,7 @@
       "delivery_ret": -5.98,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 4860.0,
       "delivery_gap_pct": -0.21
     },
@@ -23028,7 +23054,7 @@
       "delivery_ret": 2.19,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1996.67,
       "delivery_gap_pct": -0.67
     },
@@ -23079,7 +23105,7 @@
       "delivery_ret": -1.92,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1298.33,
       "delivery_gap_pct": -1.08
     },
@@ -23125,7 +23151,7 @@
       "delivery_ret": null,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending"
+      "status": "complete"
     },
     {
       "id": "9702_20200821",
@@ -23169,7 +23195,7 @@
       "delivery_ret": 0.17,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1175.0,
       "delivery_gap_pct": 1.06
     },
@@ -23220,7 +23246,7 @@
       "delivery_ret": null,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending"
+      "status": "complete"
     },
     {
       "id": "3466_20200817",
@@ -23267,7 +23293,7 @@
       "delivery_ret": -0.89,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 184400.0,
       "delivery_gap_pct": -2.17
     },
@@ -23318,7 +23344,7 @@
       "delivery_ret": 2.04,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 132100.0,
       "delivery_gap_pct": 0.3
     },
@@ -23369,7 +23395,7 @@
       "delivery_ret": -1.03,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 147333.33,
       "delivery_gap_pct": -1.58
     },
@@ -23419,7 +23445,7 @@
       "delivery_ret": -1.07,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 94400.0,
       "delivery_gap_pct": -1.38
     },
@@ -23472,7 +23498,7 @@
       "delivery_ret": -2.33,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 191900.0,
       "delivery_gap_pct": -1.51
     },
@@ -23521,7 +23547,7 @@
       "delivery_ret": null,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending"
+      "status": "complete"
     },
     {
       "id": "3288_20200710",
@@ -23568,7 +23594,7 @@
       "delivery_ret": -1.92,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 3130.0,
       "delivery_gap_pct": 0.0
     },
@@ -23612,7 +23638,7 @@
       "delivery_ret": null,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending"
+      "status": "complete"
     },
     {
       "id": "7157_20200703",
@@ -23654,7 +23680,7 @@
       "delivery_ret": -0.3,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1316.0,
       "delivery_gap_pct": 0.38
     },
@@ -23749,7 +23775,7 @@
       "delivery_ret": -0.26,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 154200.0,
       "delivery_gap_pct": -0.78
     },
@@ -23795,7 +23821,7 @@
       "delivery_ret": -0.76,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 360.0,
       "delivery_gap_pct": 0.69
     },
@@ -23845,7 +23871,7 @@
       "delivery_ret": -4.48,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending"
+      "status": "complete"
     },
     {
       "id": "3182_20200319",
@@ -23889,7 +23915,7 @@
       "delivery_ret": 3.17,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1539.0,
       "delivery_gap_pct": -5.85,
       "announce_day_close": 1332.0
@@ -23936,7 +23962,7 @@
       "delivery_ret": -5.71,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 361.0,
       "delivery_gap_pct": 6.65
     },
@@ -23984,7 +24010,7 @@
       "delivery_ret": -5.15,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 329.0,
       "delivery_gap_pct": 12.16
     },
@@ -24035,7 +24061,7 @@
       "delivery_ret": null,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending"
+      "status": "complete"
     },
     {
       "id": "2477_20200228",
@@ -24083,7 +24109,7 @@
       "delivery_ret": -2.78,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 4090.0,
       "delivery_gap_pct": -3.42
     },
@@ -24131,7 +24157,7 @@
       "delivery_ret": 3.95,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 406.33,
       "delivery_gap_pct": -2.46
     },
@@ -24225,7 +24251,7 @@
       "delivery_ret": 4.43,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 971.0,
       "delivery_gap_pct": -9.27
     },
@@ -24271,7 +24297,7 @@
       "delivery_ret": -2.82,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1006.0,
       "delivery_gap_pct": 2.29
     },
@@ -24317,7 +24343,7 @@
       "delivery_ret": -1.36,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 656.0,
       "delivery_gap_pct": 1.07
     },
@@ -24363,7 +24389,7 @@
       "delivery_ret": null,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending"
+      "status": "complete"
     },
     {
       "id": "1938_20200214",
@@ -24410,7 +24436,7 @@
       "delivery_ret": 2.36,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1600.0,
       "delivery_gap_pct": 0.62
     },
@@ -24461,7 +24487,7 @@
       "delivery_ret": 2.51,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 116000.0,
       "delivery_gap_pct": -1.08
     },
@@ -24507,7 +24533,7 @@
       "delivery_ret": null,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending"
+      "status": "complete"
     },
     {
       "id": "7959_20200210",
@@ -24551,7 +24577,7 @@
       "delivery_ret": null,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending"
+      "status": "complete"
     },
     {
       "id": "3278_20200210",
@@ -24601,7 +24627,7 @@
       "delivery_ret": null,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending"
+      "status": "complete"
     },
     {
       "id": "8984_20200207",
@@ -24650,7 +24676,7 @@
       "delivery_ret": -1.36,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 139250.0,
       "delivery_gap_pct": 0.54
     },
@@ -24701,7 +24727,7 @@
       "delivery_ret": -5.52,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1545.0,
       "delivery_gap_pct": -0.39
     },
@@ -24745,7 +24771,7 @@
       "delivery_ret": -2.15,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 2590.0,
       "delivery_gap_pct": -1.35
     },
@@ -24798,7 +24824,7 @@
       "delivery_ret": -0.65,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 104000.0,
       "delivery_gap_pct": -0.96
     },
@@ -24850,7 +24876,7 @@
       "delivery_ret": 0.87,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 129700.0,
       "delivery_gap_pct": -2.08,
       "announce_day_close": 131200.0
@@ -24903,7 +24929,7 @@
       "delivery_ret": -2.12,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 118500.0,
       "delivery_gap_pct": -0.56
     },
@@ -24953,7 +24979,7 @@
       "delivery_ret": -0.63,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 128600.0,
       "delivery_gap_pct": -0.7
     },
@@ -25004,7 +25030,7 @@
       "delivery_ret": 1.72,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 185400.0,
       "delivery_gap_pct": 0.11
     },
@@ -25053,7 +25079,7 @@
       "delivery_ret": 2.02,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 59900.0,
       "delivery_gap_pct": -0.67
     },
@@ -25105,7 +25131,7 @@
       "delivery_ret": -0.94,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 5895.0,
       "delivery_gap_pct": -0.85
     },
@@ -25157,7 +25183,7 @@
       "delivery_ret": -0.33,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 184000.0,
       "delivery_gap_pct": -0.27
     },
@@ -25207,7 +25233,7 @@
       "delivery_ret": 1.84,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 830.77,
       "delivery_gap_pct": 0.37
     },
@@ -25253,7 +25279,7 @@
       "delivery_ret": -0.29,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 2527.0,
       "delivery_gap_pct": -5.34
     },
@@ -25305,7 +25331,7 @@
       "delivery_ret": 1.75,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 160800.0,
       "delivery_gap_pct": -0.44
     },
@@ -25351,7 +25377,7 @@
       "delivery_ret": -5.27,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1864.0,
       "delivery_gap_pct": -0.27
     },
@@ -25400,7 +25426,7 @@
       "delivery_ret": 0.86,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1610.0,
       "delivery_gap_pct": 0.68
     },
@@ -25449,7 +25475,7 @@
       "delivery_ret": 0.56,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 356.0,
       "delivery_gap_pct": -0.56
     },
@@ -25502,7 +25528,7 @@
       "delivery_ret": null,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending"
+      "status": "complete"
     },
     {
       "id": "6062_20191115",
@@ -25516,7 +25542,7 @@
       "year": 2019,
       "decision_date": "2019-11-25",
       "decision_date_confirmed": true,
-      "delivery_date": "2019-03-09",
+      "delivery_date": null,
       "delivery_estimated": "2019-12-03",
       "market_cap": 307,
       "po_scale": 44.0,
@@ -25554,9 +25580,10 @@
       "treasury_shares": null,
       "memo": "",
       "status": "pending",
-      "prev_close_before_delivery": 770.0,
+      "prev_close_before_delivery": null,
       "announce_day_close": 1092.5,
-      "next_day_gu_pct": -8.97
+      "next_day_gu_pct": -8.97,
+      "delivery_gap_pct": null
     },
     {
       "id": "4384_20191113",
@@ -25600,7 +25627,7 @@
       "delivery_ret": 1.95,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1645.0,
       "delivery_gap_pct": 1.22
     },
@@ -25649,7 +25676,7 @@
       "delivery_ret": -2.39,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1875.0,
       "delivery_gap_pct": 0.53
     },
@@ -25698,7 +25725,7 @@
       "delivery_ret": null,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending"
+      "status": "complete"
     },
     {
       "id": "3227_20191105",
@@ -25747,7 +25774,7 @@
       "delivery_ret": null,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending"
+      "status": "complete"
     },
     {
       "id": "3498_20191030",
@@ -25797,7 +25824,7 @@
       "delivery_ret": 1.05,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1510.0,
       "delivery_gap_pct": -4.97
     },
@@ -25846,7 +25873,7 @@
       "delivery_ret": 0.58,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 139700.0,
       "delivery_gap_pct": -0.86
     },
@@ -25899,7 +25926,7 @@
       "delivery_ret": null,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending"
+      "status": "complete"
     },
     {
       "id": "7213_20191001",
@@ -25946,7 +25973,7 @@
       "delivery_ret": -0.58,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 681.0,
       "delivery_gap_pct": 1.47
     },
@@ -25997,7 +26024,7 @@
       "delivery_ret": 1.09,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 123833.34,
       "delivery_gap_pct": -0.94
     },
@@ -26048,7 +26075,7 @@
       "delivery_ret": 0.5,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 5070.0,
       "delivery_gap_pct": -1.87
     },
@@ -26101,7 +26128,7 @@
       "delivery_ret": 2.27,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 177250.0,
       "delivery_gap_pct": -0.56
     },
@@ -26153,7 +26180,7 @@
       "delivery_ret": 1.37,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 197100.0,
       "delivery_gap_pct": -0.05
     },
@@ -26203,7 +26230,7 @@
       "delivery_ret": -2.85,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 159000.0,
       "delivery_gap_pct": -0.69
     },
@@ -26251,7 +26278,7 @@
       "delivery_ret": -0.69,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1150.0,
       "delivery_gap_pct": 0.96
     },
@@ -26303,7 +26330,7 @@
       "delivery_ret": 2.12,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 3250.0,
       "delivery_gap_pct": 0.0
     },
@@ -26354,7 +26381,7 @@
       "delivery_ret": 1.09,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 639.0,
       "delivery_gap_pct": 0.47
     },
@@ -26407,7 +26434,7 @@
       "delivery_ret": 1.76,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 136500.0,
       "delivery_gap_pct": -0.15
     },
@@ -26459,7 +26486,7 @@
       "delivery_ret": 0.0,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 90800.0,
       "delivery_gap_pct": 0.11
     },
@@ -26509,7 +26536,7 @@
       "delivery_ret": -1.54,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 118200.0,
       "delivery_gap_pct": -1.02
     },
@@ -26557,7 +26584,7 @@
       "delivery_ret": null,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending"
+      "status": "complete"
     },
     {
       "id": "2972_20190806",
@@ -26605,7 +26632,7 @@
       "delivery_ret": 0.92,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 119900.0,
       "delivery_gap_pct": -0.67
     },
@@ -26653,7 +26680,7 @@
       "delivery_ret": -1.21,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 460.0,
       "delivery_gap_pct": -1.3
     },
@@ -26704,7 +26731,7 @@
       "delivery_ret": 1.72,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 5920.0,
       "delivery_gap_pct": -1.69,
       "announce_day_close": 6040.0
@@ -26757,7 +26784,7 @@
       "delivery_ret": null,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending"
+      "status": "complete"
     },
     {
       "id": "4593_20190710",
@@ -26799,7 +26826,7 @@
       "delivery_ret": -1.07,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1502.0,
       "delivery_gap_pct": -0.13
     },
@@ -26848,7 +26875,7 @@
       "delivery_ret": 1.62,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 61800.0,
       "delivery_gap_pct": -0.32
     },
@@ -26899,7 +26926,7 @@
       "delivery_ret": 0.16,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 123400.0,
       "delivery_gap_pct": 0.89
     },
@@ -26949,7 +26976,7 @@
       "delivery_ret": 5.11,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1582.5,
       "delivery_gap_pct": -1.11
     },
@@ -27000,7 +27027,7 @@
       "delivery_ret": 0.89,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 179900.0,
       "delivery_gap_pct": -0.28
     },
@@ -27053,7 +27080,7 @@
       "delivery_ret": -0.9,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 81300.0,
       "delivery_gap_pct": 0.49
     },
@@ -27101,7 +27128,7 @@
       "delivery_ret": -9.28,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 494.8,
       "delivery_gap_pct": 3.72
     },
@@ -27152,7 +27179,7 @@
       "delivery_ret": -0.57,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 2149.0,
       "delivery_gap_pct": -2.33
     },
@@ -27200,7 +27227,7 @@
       "delivery_ret": -2.1,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending"
+      "status": "complete"
     },
     {
       "id": "3309_20190523",
@@ -27249,7 +27276,7 @@
       "delivery_ret": 1.03,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 77800.0,
       "delivery_gap_pct": -0.51
     },
@@ -27297,7 +27324,7 @@
       "delivery_ret": -0.99,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 671.0,
       "delivery_gap_pct": -1.79
     },
@@ -27341,7 +27368,7 @@
       "delivery_ret": -0.13,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 3855.0,
       "delivery_gap_pct": -1.3
     },
@@ -27393,7 +27420,7 @@
       "delivery_ret": null,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending"
+      "status": "complete"
     },
     {
       "id": "7181_20190404",
@@ -27445,7 +27472,7 @@
       "delivery_ret": 3.4,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 734.67,
       "delivery_gap_pct": 0.0
     },
@@ -27493,7 +27520,7 @@
       "delivery_ret": 0.53,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 3760.0,
       "delivery_gap_pct": 0.0
     },
@@ -27543,7 +27570,7 @@
       "delivery_ret": 0.65,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 124300.0,
       "delivery_gap_pct": -0.24
     },
@@ -27592,7 +27619,7 @@
       "delivery_ret": null,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending"
+      "status": "complete"
     },
     {
       "id": "6237_20190222",
@@ -27640,7 +27667,7 @@
       "delivery_ret": -1.77,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 969.0,
       "delivery_gap_pct": -0.83
     },
@@ -27686,7 +27713,7 @@
       "delivery_ret": -0.58,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1223.0,
       "delivery_gap_pct": -1.88
     },
@@ -27737,7 +27764,7 @@
       "delivery_ret": 2.53,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 2958.0,
       "delivery_gap_pct": 0.93
     },
@@ -27790,7 +27817,7 @@
       "delivery_ret": 6.77,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 2010.0,
       "delivery_gap_pct": -4.48
     },
@@ -27841,7 +27868,7 @@
       "delivery_ret": -0.77,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 123600.0,
       "delivery_gap_pct": -0.53,
       "announce_day_close": 128500.0
@@ -27890,7 +27917,7 @@
       "delivery_ret": -0.63,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1737.0,
       "delivery_gap_pct": 1.21
     },
@@ -27942,7 +27969,7 @@
       "delivery_ret": null,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending"
+      "status": "complete"
     },
     {
       "id": "3455_20190111",
@@ -27987,7 +28014,7 @@
       "delivery_ret": 0.09,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 120100.0,
       "delivery_gap_pct": -6.33,
       "announce_day_close": 115700.0
@@ -28040,7 +28067,7 @@
       "delivery_ret": 0.3,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 87250.0,
       "delivery_gap_pct": -5.73
     },
@@ -28094,7 +28121,7 @@
       "delivery_ret": 1.79,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 78200.0,
       "delivery_gap_pct": -0.26
     },
@@ -28146,7 +28173,7 @@
       "delivery_ret": 0.43,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 2297.5,
       "delivery_gap_pct": 1.85
     },
@@ -28198,7 +28225,7 @@
       "delivery_ret": 0.66,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 96166.66,
       "delivery_gap_pct": 0.21
     },
@@ -28242,7 +28269,7 @@
       "delivery_ret": 7.93,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1413.5,
       "delivery_gap_pct": -0.04
     },
@@ -28291,7 +28318,7 @@
       "delivery_ret": null,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending"
+      "status": "complete"
     },
     {
       "id": "3279_20181130",
@@ -28341,7 +28368,7 @@
       "delivery_ret": 0.0,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 151333.33,
       "delivery_gap_pct": -0.66
     },
@@ -28389,7 +28416,7 @@
       "delivery_ret": 0.0,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 651.0,
       "delivery_gap_pct": 2.3
     },
@@ -28435,7 +28462,7 @@
       "delivery_ret": -1.55,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1534.0,
       "delivery_gap_pct": -3.06
     },
@@ -28481,7 +28508,7 @@
       "delivery_ret": 2.31,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 983.0,
       "delivery_gap_pct": -7.63
     },
@@ -28529,7 +28556,7 @@
       "delivery_ret": null,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending"
+      "status": "complete"
     },
     {
       "id": "9678_20181112",
@@ -28578,7 +28605,7 @@
       "delivery_ret": 0.3,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 3340.0,
       "delivery_gap_pct": 0.0
     },
@@ -28629,7 +28656,7 @@
       "delivery_ret": 0.41,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 146000.0,
       "delivery_gap_pct": -0.89
     },
@@ -28675,7 +28702,7 @@
       "delivery_ret": 3.15,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 806.0,
       "delivery_gap_pct": -5.58
     },
@@ -28724,7 +28751,7 @@
       "delivery_ret": 0.22,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 44775.0,
       "delivery_gap_pct": 0.45
     },
@@ -28776,7 +28803,7 @@
       "delivery_ret": 1.56,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 164100.0,
       "delivery_gap_pct": -2.32
     },
@@ -28825,7 +28852,7 @@
       "delivery_ret": -0.36,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 112200.0,
       "delivery_gap_pct": -2.05
     },
@@ -28876,7 +28903,7 @@
       "delivery_ret": null,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending"
+      "status": "complete"
     },
     {
       "id": "3289_20181003",
@@ -28925,7 +28952,7 @@
       "delivery_ret": -2.63,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 657.0,
       "delivery_gap_pct": -1.52
     },
@@ -28971,7 +28998,7 @@
       "delivery_ret": 3.52,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 746.0,
       "delivery_gap_pct": -2.82
     },
@@ -29020,7 +29047,7 @@
       "delivery_ret": -0.15,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 675.0,
       "delivery_gap_pct": 0.59
     },
@@ -29069,7 +29096,7 @@
       "delivery_ret": 4.87,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 688.0,
       "delivery_gap_pct": -1.45
     },
@@ -29125,7 +29152,7 @@
       "delivery_ret": null,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending"
+      "status": "complete"
     },
     {
       "id": "3290_20180904",
@@ -29171,7 +29198,7 @@
       "delivery_ret": 3.13,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 80633.34,
       "delivery_gap_pct": -3.68
     },
@@ -29221,7 +29248,7 @@
       "delivery_ret": -4.4,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 2470.0,
       "delivery_gap_pct": 1.21
     },
@@ -29271,7 +29298,7 @@
       "delivery_ret": 0.0,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1205.0,
       "delivery_gap_pct": -2.9
     },
@@ -29321,7 +29348,7 @@
       "delivery_ret": 2.38,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 2020.0,
       "delivery_gap_pct": -4.46
     },
@@ -29372,7 +29399,7 @@
       "delivery_ret": 0.47,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 217.0,
       "delivery_gap_pct": -2.3
     },
@@ -29424,7 +29451,7 @@
       "delivery_ret": -3.33,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 3180.0,
       "delivery_gap_pct": -10.38
     },
@@ -29474,7 +29501,7 @@
       "delivery_ret": -1.19,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1306.0,
       "delivery_gap_pct": 3.06
     },
@@ -29525,7 +29552,7 @@
       "delivery_ret": 0.62,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 81366.66,
       "delivery_gap_pct": -0.29
     },
@@ -29576,7 +29603,7 @@
       "delivery_ret": -1.41,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 934.0,
       "delivery_gap_pct": -1.28
     },
@@ -29624,7 +29651,7 @@
       "delivery_ret": 1.07,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 53100.0,
       "delivery_gap_pct": -3.39
     },
@@ -29673,7 +29700,7 @@
       "delivery_ret": 0.39,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 101300.0,
       "delivery_gap_pct": 0.0
     },
@@ -29726,7 +29753,7 @@
       "delivery_ret": -2.17,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 111200.0,
       "delivery_gap_pct": -0.72
     },
@@ -29778,7 +29805,7 @@
       "delivery_ret": 0.11,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 92500.0,
       "delivery_gap_pct": -1.41
     },
@@ -29824,7 +29851,7 @@
       "delivery_ret": null,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending"
+      "status": "complete"
     },
     {
       "id": "9283_20180720",
@@ -29873,7 +29900,7 @@
       "delivery_ret": null,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending"
+      "status": "complete"
     },
     {
       "id": "2882_20180718",
@@ -29919,7 +29946,7 @@
       "delivery_ret": -2.95,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1796.0,
       "delivery_gap_pct": -0.11
     },
@@ -29965,7 +29992,7 @@
       "delivery_ret": -2.26,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 487.0,
       "delivery_gap_pct": -0.21
     },
@@ -30015,7 +30042,7 @@
       "delivery_ret": -0.72,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 49150.0,
       "delivery_gap_pct": -0.41
     },
@@ -30067,7 +30094,7 @@
       "delivery_ret": null,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending"
+      "status": "complete"
     },
     {
       "id": "3234_20180712",
@@ -30117,7 +30144,7 @@
       "delivery_ret": 2.73,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 140900.0,
       "delivery_gap_pct": -1.35
     },
@@ -30166,7 +30193,7 @@
       "delivery_ret": -0.82,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 615.5,
       "delivery_gap_pct": -0.81
     },
@@ -30216,7 +30243,7 @@
       "delivery_ret": -1.0,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 2915.0,
       "delivery_gap_pct": 3.43
     },
@@ -30266,7 +30293,7 @@
       "delivery_ret": null,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending"
+      "status": "complete"
     },
     {
       "id": "3480_20180629",
@@ -30315,7 +30342,7 @@
       "delivery_ret": 2.27,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1487.5,
       "delivery_gap_pct": -3.87
     },
@@ -30366,7 +30393,7 @@
       "delivery_ret": -3.21,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1091.0,
       "delivery_gap_pct": 1.24
     },
@@ -30460,7 +30487,7 @@
       "delivery_ret": 0.85,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 474.0,
       "delivery_gap_pct": -0.21
     },
@@ -30511,7 +30538,7 @@
       "delivery_ret": 2.08,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 727.0,
       "delivery_gap_pct": -4.13
     },
@@ -30562,7 +30589,7 @@
       "delivery_ret": 0.61,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 81375.0,
       "delivery_gap_pct": 0.0
     },
@@ -30610,7 +30637,7 @@
       "delivery_ret": 0.94,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 2816.0,
       "delivery_gap_pct": 1.53
     },
@@ -30660,7 +30687,7 @@
       "delivery_ret": 3.86,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 2510.0,
       "delivery_gap_pct": -1.99
     },
@@ -30710,7 +30737,7 @@
       "delivery_ret": 1.26,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1250.0,
       "delivery_gap_pct": -1.52
     },
@@ -30756,7 +30783,7 @@
       "delivery_ret": 2.45,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1146.0,
       "delivery_gap_pct": -3.93
     },
@@ -30807,7 +30834,7 @@
       "delivery_ret": null,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending"
+      "status": "complete"
     },
     {
       "id": "5698_20180528",
@@ -30853,7 +30880,7 @@
       "delivery_ret": -0.84,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 428.0,
       "delivery_gap_pct": -2.8
     },
@@ -30903,7 +30930,7 @@
       "delivery_ret": null,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending"
+      "status": "complete"
     },
     {
       "id": "8285_20180525",
@@ -30947,7 +30974,7 @@
       "delivery_ret": -0.27,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 363.0,
       "delivery_gap_pct": 0.55
     },
@@ -30999,7 +31026,7 @@
       "delivery_ret": 0.09,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 2180.0,
       "delivery_gap_pct": 0.5
     },
@@ -31051,7 +31078,7 @@
       "delivery_ret": -1.59,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 2706.0,
       "delivery_gap_pct": 0.0
     },
@@ -31101,7 +31128,7 @@
       "delivery_ret": 2.32,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1856.0,
       "delivery_gap_pct": -0.16
     },
@@ -31147,7 +31174,7 @@
       "delivery_ret": 4.02,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 5070.0,
       "delivery_gap_pct": -1.97
     },
@@ -31195,7 +31222,7 @@
       "delivery_ret": -1.52,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 358.25,
       "delivery_gap_pct": -12.56
     },
@@ -31243,7 +31270,7 @@
       "delivery_ret": 0.77,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1321.0,
       "delivery_gap_pct": -1.89
     },
@@ -31295,7 +31322,7 @@
       "delivery_ret": -5.22,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 3423.52,
       "delivery_gap_pct": 0.72
     },
@@ -31348,7 +31375,7 @@
       "delivery_ret": 0.3,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 168750.0,
       "delivery_gap_pct": -0.44
     },
@@ -31397,7 +31424,7 @@
       "delivery_ret": null,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending"
+      "status": "complete"
     },
     {
       "id": "3258_20180508",
@@ -31448,7 +31475,7 @@
       "delivery_ret": null,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending"
+      "status": "complete"
     },
     {
       "id": "2168_20180507",
@@ -31496,7 +31523,7 @@
       "delivery_ret": 0.23,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1731.0,
       "delivery_gap_pct": 0.23
     },
@@ -31544,7 +31571,7 @@
       "delivery_ret": -0.38,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 808.0,
       "delivery_gap_pct": -2.48
     },
@@ -31588,7 +31615,7 @@
       "delivery_ret": -1.54,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1934.0,
       "delivery_gap_pct": 0.52
     },
@@ -31640,7 +31667,7 @@
       "delivery_ret": null,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending"
+      "status": "complete"
     },
     {
       "id": "3287_20180406",
@@ -31685,7 +31712,7 @@
       "delivery_ret": -0.37,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 267500.0,
       "delivery_gap_pct": 1.31
     },
@@ -31736,7 +31763,7 @@
       "delivery_ret": -0.44,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1135.0,
       "delivery_gap_pct": 0.44
     },
@@ -31785,7 +31812,7 @@
       "delivery_ret": -1.34,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 503.5,
       "delivery_gap_pct": -3.82
     },
@@ -31836,7 +31863,7 @@
       "delivery_ret": -1.76,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1525.0,
       "delivery_gap_pct": 0.72
     },
@@ -31885,7 +31912,7 @@
       "delivery_ret": -2.14,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1585.0,
       "delivery_gap_pct": 0.06
     },
@@ -31936,7 +31963,7 @@
       "delivery_ret": -0.36,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 110400.0,
       "delivery_gap_pct": 0.0
     },
@@ -31980,7 +32007,7 @@
       "delivery_ret": null,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending"
+      "status": "complete"
     },
     {
       "id": "3679_20180322",
@@ -32022,7 +32049,7 @@
       "delivery_ret": 0.61,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 994.0,
       "delivery_gap_pct": -1.31
     },
@@ -32072,7 +32099,7 @@
       "delivery_ret": 1.52,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1778.0,
       "delivery_gap_pct": 0.0
     },
@@ -32116,7 +32143,7 @@
       "delivery_ret": -4.78,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 4545.0,
       "delivery_gap_pct": -3.3
     },
@@ -32168,7 +32195,7 @@
       "delivery_ret": -2.68,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 3605.0,
       "delivery_gap_pct": -6.93
     },
@@ -32217,7 +32244,7 @@
       "delivery_ret": 0.77,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 6500.0,
       "delivery_gap_pct": -0.31
     },
@@ -32268,7 +32295,7 @@
       "delivery_ret": -1.97,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1633.0,
       "delivery_gap_pct": -3.86
     },
@@ -32314,7 +32341,7 @@
       "delivery_ret": 0.46,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 651.0,
       "delivery_gap_pct": 0.0
     },
@@ -32363,7 +32390,7 @@
       "delivery_ret": 0.6,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 2100.0,
       "delivery_gap_pct": -5.24
     },
@@ -32409,7 +32436,7 @@
       "delivery_ret": -0.88,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1371.0,
       "delivery_gap_pct": -0.36
     },
@@ -32460,7 +32487,7 @@
       "delivery_ret": -0.24,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 124750.0,
       "delivery_gap_pct": -1.4
     },
@@ -32511,7 +32538,7 @@
       "delivery_ret": 2.78,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1521.0,
       "delivery_gap_pct": -0.66
     },
@@ -32564,7 +32591,7 @@
       "delivery_ret": 0.8,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 75133.34,
       "delivery_gap_pct": -0.27
     },
@@ -32618,7 +32645,7 @@
       "delivery_ret": 0.3,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 82550.0,
       "delivery_gap_pct": -0.42
     },
@@ -32666,7 +32693,7 @@
       "delivery_ret": -0.53,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 4800.0,
       "delivery_gap_pct": -0.83
     },
@@ -32712,7 +32739,7 @@
       "delivery_ret": -0.41,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 981.0,
       "delivery_gap_pct": -0.41
     },
@@ -32761,7 +32788,7 @@
       "delivery_ret": -0.09,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1090.0,
       "delivery_gap_pct": 0.92
     },
@@ -32812,7 +32839,7 @@
       "delivery_ret": -0.17,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 118600.0,
       "delivery_gap_pct": 0.08
     },
@@ -32863,7 +32890,7 @@
       "delivery_ret": 2.62,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 3265.0,
       "delivery_gap_pct": -0.46
     },
@@ -32909,7 +32936,7 @@
       "delivery_ret": 0.98,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 3075.0,
       "delivery_gap_pct": 0.0
     },
@@ -32962,7 +32989,7 @@
       "delivery_ret": 2.58,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 529.5,
       "delivery_gap_pct": 2.36
     },
@@ -33010,7 +33037,7 @@
       "delivery_ret": -2.28,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 700.0,
       "delivery_gap_pct": 0.14
     },
@@ -33058,7 +33085,7 @@
       "delivery_ret": -0.78,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 3790.0,
       "delivery_gap_pct": 1.58
     },
@@ -33109,7 +33136,7 @@
       "delivery_ret": -0.54,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 475.0,
       "delivery_gap_pct": -3.16
     },
@@ -33161,7 +33188,7 @@
       "delivery_ret": 0.42,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 171000.0,
       "delivery_gap_pct": -2.34
     },
@@ -33212,7 +33239,7 @@
       "delivery_ret": -0.44,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 918.0,
       "delivery_gap_pct": -1.53
     },
@@ -33262,7 +33289,7 @@
       "delivery_ret": 1.23,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 326.5,
       "delivery_gap_pct": -0.77
     },
@@ -33314,7 +33341,7 @@
       "delivery_ret": -2.11,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 146600.0,
       "delivery_gap_pct": 0.0
     },
@@ -33365,7 +33392,7 @@
       "delivery_ret": null,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending"
+      "status": "complete"
     },
     {
       "id": "8931_20180126",
@@ -33409,7 +33436,7 @@
       "delivery_ret": -5.12,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 933.0,
       "delivery_gap_pct": -1.61
     },
@@ -33458,7 +33485,7 @@
       "delivery_ret": -0.38,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1348.0,
       "delivery_gap_pct": -1.34
     },
@@ -33511,7 +33538,7 @@
       "delivery_ret": -0.94,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 94375.0,
       "delivery_gap_pct": -1.72
     },
@@ -33561,7 +33588,7 @@
       "delivery_ret": -2.72,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 7570.0,
       "delivery_gap_pct": 1.98
     },
@@ -33613,7 +33640,7 @@
       "delivery_ret": 1.75,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 80400.0,
       "delivery_gap_pct": -0.58
     },
@@ -33663,7 +33690,7 @@
       "delivery_ret": -0.09,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 116100.0,
       "delivery_gap_pct": -2.58
     },
@@ -33713,7 +33740,7 @@
       "delivery_ret": 1.16,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1286.0,
       "delivery_gap_pct": 0.16
     },
@@ -33759,7 +33786,7 @@
       "delivery_ret": 0.25,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 808.0,
       "delivery_gap_pct": 0.12
     },
@@ -33805,7 +33832,7 @@
       "delivery_ret": -1.0,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1880.0,
       "delivery_gap_pct": -4.1
     },
@@ -33853,7 +33880,7 @@
       "delivery_ret": 5.55,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 2516.0,
       "delivery_gap_pct": 0.28
     },
@@ -33899,7 +33926,7 @@
       "delivery_ret": 2.79,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 287.33,
       "delivery_gap_pct": -0.23
     },
@@ -33951,7 +33978,7 @@
       "delivery_ret": null,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending"
+      "status": "complete"
     },
     {
       "id": "7291_20171201",
@@ -34000,7 +34027,7 @@
       "delivery_ret": -1.24,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1057.0,
       "delivery_gap_pct": -0.57
     },
@@ -34046,7 +34073,7 @@
       "delivery_ret": -0.9,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 6710.0,
       "delivery_gap_pct": -0.15
     },
@@ -34098,7 +34125,7 @@
       "delivery_ret": 0.32,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 157500.0,
       "delivery_gap_pct": -1.06
     },
@@ -34147,7 +34174,7 @@
       "delivery_ret": null,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending"
+      "status": "complete"
     },
     {
       "id": "7190_20171127",
@@ -34197,7 +34224,7 @@
       "delivery_ret": null,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending"
+      "status": "complete"
     },
     {
       "id": "7733_20171124",
@@ -34244,7 +34271,7 @@
       "delivery_ret": -0.7,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1078.75,
       "delivery_gap_pct": -0.46
     },
@@ -34295,7 +34322,7 @@
       "delivery_ret": -0.85,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1966.67,
       "delivery_gap_pct": 0.0
     },
@@ -34347,7 +34374,7 @@
       "delivery_ret": 2.38,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 3525.0,
       "delivery_gap_pct": 1.13
     },
@@ -34393,7 +34420,7 @@
       "delivery_ret": null,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending"
+      "status": "complete"
     },
     {
       "id": "6810_20171117",
@@ -34437,7 +34464,7 @@
       "delivery_ret": 2.79,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 2290.0,
       "delivery_gap_pct": -1.31
     },
@@ -34489,7 +34516,7 @@
       "delivery_ret": 3.97,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 680.5,
       "delivery_gap_pct": 1.76
     },
@@ -34538,7 +34565,7 @@
       "delivery_ret": -1.19,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 938.0,
       "delivery_gap_pct": -1.39
     },
@@ -34586,7 +34613,7 @@
       "delivery_ret": -0.31,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 971.0,
       "delivery_gap_pct": -1.44
     },
@@ -34634,7 +34661,7 @@
       "delivery_ret": 1.98,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 2700.0,
       "delivery_gap_pct": -2.85
     },
@@ -34684,7 +34711,7 @@
       "delivery_ret": -1.14,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 875.0,
       "delivery_gap_pct": 0.0
     },
@@ -34730,7 +34757,7 @@
       "delivery_ret": 0.15,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 977.5,
       "delivery_gap_pct": 0.0
     },
@@ -34774,7 +34801,7 @@
       "delivery_ret": -1.12,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 2845.0,
       "delivery_gap_pct": 2.37
     },
@@ -34823,7 +34850,7 @@
       "delivery_ret": -0.12,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 88500.0,
       "delivery_gap_pct": -2.26
     },
@@ -34876,7 +34903,7 @@
       "delivery_ret": -1.44,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 2356.0,
       "delivery_gap_pct": 0.0
     },
@@ -34925,7 +34952,7 @@
       "delivery_ret": 0.0,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 921.0,
       "delivery_gap_pct": -4.45
     },
@@ -34976,7 +35003,7 @@
       "delivery_ret": 0.0,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 743.0,
       "delivery_gap_pct": -0.54
     },
@@ -35027,7 +35054,7 @@
       "delivery_ret": 1.21,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 840.33,
       "delivery_gap_pct": 1.98
     },
@@ -35079,7 +35106,7 @@
       "delivery_ret": -0.89,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 158500.0,
       "delivery_gap_pct": -0.63
     },
@@ -35129,7 +35156,7 @@
       "delivery_ret": null,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending"
+      "status": "complete"
     },
     {
       "id": "3451_20171013",
@@ -35176,7 +35203,7 @@
       "delivery_ret": -0.38,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 107400.0,
       "delivery_gap_pct": -1.77
     },
@@ -35223,7 +35250,7 @@
       "delivery_ret": -0.18,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 279000.0,
       "delivery_gap_pct": -2.69
     },
@@ -35322,7 +35349,7 @@
       "delivery_ret": 0.72,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1308.0,
       "delivery_gap_pct": -3.98
     },
@@ -35372,7 +35399,7 @@
       "delivery_ret": 1.32,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 45250.0,
       "delivery_gap_pct": 0.33
     },
@@ -35422,7 +35449,7 @@
       "delivery_ret": null,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending"
+      "status": "complete"
     },
     {
       "id": "3292_20170912",
@@ -35472,7 +35499,7 @@
       "delivery_ret": 0.18,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 114100.0,
       "delivery_gap_pct": -0.26
     },
@@ -35579,7 +35606,7 @@
       "delivery_ret": 1.53,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1323.0,
       "delivery_gap_pct": -1.06
     },
@@ -35631,7 +35658,7 @@
       "delivery_ret": 0.91,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 69733.34,
       "delivery_gap_pct": -0.67
     },
@@ -35682,7 +35709,7 @@
       "delivery_ret": -0.51,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 2355.0,
       "delivery_gap_pct": 0.64
     },
@@ -35730,7 +35757,7 @@
       "delivery_ret": -2.12,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1126.0,
       "delivery_gap_pct": -1.51
     },
@@ -35785,7 +35812,7 @@
       "delivery_ret": 0.0,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 7890.0,
       "delivery_gap_pct": 1.9
     },
@@ -35831,7 +35858,7 @@
       "delivery_ret": 2.53,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 3575.0,
       "delivery_gap_pct": -5.87
     },
@@ -35877,7 +35904,7 @@
       "delivery_ret": -2.05,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 847.5,
       "delivery_gap_pct": 0.77
     },
@@ -35931,7 +35958,7 @@
       "delivery_ret": -3.3,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 2072.5,
       "delivery_gap_pct": -1.33
     },
@@ -35977,7 +36004,7 @@
       "delivery_ret": 0.1,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1027.5,
       "delivery_gap_pct": -2.43
     },
@@ -36023,7 +36050,7 @@
       "delivery_ret": null,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending"
+      "status": "complete"
     },
     {
       "id": "9980_20170731",
@@ -36069,7 +36096,7 @@
       "delivery_ret": -0.79,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 396.0,
       "delivery_gap_pct": -3.79
     },
@@ -36118,7 +36145,7 @@
       "delivery_ret": 0.23,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 876.0,
       "delivery_gap_pct": 1.26
     },
@@ -36170,7 +36197,7 @@
       "delivery_ret": -0.52,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 77500.0,
       "delivery_gap_pct": -0.34
     },
@@ -36219,7 +36246,7 @@
       "delivery_ret": -1.2,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 698.0,
       "delivery_gap_pct": -4.3
     },
@@ -36265,7 +36292,7 @@
       "delivery_ret": 4.76,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 128.4,
       "delivery_gap_pct": -1.87
     },
@@ -36314,7 +36341,7 @@
       "delivery_ret": 0.37,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1129.0,
       "delivery_gap_pct": -4.25
     },
@@ -36360,7 +36387,7 @@
       "delivery_ret": null,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending"
+      "status": "complete"
     },
     {
       "id": "7172_20170706",
@@ -36411,7 +36438,7 @@
       "delivery_ret": 0.46,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1330.33,
       "delivery_gap_pct": 1.05
     },
@@ -36458,7 +36485,7 @@
       "delivery_ret": 4.15,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 534.8,
       "delivery_gap_pct": -0.93
     },
@@ -36504,7 +36531,7 @@
       "delivery_ret": 0.0,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 679.0,
       "delivery_gap_pct": 0.0
     },
@@ -36556,7 +36583,7 @@
       "delivery_ret": null,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending"
+      "status": "complete"
     },
     {
       "id": "6184_20170630",
@@ -36658,7 +36685,7 @@
       "delivery_ret": -0.51,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 78400.0,
       "delivery_gap_pct": 0.13
     },
@@ -36702,7 +36729,7 @@
       "delivery_ret": -0.24,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1666.0,
       "delivery_gap_pct": 0.3
     },
@@ -36749,7 +36776,7 @@
       "delivery_ret": -0.94,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1810.0,
       "delivery_gap_pct": -0.55
     },
@@ -36797,7 +36824,7 @@
       "delivery_ret": -1.48,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 3140.0,
       "delivery_gap_pct": -2.87
     },
@@ -36841,7 +36868,7 @@
       "delivery_ret": -1.18,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 921.0,
       "delivery_gap_pct": 0.87
     },
@@ -36890,7 +36917,7 @@
       "delivery_ret": -0.39,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1255.0,
       "delivery_gap_pct": 1.99
     },
@@ -36940,7 +36967,7 @@
       "delivery_ret": 0.21,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 813.33,
       "delivery_gap_pct": -1.02
     },
@@ -36990,7 +37017,7 @@
       "delivery_ret": -1.17,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1853.0,
       "delivery_gap_pct": 1.73
     },
@@ -37045,7 +37072,7 @@
       "delivery_ret": -0.06,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 876.0,
       "delivery_gap_pct": 0.29
     },
@@ -37094,7 +37121,7 @@
       "delivery_ret": 4.74,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 3970.0,
       "delivery_gap_pct": -0.76
     },
@@ -37140,7 +37167,7 @@
       "delivery_ret": -1.82,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 2740.0,
       "delivery_gap_pct": 0.36
     },
@@ -37191,7 +37218,7 @@
       "delivery_ret": 0.79,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 628.0,
       "delivery_gap_pct": 1.11
     },
@@ -37237,7 +37264,7 @@
       "delivery_ret": null,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending"
+      "status": "complete"
     },
     {
       "id": "6723_20170518",
@@ -37286,7 +37313,7 @@
       "delivery_ret": 4.82,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1000.0,
       "delivery_gap_pct": -4.5
     },
@@ -37335,7 +37362,7 @@
       "delivery_ret": null,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending"
+      "status": "complete"
     },
     {
       "id": "2157_20170509",
@@ -37385,7 +37412,7 @@
       "delivery_ret": 1.21,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 272.27,
       "delivery_gap_pct": 2.39
     },
@@ -37436,7 +37463,7 @@
       "delivery_ret": 0.0,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 73000.0,
       "delivery_gap_pct": -1.92
     },
@@ -37484,7 +37511,7 @@
       "delivery_ret": 2.54,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1444.0,
       "delivery_gap_pct": -7.2
     },
@@ -37533,7 +37560,7 @@
       "delivery_ret": -0.39,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 98500.0,
       "delivery_gap_pct": -1.52
     },
@@ -37586,7 +37613,7 @@
       "delivery_ret": null,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending"
+      "status": "complete"
     },
     {
       "id": "3468_20170317",
@@ -37632,7 +37659,7 @@
       "delivery_ret": -0.41,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 48650.0,
       "delivery_gap_pct": -0.1,
       "announce_day_close": 50450.0
@@ -37684,7 +37711,7 @@
       "delivery_ret": -0.27,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1144.0,
       "delivery_gap_pct": -2.19
     },
@@ -37734,7 +37761,7 @@
       "delivery_ret": -0.24,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1422.0,
       "delivery_gap_pct": -2.48
     },
@@ -37785,7 +37812,7 @@
       "delivery_ret": -1.06,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 722.5,
       "delivery_gap_pct": -2.08
     },
@@ -37836,7 +37863,7 @@
       "delivery_ret": -0.7,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 142350.0,
       "delivery_gap_pct": -0.18
     },
@@ -37884,7 +37911,7 @@
       "delivery_ret": 0.0,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 342.0,
       "delivery_gap_pct": 1.17
     },
@@ -37935,7 +37962,7 @@
       "delivery_ret": -1.42,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 484.0,
       "delivery_gap_pct": 1.65
     },
@@ -37987,7 +38014,7 @@
       "delivery_ret": -0.14,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 583.0,
       "delivery_gap_pct": -1.72
     },
@@ -38039,7 +38066,7 @@
       "delivery_ret": -0.66,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 114050.0,
       "delivery_gap_pct": 0.0
     },
@@ -38092,7 +38119,7 @@
       "delivery_ret": -1.63,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 505.25,
       "delivery_gap_pct": 0.25
     },
@@ -38138,7 +38165,7 @@
       "delivery_ret": -1.51,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1192.0,
       "delivery_gap_pct": 0.0
     },
@@ -38185,7 +38212,7 @@
       "delivery_ret": 0.62,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1271.0,
       "delivery_gap_pct": 1.49
     },
@@ -38234,7 +38261,7 @@
       "delivery_ret": -0.58,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 3440.0,
       "delivery_gap_pct": 0.58
     },
@@ -38284,7 +38311,7 @@
       "delivery_ret": -1.42,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 977.0,
       "delivery_gap_pct": 0.72
     },
@@ -38330,7 +38357,7 @@
       "delivery_ret": -1.22,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 2930.0,
       "delivery_gap_pct": 1.06
     },
@@ -38379,7 +38406,7 @@
       "delivery_ret": 2.01,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 184.9,
       "delivery_gap_pct": -0.49
     },
@@ -38428,7 +38455,7 @@
       "delivery_ret": 3.71,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1229.0,
       "delivery_gap_pct": 1.95
     },
@@ -38479,7 +38506,7 @@
       "delivery_ret": null,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending"
+      "status": "complete"
     },
     {
       "id": "8954_20170210",
@@ -38532,7 +38559,7 @@
       "delivery_ret": -0.57,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 88550.0,
       "delivery_gap_pct": -0.62
     },
@@ -38582,7 +38609,7 @@
       "delivery_ret": 0.66,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 1040.0,
       "delivery_gap_pct": -2.24
     },
@@ -38633,7 +38660,7 @@
       "delivery_ret": 0.79,
       "treasury_shares": null,
       "memo": "",
-      "status": "pending",
+      "status": "complete",
       "prev_close_before_delivery": 127000.0,
       "delivery_gap_pct": 0.0
     },
@@ -38682,6 +38709,6 @@
       "next_day_gu_pct": 0.48
     }
   ],
-  "last_updated": "2026-04-24T01:19:22.226770",
+  "last_updated": "2026-04-24T02:19:39.283869",
   "count": 791
 }
