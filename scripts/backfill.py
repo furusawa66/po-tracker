@@ -140,7 +140,9 @@ def scrape_article_data(url: str, code: str = "") -> dict:
                     info["issue_price"] = int(m.group(1).replace(",", ""))
                 dm = re.search(r'([\d.]+)%', val)
                 if dm:
-                    info["discount_rate"] = float(dm.group(1))
+                    rate = float(dm.group(1))
+                    if 0 < rate <= 10:
+                        info["discount_rate"] = rate
 
             elif "仮条件" in key:
                 info["discount_range"] = val

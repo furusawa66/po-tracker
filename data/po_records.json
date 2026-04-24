@@ -12251,7 +12251,7 @@
       "shares_outstanding": null,
       "dilution": 0.0,
       "issue_price": 10430,
-      "discount_rate": 25.0,
+      "discount_rate": null,
       "discount_range": "3% ～ 5%　ディスカウント",
       "lead_managers": [
         "野村證券",
@@ -38709,6 +38709,6 @@
       "next_day_gu_pct": 0.48
     }
   ],
-  "last_updated": "2026-04-24T02:19:39.283869",
+  "last_updated": "2026-04-24T05:23:25.386733",
   "count": 791
 }
