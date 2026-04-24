@@ -101,7 +101,7 @@ th.num{padding-left:10px;padding-right:8px}
     <div class="sc2"><table>
       <thead>
       <tr>
-        <th onclick="sort(0)">年</th><th>ステータス</th><th onclick="sort(2)">コード</th><th onclick="sort(1)">銘柄</th>
+        <th onclick="sort(0)">年</th><th>状態</th><th onclick="sort(2)">コード</th><th onclick="sort(1)">銘柄</th>
         <th>種別</th><th>信用区分</th>
         <th>主幹事<br><a href="https://x.com/ipopo16" target="_blank" rel="noopener" style="color:#64748b;font-weight:400;text-decoration:none;font-size:12px">(参考X)</a></th>
         <th class="num" onclick="sort(7)">dis率</th>
@@ -267,8 +267,8 @@ function getCheckedManagers(){
 
 /* ─────── テーブル ───────────────────────────────────────────────────────── */
 function statusBadge(s){
-  if(s==="complete") return {label:"終了",cls:"b-done"};
-  return {label:"進行",cls:"b-pend"};
+  if(s==="complete") return {label:"済",cls:"b-done"};
+  return {label:"中",cls:"b-pend"};
 }
 
 /* 主幹事証券の略称 */
