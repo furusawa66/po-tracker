@@ -17,6 +17,12 @@ from datetime import datetime, date, timedelta, timezone
 from utils import (is_jp_holiday, next_biz_day, prev_biz_day, parse_jp_date,
                    atomic_write_json, http_get_with_retry)
 
+def safe_po_pct(scale, market_cap):
+    """PO規模割合を計算。100%超は市場規模スクレイプミス疑いで None を返す"""
+    if not scale or not market_cap: return None
+    pct = round(scale / market_cap * 100, 1)
+    return pct if 0 < pct <= 100 else None
+
 DATA_FILE = "data/po_records.json"
 BASE_URL  = "https://pokabu.net"
 HEADERS   = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"}
@@ -466,7 +472,7 @@ def main():
                     if rec.get("decision_date"):
                         rec["decision_date_confirmed"] = True
                     if rec.get("po_scale") and rec.get("market_cap"):
-                        rec["po_pct"] = round(rec["po_scale"] / rec["market_cap"] * 100, 1)
+                        rec["po_pct"] = safe_po_pct(rec["po_scale"], rec["market_cap"])
                     lt = rec.get("lending_type", "")
                     rec["alert"] = "" if lt == "貸借" else ("注意" if lt == "信用" else rec.get("alert", ""))
                     matched += 1
@@ -521,7 +527,7 @@ def main():
             "memo": "", "status": "pending",
         }
         if new_rec["po_scale"] and new_rec["market_cap"]:
-            new_rec["po_pct"] = round(new_rec["po_scale"] / new_rec["market_cap"] * 100, 1)
+            new_rec["po_pct"] = safe_po_pct(new_rec["po_scale"], new_rec["market_cap"])
 
         records.append(new_rec)
         existing_keys.add((code, art_year))

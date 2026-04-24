@@ -20,6 +20,13 @@ DATA_FILE = "data/po_records.json"
 BASE_URL  = "https://pokabu.net"
 HEADERS   = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"}
 FORCE_REFRESH = "--force-refresh" in sys.argv
+
+def safe_po_pct(scale, market_cap):
+    """PO規模割合を計算。100%超は市場規模スクレイプミス疑いで None を返す"""
+    if not scale or not market_cap: return None
+    pct = round(scale / market_cap * 100, 1)
+    return pct if 0 < pct <= 100 else None
+
 NON_PO_SLUG_PATTERNS = ("-kansoku", "-yotei", "-kabuka",
                         "worst-record", "best-record", "summary", "matome", "analysis",
                         "ranking", "matomete", "ichiran")
@@ -532,7 +539,7 @@ def main():
             "memo": "", "status": "pending",
         }
         if new_rec["po_scale"] and new_rec["market_cap"]:
-            new_rec["po_pct"] = round(new_rec["po_scale"] / new_rec["market_cap"] * 100, 1)
+            new_rec["po_pct"] = safe_po_pct(new_rec["po_scale"], new_rec["market_cap"])
         records.append(new_rec)
         existing[code] = new_rec
         rss_new += 1
@@ -584,7 +591,7 @@ def main():
                     if a_info.get(field) and not rec.get(field):
                         rec[field] = a_info[field]
                 if rec.get("po_scale") and rec.get("market_cap"):
-                    rec["po_pct"] = round(rec["po_scale"] / rec["market_cap"] * 100, 1)
+                    rec["po_pct"] = safe_po_pct(rec["po_scale"], rec["market_cap"])
 
             # 記事データが未取得の場合は再スクレイピング
             elif rec.get("article_url") and (not rec.get("po_scale") and not rec.get("new_shares")
@@ -599,7 +606,7 @@ def main():
                         if article.get(field) and not rec.get(field):
                             rec[field] = article[field]
                     if rec.get("po_scale") and rec.get("market_cap"):
-                        rec["po_pct"] = round(rec["po_scale"] / rec["market_cap"] * 100, 1)
+                        rec["po_pct"] = safe_po_pct(rec["po_scale"], rec["market_cap"])
             continue
 
         # 新規 → 記事から詳細取得
@@ -654,7 +661,7 @@ def main():
         }
         # PO規模割合 = 規模 ÷ 時価総額 × 100
         if new_rec["po_scale"] and new_rec["market_cap"]:
-            new_rec["po_pct"] = round(new_rec["po_scale"] / new_rec["market_cap"] * 100, 1)
+            new_rec["po_pct"] = safe_po_pct(new_rec["po_scale"], new_rec["market_cap"])
 
         records.append(new_rec)
         existing[code] = new_rec
