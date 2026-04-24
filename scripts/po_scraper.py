@@ -10,75 +10,16 @@ PO自動トラッカー — pokabu.net 完全対応版
 
 import requests
 from bs4 import BeautifulSoup
-import json, os, re, sys, tempfile, time
+import json, os, re, sys, time
 from datetime import datetime, date, timedelta
 
-try:
-    import jpholiday
-except ImportError:
-    jpholiday = None
+from utils import (is_jp_holiday, next_biz_day, prev_biz_days, parse_jp_date,
+                   parse_jp_date_range_end, atomic_write_json, http_get_with_retry)
 
 DATA_FILE = "data/po_records.json"
 BASE_URL  = "https://pokabu.net"
 HEADERS   = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"}
-THIS_YEAR = date.today().year
 FORCE_REFRESH = "--force-refresh" in sys.argv
-
-# ── ユーティリティ ────────────────────────────────────────────────────────────
-
-def is_jp_holiday(d: date) -> bool:
-    """東証休場日判定: 国民の祝日 + 年末年始休場（12/31, 1/2, 1/3）"""
-    if (d.month == 12 and d.day == 31) or (d.month == 1 and d.day in (2, 3)):
-        return True
-    if jpholiday:
-        return jpholiday.is_holiday(d)
-    return d.month == 1 and d.day == 1
-
-def next_biz_day(d: date) -> date:
-    nd = d + timedelta(days=1)
-    while nd.weekday() >= 5 or is_jp_holiday(nd):
-        nd += timedelta(days=1)
-    return nd
-
-def prev_biz_days(d: date, n: int) -> date:
-    """n営業日前の日付を返す（祝日対応）"""
-    result = d
-    count  = 0
-    while count < n:
-        result -= timedelta(days=1)
-        if result.weekday() < 5 and not is_jp_holiday(result):
-            count += 1
-    return result
-
-def parse_jp_date(text: str, year: int = None) -> str | None:
-    """'4月6日' '4月6日(月)' → 'YYYY-MM-DD'"""
-    if not year:
-        year = THIS_YEAR
-    m = re.search(r'(\d{1,2})月(\d{1,2})日', text)
-    if not m:
-        return None
-    try:
-        mo, dy = int(m.group(1)), int(m.group(2))
-        # 年またぎ考慮（12月に翌年1-3月の受渡し）
-        if date.today().month >= 11 and mo <= 3:
-            year += 1
-        return date(year, mo, dy).isoformat()
-    except Exception:
-        return None
-
-def parse_jp_date_range_end(text: str) -> str | None:
-    """'4月1日(水) ～ 4月6日(月)' → 先頭の日付 '2025-04-01'"""
-    all_dates = re.findall(r'(\d{1,2})月(\d{1,2})日', text)
-    if not all_dates:
-        return None
-    mo, dy = int(all_dates[0][0]), int(all_dates[0][1])
-    yr = THIS_YEAR
-    if date.today().month >= 11 and mo <= 3:
-        yr += 1
-    try:
-        return date(yr, mo, dy).isoformat()
-    except Exception:
-        return None
 
 def load_records() -> list:
     if not os.path.exists(DATA_FILE):
@@ -86,22 +27,6 @@ def load_records() -> list:
     with open(DATA_FILE, encoding="utf-8") as f:
         raw = json.load(f)
     return raw.get("records", raw) if isinstance(raw, dict) else raw
-
-def atomic_write_json(path: str, data) -> None:
-    """同一ディレクトリに一時ファイル → fsync → rename で原子的に書き込む"""
-    d = os.path.dirname(path) or "."
-    os.makedirs(d, exist_ok=True)
-    fd, tmp = tempfile.mkstemp(prefix=".tmp_", suffix=".json", dir=d)
-    try:
-        with os.fdopen(fd, "w", encoding="utf-8") as f:
-            json.dump(data, f, ensure_ascii=False, indent=2)
-            f.flush()
-            os.fsync(f.fileno())
-        os.replace(tmp, path)
-    except Exception:
-        if os.path.exists(tmp):
-            os.unlink(tmp)
-        raise
 
 def save_records(records: list):
     out = {"records": records, "last_updated": datetime.now().isoformat(), "count": len(records)}
@@ -116,13 +41,12 @@ def scrape_schedule() -> dict:
     pending[code]   = {code, name, article_url, decision_date, lending_type}
     delivered[code] = {code, name, article_url, delivery_date, issue_price}
     """
-    try:
-        res = requests.get(f"{BASE_URL}/schedule", headers=HEADERS, timeout=20)
-        res.encoding = "utf-8"
-        soup = BeautifulSoup(res.text, "html.parser")
-    except Exception as e:
-        print(f"スケジュール取得エラー: {e}")
+    res = http_get_with_retry(f"{BASE_URL}/schedule", headers=HEADERS, timeout=20)
+    if res is None or res.status_code != 200:
+        print("スケジュール取得失敗")
         return {"pending": {}, "delivered": {}}
+    res.encoding = "utf-8"
+    soup = BeautifulSoup(res.text, "html.parser")
 
     pending   = {}
     delivered = {}
@@ -179,20 +103,19 @@ def scrape_article(url: str, name: str = "", code: str = "") -> dict:
     売出し数 = 売出株数 + OA売出（OA含む）
     """
     info = {}
-    try:
-        res = requests.get(url, headers=HEADERS, timeout=20)
-        res.encoding = "utf-8"
-        soup = BeautifulSoup(res.text, "html.parser")
-        # 記事本文エリアを絞り込む（サイドバー・関連記事の混入防止）
-        main_elem = (soup.find("article") or
-                     soup.find("main") or
-                     soup.find("div", id=re.compile(r'content|article|main', re.I)) or
-                     soup.find("div", class_=re.compile(r'content|article|post|entry', re.I)) or
-                     soup)
-        full_text = main_elem.get_text(" ", strip=True)
-    except Exception as e:
-        print(f"  記事取得エラー ({url}): {e}")
+    res = http_get_with_retry(url, headers=HEADERS, timeout=20)
+    if res is None or res.status_code != 200:
+        print(f"  記事取得失敗 ({url})")
         return info
+    res.encoding = "utf-8"
+    soup = BeautifulSoup(res.text, "html.parser")
+    # 記事本文エリアを絞り込む（サイドバー・関連記事の混入防止）
+    main_elem = (soup.find("article") or
+                 soup.find("main") or
+                 soup.find("div", id=re.compile(r'content|article|main', re.I)) or
+                 soup.find("div", class_=re.compile(r'content|article|post|entry', re.I)) or
+                 soup)
+    full_text = main_elem.get_text(" ", strip=True)
 
     # 記事公開日（meta タグ）をフォールバック用に取得
     pub_meta = soup.find("meta", {"property": "article:published_time"}) or soup.find("meta", {"name": "pubdate"})
@@ -350,10 +273,10 @@ def fetch_prices(code: str, days: int = 60) -> tuple:
     """
     ticker = f"{code}.T"
     url    = f"https://query1.finance.yahoo.com/v8/finance/chart/{ticker}?interval=1d&range={days}d"
+    res = http_get_with_retry(url, headers=HEADERS, timeout=12)
+    if res is None or res.status_code != 200:
+        return {}, None, None
     try:
-        res = requests.get(url, headers=HEADERS, timeout=12)
-        if res.status_code != 200:
-            return {}, None, None
         data   = res.json()
         result = data.get("chart", {}).get("result")
         if not result:
@@ -376,7 +299,7 @@ def fetch_prices(code: str, days: int = 60) -> tuple:
         shares = meta.get("sharesOutstanding")
         return prices, (round(mc / 1e8) if mc else None), (int(shares) if shares else None)
     except Exception as e:
-        print(f"  Yahoo Finance エラー ({code}): {e}")
+        print(f"  Yahoo Finance パースエラー ({code}): {e}")
         return {}, None, None
 
 
@@ -509,12 +432,12 @@ def update_prices(rec: dict) -> dict:
 def scrape_rss() -> list:
     """pokabu.net/feed から最新PO記事を取得し、銘柄コードとURLを返す"""
     entries = []
+    res = http_get_with_retry(f"{BASE_URL}/feed", headers=HEADERS, timeout=15)
+    if res is None or res.status_code != 200:
+        print("  RSS取得失敗")
+        return entries
+    res.encoding = "utf-8"
     try:
-        res = requests.get(f"{BASE_URL}/feed", headers=HEADERS, timeout=15)
-        if res.status_code != 200:
-            print(f"  RSS取得失敗: HTTP {res.status_code}")
-            return entries
-        res.encoding = "utf-8"
         soup = BeautifulSoup(res.text, "xml" if "xml" in res.headers.get("content-type","") else "html.parser")
         for item in soup.find_all("item"):
             title = item.find("title")
@@ -573,7 +496,7 @@ def main():
             "lending_type":       lending,
             "announce_date":      announce,
             "announce_date_confirmed": bool(article.get("announce_date")),
-            "year":               THIS_YEAR,
+            "year":               date.today().year,
             "decision_date":      article.get("decision_date"),
             "decision_date_confirmed": bool(article.get("decision_date")),
             "delivery_estimated": article.get("delivery_estimated"),
@@ -688,7 +611,7 @@ def main():
             "lending_type":       lending,
             "announce_date":      actual_announce,
             "announce_date_confirmed": bool(article.get("announce_date")),
-            "year":               THIS_YEAR,
+            "year":               date.today().year,
             "decision_date":      article.get("decision_date") or si.get("decision_date"),
             "delivery_estimated": article.get("delivery_estimated"),
             "delivery_date":      delivered.get(code, {}).get("delivery_date") or article.get("delivery_date"),

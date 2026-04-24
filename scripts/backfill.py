@@ -11,40 +11,17 @@ GitHub Actions の workflow_dispatch で1回実行する想定。
 
 import requests
 from bs4 import BeautifulSoup
-import json, os, re, sys, tempfile, time
+import json, os, re, sys, time
 from datetime import datetime, date, timedelta, timezone
 
-try:
-    import jpholiday  # 祝日判定
-except ImportError:
-    jpholiday = None
+from utils import (is_jp_holiday, next_biz_day, prev_biz_day, parse_jp_date,
+                   atomic_write_json, http_get_with_retry)
 
 DATA_FILE = "data/po_records.json"
 BASE_URL  = "https://pokabu.net"
 HEADERS   = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"}
 JST       = timezone(timedelta(hours=9))
-FORCE_REFRESH = "--force-refresh" in sys.argv  # 既存値を強制上書き
-
-def is_jp_holiday(d: date) -> bool:
-    """東証休場日判定: 国民の祝日 + 年末年始休場（12/31, 1/2, 1/3）"""
-    if (d.month == 12 and d.day == 31) or (d.month == 1 and d.day in (2, 3)):
-        return True
-    if jpholiday:
-        return jpholiday.is_holiday(d)
-    return d.month == 1 and d.day == 1  # フォールバックは元旦のみ
-
-
-def parse_jp_date(text: str, year: int = None) -> str | None:
-    if not year:
-        year = date.today().year
-    m = re.search(r'(\d{1,2})月(\d{1,2})日', text)
-    if not m:
-        return None
-    try:
-        mo, dy = int(m.group(1)), int(m.group(2))
-        return date(year, mo, dy).isoformat()
-    except Exception:
-        return None
+FORCE_REFRESH = "--force-refresh" in sys.argv
 
 
 NON_PO_SLUG_PATTERNS = ["-kansoku", "-yotei", "-kabuka"]
@@ -61,16 +38,12 @@ def collect_article_urls() -> list[dict]:
     while True:
         url = f"{BASE_URL}/category/po/page/{page}/" if page > 1 else f"{BASE_URL}/category/po/"
         print(f"  カテゴリページ {page}: {url}")
-        try:
-            res = requests.get(url, headers=HEADERS, timeout=20)
-            if res.status_code != 200:
-                print(f"    HTTP {res.status_code} → 終了")
-                break
-            res.encoding = "utf-8"
-            soup = BeautifulSoup(res.text, "html.parser")
-        except Exception as e:
-            print(f"    エラー: {e}")
+        res = http_get_with_retry(url, headers=HEADERS, timeout=20)
+        if res is None or res.status_code != 200:
+            print(f"    取得失敗 → 終了")
             break
+        res.encoding = "utf-8"
+        soup = BeautifulSoup(res.text, "html.parser")
 
         found = 0
         for a in soup.find_all("a", href=re.compile(r'/po/[^/]+/?$')):
@@ -105,16 +78,13 @@ def collect_article_urls() -> list[dict]:
 def scrape_article_data(url: str, code: str = "") -> dict:
     """記事ページからPO情報を抽出"""
     info = {}
-    try:
-        res = requests.get(url, headers=HEADERS, timeout=20)
-        if res.status_code != 200:
-            return info
-        res.encoding = "utf-8"
-        soup = BeautifulSoup(res.text, "html.parser")
-        full_text = soup.get_text(" ", strip=True)
-    except Exception as e:
-        print(f"    記事取得エラー ({url}): {e}")
+    res = http_get_with_retry(url, headers=HEADERS, timeout=20)
+    if res is None or res.status_code != 200:
+        print(f"    記事取得失敗 ({url})")
         return info
+    res.encoding = "utf-8"
+    soup = BeautifulSoup(res.text, "html.parser")
+    full_text = soup.get_text(" ", strip=True)
 
     # 記事公開日（meta）
     pub_meta = soup.find("meta", {"property": "article:published_time"}) or soup.find("meta", {"name": "pubdate"})
@@ -234,10 +204,10 @@ def fetch_intraday_15m(code: str, days: int = 60) -> dict:
     ticker = f"{code}.T"
     url = f"https://query1.finance.yahoo.com/v8/finance/chart/{ticker}?interval=15m&range={days}d"
     bars_by_date = {}
+    res = http_get_with_retry(url, headers=HEADERS, timeout=15)
+    if res is None or res.status_code != 200:
+        return bars_by_date
     try:
-        res = requests.get(url, headers=HEADERS, timeout=15)
-        if res.status_code != 200:
-            return bars_by_date
         data = res.json()
         result = data.get("chart", {}).get("result")
         if not result:
@@ -275,9 +245,9 @@ def fetch_prices(code: str, days: int = 90) -> dict:
 
     # まず v8 API を試す
     url = f"https://query1.finance.yahoo.com/v8/finance/chart/{ticker}?interval=1d&range={days}d"
-    try:
-        res = requests.get(url, headers=HEADERS, timeout=12)
-        if res.status_code == 200:
+    res = http_get_with_retry(url, headers=HEADERS, timeout=12)
+    if res is not None and res.status_code == 200:
+        try:
             data = res.json()
             result = data.get("chart", {}).get("result")
             if result:
@@ -295,16 +265,16 @@ def fetch_prices(code: str, days: int = 90) -> dict:
                     }
                 if prices:
                     return prices
-    except Exception:
-        pass
+        except Exception:
+            pass
 
     # v7 CSV ダウンロード（過去データ対応）
     from_ts = int((datetime.now() - timedelta(days=days)).timestamp())
     to_ts = int(datetime.now().timestamp())
     csv_url = f"https://query1.finance.yahoo.com/v7/finance/download/{ticker}?period1={from_ts}&period2={to_ts}&interval=1d&events=history"
-    try:
-        res = requests.get(csv_url, headers=HEADERS, timeout=15)
-        if res.status_code == 200 and "Date" in res.text[:50]:
+    res = http_get_with_retry(csv_url, headers=HEADERS, timeout=15)
+    if res is not None and res.status_code == 200 and "Date" in res.text[:50]:
+        try:
             for line in res.text.strip().split("\n")[1:]:
                 parts = line.split(",")
                 if len(parts) >= 5:
@@ -317,24 +287,10 @@ def fetch_prices(code: str, days: int = 90) -> dict:
                         }
                     except ValueError:
                         continue
-    except Exception as e:
-        print(f"    Yahoo CSV エラー ({code}): {e}")
+        except Exception as e:
+            print(f"    Yahoo CSV パースエラー ({code}): {e}")
 
     return prices
-
-
-def next_biz_day(d: date) -> date:
-    nd = d + timedelta(days=1)
-    while nd.weekday() >= 5 or is_jp_holiday(nd):
-        nd += timedelta(days=1)
-    return nd
-
-
-def prev_biz_day(d: date) -> date:
-    pd = d - timedelta(days=1)
-    while pd.weekday() >= 5 or is_jp_holiday(pd):
-        pd -= timedelta(days=1)
-    return pd
 
 
 def fill_intraday(rec: dict, bars_by_date: dict):
@@ -622,23 +578,6 @@ def main():
 
     filled = sum(1 for r in records if r.get("announce_date") and r.get("next_open"))
     print(f"\n完了: announce_date+next_open 取得済み {filled} / {len(records)} 件")
-
-
-def atomic_write_json(path: str, data) -> None:
-    """同一ディレクトリに一時ファイル作成 → fsync → rename で原子的に書き込む"""
-    d = os.path.dirname(path) or "."
-    os.makedirs(d, exist_ok=True)
-    fd, tmp = tempfile.mkstemp(prefix=".tmp_", suffix=".json", dir=d)
-    try:
-        with os.fdopen(fd, "w", encoding="utf-8") as f:
-            json.dump(data, f, ensure_ascii=False, indent=2)
-            f.flush()
-            os.fsync(f.fileno())
-        os.replace(tmp, path)
-    except Exception:
-        if os.path.exists(tmp):
-            os.unlink(tmp)
-        raise
 
 
 if __name__ == "__main__":
