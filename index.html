@@ -408,7 +408,7 @@ function renderTable(data){
     <td class="num">${r.pct!=null?pctStr(r.pct):"–"}</td>
     <td class="num">${r.dilution!=null?pctStr(r.dilution):"–"}</td>
     <td class="num">${r.nextOpen?r.nextOpen.toLocaleString():"–"}</td>
-    <td>${r.nextDayGuPct==null?'–':(r.nextDayGuPct>=0.5?'<span style="color:#34d399">GU</span>':r.nextDayGuPct<=-0.5?'<span style="color:#f87171">GD</span>':'–')}</td>
+    <td>${r.nextDayGuPct==null?'<span style="color:#334155">–</span>':(r.nextDayGuPct>=0.5?'<span style="color:#34d399">GU</span>':r.nextDayGuPct<=-0.5?'<span style="color:#f87171">GD</span>':'<span style="color:#94a3b8" title="フラット (±0.5%以内)">フラット</span>')}</td>
     <td class="num">${fmtCell(r.ret915)}</td>
     <td class="num">${fmtCell(r.ret930)}</td>
     <td class="num">${fmtCell(r.retMorning)}</td>
@@ -417,7 +417,7 @@ function renderTable(data){
     <td class="num">${fmtCell(r.retOpen)}</td>
     <td class="num">${fmtCell(r.retClose)}</td>
     <td class="num">${r.delOpen?r.delOpen.toLocaleString():"–"}</td>
-    <td title="${r.prevClose?`前日終値 ${r.prevClose.toLocaleString()} → 始値 ${r.delOpen?r.delOpen.toLocaleString():""} (${r.gapPct!=null?(r.gapPct>0?'+':'')+r.gapPct+'%':'–'})`:''}">${r.gapPct==null?'–':(r.gapPct>=0.5?'<span style="color:#34d399">GU</span>':r.gapPct<=-0.5?'<span style="color:#f87171">GD</span>':'–')}</td>
+    <td title="${r.prevClose?`前日終値 ${r.prevClose.toLocaleString()} → 始値 ${r.delOpen?r.delOpen.toLocaleString():""} (${r.gapPct!=null?(r.gapPct>0?'+':'')+r.gapPct+'%':'–'})`:''}">${r.gapPct==null?'<span style="color:#334155">–</span>':(r.gapPct>=0.5?'<span style="color:#34d399">GU</span>':r.gapPct<=-0.5?'<span style="color:#f87171">GD</span>':'<span style="color:#94a3b8" title="フラット (±0.5%以内)">フラット</span>')}</td>
     <td class="num">${r.delClose?r.delClose.toLocaleString():"–"}</td>
     <td class="num">${fmtCell(r.delRet)}</td>
   </tr>`).join("");
