@@ -499,7 +499,7 @@
       ],
       "memo": "",
       "discount_range": "3.0% ～ 5.0%　ディスカウント",
-      "discount_rate": 8.7,
+      "discount_rate": null,
       "issue_price": 2280,
       "treasury_shares": null,
       "oa_shares": null,
@@ -794,7 +794,7 @@
       ],
       "memo": "",
       "discount_range": "3.0% ～ 5.0%　ディスカウント",
-      "discount_rate": 8.8,
+      "discount_rate": null,
       "issue_price": 1250,
       "treasury_shares": null,
       "oa_shares": null,
@@ -945,7 +945,7 @@
       ],
       "memo": "",
       "discount_range": "3.0% ～ 5.0%　ディスカウント",
-      "discount_rate": 6.7,
+      "discount_rate": null,
       "issue_price": 1230,
       "treasury_shares": null,
       "oa_shares": null,
@@ -1047,7 +1047,7 @@
       ],
       "memo": "",
       "discount_range": "3.0% ～ 5.0%　ディスカウント",
-      "discount_rate": 7.0,
+      "discount_rate": null,
       "issue_price": 5490,
       "treasury_shares": null,
       "oa_shares": null,
@@ -1555,7 +1555,7 @@
       ],
       "memo": "",
       "discount_range": "3.0% ～ 5.0%　ディスカウント",
-      "discount_rate": 9.1,
+      "discount_rate": null,
       "issue_price": 1184,
       "treasury_shares": null,
       "oa_shares": null,
@@ -1759,7 +1759,7 @@
       ],
       "memo": "",
       "discount_range": "4.0% ～ 7.0%　ディスカウント",
-      "discount_rate": 8.8,
+      "discount_rate": null,
       "issue_price": 547,
       "treasury_shares": null,
       "oa_shares": null,
@@ -2287,7 +2287,7 @@
       ],
       "memo": "",
       "discount_range": "3.0% ～ 5.0%　ディスカウント",
-      "discount_rate": 7.6,
+      "discount_rate": null,
       "issue_price": 2652,
       "treasury_shares": null,
       "oa_shares": null,
@@ -2663,7 +2663,7 @@
       "co_managers": [],
       "memo": "",
       "discount_range": "4.0% ～ 6.0%　ディスカウント",
-      "discount_rate": 9.0,
+      "discount_rate": null,
       "issue_price": 651,
       "treasury_shares": null,
       "oa_shares": null,
@@ -2949,7 +2949,7 @@
       ],
       "memo": "同時に自社株買いを発表、3.5％分",
       "discount_range": "2.0% ～ 4.0%　ディスカウント",
-      "discount_rate": 6.0,
+      "discount_rate": null,
       "issue_price": 870,
       "treasury_shares": null,
       "oa_shares": null,
@@ -3839,7 +3839,7 @@
       "co_managers": [],
       "memo": "",
       "discount_range": "3.0% ～ 5.0%　ディスカウント",
-      "discount_rate": 9.1,
+      "discount_rate": null,
       "issue_price": 5410,
       "treasury_shares": null,
       "oa_shares": null,
@@ -4191,7 +4191,7 @@
       ],
       "memo": "",
       "discount_range": "3.0% ～ 5.0%　ディスカウント",
-      "discount_rate": 7.6,
+      "discount_rate": null,
       "issue_price": 725,
       "treasury_shares": null,
       "oa_shares": null,
@@ -4631,7 +4631,7 @@
       ],
       "memo": "自社株買いも同時発表",
       "discount_range": "3.0% ～ 5.0%　ディスカウント",
-      "discount_rate": 7.1,
+      "discount_rate": null,
       "issue_price": 3240,
       "treasury_shares": null,
       "oa_shares": null,
@@ -4835,7 +4835,7 @@
       ],
       "memo": "",
       "discount_range": "3.0% ～ 5.0%　ディスカウント",
-      "discount_rate": 7.3,
+      "discount_rate": null,
       "issue_price": 400,
       "treasury_shares": null,
       "oa_shares": null,
@@ -4886,7 +4886,7 @@
       ],
       "memo": "",
       "discount_range": "3.5% ～ 5.5%ディスカウント",
-      "discount_rate": 7.1,
+      "discount_rate": null,
       "issue_price": 1330,
       "treasury_shares": null,
       "oa_shares": null,
@@ -6132,7 +6132,7 @@
       ],
       "memo": "",
       "discount_range": "3.0% ～ 5.0%　ディスカウント",
-      "discount_rate": 7.5,
+      "discount_rate": null,
       "issue_price": 3330,
       "treasury_shares": null,
       "oa_shares": null,
@@ -7443,7 +7443,7 @@
       ],
       "memo": "",
       "discount_range": "3.0% ～ 6.0%　ディスカウント",
-      "discount_rate": 8.2,
+      "discount_rate": null,
       "issue_price": 1251,
       "treasury_shares": null,
       "oa_shares": null,
@@ -7834,7 +7834,7 @@
       "co_managers": [],
       "memo": "",
       "discount_range": null,
-      "discount_rate": 12.2,
+      "discount_rate": null,
       "issue_price": null,
       "treasury_shares": null,
       "oa_shares": null,
@@ -9172,7 +9172,7 @@
       ],
       "memo": "",
       "discount_range": "3.0% ～ 5.0%　ディスカウント",
-      "discount_rate": 7.0,
+      "discount_rate": null,
       "issue_price": 5,
       "treasury_shares": null,
       "oa_shares": null,
@@ -9605,7 +9605,7 @@
       "co_managers": [],
       "memo": "最大10%自社株買い",
       "discount_range": "3.0% ～ 5.0%　ディスカウント",
-      "discount_rate": 6.9,
+      "discount_rate": null,
       "issue_price": 508,
       "treasury_shares": null,
       "oa_shares": null,
@@ -9796,7 +9796,7 @@
       ],
       "memo": "",
       "discount_range": "3.0% ～ 5.0%　ディスカウント",
-      "discount_rate": 7.8,
+      "discount_rate": null,
       "issue_price": 2500,
       "treasury_shares": null,
       "oa_shares": null,
@@ -9842,7 +9842,7 @@
       "co_managers": [],
       "memo": "",
       "discount_range": "3.0% ～ 5.0%　ディスカウント",
-      "discount_rate": 6.1,
+      "discount_rate": null,
       "issue_price": 911,
       "treasury_shares": null,
       "oa_shares": null,
@@ -11117,7 +11117,7 @@
       "co_managers": [],
       "memo": "",
       "discount_range": "3.0% ～ 6.0%　ディスカウント",
-      "discount_rate": 8.1,
+      "discount_rate": null,
       "issue_price": 1349,
       "treasury_shares": null,
       "oa_shares": null,
@@ -11872,7 +11872,7 @@
       "delivery_date": "2026-04-28",
       "issue_price": 710,
       "discount_range": "",
-      "discount_rate": 7.07,
+      "discount_rate": null,
       "market_cap": 2000,
       "po_scale": 766,
       "new_shares": 30000000,
@@ -12357,7 +12357,7 @@
       "shares_outstanding": null,
       "dilution": 13.6,
       "issue_price": 7120,
-      "discount_rate": 9.9,
+      "discount_rate": null,
       "discount_range": null,
       "lead_managers": [
         "野村證券"
@@ -12859,7 +12859,7 @@
       "shares_outstanding": null,
       "dilution": 7.8,
       "issue_price": 5540,
-      "discount_rate": 6.7,
+      "discount_rate": null,
       "discount_range": "3% ～ 5%　ディスカウント",
       "lead_managers": [
         "野村證券"
@@ -13059,7 +13059,7 @@
       "shares_outstanding": null,
       "dilution": 0.0,
       "issue_price": 6701,
-      "discount_rate": 9.9,
+      "discount_rate": null,
       "discount_range": "3% ～ 5%　ディスカウント",
       "lead_managers": [
         "野村證券",
@@ -13552,7 +13552,7 @@
       "shares_outstanding": null,
       "dilution": 0.0,
       "issue_price": 3580,
-      "discount_rate": 6.4,
+      "discount_rate": null,
       "discount_range": "3% ～ 5%　ディスカウント",
       "lead_managers": [
         "野村證券"
@@ -14383,7 +14383,7 @@
       "shares_outstanding": null,
       "dilution": 0.0,
       "issue_price": 2050,
-      "discount_rate": 6.5,
+      "discount_rate": null,
       "discount_range": "3.0% ～ 5.0%　ディスカウント",
       "lead_managers": [
         "大和証券",
@@ -14538,7 +14538,7 @@
       "shares_outstanding": null,
       "dilution": 9.7,
       "issue_price": 491,
-      "discount_rate": 8.2,
+      "discount_rate": null,
       "discount_range": null,
       "lead_managers": [
         "野村證券"
@@ -15690,7 +15690,7 @@
       "shares_outstanding": null,
       "dilution": 18.8,
       "issue_price": 1164,
-      "discount_rate": 7.3,
+      "discount_rate": null,
       "discount_range": "4.0% ～ 6.0%　ディスカウント",
       "lead_managers": [
         "ＳＭＢＣ日興証券"
@@ -15790,7 +15790,7 @@
       "shares_outstanding": null,
       "dilution": 0.0,
       "issue_price": 4000,
-      "discount_rate": 14.5,
+      "discount_rate": null,
       "discount_range": null,
       "lead_managers": [
         "野村證券",
@@ -16566,7 +16566,7 @@
       "shares_outstanding": null,
       "dilution": 16.2,
       "issue_price": 8360,
-      "discount_rate": 13.1,
+      "discount_rate": null,
       "discount_range": null,
       "lead_managers": [
         "みずほ証券"
@@ -17002,7 +17002,7 @@
       "shares_outstanding": null,
       "dilution": 0.0,
       "issue_price": 777,
-      "discount_rate": 8.6,
+      "discount_rate": null,
       "discount_range": "4.0% ～ 7.0%　ディスカウント",
       "lead_managers": [
         "みずほ証券",
@@ -17287,7 +17287,7 @@
       "shares_outstanding": null,
       "dilution": 0.0,
       "issue_price": 2704,
-      "discount_rate": 8.8,
+      "discount_rate": null,
       "discount_range": "3.5% ～ 5.5%　ディスカウント",
       "lead_managers": [
         "大和証券"
@@ -19147,7 +19147,7 @@
       "shares_outstanding": null,
       "dilution": 4.0,
       "issue_price": 2661,
-      "discount_rate": 9.5,
+      "discount_rate": null,
       "discount_range": "3.0% ～ 5.0%　ディスカウント",
       "lead_managers": [
         "岡三証券"
@@ -19434,7 +19434,7 @@
       "shares_outstanding": null,
       "dilution": null,
       "issue_price": 2249,
-      "discount_rate": 14.5,
+      "discount_rate": null,
       "discount_range": null,
       "lead_managers": [],
       "co_managers": [],
@@ -19583,7 +19583,7 @@
       "shares_outstanding": null,
       "dilution": 2.0,
       "issue_price": 2698,
-      "discount_rate": 15.2,
+      "discount_rate": null,
       "discount_range": null,
       "lead_managers": [],
       "co_managers": [],
@@ -19960,7 +19960,7 @@
       "shares_outstanding": null,
       "dilution": 6.0,
       "issue_price": 1990,
-      "discount_rate": 8.5,
+      "discount_rate": null,
       "discount_range": null,
       "lead_managers": [],
       "co_managers": [],
@@ -20385,7 +20385,7 @@
       "shares_outstanding": null,
       "dilution": 9.4,
       "issue_price": 7370,
-      "discount_rate": 11.9,
+      "discount_rate": null,
       "discount_range": null,
       "lead_managers": [],
       "co_managers": [],
@@ -20429,7 +20429,7 @@
       "shares_outstanding": null,
       "dilution": 7.1,
       "issue_price": 1097,
-      "discount_rate": 11.8,
+      "discount_rate": null,
       "discount_range": null,
       "lead_managers": [],
       "co_managers": [],
@@ -20760,7 +20760,7 @@
       "shares_outstanding": null,
       "dilution": 8.5,
       "issue_price": 9780,
-      "discount_rate": 22.2,
+      "discount_rate": null,
       "discount_range": null,
       "lead_managers": [],
       "co_managers": [],
@@ -21044,7 +21044,7 @@
       "shares_outstanding": null,
       "dilution": null,
       "issue_price": 193800,
-      "discount_rate": 7.7,
+      "discount_rate": null,
       "discount_range": "2.5% ～ 5.0%　ディスカウント",
       "lead_managers": [
         "ＳＭＢＣ日興証券",
@@ -22300,7 +22300,7 @@
       "shares_outstanding": null,
       "dilution": 3.8,
       "issue_price": 5080,
-      "discount_rate": 9.3,
+      "discount_rate": null,
       "discount_range": null,
       "lead_managers": [],
       "co_managers": [],
@@ -22692,7 +22692,7 @@
       "shares_outstanding": null,
       "dilution": 8.2,
       "issue_price": 425,
-      "discount_rate": 8.0,
+      "discount_rate": null,
       "discount_range": "4.0% ～ 6.0%　ディスカウント",
       "lead_managers": [
         "大和証券",
@@ -22785,7 +22785,7 @@
       "shares_outstanding": null,
       "dilution": 5.9,
       "issue_price": 14600,
-      "discount_rate": 35.1,
+      "discount_rate": null,
       "discount_range": null,
       "lead_managers": [],
       "co_managers": [],
@@ -22986,7 +22986,7 @@
       "shares_outstanding": null,
       "dilution": 4.7,
       "issue_price": 4850,
-      "discount_rate": 14.5,
+      "discount_rate": null,
       "discount_range": null,
       "lead_managers": [],
       "co_managers": [],
@@ -23525,7 +23525,7 @@
       "shares_outstanding": null,
       "dilution": 9.0,
       "issue_price": 1385,
-      "discount_rate": 7.9,
+      "discount_rate": null,
       "discount_range": "4.0% ～ 6.0%　ディスカウント",
       "lead_managers": [
         "ＳＭＢＣ日興証券"
@@ -23663,7 +23663,7 @@
       "shares_outstanding": null,
       "dilution": 17.9,
       "issue_price": 1321,
-      "discount_rate": 28.6,
+      "discount_rate": null,
       "discount_range": null,
       "lead_managers": [],
       "co_managers": [],
@@ -23707,7 +23707,7 @@
       "shares_outstanding": null,
       "dilution": 6.4,
       "issue_price": 1595,
-      "discount_rate": 8.02,
+      "discount_rate": null,
       "discount_range": null,
       "lead_managers": [],
       "co_managers": [],
@@ -23989,7 +23989,7 @@
       "shares_outstanding": null,
       "dilution": 2.8,
       "issue_price": null,
-      "discount_rate": 11.1,
+      "discount_rate": null,
       "discount_range": null,
       "lead_managers": [
         "ＳＢＩ証券"
@@ -24086,7 +24086,7 @@
       "shares_outstanding": null,
       "dilution": 0.0,
       "issue_price": 3950,
-      "discount_rate": 8.1,
+      "discount_rate": null,
       "discount_range": "4.0% ～ 6.0%　ディスカウント",
       "lead_managers": [
         "ＳＭＢＣ日興証券"
@@ -24278,7 +24278,7 @@
       "shares_outstanding": null,
       "dilution": 0.0,
       "issue_price": 368,
-      "discount_rate": 6.4,
+      "discount_rate": null,
       "discount_range": "3.0% ～ 5.0%　ディスカウント",
       "lead_managers": [
         "ＳＭＢＣ日興証券"
@@ -24324,7 +24324,7 @@
       "shares_outstanding": null,
       "dilution": 0.0,
       "issue_price": 271,
-      "discount_rate": 17.1,
+      "discount_rate": null,
       "discount_range": null,
       "lead_managers": [
         "東海東京証券"
@@ -24558,7 +24558,7 @@
       "shares_outstanding": null,
       "dilution": 0.0,
       "issue_price": 3265,
-      "discount_rate": 11.1,
+      "discount_rate": null,
       "discount_range": null,
       "lead_managers": [
         "野村證券"
@@ -24754,7 +24754,7 @@
       "shares_outstanding": null,
       "dilution": 5.0,
       "issue_price": 5110,
-      "discount_rate": 11.6,
+      "discount_rate": null,
       "discount_range": null,
       "lead_managers": [],
       "co_managers": [],
@@ -24904,7 +24904,7 @@
       "shares_outstanding": null,
       "dilution": null,
       "issue_price": 353500,
-      "discount_rate": 6.4,
+      "discount_rate": null,
       "discount_range": "2.5% ～ 5.0%　ディスカウント",
       "lead_managers": [
         "みずほ証券",
@@ -25006,7 +25006,7 @@
       "shares_outstanding": null,
       "dilution": null,
       "issue_price": 185600,
-      "discount_rate": 7.1,
+      "discount_rate": null,
       "discount_range": "2.5% ～ 5.0%　ディスカウント",
       "lead_managers": [
         "みずほ証券"
@@ -25750,7 +25750,7 @@
       "shares_outstanding": null,
       "dilution": null,
       "issue_price": 120300,
-      "discount_rate": 8.6,
+      "discount_rate": null,
       "discount_range": "2.5% ～ 5.0%　ディスカウント",
       "lead_managers": [
         "三菱ＵＦＪモルガン・スタンレー証券",
@@ -25799,7 +25799,7 @@
       "shares_outstanding": null,
       "dilution": 15.8,
       "issue_price": 5740,
-      "discount_rate": 8.0,
+      "discount_rate": null,
       "discount_range": "4.5% ～ 6.5%　ディスカウント",
       "lead_managers": [
         "ＳＭＢＣ日興証券"
@@ -26000,7 +26000,7 @@
       "shares_outstanding": null,
       "dilution": null,
       "issue_price": 368000,
-      "discount_rate": 9.6,
+      "discount_rate": null,
       "discount_range": "2.5% ～ 5.0%　ディスカウント",
       "lead_managers": [
         "ＳＭＢＣ日興証券",
@@ -26207,7 +26207,7 @@
       "shares_outstanding": null,
       "dilution": null,
       "issue_price": 157900,
-      "discount_rate": 6.7,
+      "discount_rate": null,
       "discount_range": "2.5% ～ 5.0%　ディスカウント",
       "lead_managers": [
         "野村證券",
@@ -26953,7 +26953,7 @@
       "shares_outstanding": null,
       "dilution": 0.0,
       "issue_price": 6260,
-      "discount_rate": 7.7,
+      "discount_rate": null,
       "discount_range": "3.0% ～ 5.0%　ディスカウント",
       "lead_managers": [
         "SMBC日興証券",
@@ -27054,7 +27054,7 @@
       "shares_outstanding": null,
       "dilution": null,
       "issue_price": 245100,
-      "discount_rate": 7.8,
+      "discount_rate": null,
       "discount_range": "2.0% ～ 4.5%　ディスカウント",
       "lead_managers": [
         "ＳＭＢＣ日興証券",
@@ -27155,7 +27155,7 @@
       "shares_outstanding": null,
       "dilution": 0.0,
       "issue_price": 2099,
-      "discount_rate": 9.2,
+      "discount_rate": null,
       "discount_range": "3.0% ～ 5.0%　ディスカウント",
       "lead_managers": [
         "大和証券"
@@ -27206,7 +27206,7 @@
       "shares_outstanding": null,
       "dilution": 6.8,
       "issue_price": 1190,
-      "discount_rate": 9.9,
+      "discount_rate": null,
       "discount_range": "4.0% ～ 6.0%　ディスカウント",
       "lead_managers": [
         "岡三証券"
@@ -27395,7 +27395,7 @@
       "shares_outstanding": null,
       "dilution": null,
       "issue_price": 17310,
-      "discount_rate": 6.4,
+      "discount_rate": null,
       "discount_range": "2.5% ～ 5.0%　ディスカウント",
       "lead_managers": [
         "ＳＭＢＣ日興証券",
@@ -27445,7 +27445,7 @@
       "shares_outstanding": null,
       "dilution": 0.0,
       "issue_price": 2204,
-      "discount_rate": 7.2,
+      "discount_rate": null,
       "discount_range": "2.0% ～ 4.0%　ディスカウント",
       "lead_managers": [
         "大和証券",
@@ -27791,7 +27791,7 @@
       "shares_outstanding": null,
       "dilution": 0.0,
       "issue_price": 1920,
-      "discount_rate": 6.4,
+      "discount_rate": null,
       "discount_range": "3.0% ～ 5.0%　ディスカウント",
       "lead_managers": [
         "野村證券",
@@ -28296,7 +28296,7 @@
       "shares_outstanding": null,
       "dilution": 29.2,
       "issue_price": 867,
-      "discount_rate": 9.9,
+      "discount_rate": null,
       "discount_range": "4.0% ～ 6.0%　ディスカウント",
       "lead_managers": [
         "ＳＭＢＣ日興証券"
@@ -28535,7 +28535,7 @@
       "shares_outstanding": null,
       "dilution": 0.0,
       "issue_price": 1853,
-      "discount_rate": 6.1,
+      "discount_rate": null,
       "discount_range": "3.0% ～ 5.0%　ディスカウント",
       "lead_managers": [
         "みずほ証券"
@@ -30019,7 +30019,7 @@
       "shares_outstanding": null,
       "dilution": null,
       "issue_price": 48950,
-      "discount_rate": 6.9,
+      "discount_rate": null,
       "discount_range": "2.5% ～ 5.0%　ディスカウント",
       "lead_managers": [
         "みずほ証券",
@@ -30270,7 +30270,7 @@
       "shares_outstanding": null,
       "dilution": 15.9,
       "issue_price": 1260,
-      "discount_rate": 9.8,
+      "discount_rate": null,
       "discount_range": "3.5% ～ 5.5%　ディスカウント",
       "lead_managers": [
         "大和証券"
@@ -30565,7 +30565,7 @@
       "shares_outstanding": null,
       "dilution": null,
       "issue_price": 325500,
-      "discount_rate": 5.9,
+      "discount_rate": null,
       "discount_range": "2.5% ～ 4.5%　ディスカウント",
       "lead_managers": [
         "三菱ＵＦＪモルガン・スタンレー証券",
@@ -33064,7 +33064,7 @@
       "shares_outstanding": null,
       "dilution": 0.0,
       "issue_price": 7700,
-      "discount_rate": 9.5,
+      "discount_rate": null,
       "discount_range": "3.0% ～5.0%　ディスカウント",
       "lead_managers": [
         "みずほ証券",
@@ -33316,7 +33316,7 @@
       "shares_outstanding": null,
       "dilution": null,
       "issue_price": 146600,
-      "discount_rate": 6.6,
+      "discount_rate": null,
       "discount_range": "2.0% ～ 4.5% ディスカウント",
       "lead_managers": [
         "野村證券"
@@ -33417,7 +33417,7 @@
       "shares_outstanding": null,
       "dilution": 12.7,
       "issue_price": 918,
-      "discount_rate": 7.5,
+      "discount_rate": null,
       "discount_range": "3.0% ～5.0%　ディスカウント",
       "lead_managers": [
         "SMBC日興証券"
@@ -34784,7 +34784,7 @@
       "shares_outstanding": null,
       "dilution": 12.2,
       "issue_price": 11650,
-      "discount_rate": 7.9,
+      "discount_rate": null,
       "discount_range": null,
       "lead_managers": [],
       "co_managers": [],
@@ -36075,7 +36075,7 @@
       "shares_outstanding": null,
       "dilution": 20.6,
       "issue_price": 381,
-      "discount_rate": 8.4,
+      "discount_rate": null,
       "discount_range": "5.0% ～ 7.0%　ディスカウント",
       "lead_managers": [
         "ＳＢＩ証券"
@@ -36273,7 +36273,7 @@
       "shares_outstanding": null,
       "dilution": null,
       "issue_price": 3150,
-      "discount_rate": 8.5,
+      "discount_rate": null,
       "discount_range": "4.0% ～ 6.0%ディスカウント",
       "lead_managers": [
         "みずほ証券"
@@ -36803,7 +36803,7 @@
       "shares_outstanding": null,
       "dilution": 5.3,
       "issue_price": 3050,
-      "discount_rate": 6.9,
+      "discount_rate": null,
       "discount_range": "3.0% ～ 5.0%ディスカウント",
       "lead_managers": [
         "野村證券"
@@ -36895,7 +36895,7 @@
       "shares_outstanding": null,
       "dilution": 1.4,
       "issue_price": 5120,
-      "discount_rate": 6.2,
+      "discount_rate": null,
       "discount_range": "3.0% ～ 5.0%ディスカウント",
       "lead_managers": [
         "野村證券"
@@ -37099,7 +37099,7 @@
       "shares_outstanding": null,
       "dilution": 13.1,
       "issue_price": 11820,
-      "discount_rate": 7.1,
+      "discount_rate": null,
       "discount_range": "4.0% ～ 6.0%ディスカウント",
       "lead_managers": [
         "みずほ証券"
@@ -37289,7 +37289,7 @@
       "shares_outstanding": null,
       "dilution": 0.0,
       "issue_price": 955,
-      "discount_rate": 15.8,
+      "discount_rate": null,
       "discount_range": "750円～900円ただし、売出価格等決定日の終値に0.96を乗じた価格を上回らない。",
       "lead_managers": [
         "大和証券",
@@ -37387,7 +37387,7 @@
       "shares_outstanding": null,
       "dilution": 13.0,
       "issue_price": 2571,
-      "discount_rate": 7.5,
+      "discount_rate": null,
       "discount_range": "3.0% ～ 5.0%　ディスカウント",
       "lead_managers": [
         "三菱ＵＦＪモルガン・スタンレー証券"
@@ -37490,7 +37490,7 @@
       "shares_outstanding": null,
       "dilution": 14.6,
       "issue_price": 1340,
-      "discount_rate": 12.0,
+      "discount_rate": null,
       "discount_range": "3.0～5.0　ディスカウント率",
       "lead_managers": [
         "野村證券"
@@ -37890,7 +37890,7 @@
       "shares_outstanding": null,
       "dilution": 10.0,
       "issue_price": 346,
-      "discount_rate": 6.8,
+      "discount_rate": null,
       "discount_range": "3.5% ～ 5.5%　ディスカウント",
       "lead_managers": [
         "大和証券"
@@ -38665,6 +38665,6 @@
       "delivery_gap_pct": 0.0
     }
   ],
-  "last_updated": "2026-04-24T11:43:09.553448",
+  "last_updated": "2026-04-27T00:30:20.762501",
   "count": 790
 }

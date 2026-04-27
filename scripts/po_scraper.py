@@ -196,7 +196,7 @@ def scrape_article(url: str, name: str = "", code: str = "") -> dict:
                     rate = float(dm.group(1))
                     # サニティ: 通常POのdiscount_rateは0.5%〜10%。これを超える値は他の数値混入を疑い、
                     # 本文の「割引率は X% に決定」フォールバックに委ねる
-                    if 0 < rate <= 10:
+                    if 0 < rate <= 7:
                         info["discount_rate"] = rate
 
             elif "仮条件" in key:
