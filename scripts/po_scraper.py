@@ -191,13 +191,9 @@ def scrape_article(url: str, name: str = "", code: str = "") -> dict:
                 m = re.search(r'([\d,]+)円', val)
                 if m:
                     info["issue_price"] = int(m.group(1).replace(",", ""))
-                dm = re.search(r'([\d.]+)%', val)
-                if dm:
-                    rate = float(dm.group(1))
-                    # サニティ: 通常POのdiscount_rateは0.5%〜10%。これを超える値は他の数値混入を疑い、
-                    # 本文の「割引率は X% に決定」フォールバックに委ねる
-                    if 0 < rate <= 7:
-                        info["discount_rate"] = rate
+                # discount_rate の抽出は廃止（誤採用が多い）
+                # → 価格決定日終値と発行価格から計算 (update_prices 内) or
+                #    本文の「割引率は X% に決定」パターンで取得
 
             elif "仮条件" in key:
                 # "% ～ %　ディスカウント" 等の空値パターンは保存しない
@@ -425,6 +421,19 @@ def update_prices(rec: dict) -> dict:
         rec["ret_open"]  = round((rec["dec_open"]  - rec["next_open"]) / rec["next_open"] * 100, 2)
         rec["ret_close"] = round((rec["dec_close"] - rec["next_open"]) / rec["next_open"] * 100, 2)
         print(f"  {rec['name']}: 騰落率(始){rec['ret_open']}% 騰落率(終){rec['ret_close']}%")
+
+    # discount_rate を価格決定日終値と発行価格から再計算
+    # (dec_close - issue_price) / dec_close × 100 が 0-7% 範囲かつ
+    # discount_range 上限+0.5% 以内なら採用
+    if rec.get("dec_close") and rec.get("issue_price") and (FORCE_REFRESH or rec.get("discount_rate") is None):
+        dc, ip = rec["dec_close"], rec["issue_price"]
+        dr = round((dc - ip) / dc * 100, 1)
+        if 0 < dr <= 7:
+            rng = rec.get("discount_range") or ""
+            rm = re.search(r'[~～〜]\s*(\d+(?:\.\d+)?)\s*[%％]', rng)
+            range_max = float(rm.group(1)) if rm else None
+            if range_max is None or dr <= range_max + 0.5:
+                rec["discount_rate"] = dr
 
     # 受渡日 → 寄り・大引け・騰落率（A=受渡始値, B=受渡終値, C=B÷A）
     del_date = rec.get("delivery_date") or rec.get("delivery_estimated")
