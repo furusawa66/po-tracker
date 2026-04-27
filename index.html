@@ -95,7 +95,8 @@ th.num{padding-left:10px;padding-right:8px}
     <div class="fg"><label>PO規模</label><div class="ms" id="fs2"></div></div>
     <div class="fg"><label>規模割合</label><div class="ms" id="fp"></div></div>
     <div class="fg"><label>希薄化率</label><div class="ms" id="fdi"></div></div>
-    <div class="fg"><label>GUGD</label><div class="ms" id="fgu"></div></div>
+    <div class="fg"><label>翌日GUGD</label><div class="ms" id="fgu1"></div></div>
+    <div class="fg"><label>受渡日GUGD</label><div class="ms" id="fgu2"></div></div>
     <div class="fg"><label class="mcb" title="日付不明の旧CSV取り込みデータを除外"><input type="checkbox" id="fleg" onchange="render()" checked>旧データ除外</label></div>
   </div>
 
@@ -222,14 +223,24 @@ function matchMSRange(id,val){
 }
 function getFiltered(){
   const fleg=document.getElementById("fleg")?.checked;
-  const mgu=getMS("fgu");
+  const mgu1=getMS("fgu1");
+  const mgu2=getMS("fgu2");
   const mfm=getMS("fm");
+  function matchGUGD(ms, val){
+    if(ms.all) return true;
+    if(ms.none) return false;
+    if(val==null) return false;
+    return ms.values.some(v=>(
+      (v==="GU"   && val>=0.5) ||
+      (v==="GD"   && val<=-0.5) ||
+      (v==="flat" && val>-0.5 && val<0.5)
+    ));
+  }
   return combined.filter(r=>{
     if(fleg&&r.legacy) return false;
     if(!matchMSExact("fy",r.year)) return false;
     if(!matchMSExact("ft",r.type)) return false;
     if(!matchMSExact("fa",r.lending)) return false;
-    // 主幹事: 銘柄の略称いずれかが選択中なら通す
     if(!mfm.all){
       if(mfm.none) return false;
       const abbrs=(r.leadManagers||[]).map(abbrManager);
@@ -239,16 +250,8 @@ function getFiltered(){
     if(!matchMSRange("fs2",r.scale)) return false;
     if(!matchMSRange("fp",r.pct)) return false;
     if(!matchMSRange("fdi",r.dilution)) return false;
-    if(!mgu.all){
-      if(mgu.none) return false;
-      if(r.gapPct==null) return false;
-      const ok=mgu.values.some(v=>(
-        (v==="GU"   && r.gapPct>=0.5) ||
-        (v==="GD"   && r.gapPct<=-0.5) ||
-        (v==="flat" && r.gapPct>-0.5 && r.gapPct<0.5)
-      ));
-      if(!ok) return false;
-    }
+    if(!matchGUGD(mgu1, r.nextDayGuPct)) return false;
+    if(!matchGUGD(mgu2, r.gapPct)) return false;
     return true;
   });
 }
@@ -356,7 +359,9 @@ function populateFilters(){
   buildMS("fs2", [{v:"0-50",l:"~50億"},{v:"50-100",l:"50~100億"},{v:"100-500",l:"100~500億"},{v:"500-1000",l:"500~1000億"},{v:"1000-",l:"1000億~"}]);
   buildMS("fp",  [{v:"0-5",l:"~5%"},{v:"5-10",l:"5~10%"},{v:"10-20",l:"10~20%"},{v:"20-",l:"20%~"}]);
   buildMS("fdi", [{v:"0-5",l:"~5%"},{v:"5-10",l:"5~10%"},{v:"10-15",l:"10~15%"},{v:"15-",l:"15%~"}]);
-  buildMS("fgu", [{v:"GU",l:"🟢 GU"},{v:"GD",l:"🔴 GD"},{v:"flat",l:"フラット"}]);
+  const guOpts=[{v:"GU",l:"🟢 GU"},{v:"GD",l:"🔴 GD"},{v:"flat",l:"フラット"}];
+  buildMS("fgu1", guOpts);
+  buildMS("fgu2", guOpts);
 }
 
 /* ─────── テーブル ───────────────────────────────────────────────────────── */
