@@ -146,11 +146,7 @@ def scrape_article_data(url: str, code: str = "") -> dict:
                 m = re.search(r'([\d,]+)円', val)
                 if m:
                     info["issue_price"] = int(m.group(1).replace(",", ""))
-                dm = re.search(r'([\d.]+)%', val)
-                if dm:
-                    rate = float(dm.group(1))
-                    if 0 < rate <= 7:
-                        info["discount_rate"] = rate
+                # discount_rate の抽出は廃止（誤採用多数）→ 価格から計算 or 本文フォールバックに委ねる
 
             elif "仮条件" in key:
                 if val and not re.match(r'^\s*%\s*[~～〜]\s*%', val):
@@ -382,6 +378,17 @@ def fill_prices(rec: dict, prices: dict):
     if rec.get("dec_open") and rec.get("next_open") and needs("ret_open"):
         rec["ret_open"] = round((rec["dec_open"] - rec["next_open"]) / rec["next_open"] * 100, 2)
         rec["ret_close"] = round((rec["dec_close"] - rec["next_open"]) / rec["next_open"] * 100, 2)
+
+    # discount_rate を価格から再計算（0-7%かつrange上限+0.5%以内のみ採用）
+    if rec.get("dec_close") and rec.get("issue_price") and (FORCE_REFRESH or rec.get("discount_rate") is None):
+        dc, ip = rec["dec_close"], rec["issue_price"]
+        dr = round((dc - ip) / dc * 100, 1)
+        if 0 < dr <= 7:
+            rng = rec.get("discount_range") or ""
+            rm = re.search(r'[~～〜]\s*(\d+(?:\.\d+)?)\s*[%％]', rng)
+            range_max = float(rm.group(1)) if rm else None
+            if range_max is None or dr <= range_max + 0.5:
+                rec["discount_rate"] = dr
 
     # 受渡日
     if del_str and del_str in prices and needs("delivery_open"):
