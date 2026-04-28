@@ -359,8 +359,21 @@ def update_prices(rec: dict) -> dict:
         )
         print(f"  {rec['name']}: 希薄化率 = {rec['dilution']}%")
 
+    # 受渡日が今日 or 前営業日のレコードは price フィールドを再取得する
+    # （朝のcron実行時はYahooにまだその日のOHLCが無いため、欠損を埋め直す）
+    delv = rec.get("delivery_date") or rec.get("delivery_estimated")
+    is_recent_delivery = False
+    if delv:
+        try:
+            delv_d = datetime.fromisoformat(delv).date()
+            today_d = date.today()
+            if delv_d <= today_d and delv_d >= prev_biz_days(today_d, 1):
+                is_recent_delivery = True
+        except Exception:
+            pass
+
     def needs(field):
-        return FORCE_REFRESH or rec.get(field) is None
+        return FORCE_REFRESH or is_recent_delivery or rec.get(field) is None
 
     next_day     = next_biz_day(ann_date)
     next_day_str = next_day.isoformat()

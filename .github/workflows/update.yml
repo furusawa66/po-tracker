@@ -2,8 +2,9 @@ name: PO Auto Tracker
 
 on:
   schedule:
-    - cron: "30 0 * * 1-5"
-    - cron: "30 7 * * 1-5"
+    - cron: "30 0 * * 1-5"   # 09:30 JST（市場開始直後）
+    - cron: "30 7 * * 1-5"   # 16:30 JST（市場終了後）
+    - cron: "0 9 * * 1-5"    # 18:00 JST（cron遅延・抜け対策）
   workflow_dispatch:
 
 permissions:
