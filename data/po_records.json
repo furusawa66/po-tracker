@@ -11896,11 +11896,11 @@
       "dec_close": 764.0,
       "ret_open": 5.67,
       "ret_close": 8.37,
-      "delivery_open": null,
-      "delivery_close": null,
-      "delivery_ret": null,
+      "delivery_open": 581.0,
+      "delivery_close": 602.0,
+      "delivery_ret": 3.61,
       "memo": "",
-      "status": "nextday",
+      "status": "complete",
       "decision_date_confirmed": true,
       "announce_date_confirmed": true,
       "announce_day_close": 728.0,
@@ -38665,6 +38665,6 @@
       "delivery_gap_pct": 0.0
     }
   ],
-  "last_updated": "2026-04-27T12:23:07.033871",
+  "last_updated": "2026-04-28T07:13:14.309439",
   "count": 790
 }
