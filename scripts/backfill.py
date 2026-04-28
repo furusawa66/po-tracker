@@ -348,8 +348,20 @@ def fill_prices(rec: dict, prices: dict):
 
     next_day = next_biz_day(ann_date).isoformat()
 
+    # 受渡日が直近（今日 or 前営業日）のレコードは強制再取得
+    delv = rec.get("delivery_date") or rec.get("delivery_estimated")
+    is_recent_delivery = False
+    if delv:
+        try:
+            delv_d = datetime.fromisoformat(delv).date()
+            today_d = date.today()
+            if delv_d <= today_d and delv_d >= prev_biz_day(today_d):
+                is_recent_delivery = True
+        except Exception:
+            pass
+
     def needs(field):
-        return FORCE_REFRESH or rec.get(field) is None
+        return FORCE_REFRESH or is_recent_delivery or rec.get(field) is None
 
     # 翌日始値
     if needs("next_open") and next_day in prices:
