@@ -11801,7 +11801,8 @@
       "next_day_gu_pct": -5.96,
       "next_day_915_ret": 0.67,
       "next_day_930_ret": 0.1,
-      "next_day_morning_ret": 3.74
+      "next_day_morning_ret": 3.74,
+      "delivery_gap_pct": 1.22
     },
     {
       "id": "3196_20260409",
@@ -11856,7 +11857,8 @@
       "next_day_gu_pct": -10.0,
       "next_day_915_ret": -0.66,
       "next_day_930_ret": -0.88,
-      "next_day_morning_ret": -1.87
+      "next_day_morning_ret": -1.87,
+      "delivery_gap_pct": -5.54
     },
     {
       "id": "4784_20260410",
@@ -11908,7 +11910,8 @@
       "prev_close_before_delivery": 681.0,
       "next_day_915_ret": 4.26,
       "next_day_930_ret": 2.98,
-      "next_day_morning_ret": -0.43
+      "next_day_morning_ret": -0.43,
+      "delivery_gap_pct": -14.68
     },
     {
       "id": "8952_20260319",
@@ -38665,6 +38668,6 @@
       "delivery_gap_pct": 0.0
     }
   ],
-  "last_updated": "2026-04-29T16:05:27.235726",
+  "last_updated": "2026-04-30T00:37:34.314615",
   "count": 790
 }

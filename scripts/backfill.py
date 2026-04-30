@@ -410,7 +410,7 @@ def fill_prices(rec: dict, prices: dict):
             rec["delivery_close"] = p["close"]
             rec["delivery_ret"] = round((p["close"] - p["open"]) / p["open"] * 100, 2)
 
-    # 受渡日前日終値 & GU率（ギャップ率）
+    # 受渡日前日終値（未取得の場合のみ）
     if del_str and needs("prev_close_before_delivery"):
         try:
             del_date = datetime.fromisoformat(del_str).date()
@@ -421,11 +421,13 @@ def fill_prices(rec: dict, prices: dict):
                     p = prices[del_date.isoformat()]
                     if p["close"]:
                         rec["prev_close_before_delivery"] = p["close"]
-                        if rec.get("delivery_open"):
-                            rec["delivery_gap_pct"] = round((rec["delivery_open"] - p["close"]) / p["close"] * 100, 2)
                     break
         except Exception:
             pass
+
+    # 受渡日 GU/GD ギャップ率（独立計算: prev_close と delivery_open が両方揃った時点で算出）
+    if rec.get("delivery_open") and rec.get("prev_close_before_delivery") and (FORCE_REFRESH or rec.get("delivery_gap_pct") is None):
+        rec["delivery_gap_pct"] = round((rec["delivery_open"] - rec["prev_close_before_delivery"]) / rec["prev_close_before_delivery"] * 100, 2)
 
 
 def main():
