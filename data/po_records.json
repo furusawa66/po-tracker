@@ -11796,13 +11796,13 @@
       "status": "complete",
       "decision_date_confirmed": true,
       "announce_date_confirmed": true,
-      "prev_close_before_delivery": 2004.5,
+      "prev_close_before_delivery": 2061.0,
       "announce_day_close": 2130.0,
       "next_day_gu_pct": -5.96,
       "next_day_915_ret": 0.67,
       "next_day_930_ret": 0.1,
       "next_day_morning_ret": 3.74,
-      "delivery_gap_pct": 1.22
+      "delivery_gap_pct": -1.55
     },
     {
       "id": "3196_20260409",
@@ -38668,6 +38668,6 @@
       "delivery_gap_pct": 0.0
     }
   ],
-  "last_updated": "2026-04-30T00:37:34.314615",
+  "last_updated": "2026-04-30T02:10:02.471528",
   "count": 790
 }
