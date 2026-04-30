@@ -11907,7 +11907,7 @@
       "announce_date_confirmed": true,
       "announce_day_close": 728.0,
       "next_day_gu_pct": -3.16,
-      "prev_close_before_delivery": 681.0,
+      "prev_close_before_delivery": 665.0,
       "next_day_915_ret": 4.26,
       "next_day_930_ret": 2.98,
       "next_day_morning_ret": -0.43,
@@ -38668,6 +38668,6 @@
       "delivery_gap_pct": 0.0
     }
   ],
-  "last_updated": "2026-04-30T02:10:02.471528",
+  "last_updated": "2026-04-30T08:39:50.178340",
   "count": 790
 }
