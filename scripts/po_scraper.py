@@ -11,10 +11,10 @@ PO自動トラッカー — pokabu.net 完全対応版
 import requests
 from bs4 import BeautifulSoup
 import json, os, re, sys, time
-from datetime import datetime, date, timedelta
+from datetime import datetime, date, timedelta, timezone
 
 from utils import (is_jp_holiday, next_biz_day, prev_biz_days, parse_jp_date,
-                   parse_jp_date_range_end, atomic_write_json, http_get_with_retry)
+                   parse_jp_date_range_start, atomic_write_json, http_get_with_retry)
 
 DATA_FILE = "data/po_records.json"
 BASE_URL  = "https://pokabu.net"
@@ -83,7 +83,7 @@ def scrape_schedule() -> dict:
 
             if is_dec:
                 date_text = cells[0].get_text(" ", strip=True) if cells else ""
-                dec_date  = parse_jp_date_range_end(date_text)
+                dec_date  = parse_jp_date_range_start(date_text)
                 lending   = ""
                 for cell in cells:
                     ct = cell.get_text(strip=True)
@@ -173,7 +173,7 @@ def scrape_article(url: str, name: str = "", code: str = "") -> dict:
                     info["market_cap"] = int(m.group(1).replace(",", ""))
 
             elif "価格決定日" in key or "条件決定日" in key:
-                d = parse_jp_date_range_end(val)
+                d = parse_jp_date_range_start(val)
                 if d and not info.get("decision_date"):
                     info["decision_date"] = d
 
@@ -297,11 +297,16 @@ def fetch_prices(code: str, days: int = 60) -> tuple:
         q    = r["indicators"]["quote"][0]
         meta = r.get("meta", {})
         tss  = r.get("timestamp", [])
+        # Yahoo の timestamp は Unix秒 (UTC)。GitHub Actions ランナーは UTC なので
+        # naive な fromtimestamp() はランナーローカル(=UTC)で日付を返してしまい
+        # 取引所カレンダー (JST) と1日ずれる可能性がある。明示的に取引所TZで変換。
+        gmt_offset = meta.get("gmtoffset", 32400)  # JST = +09:00 = 32400秒
+        bar_tz = timezone(timedelta(seconds=gmt_offset))
         prices = {}
         for i, ts in enumerate(tss):
             if not ts:
                 continue
-            d = datetime.fromtimestamp(ts).strftime("%Y-%m-%d")
+            d = datetime.fromtimestamp(ts, tz=bar_tz).strftime("%Y-%m-%d")
             prices[d] = {
                 "open":  round(q["open"][i],  2) if q["open"][i]  else None,
                 "close": round(q["close"][i], 2) if q["close"][i] else None,
@@ -525,7 +530,35 @@ def main():
     print(f"\n{'='*50}\nPO Tracker 実行: {today}\n{'='*50}\n")
 
     records  = load_records()
-    existing = {r["code"]: r for r in records if r.get("code")}
+    # 同一 code に複数レコードがあり得るので code → list で保持（PO は同一銘柄が
+    # 年をまたいで複数回行われる）。「アクティブな（未完了の）レコード」を優先で
+    # 取得するヘルパーを介して、新規イベントが既存の完了済みレコードに誤って
+    # マージされるのを防ぐ。
+    by_code: dict[str, list[dict]] = {}
+    for r in records:
+        c = r.get("code")
+        if c:
+            by_code.setdefault(c, []).append(r)
+
+    def find_event(code: str, announce_date: str | None = None) -> dict | None:
+        """同一 code 内のレコードを (code, announce_date) で特定。
+        announce_date 未指定の場合は未完了レコードを優先で返す。なければ None。"""
+        candidates = by_code.get(code, [])
+        if announce_date:
+            for r in candidates:
+                if r.get("announce_date") == announce_date:
+                    return r
+        # アクティブ（未完了）レコード優先
+        for r in candidates:
+            if r.get("status") != "complete":
+                return r
+        return None
+
+    def register(rec: dict):
+        records.append(rec)
+        c = rec.get("code")
+        if c:
+            by_code.setdefault(c, []).append(rec)
 
     # ⓪ RSS フィードから新規PO検知
     print("[0] pokabu.net/feed チェック...")
@@ -533,17 +566,23 @@ def main():
     rss_new = 0
     for entry in rss_entries:
         code = entry["code"]
-        if code in existing:
-            continue
-        print(f"  RSS新規検知: {entry['title']}")
+        # まず記事を取得して announce_date を確定 → イベント識別に使う
+        print(f"  RSS検知: {entry['title']}")
         article = scrape_article(entry["url"], name="", code=code)
         time.sleep(1)
         if not article:
             continue
+        announce = article.get("announce_date") or article.get("article_published") or today
+        # 同一 (code, announce_date) のイベントが既に存在 → スキップ
+        if find_event(code, announce):
+            continue
+        # 同一 code に未完了レコードがあれば、それは別イベントの進行中なので
+        # 重複登録を避ける（announce_date が未確定のケースを救済）
+        if find_event(code) and not article.get("announce_date"):
+            continue
         name_m = re.search(r'[】](.*?)[（(]', entry["title"])
         name = name_m.group(1).strip() if name_m else ""
         lending = article.get("lending_type", "")
-        announce = article.get("announce_date") or article.get("article_published") or today
         new_rec = {
             "id":                 f"{code}_{announce.replace('-','')}",
             "code":               code,
@@ -581,8 +620,7 @@ def main():
         }
         if new_rec["po_scale"] and new_rec["market_cap"]:
             new_rec["po_pct"] = safe_po_pct(new_rec["po_scale"], new_rec["market_cap"])
-        records.append(new_rec)
-        existing[code] = new_rec
+        register(new_rec)
         rss_new += 1
     print(f"  RSS新規: {rss_new} 件\n")
 
@@ -595,8 +633,10 @@ def main():
     added = []
 
     for code, si in {**pending, **delivered}.items():
-        if code in existing:
-            rec = existing[code]
+        # スケジュール側には announce_date が無いので、未完了レコードに対する
+        # 補完とみなす（同一 code の未完了レコードがあればそれにマージ）
+        rec = find_event(code)
+        if rec and rec.get("status") != "complete":
             # 既存レコードへの補完
             if not rec.get("decision_date") and si.get("decision_date"):
                 rec["decision_date"] = si["decision_date"]
@@ -657,8 +697,12 @@ def main():
             article = scrape_article(si["article_url"], name=si.get("name",""), code=code or "")
             time.sleep(0.8)
 
-        lending = si.get("lending_type", "")
         actual_announce = article.get("announce_date") or article.get("article_published") or today
+        # announce_date が判明したら同一イベントの再確認
+        if find_event(code, actual_announce):
+            continue
+
+        lending = si.get("lending_type", "")
         new_rec = {
             "id":                 f"{code}_{actual_announce.replace('-','')}",
             "code":               code,
@@ -704,8 +748,7 @@ def main():
         if new_rec["po_scale"] and new_rec["market_cap"]:
             new_rec["po_pct"] = safe_po_pct(new_rec["po_scale"], new_rec["market_cap"])
 
-        records.append(new_rec)
-        existing[code] = new_rec
+        register(new_rec)
         added.append(new_rec)
         print(f"  + {new_rec['name']} ({code}) 規模:{new_rec.get('po_scale','?')}億 "
               f"時価総額:{new_rec.get('market_cap','?')}億 決定日:{new_rec.get('decision_date','?')} "

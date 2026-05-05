@@ -261,10 +261,14 @@ def fetch_prices(code: str, days: int = 90) -> dict:
                 r = result[0]
                 q = r["indicators"]["quote"][0]
                 tss = r.get("timestamp", [])
+                meta = r.get("meta", {})
+                # 明示的に取引所TZ(JST)で変換し、ランナー(UTC)起因の日付ずれを防ぐ
+                gmt_offset = meta.get("gmtoffset", 32400)
+                bar_tz = timezone(timedelta(seconds=gmt_offset))
                 for i, ts in enumerate(tss):
                     if not ts:
                         continue
-                    d = datetime.fromtimestamp(ts).strftime("%Y-%m-%d")
+                    d = datetime.fromtimestamp(ts, tz=bar_tz).strftime("%Y-%m-%d")
                     prices[d] = {
                         "open":  round(q["open"][i],  2) if q["open"][i]  else None,
                         "close": round(q["close"][i], 2) if q["close"][i] else None,
@@ -440,11 +444,15 @@ def main():
         data = json.load(f)
     records = data.get("records", data)
 
-    # 既存レコードで補完が必要なもの
-    need_update = {r["code"]: r for r in records
-                   if r.get("code") and r.get("article_url")
-                   and (not r.get("announce_date") or r.get("discount_rate") is None)}
-    print(f"補完対象: {len(need_update)} 件\n")
+    # 既存レコードで補完が必要なもの（同一 code に複数年のレコードがあり得るので
+    # code → list[record] で保持）。記事URL・年・announce_date で個別マッチングする。
+    need_update_by_code: dict[str, list[dict]] = {}
+    for r in records:
+        if (r.get("code") and r.get("article_url")
+                and (not r.get("announce_date") or r.get("discount_rate") is None)):
+            need_update_by_code.setdefault(r["code"], []).append(r)
+    update_total = sum(len(v) for v in need_update_by_code.values())
+    print(f"補完対象: {update_total} 件\n")
 
     # 既存の (code, year) ペアを収集
     existing_keys = set()
@@ -465,40 +473,51 @@ def main():
         year_m = re.search(r'20(\d{2})', art["url"])
         art_year = (2000 + int(year_m.group(1))) if year_m else date.today().year
 
-        # 既存レコードの補完
-        if code in need_update:
-            rec = need_update[code]
-            if rec.get("year") and rec["year"] != art_year:
-                pass  # 年が違う → 新規追加チェックへ
-            else:
-                print(f"  補完: {rec.get('name')} ({code}): {art['url']}")
-                info = scrape_article_data(art["url"], code)
-                time.sleep(5)
-                if info:
-                    rec["article_url"] = art["url"]
-                    for field in ["announce_date", "decision_date", "delivery_date", "delivery_estimated",
-                                  "market_cap", "po_scale", "discount_range",
-                                  "dilution", "lending_type", "lead_managers", "co_managers"]:
-                        if info.get(field) and not rec.get(field):
-                            rec[field] = info[field]
-                    if info.get("issue_price"):
-                        rec["issue_price"] = info["issue_price"]
-                    if info.get("discount_rate"):
-                        rec["discount_rate"] = info["discount_rate"]
-                    if not rec.get("announce_date") and info.get("article_published"):
-                        rec["announce_date"] = info["article_published"]
-                    if rec.get("announce_date"):
-                        rec["announce_date_confirmed"] = True
-                        rec["id"] = f"{code}_{rec['announce_date'].replace('-', '')}"
-                    if rec.get("decision_date"):
-                        rec["decision_date_confirmed"] = True
-                    if rec.get("po_scale") and rec.get("market_cap"):
-                        rec["po_pct"] = safe_po_pct(rec["po_scale"], rec["market_cap"])
-                    lt = rec.get("lending_type", "")
-                    rec["alert"] = "" if lt == "貸借" else ("注意" if lt == "信用" else rec.get("alert", ""))
-                    matched += 1
-                    del need_update[code]
-                continue
+        # 既存レコードの補完: 同一 code 内から記事URL or 年 で個別マッチ。
+        # list の中から1件だけ更新（他の同一 code レコードは保持）。
+        candidates = need_update_by_code.get(code, [])
+        rec = None
+        # 優先1: 既に同じ article_url を持つレコード
+        for r in candidates:
+            if r.get("article_url") == art["url"]:
+                rec = r
+                break
+        # 優先2: 同一年のレコード
+        if rec is None:
+            for r in candidates:
+                if r.get("year") == art_year:
+                    rec = r
+                    break
+        if rec is not None:
+            print(f"  補完: {rec.get('name')} ({code}): {art['url']}")
+            info = scrape_article_data(art["url"], code)
+            time.sleep(5)
+            if info:
+                rec["article_url"] = art["url"]
+                for field in ["announce_date", "decision_date", "delivery_date", "delivery_estimated",
+                              "market_cap", "po_scale", "discount_range",
+                              "dilution", "lending_type", "lead_managers", "co_managers"]:
+                    if info.get(field) and not rec.get(field):
+                        rec[field] = info[field]
+                if info.get("issue_price"):
+                    rec["issue_price"] = info["issue_price"]
+                if info.get("discount_rate"):
+                    rec["discount_rate"] = info["discount_rate"]
+                if not rec.get("announce_date") and info.get("article_published"):
+                    rec["announce_date"] = info["article_published"]
+                if rec.get("announce_date"):
+                    rec["announce_date_confirmed"] = True
+                    rec["id"] = f"{code}_{rec['announce_date'].replace('-', '')}"
+                if rec.get("decision_date"):
+                    rec["decision_date_confirmed"] = True
+                if rec.get("po_scale") and rec.get("market_cap"):
+                    rec["po_pct"] = safe_po_pct(rec["po_scale"], rec["market_cap"])
+                lt = rec.get("lending_type", "")
+                rec["alert"] = "" if lt == "貸借" else ("注意" if lt == "信用" else rec.get("alert", ""))
+                matched += 1
+                # 補完完了したレコードのみリストから除去（他の同一 code レコードは残す）
+                candidates.remove(rec)
+            continue
 
         # 新規追加: データに存在しない記事 → 新レコード作成
         if (code, art_year) in existing_keys:
