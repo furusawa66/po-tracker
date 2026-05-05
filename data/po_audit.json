@@ -1,0 +1,2240 @@
+{
+  "generated_at": "2026-05-05T00:54:04.700528",
+  "source_file": "data/po_records.json",
+  "source_count": 790,
+  "rules": {
+    "split_ratio_min": 0.75,
+    "split_ratio_max": 1.35,
+    "required_for_ev_analysis": [
+      "announce_date",
+      "next_open",
+      "delivery_open",
+      "delivery_close",
+      "not legacy_record",
+      "not possible_split_adjustment_mismatch"
+    ]
+  },
+  "summary": {
+    "total_records": 790,
+    "analysis_ready": 474,
+    "flag_counts": {
+      "missing_delivery_prices": 101,
+      "missing_announce_date": 26,
+      "legacy_record": 26,
+      "incomplete_for_ev_analysis": 316,
+      "repeated_code": 339,
+      "issue_price_delivery_ratio_outlier": 190,
+      "possible_split_adjustment_mismatch": 190,
+      "discount_rate_untrusted": 27
+    }
+  },
+  "flags_by_id": {
+    "csv_1": [
+      "missing_delivery_prices",
+      "missing_announce_date",
+      "legacy_record",
+      "incomplete_for_ev_analysis"
+    ],
+    "csv_2": [
+      "missing_delivery_prices",
+      "missing_announce_date",
+      "legacy_record",
+      "repeated_code",
+      "incomplete_for_ev_analysis"
+    ],
+    "3487_20210902": [
+      "repeated_code"
+    ],
+    "csv_4": [
+      "missing_delivery_prices",
+      "missing_announce_date",
+      "legacy_record",
+      "repeated_code",
+      "incomplete_for_ev_analysis"
+    ],
+    "9021_20210901": [
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "discount_rate_untrusted",
+      "incomplete_for_ev_analysis"
+    ],
+    "3480_20210726": [
+      "repeated_code",
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "discount_rate_untrusted",
+      "incomplete_for_ev_analysis"
+    ],
+    "csv_7": [
+      "missing_delivery_prices",
+      "missing_announce_date",
+      "legacy_record",
+      "incomplete_for_ev_analysis"
+    ],
+    "8956_20211018": [
+      "repeated_code"
+    ],
+    "3290_20210908": [
+      "repeated_code",
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "discount_rate_untrusted",
+      "incomplete_for_ev_analysis"
+    ],
+    "6718_20211206": [
+      "repeated_code"
+    ],
+    "6535_20210625": [
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "discount_rate_untrusted",
+      "incomplete_for_ev_analysis"
+    ],
+    "3292_20210802": [
+      "repeated_code"
+    ],
+    "2971_20210709": [
+      "repeated_code"
+    ],
+    "4318_20210625": [
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "3387_20211028": [
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "discount_rate_untrusted",
+      "incomplete_for_ev_analysis"
+    ],
+    "3465_20210823": [
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "csv_23": [
+      "missing_delivery_prices",
+      "missing_announce_date",
+      "legacy_record",
+      "repeated_code",
+      "incomplete_for_ev_analysis"
+    ],
+    "csv_24": [
+      "missing_delivery_prices",
+      "missing_announce_date",
+      "legacy_record",
+      "repeated_code",
+      "incomplete_for_ev_analysis"
+    ],
+    "7616_20210824": [
+      "repeated_code"
+    ],
+    "csv_26": [
+      "missing_delivery_prices",
+      "missing_announce_date",
+      "legacy_record",
+      "repeated_code",
+      "incomplete_for_ev_analysis"
+    ],
+    "3197_20210521": [
+      "repeated_code"
+    ],
+    "csv_29": [
+      "missing_delivery_prices",
+      "missing_announce_date",
+      "legacy_record",
+      "repeated_code",
+      "incomplete_for_ev_analysis"
+    ],
+    "4215_20210107": [
+      "missing_delivery_prices",
+      "incomplete_for_ev_analysis"
+    ],
+    "5070_20211206": [
+      "missing_delivery_prices",
+      "incomplete_for_ev_analysis"
+    ],
+    "3003_20210928": [
+      "repeated_code"
+    ],
+    "3295_20211014": [
+      "repeated_code"
+    ],
+    "3295_20211014_2": [
+      "repeated_code"
+    ],
+    "8964_20210621": [
+      "repeated_code",
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "discount_rate_untrusted",
+      "incomplete_for_ev_analysis"
+    ],
+    "3923_20210219": [
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "3466_20210414": [
+      "repeated_code"
+    ],
+    "csv_40": [
+      "missing_delivery_prices",
+      "missing_announce_date",
+      "legacy_record",
+      "incomplete_for_ev_analysis"
+    ],
+    "6723_20210528": [
+      "repeated_code"
+    ],
+    "4251_20211126": [
+      "repeated_code",
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "discount_rate_untrusted",
+      "incomplete_for_ev_analysis"
+    ],
+    "csv_46": [
+      "missing_delivery_prices",
+      "missing_announce_date",
+      "legacy_record",
+      "repeated_code",
+      "incomplete_for_ev_analysis"
+    ],
+    "1911_20210623": [
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "discount_rate_untrusted",
+      "incomplete_for_ev_analysis"
+    ],
+    "4004_20210823": [
+      "repeated_code"
+    ],
+    "csv_49": [
+      "missing_delivery_prices",
+      "missing_announce_date",
+      "legacy_record",
+      "repeated_code",
+      "incomplete_for_ev_analysis"
+    ],
+    "3309_20211018": [
+      "repeated_code"
+    ],
+    "8984_20210818": [
+      "repeated_code",
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "discount_rate_untrusted",
+      "incomplete_for_ev_analysis"
+    ],
+    "csv_53": [
+      "missing_delivery_prices",
+      "missing_announce_date",
+      "legacy_record",
+      "repeated_code",
+      "incomplete_for_ev_analysis"
+    ],
+    "3476_20211214": [
+      "repeated_code"
+    ],
+    "csv_58": [
+      "missing_delivery_prices",
+      "missing_announce_date",
+      "legacy_record",
+      "repeated_code",
+      "incomplete_for_ev_analysis"
+    ],
+    "csv_59": [
+      "missing_delivery_prices",
+      "missing_announce_date",
+      "legacy_record",
+      "repeated_code",
+      "incomplete_for_ev_analysis"
+    ],
+    "6178_20211006": [
+      "repeated_code"
+    ],
+    "csv_64": [
+      "missing_delivery_prices",
+      "missing_announce_date",
+      "legacy_record",
+      "repeated_code",
+      "incomplete_for_ev_analysis"
+    ],
+    "3281_20221012": [
+      "repeated_code"
+    ],
+    "3455_20220117": [
+      "repeated_code"
+    ],
+    "2980_20220302": [
+      "repeated_code"
+    ],
+    "8958_20221117": [
+      "repeated_code"
+    ],
+    "csv_71": [
+      "missing_delivery_prices",
+      "missing_announce_date",
+      "legacy_record",
+      "repeated_code",
+      "incomplete_for_ev_analysis"
+    ],
+    "3453_20221006": [
+      "missing_delivery_prices",
+      "repeated_code",
+      "incomplete_for_ev_analysis"
+    ],
+    "3453_20221006_2": [
+      "missing_delivery_prices",
+      "repeated_code",
+      "incomplete_for_ev_analysis"
+    ],
+    "csv_74": [
+      "missing_delivery_prices",
+      "missing_announce_date",
+      "legacy_record",
+      "repeated_code",
+      "incomplete_for_ev_analysis"
+    ],
+    "csv_75": [
+      "missing_delivery_prices",
+      "missing_announce_date",
+      "legacy_record",
+      "repeated_code",
+      "incomplete_for_ev_analysis"
+    ],
+    "6266_20220527": [
+      "repeated_code"
+    ],
+    "3186_20220207": [
+      "repeated_code"
+    ],
+    "3471_20220111": [
+      "repeated_code",
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "discount_rate_untrusted",
+      "incomplete_for_ev_analysis"
+    ],
+    "3481_20221014": [
+      "repeated_code",
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "discount_rate_untrusted",
+      "incomplete_for_ev_analysis"
+    ],
+    "3481_20221014_2": [
+      "repeated_code",
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "3287_20220615": [
+      "repeated_code",
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "discount_rate_untrusted",
+      "incomplete_for_ev_analysis"
+    ],
+    "8986_20220910": [
+      "repeated_code"
+    ],
+    "8157_20220204": [
+      "repeated_code"
+    ],
+    "8951_20220106": [
+      "repeated_code",
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "discount_rate_untrusted",
+      "incomplete_for_ev_analysis"
+    ],
+    "8955_20220104": [
+      "repeated_code",
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "discount_rate_untrusted",
+      "incomplete_for_ev_analysis"
+    ],
+    "3283_20221205": [
+      "repeated_code",
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "discount_rate_untrusted",
+      "incomplete_for_ev_analysis"
+    ],
+    "8967_20220209": [
+      "repeated_code",
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "discount_rate_untrusted",
+      "incomplete_for_ev_analysis"
+    ],
+    "csv_95": [
+      "missing_delivery_prices",
+      "missing_announce_date",
+      "legacy_record",
+      "incomplete_for_ev_analysis"
+    ],
+    "3487_20230323": [
+      "repeated_code"
+    ],
+    "3281_20230515": [
+      "repeated_code"
+    ],
+    "7071_20230221": [
+      "repeated_code"
+    ],
+    "3292_20230116": [
+      "repeated_code"
+    ],
+    "8963_20230719": [
+      "repeated_code"
+    ],
+    "9286_20230615": [
+      "repeated_code"
+    ],
+    "3282_20230804": [
+      "repeated_code"
+    ],
+    "8952_20230328": [
+      "repeated_code"
+    ],
+    "3468_20230807": [
+      "repeated_code"
+    ],
+    "6817_20230522": [
+      "repeated_code"
+    ],
+    "csv_112": [
+      "missing_delivery_prices",
+      "missing_announce_date",
+      "legacy_record",
+      "repeated_code",
+      "incomplete_for_ev_analysis"
+    ],
+    "7182_20230227": [
+      "repeated_code"
+    ],
+    "3466_20230623": [
+      "repeated_code"
+    ],
+    "3471_20230731": [
+      "repeated_code"
+    ],
+    "6590_20230822": [
+      "repeated_code",
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "discount_rate_untrusted",
+      "incomplete_for_ev_analysis"
+    ],
+    "3160_20230228": [
+      "repeated_code"
+    ],
+    "3283_20230522": [
+      "repeated_code",
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "discount_rate_untrusted",
+      "incomplete_for_ev_analysis"
+    ],
+    "7157_20230830": [
+      "repeated_code"
+    ],
+    "8984_20230831": [
+      "repeated_code"
+    ],
+    "3269_20230912": [
+      "repeated_code"
+    ],
+    "8986_20231002": [
+      "repeated_code"
+    ],
+    "2802_20231114": [
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "discount_rate_untrusted",
+      "incomplete_for_ev_analysis"
+    ],
+    "8890_20231118": [
+      "missing_delivery_prices",
+      "incomplete_for_ev_analysis"
+    ],
+    "1980_20231212": [
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "discount_rate_untrusted",
+      "incomplete_for_ev_analysis"
+    ],
+    "csv_140": [
+      "missing_delivery_prices",
+      "missing_announce_date",
+      "legacy_record",
+      "repeated_code",
+      "incomplete_for_ev_analysis"
+    ],
+    "csv_141": [
+      "missing_delivery_prices",
+      "missing_announce_date",
+      "legacy_record",
+      "repeated_code",
+      "incomplete_for_ev_analysis"
+    ],
+    "4816_20240215": [
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "discount_rate_untrusted",
+      "incomplete_for_ev_analysis"
+    ],
+    "3492_20240829": [
+      "repeated_code"
+    ],
+    "3249_20240215": [
+      "repeated_code"
+    ],
+    "8103_20240227": [
+      "repeated_code"
+    ],
+    "9147_20240301": [
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "csv_156": [
+      "missing_delivery_prices",
+      "missing_announce_date",
+      "legacy_record",
+      "incomplete_for_ev_analysis"
+    ],
+    "8966_20240522": [
+      "repeated_code"
+    ],
+    "9268_20240525": [
+      "repeated_code"
+    ],
+    "3287_20240524": [
+      "repeated_code"
+    ],
+    "8985_20240625": [
+      "repeated_code"
+    ],
+    "7259_20240627": [
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "1946_20240702": [
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "7213_20240710": [
+      "repeated_code"
+    ],
+    "3282_20240713": [
+      "repeated_code",
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "discount_rate_untrusted",
+      "incomplete_for_ev_analysis"
+    ],
+    "7936_20240713": [
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "8963_20240718": [
+      "repeated_code"
+    ],
+    "3468_20240820": [
+      "repeated_code"
+    ],
+    "7616_20240821": [
+      "repeated_code",
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "1333_20240827": [
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "discount_rate_untrusted",
+      "incomplete_for_ev_analysis"
+    ],
+    "8968_20240828": [
+      "repeated_code"
+    ],
+    "3492_20240829_2": [
+      "repeated_code"
+    ],
+    "6745_20240830": [
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "6965_20240830": [
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "8953_20240925": [
+      "repeated_code"
+    ],
+    "8020_20241002": [
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "4732_20241008": [
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "4825_20241016": [
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "9503_20241114": [
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "csv_191": [
+      "missing_delivery_prices",
+      "missing_announce_date",
+      "legacy_record",
+      "repeated_code",
+      "incomplete_for_ev_analysis"
+    ],
+    "8136_20241126": [
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "discount_rate_untrusted",
+      "incomplete_for_ev_analysis"
+    ],
+    "3003_20241127": [
+      "repeated_code",
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "8061_20241202": [
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "discount_rate_untrusted",
+      "incomplete_for_ev_analysis"
+    ],
+    "8157_20250206": [
+      "repeated_code"
+    ],
+    "2980_20250217": [
+      "repeated_code"
+    ],
+    "7182_20250227": [
+      "repeated_code"
+    ],
+    "8966_20250519": [
+      "repeated_code"
+    ],
+    "8951_20250619": [
+      "repeated_code"
+    ],
+    "csv_230": [
+      "missing_delivery_prices",
+      "missing_announce_date",
+      "legacy_record",
+      "incomplete_for_ev_analysis"
+    ],
+    "2585_20250901": [
+      "repeated_code"
+    ],
+    "csv_239": [
+      "missing_delivery_prices",
+      "missing_announce_date",
+      "legacy_record",
+      "repeated_code",
+      "incomplete_for_ev_analysis"
+    ],
+    "8958_20260325": [
+      "repeated_code"
+    ],
+    "3196_20260409": [
+      "repeated_code"
+    ],
+    "8952_20260319": [
+      "repeated_code"
+    ],
+    "7245_20260310": [
+      "repeated_code"
+    ],
+    "3290_20260305": [
+      "repeated_code"
+    ],
+    "2734_20260302": [
+      "repeated_code"
+    ],
+    "7974_20260227": [
+      "repeated_code"
+    ],
+    "8985_20260225": [
+      "repeated_code"
+    ],
+    "1938_20260220": [
+      "repeated_code",
+      "incomplete_for_ev_analysis"
+    ],
+    "8103_20260219": [
+      "repeated_code"
+    ],
+    "3296_20260218": [
+      "repeated_code"
+    ],
+    "3492_20260213": [
+      "repeated_code"
+    ],
+    "9902_20260210": [
+      "incomplete_for_ev_analysis"
+    ],
+    "2989_20260113": [
+      "repeated_code"
+    ],
+    "8142_20260113": [
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "8951_20260107": [
+      "repeated_code"
+    ],
+    "5970_20251204": [
+      "repeated_code"
+    ],
+    "8955_20251128": [
+      "repeated_code"
+    ],
+    "5959_20251121": [
+      "incomplete_for_ev_analysis"
+    ],
+    "8960_20251117": [
+      "repeated_code"
+    ],
+    "3472_20251112": [
+      "repeated_code"
+    ],
+    "2653_20251031": [
+      "incomplete_for_ev_analysis"
+    ],
+    "3498_20251024": [
+      "repeated_code"
+    ],
+    "3635_20250902": [
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "3496_20250606": [
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "2153_20250530": [
+      "repeated_code"
+    ],
+    "7202_20250529": [
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "4097_20250221": [
+      "incomplete_for_ev_analysis"
+    ],
+    "2805_20250207": [
+      "repeated_code",
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "2989_20250114": [
+      "repeated_code"
+    ],
+    "4413_20241126": [
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "7075_20241125": [
+      "incomplete_for_ev_analysis"
+    ],
+    "6454_20241120": [
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "3472_20241119": [
+      "repeated_code"
+    ],
+    "6653_20241109": [
+      "repeated_code"
+    ],
+    "3470_20240820": [
+      "repeated_code"
+    ],
+    "7604_20240512": [
+      "repeated_code"
+    ],
+    "9211_20240416": [
+      "repeated_code"
+    ],
+    "3802_20240227": [
+      "repeated_code"
+    ],
+    "2820_20240223": [
+      "repeated_code"
+    ],
+    "7089_20240223": [
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "1431_20240210": [
+      "repeated_code",
+      "incomplete_for_ev_analysis"
+    ],
+    "2989_20240117": [
+      "repeated_code"
+    ],
+    "7130_20240116": [
+      "repeated_code"
+    ],
+    "8098_20240105": [
+      "repeated_code",
+      "incomplete_for_ev_analysis"
+    ],
+    "3498_20231208": [
+      "repeated_code",
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "9223_20231205": [
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "discount_rate_untrusted",
+      "incomplete_for_ev_analysis"
+    ],
+    "7826_20231117": [
+      "repeated_code",
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "3476_20231115": [
+      "repeated_code"
+    ],
+    "9287_20231109": [
+      "repeated_code"
+    ],
+    "8956_20231023": [
+      "repeated_code"
+    ],
+    "8985_20230911": [
+      "repeated_code"
+    ],
+    "7562_20230906": [
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "3984_20230831": [
+      "repeated_code"
+    ],
+    "9284_20230630": [
+      "repeated_code"
+    ],
+    "2585_20230601": [
+      "repeated_code",
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "8966_20230522": [
+      "repeated_code"
+    ],
+    "7095_20230410": [
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "3249_20230313": [
+      "repeated_code"
+    ],
+    "2987_20230224": [
+      "missing_delivery_prices",
+      "incomplete_for_ev_analysis"
+    ],
+    "9221_20230221": [
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "2989_20230117": [
+      "repeated_code"
+    ],
+    "9211_20230106": [
+      "repeated_code",
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "9995_20230106": [
+      "missing_delivery_prices",
+      "incomplete_for_ev_analysis"
+    ],
+    "3470_20230104": [
+      "repeated_code"
+    ],
+    "2805_20221209": [
+      "repeated_code",
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "3278_20221128": [
+      "missing_delivery_prices",
+      "repeated_code",
+      "incomplete_for_ev_analysis"
+    ],
+    "2979_20221114": [
+      "repeated_code"
+    ],
+    "9287_20221104": [
+      "repeated_code"
+    ],
+    "8979_20221014": [
+      "missing_delivery_prices",
+      "incomplete_for_ev_analysis"
+    ],
+    "3493_20221004": [
+      "missing_delivery_prices",
+      "repeated_code",
+      "incomplete_for_ev_analysis"
+    ],
+    "4447_20220921": [
+      "incomplete_for_ev_analysis"
+    ],
+    "9522_20220830": [
+      "missing_delivery_prices",
+      "incomplete_for_ev_analysis"
+    ],
+    "9268_20220822": [
+      "repeated_code",
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "8984_20220818": [
+      "repeated_code",
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "3468_20220801": [
+      "repeated_code"
+    ],
+    "3459_20220715": [
+      "repeated_code",
+      "incomplete_for_ev_analysis"
+    ],
+    "1444_20220701": [
+      "missing_delivery_prices",
+      "incomplete_for_ev_analysis"
+    ],
+    "9285_20220630": [
+      "repeated_code"
+    ],
+    "6405_20220607": [
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "8966_20220518": [
+      "repeated_code"
+    ],
+    "3708_20220221": [
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "4247_20220217": [
+      "incomplete_for_ev_analysis"
+    ],
+    "3488_20220210": [
+      "incomplete_for_ev_analysis"
+    ],
+    "6564_20220107": [
+      "repeated_code",
+      "incomplete_for_ev_analysis"
+    ],
+    "3470_20220104": [
+      "repeated_code"
+    ],
+    "3498_20211211": [
+      "repeated_code",
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "4169_20211126": [
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "6890_20211122": [
+      "incomplete_for_ev_analysis"
+    ],
+    "7342_20211118": [
+      "missing_delivery_prices",
+      "incomplete_for_ev_analysis"
+    ],
+    "2979_20211116": [
+      "repeated_code"
+    ],
+    "9287_20211112": [
+      "missing_delivery_prices",
+      "repeated_code",
+      "incomplete_for_ev_analysis"
+    ],
+    "9281_20211109": [
+      "missing_delivery_prices",
+      "repeated_code",
+      "incomplete_for_ev_analysis"
+    ],
+    "3458_20211011": [
+      "missing_delivery_prices",
+      "repeated_code",
+      "incomplete_for_ev_analysis"
+    ],
+    "4463_20210917": [
+      "incomplete_for_ev_analysis"
+    ],
+    "4593_20210915": [
+      "repeated_code"
+    ],
+    "2932_20210915": [
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "7590_20210914": [
+      "repeated_code"
+    ],
+    "7157_20210831": [
+      "repeated_code"
+    ],
+    "3279_20210824": [
+      "repeated_code",
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "2972_20210816": [
+      "repeated_code"
+    ],
+    "3468_20210802": [
+      "repeated_code"
+    ],
+    "3994_20210802": [
+      "repeated_code"
+    ],
+    "4680_20210714": [
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "3459_20210713": [
+      "repeated_code"
+    ],
+    "3452_20210611": [
+      "repeated_code"
+    ],
+    "3962_20210312": [
+      "repeated_code"
+    ],
+    "2897_20210219": [
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "7071_20210218": [
+      "repeated_code",
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "9284_20210217": [
+      "repeated_code"
+    ],
+    "3278_20210215": [
+      "missing_delivery_prices",
+      "repeated_code",
+      "incomplete_for_ev_analysis"
+    ],
+    "1431_20210210": [
+      "repeated_code",
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "4384_20210203": [
+      "repeated_code",
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "9283_20210115": [
+      "missing_delivery_prices",
+      "repeated_code",
+      "incomplete_for_ev_analysis"
+    ],
+    "9287_20201207": [
+      "missing_delivery_prices",
+      "repeated_code",
+      "incomplete_for_ev_analysis"
+    ],
+    "3226_20201201": [
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "6098_20201130": [
+      "repeated_code"
+    ],
+    "4251_20201127": [
+      "repeated_code",
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "7076_20201125": [
+      "missing_delivery_prices",
+      "incomplete_for_ev_analysis"
+    ],
+    "3281_20201124": [
+      "repeated_code"
+    ],
+    "3633_20201121": [
+      "incomplete_for_ev_analysis"
+    ],
+    "6073_20201121": [
+      "incomplete_for_ev_analysis"
+    ],
+    "9966_20201120": [
+      "missing_delivery_prices",
+      "incomplete_for_ev_analysis"
+    ],
+    "8986_20201120": [
+      "repeated_code",
+      "incomplete_for_ev_analysis"
+    ],
+    "6556_20201119": [
+      "missing_delivery_prices",
+      "incomplete_for_ev_analysis"
+    ],
+    "2979_20201113": [
+      "repeated_code"
+    ],
+    "9286_20201110": [
+      "missing_delivery_prices",
+      "repeated_code",
+      "incomplete_for_ev_analysis"
+    ],
+    "3493_20201109": [
+      "missing_delivery_prices",
+      "repeated_code",
+      "incomplete_for_ev_analysis"
+    ],
+    "9281_20201109": [
+      "missing_delivery_prices",
+      "repeated_code",
+      "incomplete_for_ev_analysis"
+    ],
+    "2153_20201030": [
+      "repeated_code",
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "3697_20201022": [
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "8951_20201009": [
+      "repeated_code",
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "4427_20200930": [
+      "incomplete_for_ev_analysis"
+    ],
+    "4477_20200924": [
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "3471_20200916": [
+      "repeated_code",
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "9434_20200828": [
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "7826_20200826": [
+      "repeated_code",
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "2502_20200825": [
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "7748_20200824": [
+      "missing_delivery_prices",
+      "incomplete_for_ev_analysis"
+    ],
+    "9702_20200821": [
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "2151_20200820": [
+      "missing_delivery_prices",
+      "incomplete_for_ev_analysis"
+    ],
+    "3466_20200817": [
+      "repeated_code"
+    ],
+    "3234_20200817": [
+      "repeated_code"
+    ],
+    "3481_20200813": [
+      "repeated_code",
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "9285_20200813": [
+      "repeated_code"
+    ],
+    "3249_20200727": [
+      "repeated_code"
+    ],
+    "3458_20200716": [
+      "missing_delivery_prices",
+      "repeated_code",
+      "incomplete_for_ev_analysis"
+    ],
+    "3966_20200709": [
+      "missing_delivery_prices",
+      "incomplete_for_ev_analysis"
+    ],
+    "7157_20200703": [
+      "repeated_code"
+    ],
+    "4565_20200630": [
+      "missing_delivery_prices",
+      "repeated_code",
+      "incomplete_for_ev_analysis"
+    ],
+    "3487_20200629": [
+      "repeated_code"
+    ],
+    "4439_20200611": [
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "3802_20200407": [
+      "repeated_code",
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "discount_rate_untrusted",
+      "incomplete_for_ev_analysis"
+    ],
+    "3182_20200319": [
+      "incomplete_for_ev_analysis"
+    ],
+    "8108_20200302": [
+      "missing_delivery_prices",
+      "incomplete_for_ev_analysis"
+    ],
+    "9418_20200225": [
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "3452_20200222": [
+      "repeated_code",
+      "incomplete_for_ev_analysis"
+    ],
+    "2689_20200222": [
+      "incomplete_for_ev_analysis"
+    ],
+    "3865_20200222": [
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "3035_20200222": [
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "9266_20200220": [
+      "missing_delivery_prices",
+      "incomplete_for_ev_analysis"
+    ],
+    "1938_20200214": [
+      "repeated_code"
+    ],
+    "8955_20200214": [
+      "repeated_code",
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "6623_20200213": [
+      "missing_delivery_prices",
+      "incomplete_for_ev_analysis"
+    ],
+    "7959_20200210": [
+      "missing_delivery_prices",
+      "incomplete_for_ev_analysis"
+    ],
+    "3278_20200210": [
+      "missing_delivery_prices",
+      "repeated_code",
+      "incomplete_for_ev_analysis"
+    ],
+    "8984_20200207": [
+      "repeated_code",
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "3994_20200122": [
+      "repeated_code",
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "3283_20200117": [
+      "repeated_code",
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "2971_20200110": [
+      "repeated_code",
+      "incomplete_for_ev_analysis"
+    ],
+    "3282_20200107": [
+      "repeated_code",
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "3470_20200106": [
+      "repeated_code"
+    ],
+    "3476_20191210": [
+      "repeated_code"
+    ],
+    "4382_20191206": [
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "3462_20191205": [
+      "repeated_code"
+    ],
+    "6564_20191203": [
+      "repeated_code",
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "3249_20191129": [
+      "repeated_code"
+    ],
+    "6640_20191121": [
+      "missing_delivery_prices",
+      "incomplete_for_ev_analysis"
+    ],
+    "6062_20191115": [
+      "missing_delivery_prices",
+      "repeated_code",
+      "incomplete_for_ev_analysis"
+    ],
+    "4384_20191113": [
+      "repeated_code",
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "3984_20191108": [
+      "repeated_code",
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "9281_20191106": [
+      "missing_delivery_prices",
+      "repeated_code",
+      "incomplete_for_ev_analysis"
+    ],
+    "3227_20191105": [
+      "missing_delivery_prices",
+      "repeated_code",
+      "incomplete_for_ev_analysis"
+    ],
+    "3498_20191030": [
+      "repeated_code",
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "3451_20191010": [
+      "repeated_code"
+    ],
+    "3453_20191008": [
+      "missing_delivery_prices",
+      "repeated_code",
+      "incomplete_for_ev_analysis"
+    ],
+    "7213_20191001": [
+      "repeated_code"
+    ],
+    "3481_20190919": [
+      "repeated_code",
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "3269_20190910": [
+      "repeated_code",
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "3295_20190909": [
+      "repeated_code"
+    ],
+    "3466_20190904": [
+      "repeated_code"
+    ],
+    "3196_20190902": [
+      "repeated_code"
+    ],
+    "6098_20190828": [
+      "repeated_code"
+    ],
+    "3292_20190820": [
+      "repeated_code"
+    ],
+    "8964_20190815": [
+      "repeated_code",
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "3492_20190815": [
+      "repeated_code"
+    ],
+    "8303_20190808": [
+      "missing_delivery_prices",
+      "incomplete_for_ev_analysis"
+    ],
+    "2972_20190806": [
+      "repeated_code"
+    ],
+    "4396_20190718": [
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "3993_20190712": [
+      "incomplete_for_ev_analysis"
+    ],
+    "9283_20190711": [
+      "missing_delivery_prices",
+      "repeated_code",
+      "incomplete_for_ev_analysis"
+    ],
+    "4593_20190710": [
+      "repeated_code"
+    ],
+    "8963_20190701": [
+      "repeated_code"
+    ],
+    "3487_20190627": [
+      "repeated_code"
+    ],
+    "3563_20190618": [
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "8960_20190604": [
+      "repeated_code"
+    ],
+    "3283_20190604": [
+      "repeated_code",
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "6200_20190603": [
+      "repeated_code",
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "1431_20190527": [
+      "repeated_code",
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "3309_20190523": [
+      "repeated_code"
+    ],
+    "3962_20190515": [
+      "repeated_code",
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "3298_20190508": [
+      "missing_delivery_prices",
+      "repeated_code",
+      "incomplete_for_ev_analysis"
+    ],
+    "7181_20190404": [
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "8958_20190401": [
+      "repeated_code"
+    ],
+    "6553_20190304": [
+      "missing_delivery_prices",
+      "incomplete_for_ev_analysis"
+    ],
+    "7974_20190222": [
+      "repeated_code",
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "8984_20190208": [
+      "repeated_code",
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "3278_20190204": [
+      "missing_delivery_prices",
+      "repeated_code",
+      "incomplete_for_ev_analysis"
+    ],
+    "3455_20190111": [
+      "repeated_code",
+      "incomplete_for_ev_analysis"
+    ],
+    "3471_20190109": [
+      "repeated_code",
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "8985_20190108": [
+      "repeated_code"
+    ],
+    "9262_20190107": [
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "3282_20190107": [
+      "repeated_code",
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "3994_20181205": [
+      "repeated_code",
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "4080_20181130": [
+      "missing_delivery_prices",
+      "incomplete_for_ev_analysis"
+    ],
+    "3279_20181130": [
+      "repeated_code",
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "6653_20181115": [
+      "repeated_code"
+    ],
+    "6569_20181115": [
+      "missing_delivery_prices",
+      "incomplete_for_ev_analysis"
+    ],
+    "3476_20181016": [
+      "repeated_code",
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "3295_20181012": [
+      "repeated_code"
+    ],
+    "3451_20181011": [
+      "repeated_code"
+    ],
+    "3540_20181004": [
+      "missing_delivery_prices",
+      "incomplete_for_ev_analysis"
+    ],
+    "3484_20181002": [
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "2427_20180906": [
+      "missing_delivery_prices",
+      "incomplete_for_ev_analysis"
+    ],
+    "3290_20180904": [
+      "repeated_code",
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "7747_20180903": [
+      "repeated_code",
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "6266_20180831": [
+      "repeated_code"
+    ],
+    "2820_20180828": [
+      "repeated_code"
+    ],
+    "3965_20180827": [
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "3481_20180823": [
+      "repeated_code",
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "7245_20180822": [
+      "repeated_code"
+    ],
+    "3468_20180821": [
+      "repeated_code",
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "9284_20180814": [
+      "repeated_code"
+    ],
+    "3281_20180813": [
+      "repeated_code"
+    ],
+    "3459_20180810": [
+      "repeated_code"
+    ],
+    "9263_20180725": [
+      "missing_delivery_prices",
+      "incomplete_for_ev_analysis"
+    ],
+    "9283_20180720": [
+      "missing_delivery_prices",
+      "repeated_code",
+      "incomplete_for_ev_analysis"
+    ],
+    "8963_20180717": [
+      "repeated_code"
+    ],
+    "3278_20180713": [
+      "missing_delivery_prices",
+      "repeated_code",
+      "incomplete_for_ev_analysis"
+    ],
+    "3234_20180712": [
+      "repeated_code"
+    ],
+    "6264_20180706": [
+      "repeated_code",
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "2733_20180704": [
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "6373_20180702": [
+      "missing_delivery_prices",
+      "incomplete_for_ev_analysis"
+    ],
+    "3480_20180629": [
+      "repeated_code",
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "3539_20180622": [
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "7590_20180618": [
+      "repeated_code"
+    ],
+    "2153_20180614": [
+      "repeated_code",
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "3296_20180608": [
+      "repeated_code",
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "7604_20180608": [
+      "repeated_code"
+    ],
+    "3457_20180604": [
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "9417_20180601": [
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "2928_20180528": [
+      "missing_delivery_prices",
+      "incomplete_for_ev_analysis"
+    ],
+    "5698_20180528": [
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "3422_20180525": [
+      "missing_delivery_prices",
+      "incomplete_for_ev_analysis"
+    ],
+    "5970_20180522": [
+      "repeated_code"
+    ],
+    "6088_20180522": [
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "6194_20180522": [
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "7172_20180518": [
+      "repeated_code",
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "8972_20180514": [
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "9281_20180510": [
+      "missing_delivery_prices",
+      "repeated_code",
+      "incomplete_for_ev_analysis"
+    ],
+    "3258_20180508": [
+      "missing_delivery_prices",
+      "repeated_code",
+      "incomplete_for_ev_analysis"
+    ],
+    "3298_20180409": [
+      "missing_delivery_prices",
+      "repeated_code",
+      "incomplete_for_ev_analysis"
+    ],
+    "3287_20180406": [
+      "repeated_code",
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "6723_20180403": [
+      "repeated_code"
+    ],
+    "3475_20180402": [
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "8952_20180328": [
+      "repeated_code",
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "6028_20180322": [
+      "missing_delivery_prices",
+      "incomplete_for_ev_analysis"
+    ],
+    "4004_20180306": [
+      "repeated_code"
+    ],
+    "3445_20180306": [
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "3132_20180302": [
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "8984_20180228": [
+      "repeated_code",
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "3283_20180226": [
+      "repeated_code",
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "8954_20180226": [
+      "repeated_code",
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "3249_20180220": [
+      "repeated_code"
+    ],
+    "6062_20180216": [
+      "repeated_code",
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "2267_20180214": [
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "3836_20180213": [
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "8968_20180209": [
+      "repeated_code"
+    ],
+    "3160_20180209": [
+      "repeated_code"
+    ],
+    "6200_20180202": [
+      "repeated_code",
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "3462_20180201": [
+      "repeated_code"
+    ],
+    "3227_20180129": [
+      "missing_delivery_prices",
+      "repeated_code",
+      "incomplete_for_ev_analysis"
+    ],
+    "3471_20180115": [
+      "repeated_code",
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "3282_20180105": [
+      "repeated_code",
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "3470_20180104": [
+      "repeated_code"
+    ],
+    "6590_20171204": [
+      "repeated_code",
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "8527_20171201": [
+      "missing_delivery_prices",
+      "incomplete_for_ev_analysis"
+    ],
+    "3279_20171128": [
+      "repeated_code",
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "4555_20171127": [
+      "missing_delivery_prices",
+      "incomplete_for_ev_analysis"
+    ],
+    "7190_20171127": [
+      "missing_delivery_prices",
+      "incomplete_for_ev_analysis"
+    ],
+    "7733_20171124": [
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "6383_20171122": [
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "7417_20171117": [
+      "missing_delivery_prices",
+      "incomplete_for_ev_analysis"
+    ],
+    "7191_20171117": [
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "5857_20171114": [
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "4565_20171110": [
+      "repeated_code",
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "3472_20171109": [
+      "repeated_code"
+    ],
+    "2734_20171020": [
+      "repeated_code"
+    ],
+    "3186_20171016": [
+      "repeated_code",
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "3295_20171013": [
+      "repeated_code"
+    ],
+    "2925_20171013": [
+      "missing_delivery_prices",
+      "incomplete_for_ev_analysis"
+    ],
+    "3451_20171013": [
+      "repeated_code"
+    ],
+    "3287_20171011": [
+      "repeated_code",
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "8342_20171003": [
+      "missing_delivery_prices",
+      "incomplete_for_ev_analysis"
+    ],
+    "8963_20170921": [
+      "repeated_code"
+    ],
+    "2772_20170912": [
+      "missing_delivery_prices",
+      "incomplete_for_ev_analysis"
+    ],
+    "3292_20170912": [
+      "repeated_code"
+    ],
+    "6178_20170911": [
+      "repeated_code"
+    ],
+    "8967_20170911": [
+      "repeated_code",
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "3902_20170902": [
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "4462_20170818": [
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "3139_20170818": [
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "6157_20170818": [
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "9078_20170818": [
+      "missing_delivery_prices",
+      "incomplete_for_ev_analysis"
+    ],
+    "3283_20170724": [
+      "repeated_code",
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "6264_20170724": [
+      "repeated_code",
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "2471_20170720": [
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "9386_20170707": [
+      "missing_delivery_prices",
+      "incomplete_for_ev_analysis"
+    ],
+    "7172_20170706": [
+      "repeated_code",
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "5019_20170703": [
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "3258_20170630": [
+      "missing_delivery_prices",
+      "repeated_code",
+      "incomplete_for_ev_analysis"
+    ],
+    "6184_20170630": [
+      "missing_delivery_prices",
+      "incomplete_for_ev_analysis"
+    ],
+    "8985_20170619": [
+      "repeated_code"
+    ],
+    "3197_20170615": [
+      "repeated_code"
+    ],
+    "7747_20170605": [
+      "repeated_code",
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "6196_20170602": [
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "6718_20170529": [
+      "repeated_code"
+    ],
+    "4248_20170529": [
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "6258_20170526": [
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "6080_20170526": [
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "8367_20170523": [
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "1431_20170519": [
+      "missing_delivery_prices",
+      "repeated_code",
+      "incomplete_for_ev_analysis"
+    ],
+    "6723_20170518": [
+      "repeated_code"
+    ],
+    "9281_20170510": [
+      "missing_delivery_prices",
+      "repeated_code",
+      "incomplete_for_ev_analysis"
+    ],
+    "2157_20170509": [
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "3309_20170509": [
+      "repeated_code",
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "6817_20170410": [
+      "repeated_code"
+    ],
+    "8958_20170331": [
+      "repeated_code",
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "3453_20170331": [
+      "missing_delivery_prices",
+      "repeated_code",
+      "incomplete_for_ev_analysis"
+    ],
+    "3468_20170317": [
+      "repeated_code",
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "8316_20170303": [
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "5741_20170303": [
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "8984_20170301": [
+      "repeated_code",
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "2884_20170228": [
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "8953_20170227": [
+      "repeated_code",
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "3916_20170227": [
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "8361_20170221": [
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "2181_20170220": [
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "3793_20170215": [
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "3227_20170215": [
+      "missing_delivery_prices",
+      "repeated_code",
+      "incomplete_for_ev_analysis"
+    ],
+    "8954_20170210": [
+      "repeated_code",
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "3415_20170130": [
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ],
+    "3249_20170127": [
+      "repeated_code",
+      "issue_price_delivery_ratio_outlier",
+      "possible_split_adjustment_mismatch",
+      "incomplete_for_ev_analysis"
+    ]
+  }
+}

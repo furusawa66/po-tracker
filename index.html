@@ -98,6 +98,7 @@ th.num{padding-left:10px;padding-right:8px}
     <div class="fg"><label>翌日GUGD</label><div class="ms" id="fgu1"></div></div>
     <div class="fg"><label>受渡日GUGD</label><div class="ms" id="fgu2"></div></div>
     <div class="fg"><label class="mcb" title="日付不明の旧CSV取り込みデータを除外"><input type="checkbox" id="fleg" onchange="render()" checked>旧データ除外</label></div>
+    <div class="fg"><label class="mcb" title="期待値分析に使えるレコードのみ表示（受渡価格欠損・株式分割不整合等を除外）"><input type="checkbox" id="fev" onchange="render()">分析可能のみ</label></div>
   </div>
 
   <div class="stats">
@@ -147,6 +148,7 @@ let newRecs=[], combined=[], filt=[], sCol=-1, sAsc=false;
 function esc(s){ return String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;"); }
 
 /* ─────── データ読み込み ──────────────────────────────────────────────────── */
+let auditFlags = {};  // {recordId: ["flag1", "flag2", ...]}
 async function loadNewRecs(){
   try{
     const res = await fetch("./data/po_records.json?t="+Date.now());
@@ -159,6 +161,16 @@ async function loadNewRecs(){
   }catch(e){
     console.warn("JSON読み込みスキップ（ローカル確認時は正常）:",e.message);
   }
+  // 監査フラグも読み込む（無くても動作は継続）
+  try{
+    const ar = await fetch("./data/po_audit.json?t="+Date.now());
+    if(ar.ok){
+      const aj = await ar.json();
+      auditFlags = aj.flags_by_id || {};
+    }
+  }catch(e){
+    console.warn("audit JSON 読み込みスキップ:", e.message);
+  }
 }
 
 function lendingOf(r){
@@ -168,6 +180,7 @@ function lendingOf(r){
   return "貸借";
 }
 function recToRow(r, src){
+  const flags = auditFlags[r.id] || [];
   return {
     src, id:r.id, code:r.code||"", year:r.year||new Date().getFullYear(),
     name:r.name, type:r.type, alert:r.alert||"", lending:lendingOf(r),
@@ -186,6 +199,10 @@ function recToRow(r, src){
     newShares:r.new_shares, soldShares:r.sold_shares,
     decisionDate:r.decision_date, deliveryDate:r.delivery_date,
     legacy:!!r.legacy,
+    flags,
+    incomplete: flags.includes("incomplete_for_ev_analysis"),
+    splitMismatch: flags.includes("possible_split_adjustment_mismatch"),
+    drUntrusted: flags.includes("discount_rate_untrusted"),
   };
 }
 function buildCombined(){
@@ -223,6 +240,7 @@ function matchMSRange(id,val){
 }
 function getFiltered(){
   const fleg=document.getElementById("fleg")?.checked;
+  const fev=document.getElementById("fev")?.checked;
   const mgu1=getMS("fgu1");
   const mgu2=getMS("fgu2");
   const mfm=getMS("fm");
@@ -238,6 +256,7 @@ function getFiltered(){
   }
   return combined.filter(r=>{
     if(fleg&&r.legacy) return false;
+    if(fev&&r.incomplete) return false;
     if(!matchMSExact("fy",r.year)) return false;
     if(!matchMSExact("ft",r.type)) return false;
     if(!matchMSExact("fa",r.lending)) return false;
@@ -395,15 +414,18 @@ function abbrManagers(list){
 }
 
 function renderTable(data){
-  document.getElementById("tb").innerHTML=data.map(r=>`<tr${r.legacy?' style="opacity:.55"':''}>
-    <td style="color:#64748b;font-family:monospace">${r.year}${r.legacy?'<span title="日付不明の旧データ" style="color:#64748b;margin-left:3px">⚠</span>':''}</td>
-    <td>${(()=>{const b=statusBadge(r.status);return `<span class="b ${b.cls}">${b.label}</span>`;})()}</td>
+  document.getElementById("tb").innerHTML=data.map(r=>{
+    const flagTitle = r.flags && r.flags.length ? r.flags.join("\n") : "";
+    const splitWarn = r.splitMismatch ? `<span title="株式分割等の調整値混入の可能性 (issue_price / delivery_open 比が異常)" style="color:#fbbf24;margin-left:3px">⚠</span>` : "";
+    return `<tr${r.legacy?' style="opacity:.55"':r.incomplete?' style="opacity:.75"':''}>
+    <td style="color:#64748b;font-family:monospace">${r.year}${r.legacy?'<span title="日付不明の旧データ" style="color:#64748b;margin-left:3px">⚠</span>':""}${splitWarn}</td>
+    <td>${(()=>{const b=statusBadge(r.status);return `<span class="b ${b.cls}" title="${flagTitle}">${b.label}</span>`;})()}</td>
     <td style="color:#64748b;font-family:monospace;font-size:11px">${r.code||"–"}</td>
     <td style="max-width:140px;overflow:hidden;text-overflow:ellipsis" title="${esc(r.name)}">${r.code?`<a href="https://kabutan.jp/stock/chart?code=${esc(r.code)}" target="_blank" rel="noopener" style="color:#e2e8f0;text-decoration:none">${esc(r.name)}</a>`:esc(r.name)}</td>
     <td><span class="b ${r.type==="リート"?"b-r":"b-n"}">${r.type==="リート"?"REIT":esc(r.type)}</span></td>
     <td><span class="b ${r.lending==="貸借"?"b-tai":r.lending==="信用"?"b-c":"b-ban"}">${r.lending==="売禁"?"貸借(売禁)":esc(r.lending)}</span></td>
     <td style="font-family:'Meiryo','メイリオ',sans-serif;max-width:70px;overflow:hidden;text-overflow:ellipsis" title="${esc((r.leadManagers||[]).slice().sort((a,b)=>(MGR_ORDER[abbrManager(a)]??99)-(MGR_ORDER[abbrManager(b)]??99)).join(' / '))}">${esc(abbrManagers(r.leadManagers))||"–"}</td>
-    <td class="num"${(r.discountRate!=null&&r.discountRate>15)?' style="color:#fbbf24" title="dis率15%超: 異常値の可能性"':''}>${r.discountRate!=null?pctStr(r.discountRate):"–"}</td>
+    <td class="num"${r.drUntrusted?' style="color:#fbbf24" title="株式分割の調整値混入で信頼できない可能性"':(r.discountRate!=null&&r.discountRate>15)?' style="color:#fbbf24" title="dis率15%超: 異常値の可能性"':''}>${r.discountRate!=null?pctStr(r.discountRate):"–"}</td>
     <td class="num">${r.scale?r.scale.toLocaleString():"–"}</td>
     <td class="num">${r.pct!=null?pctStr(r.pct):"–"}</td>
     <td class="num">${r.dilution!=null?pctStr(r.dilution):"–"}</td>
@@ -420,7 +442,7 @@ function renderTable(data){
     <td title="${r.prevClose?`前日終値 ${r.prevClose.toLocaleString()} → 始値 ${r.delOpen?r.delOpen.toLocaleString():""} (${r.gapPct!=null?(r.gapPct>0?'+':'')+r.gapPct+'%':'–'})`:''}">${r.gapPct==null?'<span style="color:#334155">–</span>':(r.gapPct>=0.5?'<span style="color:#34d399">GU</span>':r.gapPct<=-0.5?'<span style="color:#f87171">GD</span>':'<span style="color:#94a3b8" title="フラット (±0.5%以内)">フラット</span>')}</td>
     <td class="num">${r.delClose?r.delClose.toLocaleString():"–"}</td>
     <td class="num">${fmtCell(r.delRet)}</td>
-  </tr>`).join("");
+  </tr>`;}).join("");
 }
 
 function sort(col){
