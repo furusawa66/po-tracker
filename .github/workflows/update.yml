@@ -29,6 +29,9 @@ jobs:
       - name: Run PO scraper
         run: python scripts/po_scraper.py
 
+      - name: Run data quality audit
+        run: python scripts/audit.py --quiet
+
       - name: Commit updated data
         run: |
           git config user.name  "po-tracker-bot"
