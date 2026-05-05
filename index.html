@@ -180,7 +180,7 @@ function recToRow(r, src){
     delOpen:r.delivery_open, delClose:r.delivery_close, delRet:r.delivery_ret,
     prevClose:r.prev_close_before_delivery, gapPct:r.delivery_gap_pct,
     leadManagers:r.lead_managers||[], coManagers:r.co_managers||[],
-    memo:r.memo||"", status:((r.delivery_open&&r.delivery_close)||(r.delivery_date&&new Date(r.delivery_date)<new Date()))?"complete":(r.status||"pending"), announceDate:r.announce_date||"",
+    memo:r.memo||"", status:(r.delivery_open&&r.delivery_close)?"complete":(r.status||"pending"), announceDate:r.announce_date||"",
     marketCap:r.market_cap, shares:r.shares_outstanding,
     discountRate:r.discount_rate, discountRange:r.discount_range||"",
     newShares:r.new_shares, soldShares:r.sold_shares,

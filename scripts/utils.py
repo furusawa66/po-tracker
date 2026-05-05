@@ -66,8 +66,12 @@ def parse_jp_date(text: str, year: int = None) -> str | None:
         return None
 
 
-def parse_jp_date_range_end(text: str) -> str | None:
-    """'4月1日(水) ～ 4月6日(月)' → 先頭の日付 'YYYY-MM-DD'"""
+def parse_jp_date_range_start(text: str) -> str | None:
+    """'4月1日(水) ～ 4月6日(月)' → 先頭の日付 (start) 'YYYY-MM-DD'
+
+    pokabu.net の決定日カラムでは単一日付が大半だが、稀に範囲表記が来る。
+    旧 parse_jp_date_range_end は名前と挙動が不一致だったため改名。
+    既存挙動 (先頭日付を返す) は保持する。"""
     all_dates = re.findall(r'(\d{1,2})月(\d{1,2})日', text)
     if not all_dates:
         return None
